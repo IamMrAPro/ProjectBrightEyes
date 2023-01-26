@@ -7,6 +7,7 @@
     <body>
         <jsp:include page="layout/header.jsp"/>
         <jsp:include page="layout/menu.jsp"/>
+        <jsp:include page="layout/chatbot.jsp"/> 
         <main>
 
             <section class="hero-section hero-section-full-height">
