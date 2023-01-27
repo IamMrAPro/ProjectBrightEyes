@@ -2,11 +2,11 @@
 <nav class="navbar navbar-expand-lg bg-light shadow-lg">
     <div class="container">
 
-        <img src="assets/images/logo.png" class="logo img-fluid col-lg-2" alt="">
+        <img src="assets/images/logo.png" class="logo img-fluid col-lg-1" alt="">
 
         <ul class="navbar-nav ms-auto col-lg-8">
             <li class="nav-item">
-                <a class="nav-link click-scroll" href="#">Home</a>
+                <a class="nav-link click-scroll" href="home">Home</a>
             </li>
 
             <li class="nav-item">

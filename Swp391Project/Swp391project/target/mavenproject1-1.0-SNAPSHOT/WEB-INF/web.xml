@@ -4,9 +4,17 @@
         <servlet-name>glassesController</servlet-name>
         <servlet-class>com.groud2.web.controller.glassesController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>homeController</servlet-name>
+        <servlet-class>com.groud2.web.controller.homeController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>glassesController</servlet-name>
         <url-pattern>/glasses</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>homeController</servlet-name>
+        <url-pattern>/home</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
