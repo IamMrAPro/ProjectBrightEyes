@@ -1,1 +1,3 @@
-com\groud2\web\DAO\DBContext.class
+com\groud2\web\DAO\glassesDAO.class
+com\groud2\web\model\glasses.class
+com\groud2\web\DAO\context\DBContext.class

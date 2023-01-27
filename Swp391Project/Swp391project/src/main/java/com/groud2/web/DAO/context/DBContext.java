@@ -1,5 +1,5 @@
 
-package com.groud2.web.DAO;
+package com.groud2.web.DAO.context;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

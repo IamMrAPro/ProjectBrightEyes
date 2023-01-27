@@ -7,7 +7,7 @@
     <body>
         <jsp:include page="layout/header.jsp"/>
         <jsp:include page="layout/menu.jsp"/>
-        <jsp:include page="layout/chatbot.jsp"/> 
+         
         <main>
 
             <section class="hero-section hero-section-full-height">
@@ -241,12 +241,12 @@
             </section>
 
 
-            <section class="section-padding" id="section_3">
+            <section class="section-padding">
                 <div class="container">
                     <div class="row">
 
                         <div class="col-lg-12 col-12 text-center mb-4">
-                            <h2>Our Causes</h2>
+                            <h2>Glasses</h2>
                         </div>
 
                         <div class="col-lg-4 col-md-6 col-12 mb-4 mb-lg-0">
@@ -741,6 +741,7 @@
                 </div>
             </section>
         </main>
+        <jsp:include page="layout/chatbot.jsp"/>
         <jsp:include page="layout/footer.jsp"/>
     </body>
 </html>
