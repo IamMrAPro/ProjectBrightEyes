@@ -33,6 +33,7 @@ public class glassesDAO {
             ps = connection.prepareStatement(sql);
             rs = ps.executeQuery();
             while (rs.next()) {
+                String gende;
                 String glassID = rs.getString(1);
                 String glassName= rs.getString(2);
                 String color= rs.getString(3);
@@ -41,7 +42,12 @@ public class glassesDAO {
                 String style= rs.getString(6);
                 String image= rs.getString(7);
                 String price= rs.getString(8);
-                glasses g = new glasses(glassID, glassName, color, gender, material, style, image,price);
+                if(gender.equals("1")){
+                    gende = "Male";
+                }else{
+                    gende = "FeMale";
+                }
+                glasses g = new glasses(glassID, glassName, color, gende, material, style, image,price);
                 
                 list.add(g);
 }
