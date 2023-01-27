@@ -15,17 +15,18 @@ public class glasses {
     private String gender;
     private String material;
     private String style;
-
+    private String image;
     public glasses() {
     }
 
-    public glasses(String glassID, String glassName, String color, String gender, String material, String style) {
+    public glasses(String glassID, String glassName, String color, String gender, String material, String style,String imgage) {
         this.glassID = glassID;
         this.glassName = glassName;
         this.color = color;
         this.gender = gender;
         this.material = material;
         this.style = style;
+        this.image=imgage;
     }
 
     public String getGlassID() {
@@ -74,6 +75,14 @@ public class glasses {
 
     public void setStyle(String style) {
         this.style = style;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
     
 }

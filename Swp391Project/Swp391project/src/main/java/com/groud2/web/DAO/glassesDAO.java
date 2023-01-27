@@ -39,7 +39,8 @@ public class glassesDAO {
                 String gender= rs.getString(4);
                 String material= rs.getString(5);
                 String style= rs.getString(6);
-                glasses g = new glasses(glassID, glassName, color, gender, material, style);
+                String image= rs.getString(7);
+                glasses g = new glasses(glassID, glassName, color, gender, material, style, image);
                 list.add(g);
 }
 } catch (SQLException e) {
