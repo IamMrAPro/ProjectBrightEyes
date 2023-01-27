@@ -1,7 +1,4 @@
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<!DOCTYPE html>
-<html>
+
 <header class="site-header">
     <div class="container">
         <div class="row">
@@ -43,4 +40,3 @@
         </div>
     </div>
 </header>
-</html>

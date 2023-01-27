@@ -40,7 +40,9 @@ public class glassesDAO {
                 String material= rs.getString(5);
                 String style= rs.getString(6);
                 String image= rs.getString(7);
-                glasses g = new glasses(glassID, glassName, color, gender, material, style, image);
+                String price= rs.getString(8);
+                glasses g = new glasses(glassID, glassName, color, gender, material, style, image,price);
+                
                 list.add(g);
 }
 } catch (SQLException e) {
@@ -53,4 +55,5 @@ public class glassesDAO {
         return list;
 
     }
+  
 }

@@ -1,7 +1,4 @@
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<!DOCTYPE html>
-<html>
+
     <footer class="site-footer">
         <div class="container">
             <div class="row">
@@ -59,7 +56,7 @@
                 <div class="row">
 
                     <div class="col-lg-6 col-md-7 col-12">
-                        <p class="copyright-text mb-0">Copyright Â© 2036 <a href="#">Kind Heart</a> Charity Org.
+                        <p class="copyright-text mb-0">Copyright © 2036 <a href="#">Kind Heart</a> Charity Org.
                             Design: <a href="https://templatemo.com" target="_blank">TemplateMo</a></p>
                     </div>
 
@@ -99,4 +96,3 @@
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 
-</html>

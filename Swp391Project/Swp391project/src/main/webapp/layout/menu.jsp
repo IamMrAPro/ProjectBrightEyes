@@ -1,7 +1,4 @@
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<!DOCTYPE html>
-<html>
+
 <nav class="navbar navbar-expand-lg bg-light shadow-lg">
     <div class="container">
 
@@ -17,7 +14,7 @@
             </li>
 
             <li class="nav-item">
-                <a class="nav-link click-scroll" href="#">Glasses</a>
+                <a class="nav-link click-scroll" href="glasses">Glasses</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link click-scroll" href="#">News</a>
@@ -63,4 +60,3 @@
 
     </div>
 </nav>
-</html>

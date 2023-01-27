@@ -29,9 +29,5 @@ public class DBContext {
         return null;
     }
 
-    public static void main(String[] args) throws SQLException {
-        DBContext db = new DBContext();
-        System.out.println(db.getConnection());
-        System.out.println(db.getConnection().getCatalog());
-    }
+   
 }
