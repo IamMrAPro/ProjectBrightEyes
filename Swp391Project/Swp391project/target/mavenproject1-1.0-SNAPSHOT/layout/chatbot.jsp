@@ -1,7 +1,5 @@
 
 
-    
-
 
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <style>
@@ -13,7 +11,7 @@
             }
 
             .collapsible {
-                background-color: rgb(82, 151, 255);
+                background-color: #5bc1ac;
                 color: white;
                 cursor: pointer;
                 padding: 18px;
@@ -207,9 +205,9 @@
                         <div class="chat-container">
                             <!-- Messages -->
                             <div id="chatbox">
-                            <h5 id="chat-timestamp"></h5>
-                            <p id="botStarterMessage" class="botText"><span>Loading...</span></p>
-                        </div>
+                                <h5 id="chat-timestamp"></h5>
+                                <p id="botStarterMessage" class="botText"><span>Loading...</span></p>
+                            </div>
 
                             <!-- User input box -->
                             <div class="chat-bar-input-block" id="user">
@@ -258,7 +256,7 @@
 
                                                });
                                            }
-                                           var websocket = new WebSocket("ws://localhost:8909/mavenproject2/chatRoomServer");
+                                           var websocket = new WebSocket("ws://localhost:8909/mavenproject1/chatRoomServer");
                                            websocket.onopen = function (message) {
                                                processOpen(message);
                                            };
@@ -272,13 +270,22 @@
                                                processError(message);
                                            };
                                            function processOpen(message) {
-                                               document.getElementById("botStarterMessage").innerHTML = '<p class="botText"><span>' + "firstMessage" + '</span></p>';
+                                               document.getElementById("botStarterMessage").innerHTML = '<p class="botText"><span>' + "Please enter name " + '</span></p>';
+
+                                               let time = getTime();
+
+                                               $("#chat-timestamp").append(time);
+                                               document.getElementById("userInput").scrollIntoView(false);
 
 
                                            }
                                            function processMessage(message) {
-                                               console.log(message);
-                                               textInput.value += message.data + " \n";
+//                                               console.log(message);
+
+                                               let userHtml = '<p class="userText"><span>' + message.data + '</span></p>';
+                                               $("#textInput").val("");
+                                               $("#chatbox").append(userHtml);
+                                               document.getElementById("chat-bar-bottom").scrollIntoView(true);
                                            }
                                            function processClose(message) {
                                                textInput.value += "Server Disconnect... \n";
@@ -290,13 +297,26 @@
                                                if (typeof websocket != 'undefined' && websocket.readyState == WebSocket.OPEN) {
                                                    console.log("hello");
 
-                                                   websocket.send(nameInput.value);
-                                                   nameInput.value = "";
+
+                                                   websocket.send(textInput.value);
+                                                   textInput.value = "";
                                                }
                                            }
                                            function sendName() {
+                                               const adminChat =[
+                                                   ""
+                                               ]
                                                document.getElementById("name").style.display = 'none';
                                                document.getElementById("user").style.display = 'block';
+                                               document.getElementById("botStarterMessage").innerHTML = '<p class="botText"><span>' + "Hello " + nameInput.value + '</span></p>';
+                                               let time = getTime();
+                                               document.getElementById("userInput").scrollIntoView(false);
+                                               let botHtml = '<p class="botText"><span>' + "May I help you ?" + '</span></p>';
+                                               $("#chatbox").append(botHtml);
+
+                                               document.getElementById("chat-bar-bottom").scrollIntoView(true);
+                                               websocket.send(nameInput.value);
+                                               nameInput.value = "";
                                            }
 
                                            function getTime() {
