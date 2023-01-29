@@ -8,6 +8,10 @@
         <servlet-name>homeController</servlet-name>
         <servlet-class>com.groud2.web.controller.homeController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>bookingController</servlet-name>
+        <servlet-class>com.groud2.web.controller.bookingController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>glassesController</servlet-name>
         <url-pattern>/glasses</url-pattern>
@@ -15,6 +19,10 @@
     <servlet-mapping>
         <servlet-name>homeController</servlet-name>
         <url-pattern>/home</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>bookingController</servlet-name>
+        <url-pattern>/booking</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
