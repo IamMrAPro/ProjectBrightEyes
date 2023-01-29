@@ -678,6 +678,7 @@
                     </div>
                 </div>
             </section>
+            
         </main>
         <jsp:include page="layout/chatbot.jsp"/>
         <jsp:include page="layout/footer.jsp"/>
