@@ -2,9 +2,7 @@ com\groud2\web\server\ChatRoomServerEndpoint.class
 com\groud2\web\DAO\glassesDAO.class
 com\groud2\web\controller\glassesController.class
 com\groud2\web\DAO\context\DBContext.class
-<<<<<<< HEAD
 com\groud2\web\controller\bookingController.class
-=======
->>>>>>> Vu
 com\groud2\web\controller\homeController.class
 com\groud2\web\model\glasses.class
+loginController.class

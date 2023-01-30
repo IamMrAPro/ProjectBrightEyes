@@ -5,7 +5,7 @@
         <meta name="description" content="">
         <meta name="author" content="">
 
-        <title>Kind Heart Charity - Free Bootstrap 5.2.2 CSS Template</title>
+        <title>Eyes</title>
 
         <!-- CSS FILES -->
         <link href="assets/css/bootstrap.min.css" rel="stylesheet">
