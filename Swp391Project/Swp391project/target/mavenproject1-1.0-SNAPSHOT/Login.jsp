@@ -78,7 +78,7 @@
 					</div>
 
 					<div class="flex-c-m">
-						<a href="#" class="login100-social-item bg1">
+						<a href="https://www.facebook.com/dialog/oauth?client_id=1139592463416490&redirect_uri=http://localhost:8909/mavenproject1/loginwithfacebook" class="login100-social-item bg1">
 							<i class="fa fa-facebook"></i>
 						</a>
 
