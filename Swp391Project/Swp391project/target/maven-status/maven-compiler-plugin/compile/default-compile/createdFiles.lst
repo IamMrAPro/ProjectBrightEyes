@@ -4,3 +4,8 @@ com\groud2\web\controller\glassesController.class
 com\groud2\web\DAO\context\DBContext.class
 com\groud2\web\controller\homeController.class
 com\groud2\web\model\glasses.class
+<<<<<<< Updated upstream
+=======
+com\groud2\web\model\profile.class
+loginController.class
+>>>>>>> Stashed changes
