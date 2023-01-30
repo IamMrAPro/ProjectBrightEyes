@@ -84,7 +84,7 @@
 
 						
 
-						<a href="#" class="login100-social-item bg3">
+						<a href="https://accounts.google.com/o/oauth2/auth?scope=email&redirect_uri=http://localhost:8909/mavenproject1/loginwithgoogle&response_type=code&client_id=440656250085-3d24uvmbsdou0vkjg15q14q8l3qdbfao.apps.googleusercontent.com&approval_prompt=force" class="login100-social-item bg3">
 							<i class="fa fa-google"></i>
 						</a>
 					</div>

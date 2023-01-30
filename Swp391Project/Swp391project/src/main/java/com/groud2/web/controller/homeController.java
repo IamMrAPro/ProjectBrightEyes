@@ -66,9 +66,7 @@ public class homeController extends HttpServlet {
         try {
             ArrayList<glasses> list = g.getAllglasses();
             request.setAttribute("listGlasses", list);
-            for (glasses item : list) {
-                System.out.println("day" + item.getGlassName());
-            }
+            
         } catch (SQLException ex) {
             
             Logger.getLogger(glassesController.class.getName()).log(Level.SEVERE, null, ex);

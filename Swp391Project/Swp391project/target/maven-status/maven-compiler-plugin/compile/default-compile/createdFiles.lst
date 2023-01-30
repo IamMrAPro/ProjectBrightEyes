@@ -2,7 +2,11 @@ com\groud2\web\server\ChatRoomServerEndpoint.class
 com\groud2\web\DAO\glassesDAO.class
 com\groud2\web\controller\glassesController.class
 com\groud2\web\DAO\context\DBContext.class
+com\groud2\web\access\google\LoginGoogleServlet.class
+com\groud2\web\access\google\GooglePojo.class
 com\groud2\web\controller\bookingController.class
 com\groud2\web\controller\homeController.class
+com\groud2\web\access\common\Constants.class
 com\groud2\web\model\glasses.class
+com\groud2\web\access\google\GoogleUtils.class
 loginController.class
