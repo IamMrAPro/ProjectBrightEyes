@@ -1,5 +1,6 @@
 com\groud2\web\server\ChatRoomServerEndpoint.class
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 com\groud2\web\DAO\glassesDAO.class
 com\groud2\web\controller\glassesController.class
 com\groud2\web\DAO\context\DBContext.class
@@ -7,6 +8,8 @@ com\groud2\web\controller\bookingController.class
 com\groud2\web\controller\homeController.class
 com\groud2\web\model\glasses.class
 =======
+=======
+>>>>>>> Stashed changes
 com\groud2\web\access\facebook\RestFB.class
 com\groud2\web\controller\homeController.class
 com\groud2\web\access\common\Constants.class
@@ -22,4 +25,7 @@ com\groud2\web\DAO\userDAO.class
 com\groud2\web\access\google\GooglePojo.class
 com\groud2\web\controller\bookingController.class
 com\groud2\web\access\google\GoogleUtils.class
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes

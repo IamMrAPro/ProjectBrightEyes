@@ -18,6 +18,12 @@
         <servlet-name>loginController</servlet-name>
         <servlet-class>com.groud2.web.controller.loginController</servlet-class>
     </servlet>
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
+
+
+
 >>>>>>> Stashed changes
     <servlet-mapping>
         <servlet-name>glassesController</servlet-name>
