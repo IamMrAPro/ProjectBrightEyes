@@ -66,6 +66,7 @@ public class loginController extends HttpServlet {
 
 
 
+
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
@@ -76,23 +77,7 @@ public class loginController extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
 
-    @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        request.getRequestDispatcher("Login.jsp").forward(request, response);
-    }
-
-
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        
-    }
-
-    @Override
-    public String getServletInfo() {
-        return "Short description";
-    }
+    
 
     /**
      * Handles the HTTP <code>POST</code> method.
@@ -102,6 +87,12 @@ public class loginController extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
+
+protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+    request.getRequestDispatcher("Login.jsp").forward(request, response);
+}
+
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -130,11 +121,6 @@ public class loginController extends HttpServlet {
 
     }
 
-    /**
-     * Returns a short description of the servlet.
-     *
-     * @return a String containing servlet description
-     */
     @Override
     public String getServletInfo() {
         return "Short description";
