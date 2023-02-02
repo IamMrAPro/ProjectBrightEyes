@@ -14,7 +14,7 @@
     </servlet>
     <servlet>
         <servlet-name>loginController</servlet-name>
-        <servlet-class>loginController</servlet-class>
+        <servlet-class>com.groud2.web.controller.loginController</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>glassesController</servlet-name>

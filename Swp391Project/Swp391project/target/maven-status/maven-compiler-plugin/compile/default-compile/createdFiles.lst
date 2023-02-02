@@ -11,4 +11,3 @@ com\groud2\web\access\google\LoginGoogleServlet.class
 com\groud2\web\access\google\GooglePojo.class
 com\groud2\web\controller\bookingController.class
 com\groud2\web\access\google\GoogleUtils.class
-loginController.class
