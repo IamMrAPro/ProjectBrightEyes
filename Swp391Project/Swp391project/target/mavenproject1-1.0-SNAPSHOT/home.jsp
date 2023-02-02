@@ -65,7 +65,7 @@
                 </div>
             </section>
 
-
+<!--
             <section class="section-padding">
                 <div class="container">
                     <div class="row">
@@ -116,7 +116,7 @@
 
                     </div>
                 </div>
-            </section>
+            </section>-->
 
             <section class="section-padding section-bg" id="section_2">
                 <div class="container">
@@ -613,12 +613,9 @@
                                 <h2>Get in touch</h2>
 
                                 <div class="contact-image-wrap d-flex flex-wrap">
-                                    <img src="assets/images/avatar/pretty-blonde-woman-wearing-white-t-shirt.jpg" class="img-fluid avatar-image" alt="">
-
-                                    <div class="d-flex flex-column justify-content-center ms-3">
-                                        <p class="mb-0">Clara Barton</p>
-                                        <p class="mb-0"><strong>HR & Office Manager</strong></p>
-                                    </div>
+                                   
+                                    <img src="assets/images/map.png" class="img-thumbnail"  alt=""/>
+                                    
                                 </div>
 
                                 <div class="contact-info">
@@ -652,26 +649,26 @@
 
                         <div class="col-lg-5 col-12 mx-auto">
                             <form class="custom-form contact-form" action="#" method="post" role="form">
-                                <h2>Contact form</h2>
+                                <h2>Send feedback</h2>
 
                                 <p class="mb-4">Or, you can just send an email:
-                                    <a href="#">info@charity.org</a>
+                                    <a href="#">anhvubui382@gmail.com</a>
                                 </p>
                                 <div class="row">
                                     <div class="col-lg-6 col-md-6 col-12">
-                                        <input type="text" name="first-name" id="first-name" class="form-control" placeholder="Jack" required>
+                                        <input type="text" name="first-name" id="first-name" class="form-control" placeholder="Bui" required>
                                     </div>
 
                                     <div class="col-lg-6 col-md-6 col-12">
-                                        <input type="text" name="last-name" id="last-name" class="form-control" placeholder="Doe" required>
+                                        <input type="text" name="last-name" id="last-name" class="form-control" placeholder="Anh Vu" required>
                                     </div>
                                 </div>
 
-                                <input type="email" name="email" id="email" pattern="[^ @]*@[^ @]*" class="form-control" placeholder="Jackdoe@gmail.com" required>
+                                <input type="email" name="email" id="email" pattern="[^ @]*@[^ @]*" class="form-control" placeholder="vubahe163495@fpt.edu.vn" required>
 
-                                <textarea name="message" rows="5" class="form-control" id="message" placeholder="What can we help you?"></textarea>
+                                <textarea name="message" rows="5" class="form-control" id="message" placeholder="What do you want to say with us?"></textarea>
 
-                                <button type="submit" class="form-control">Send Message</button>
+                                <button type="submit" class="form-control">Send Feedback</button>
                             </form>
                         </div>
 
