@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 D:\SP2023\SWP_in\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\controller\profileController.java
 D:\SP2023\SWP_in\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\model\profile.java
 D:\SP2023\SWP_in\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\controller\homeController.java
@@ -8,3 +9,22 @@ D:\SP2023\SWP_in\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\mod
 D:\SP2023\SWP_in\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\controller\glassesController.java
 D:\SP2023\SWP_in\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\model\glasses.java
 D:\SP2023\SWP_in\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\DAO\context\DBContext.java
+=======
+D:\Project\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\controller\profileController.java
+D:\Project\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\DAO\userDAO.java
+D:\Project\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\DAO\context\DBContext.java
+D:\Project\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\model\glasses.java
+D:\Project\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\server\ChatRoomServerEndpoint.java
+D:\Project\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\controller\homeController.java
+D:\Project\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\access\common\Constants.java
+D:\Project\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\access\google\GooglePojo.java
+D:\Project\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\DAO\glassesDAO.java
+D:\Project\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\controller\loginController.java
+D:\Project\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\controller\glassesController.java
+D:\Project\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\access\google\LoginGoogleServlet.java
+D:\Project\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\access\facebook\RestFB.java
+D:\Project\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\access\facebook\LoginFacebookServlet.java
+D:\Project\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\access\google\GoogleUtils.java
+D:\Project\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\controller\bookingController.java
+D:\Project\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\model\user.java
+>>>>>>> Stashed changes

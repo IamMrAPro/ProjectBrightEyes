@@ -23,13 +23,13 @@
                 </div>
 
                 <div class="col-lg-4 col-md-6 col-12 mx-auto">
-                    <h5 class="site-footer-title mb-3">Contact Infomation</h5>
+                    <h5 class="site-footer-title mb-3">Contact Information</h5>
 
                     <p class="text-white d-flex mb-2">
                         <i class="bi-telephone me-2"></i>
 
                         <a href="tel: 120-240-9600" class="site-footer-link">
-                            120-240-9600
+                            0948539479
                         </a>
                     </p>
 
@@ -37,13 +37,13 @@
                         <i class="bi-envelope me-2"></i>
 
                         <a href="mailto:info@yourgmail.com" class="site-footer-link">
-                            donate@charity.org
+                            vubahe163495@fpt.edu.vn
                         </a>
                     </p>
 
                     <p class="text-white d-flex mt-3">
                         <i class="bi-geo-alt me-2"></i>
-                        Akershusstranda 20, 0150 Oslo, Norway
+                        FPT University, Hoa Lac, Ha Noi
                     </p>
 
                     <a href="#" class="custom-btn btn mt-3">Get Direction</a>
@@ -56,8 +56,8 @@
                 <div class="row">
 
                     <div class="col-lg-6 col-md-7 col-12">
-                        <p class="copyright-text mb-0">Copyright © 2036 <a href="#">Kind Heart</a> Charity Org.
-                            Design: <a href="https://templatemo.com" target="_blank">TemplateMo</a></p>
+                        <p class="copyright-text mb-0">Copyright © 2036 <a href="#">Eyes Care</a> Charity Org.
+                            Design: <a href="https://templatemo.com" target="_blank">Group 2</a></p>
                     </div>
 
                     <div class="col-lg-6 col-md-5 col-12 d-flex justify-content-center align-items-center mx-auto">

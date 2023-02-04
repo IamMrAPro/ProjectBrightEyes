@@ -604,7 +604,8 @@
             </section>
 
 
-            <section class="contact-section section-padding" id="section_6">
+           
+               <section class="contact-section section-padding" id="section_6">
                 <div class="container">
                     <div class="row">
 
@@ -623,14 +624,14 @@
 
                                     <p class="d-flex mb-2">
                                         <i class="bi-geo-alt me-2"></i>
-                                        Akershusstranda 20, 0150 Oslo, Norway
+                                        FPT University, Hoa Lac, Ha Noi
                                     </p>
 
                                     <p class="d-flex mb-2">
                                         <i class="bi-telephone me-2"></i>
 
                                         <a href="tel: 120-240-9600">
-                                            120-240-9600
+                                            0948539479
                                         </a>
                                     </p>
 
@@ -638,11 +639,11 @@
                                         <i class="bi-envelope me-2"></i>
 
                                         <a href="mailto:info@yourgmail.com">
-                                            donate@charity.org
+                                            vubahe163495@fpt.edu.vn
                                         </a>
                                     </p>
 
-                                    <a href="#" class="custom-btn btn mt-3">Get Direction</a>
+                                  
                                 </div>
                             </div>
                         </div>
