@@ -20,12 +20,13 @@ import java.util.List;
  */
 public class glassesDAO {
 
+  
     PreparedStatement ps = null;
     ResultSet rs = null;
     DBContext dbc = new DBContext();
     Connection connection = null;
 
-    public ArrayList<glasses> getAllglasses() throws SQLException, IOException {
+    public  ArrayList<glasses> getAllglasses() throws SQLException, IOException {
         ArrayList<glasses> list = new ArrayList<>();
         String sql = "SELECT * FROM glasses";
         try {
@@ -61,5 +62,48 @@ public class glassesDAO {
         return list;
 
     }
+      public glasses getGlassesId(String id) throws SQLException, IOException  {
+        glasses g = new glasses();
+        String sql = "SELECT * FROM swp.glasses where glassesID ="+id;
+        try {
+            connection = dbc.getConnection();
+            ps = connection.prepareStatement(sql);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                String gende;
+                String glassID = rs.getString(1);
+                String glassName= rs.getString(2);
+                String color= rs.getString(3);
+                String gender= rs.getString(4);
+                String material= rs.getString(5);
+                String style= rs.getString(6);
+                String image= rs.getString(7);
+                String price= rs.getString(8);
+                if(gender.equals("1")){
+                    gende = "Male";
+                }else{
+                    gende = "FeMale";
+                }
+                g.setColor(color);
+                g.setGender(gender);
+                g.setGlassID(glassID);
+                g.setGlassName(glassName);
+                g.setImage(image);
+                g.setMaterial(material);
+                g.setPrice(price);
+                g.setStyle(style);
+                
+                
+}
+} catch (SQLException e) {
+
+        } finally {
+            if (connection != null) {
+                connection.close();
+            }
+        }
+        return g;
+    }
+
   
 }

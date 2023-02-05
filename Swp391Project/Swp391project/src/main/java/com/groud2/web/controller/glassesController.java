@@ -69,7 +69,7 @@ public class glassesController extends HttpServlet {
             ArrayList<glasses> list = g.getAllglasses();
              request.setAttribute("listGlasses", list);
              for(glasses item : list){
-                 System.out.println("day"+item.getGlassName());
+                 System.out.println("day"+item.getGlassID());
              }
              request.getRequestDispatcher("Glasses.jsp").forward(request, response);
         } catch (SQLException ex) {

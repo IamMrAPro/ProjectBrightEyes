@@ -9,23 +9,21 @@
         <servlet-class>com.groud2.web.controller.homeController</servlet-class>
     </servlet>
     <servlet>
-
         <servlet-name>bookingController</servlet-name>
         <servlet-class>com.groud2.web.controller.bookingController</servlet-class>
     </servlet>
-
     <servlet>
         <servlet-name>loginController</servlet-name>
         <servlet-class>com.groud2.web.controller.loginController</servlet-class>
     </servlet>
-
-
-
-
+    <servlet>
         <servlet-name>profileController</servlet-name>
         <servlet-class>com.groud2.web.controller.profileController</servlet-class>
     </servlet>
-
+    <servlet>
+        <servlet-name>addtoCart</servlet-name>
+        <servlet-class>com.groud2.web.controller.AddtoCartController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>glassesController</servlet-name>
         <url-pattern>/glasses</url-pattern>
@@ -35,29 +33,32 @@
         <url-pattern>/home</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-
         <servlet-name>bookingController</servlet-name>
         <url-pattern>/booking</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>loginController</servlet-name>
         <url-pattern>/loginuser</url-pattern>
-
+    </servlet-mapping>
+    <servlet-mapping>
         <servlet-name>profileController</servlet-name>
         <url-pattern>/profile</url-pattern>
-
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>addtoCart</servlet-name>
+        <url-pattern>/addtoCart</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
             30
         </session-timeout>
     </session-config>
-    <error-page>
+<!--    <error-page>
         <error-code>404</error-code>
         <location>/404.jsp</location>
     </error-page>
     <error-page>
         <error-code>500</error-code>
         <location>/500.jsp</location>
-    </error-page>
+    </error-page>-->
 </web-app>

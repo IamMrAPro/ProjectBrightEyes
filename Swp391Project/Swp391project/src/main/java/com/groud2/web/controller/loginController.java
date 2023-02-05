@@ -64,30 +64,6 @@ public class loginController extends HttpServlet {
     }
 
 
-
-
-
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
-    /**
-     * Handles the HTTP <code>GET</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
-
-    
-
-    /**
-     * Handles the HTTP <code>POST</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
-
 protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
     request.getRequestDispatcher("Login.jsp").forward(request, response);
@@ -121,10 +97,6 @@ protected void doGet(HttpServletRequest request, HttpServletResponse response)
 
     }
 
-    @Override
-    public String getServletInfo() {
-        return "Short description";
-    }// </editor-fold>
 
 
 }
