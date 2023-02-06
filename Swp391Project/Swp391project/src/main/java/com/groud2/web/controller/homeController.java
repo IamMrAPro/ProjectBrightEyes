@@ -78,6 +78,7 @@ public class homeController extends HttpServlet {
             request.setAttribute("listNews",listNews);
 
 
+
         } catch (SQLException ex) {
             
             Logger.getLogger(glassesController.class.getName()).log(Level.SEVERE, null, ex);

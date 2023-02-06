@@ -5,17 +5,24 @@
 package com.groud2.web.model;
 
 
+
 public class user {
     private String userId,fullname,account,password,phonenumber,address,email,bod,userimages;
 
+    
+    private String  role, gender;
+
     public user() {
-        
+
     }
-        public user(String account,String password ) {
+
+    public user(String account, String password) {
         this.account = account;
         this.password = password;
-    }   
-    public user(String userId, String fullname, String account, String password, String phonenumber, String address, String email, String bod) {
+    }
+
+    public user(String userId, String fullname, String account, String password, String phonenumber, String address, String email, String bod, String role, String gender) {
+
         this.userId = userId;
         this.fullname = fullname;
         this.account = account;
@@ -24,6 +31,7 @@ public class user {
         this.address = address;
         this.email = email;
         this.bod = bod;
+
     }
 
     public user(String userId, String fullname, String account, String password, String phonenumber, String address, String email, String bod, String userimages) {
@@ -36,10 +44,6 @@ public class user {
         this.email = email;
         this.bod = bod;
         this.userimages = userimages;
-    }
-
-    public user(String string) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     public String getUserId() {
@@ -94,6 +98,26 @@ public class user {
         return email;
     }
 
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+    
+    
+
+
     public void setEmail(String email) {
         this.email = email;
     }
@@ -106,6 +130,7 @@ public class user {
         this.bod = bod;
     }
 
+
     public String getUserimages() {
         return userimages;
     }
@@ -116,5 +141,14 @@ public class user {
 
     
     
-}
 
+
+
+    @Override
+    public String toString() {
+        return "user{" + "userId=" + userId + ", fullname=" + fullname + ", account=" + account + ", password=" + password + ", phonenumber=" + phonenumber + ", address=" + address + ", email=" + email + ", bod=" + bod + ", role=" + role + ", gender=" + gender + '}';
+    }
+
+    
+}
+    

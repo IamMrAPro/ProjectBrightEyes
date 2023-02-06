@@ -46,6 +46,9 @@
 
                             <form class="login100-form validate-form" action="loginuser" method="post">
 
+
+                            <form class="login100-form validate-form" action="login" method="post">
+
 					<span class="login100-form-title p-b-49">
 						Login
 					</span>

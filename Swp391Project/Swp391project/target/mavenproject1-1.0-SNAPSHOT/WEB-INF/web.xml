@@ -17,6 +17,27 @@
     <servlet>
         <servlet-name>loginController</servlet-name>
         <servlet-class>com.groud2.web.controller.loginController</servlet-class>
+
+    </servlet>
+    <!--<<<<<<< Updated upstream-->
+    <!--=======-->
+    <servlet>
+        <servlet-name>addStaff</servlet-name>
+        <servlet-class>com.groud2.web.controller.AddStaff</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AdminHome</servlet-name>
+        <servlet-class>com.groud2.web.controller.AdminHome</servlet-class>
+    </servlet>
+    <!-->>>>>>> Stashed changes-->
+    <servlet>
+        <servlet-name>addRoom</servlet-name>
+        <servlet-class>com.groud2.web.controller.AddRoom</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>addGlass</servlet-name>
+        <servlet-class>com.groud2.web.controller.AddGlass</servlet-class>
+
     </servlet>
 
     <servlet>
@@ -66,6 +87,24 @@
     <servlet-mapping>
         <servlet-name>loginController</servlet-name>
         <url-pattern>/loginuser</url-pattern>
+
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>addStaff</servlet-name>
+        <url-pattern>/addStaff</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AdminHome</servlet-name>
+        <url-pattern>/adminHome</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>addRoom</servlet-name>
+        <url-pattern>/addRoom</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>addGlass</servlet-name>
+        <url-pattern>/addGlass</url-pattern>
+
     </servlet-mapping>
     <servlet-mapping>
 
