@@ -61,5 +61,56 @@ public class glassesDAO {
         return list;
 
     }
+
+    public boolean addNewGlass(glasses gl) {
+        try {
+            String mysql = "insert into glasses(glassID, glassName, color, gender, material, style, image, price)"
+                    + " values(?, ?, ?, ?, ?, ?, ?, ?)";
+            connection = dbc.getConnection();
+            ps = connection.prepareStatement(mysql);
+            ps.setString(1, gl.getGlassID());
+            ps.setString(2, gl.getGlassName());
+            ps.setString(3, gl.getColor());
+            ps.setString(4, gl.getGender());
+            ps.setString(5, gl.getMaterial());
+            ps.setString(6, gl.getStyle());
+            ps.setString(7, gl.getImage());
+            ps.setString(8, gl.getPrice());
+            ps.execute();
+        } catch (Exception e) {
+            System.out.println("Add new glass into db error: " + e.getMessage());
+            return false;
+        }
+        return true;
+    }
+
+    public ArrayList<glasses> getListGlass(String search) {
+        ArrayList<glasses> listGlass = new ArrayList<>();
+        try {
+            String sql = "Select * from glasses";
+            connection = dbc.getConnection();
+            ps = connection.prepareStatement(sql);
+            rs = ps.executeQuery();
+            while(rs.next()){
+                String id = rs.getString(1);
+                String name = rs.getString(2);
+                String color = rs.getString(3);
+                String gender = rs.getString(4);
+                String material = rs.getString(5);
+                String style = rs.getString(6);
+                String image = rs.getString(7);
+                String price = rs.getString(8);
+                
+                glasses g = new glasses(id, name, color, gender, material, style, image, price);
+                if(name.toLowerCase().contains(search.toLowerCase())){
+                    listGlass.add(g);
+                }
+            }
+        } catch (Exception e) {
+            System.out.println("Get list glass from db error: " + e.getMessage());
+            return new ArrayList<>();
+        }
+        return listGlass; 
+   }
   
 }
