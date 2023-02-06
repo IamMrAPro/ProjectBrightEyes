@@ -104,11 +104,11 @@ public class loginController extends HttpServlet {
        String account = request.getParameter("account");
         String password = request.getParameter("password");
         
-        try {
-            password = encyptPass(password);
-        } catch (NoSuchAlgorithmException ex) {
-            System.out.println("encode password error: " + ex.getMessage());
-        }
+//        try {
+////            password = encyptPass(password);
+//        } catch (NoSuchAlgorithmException ex) {
+//            System.out.println("encode password error: " + ex.getMessage());
+//        }
         
         System.out.println("password = " + password);
         //Xu ly           
