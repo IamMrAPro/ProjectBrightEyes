@@ -8,12 +8,12 @@ import com.groud2.web.DAO.glassesDAO;
 import com.groud2.web.DAO.newsDAO;
 import com.groud2.web.model.glasses;
 import com.groud2.web.model.news;
+import java.io.IOException;
+import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import java.io.IOException;
-import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;
@@ -21,19 +21,11 @@ import java.util.logging.Logger;
 
 /**
  *
- * @author anhha
+ * @author nguye
  */
-public class homeController extends HttpServlet {
+public class newsController extends HttpServlet {
 
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
+  
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
@@ -42,68 +34,38 @@ public class homeController extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet homeController</title>");
+            out.println("<title>Servlet newsController</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet homeController at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet newsController at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
     }
 
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
-    /**
-     * Handles the HTTP <code>GET</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        glassesDAO g = new glassesDAO();
-        newsDAO n =new newsDAO() ;   
+        System.out.println("da xuat du lieu");
+          newsDAO n =new newsDAO() ;       
         try {
-            ArrayList<glasses> list = g.getAllglasses();
-            request.setAttribute("listGlasses", list);
-
-
-            for (glasses item : list) {
-                System.out.println("day" + item.getGlassName());
-            }
-
             ArrayList<news> listNews = n.ListNews();
-            request.setAttribute("listNews",listNews);
-
-
+             request.setAttribute("listNews",listNews);
+             request.getRequestDispatcher("ListNews.jsp").forward(request, response);             
         } catch (SQLException ex) {
-            
+            System.out.println("hellloooo");
             Logger.getLogger(glassesController.class.getName()).log(Level.SEVERE, null, ex);
         }
-        request.getRequestDispatcher("home.jsp").forward(request, response);
     }
 
-    /**
-     * Handles the HTTP <code>POST</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
     }
 
-    /**
-     * Returns a short description of the servlet.
-     *
-     * @return a String containing servlet description
-     */
+
     @Override
     public String getServletInfo() {
         return "Short description";

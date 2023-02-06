@@ -14,12 +14,21 @@
                     <a class="nav-link click-scroll" href="#">About</a>
                 </li>
 
+
                 <li class="nav-item">
                     <a class="nav-link click-scroll" href="glasses">Glasses</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link click-scroll" href="#">News</a>
                 </li>
+
+            <li class="nav-item">
+                <a class="nav-link click-scroll" href="glasses">Glasses</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link click-scroll" href="news">News</a>
+            </li>
+
 
                 <li class="nav-item">
                     <a class="nav-link click-scroll" href="#">Contact</a>

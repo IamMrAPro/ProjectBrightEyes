@@ -57,7 +57,7 @@
                 </div>
             </section>
 
-<!--
+
             <section class="section-padding">
                 <div class="container">
                     <div class="row">
@@ -108,9 +108,9 @@
 
                     </div>
                 </div>
-            </section>-->
+            </section>
 
-<!--            <section class="section-padding section-bg" id="section_2">
+         <section class="section-padding section-bg" id="section_2">
                 <div class="container">
                     <div class="row">
 
@@ -174,7 +174,7 @@
 
                     </div>
                 </div>
-            </section>-->
+            </section>
 
 
             <section class="about-section section-padding">
@@ -291,7 +291,7 @@
                             <div class="news-block">
                                 <div class="news-block-top">
                                     <a href="#">
-                                        <img src="assets/images/news/medium-shot-volunteers-with-clothing-donations.jpg" class="news-image img-fluid" alt="">
+                                        <img src="assets/images/news/1_1.jpg" style="width: 800px" class="news-image img-fluid" alt="">
                                     </a>
 
                                     <div class="news-category-block">
@@ -328,7 +328,15 @@
                                     </div>
 
                                     <div class="news-block-title mb-2">
+
                                         <h4><a href="#" class="news-block-title-link"> The mechanism of action of the eye</a></h4>
+
+
+                                        <h4><a href="#" class="news-block-title-link">Clothing donation to urban area</a></h4>
+
+                                        <h4><a href="#" class="news-block-title-link"> NHẬN BIẾT, PHÒNG TRÁNH VÀ ĐIỀU TRỊ NHỮNG BỆNH LÝ GÂY MÙ LÒA PHỔ BIẾN TRÊN THẾ GIỚI</a></h4>
+
+
                                     </div>
 
                                     <div class="news-block-body">
@@ -337,7 +345,7 @@
                                 </div>
                             </div>
 
-<!--                            <div class="news-block mt-3">
+                           <div class="news-block mt-3">
                                 <div class="news-block-top">
                                     <a href="#">
                                         <img src="assets/images/news/medium-shot-people-collecting-foodstuff.jpg" class="news-image img-fluid" alt="">
@@ -358,7 +366,7 @@
                                     </div>
                                 </div>-->
 
-<!--                                <div class="news-block-info">
+                                <div class="news-block-info">
                                     <div class="d-flex mt-2">
                                         <div class="news-block-date">
                                             <p>
@@ -389,8 +397,8 @@
                                     <div class="news-block-body">
                                         <p>Sed leo nisl, posuere at molestie ac, suscipit auctor mauris. Etiam quis metus elementum, tempor risus vel, condimentum orci</p>
                                     </div>
-                                </div>-->
-<!--                            </div>-->
+                                </div>
+                          </div>
                         </div>
 
                         <div class="col-lg-4 col-12 mx-auto">
@@ -401,51 +409,31 @@
                                     <i class="bi-search"></i>
                                 </button>
                             </form>
-
+                              
                             <h5 class="mt-5 mb-3">Recent news</h5>
-
+                             <c:forEach items="${listNews}" var="item"> 
                             <div class="news-block news-block-two-col d-flex mt-4">
                                 <div class="news-block-two-col-image-wrap">
-                                    <a href="#">
-                                        <img src="assets/images/news/africa-humanitarian-aid-doctor.jpg" class="news-image img-fluid" alt="">
+                                    <a href="#" >
+                                        <img  src="assets/images/news/${item.getImages1()}"  class="news-image img-fluid" alt="">
                                     </a>
                                 </div>
 
                                 <div class="news-block-two-col-info">
                                     <div class="news-block-title mb-2">
-                                        <h6><a href="#" class="news-block-title-link">Food donation area</a></h6>
+                                        <a href="#" class="news-block-title-link" style="font-size: 14px">${item.getNewsname()}</a>
                                     </div>
 
                                     <div class="news-block-date">
                                         <p>
                                             <i class="bi-calendar4 custom-icon me-1"></i>
-                                            October 16, 2036
+                                           ${item.getDatepublic()}
                                         </p>
                                     </div>
                                 </div>
                             </div>
-
-                            <div class="news-block news-block-two-col d-flex mt-4">
-                                <div class="news-block-two-col-image-wrap">
-                                    <a href="#">
-                                        <img src="assets/images/news/close-up-happy-people-working-together.jpg" class="news-image img-fluid" alt="">
-                                    </a>
-                                </div>
-
-                                <div class="news-block-two-col-info">
-                                    <div class="news-block-title mb-2">
-                                        <h6><a href="#" class="news-block-title-link">Volunteering Clean</a></h6>
-                                    </div>
-
-                                    <div class="news-block-date">
-                                        <p>
-                                            <i class="bi-calendar4 custom-icon me-1"></i>
-                                            October 24, 2036
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-
+                             </c:forEach>
+                            
                             <div class="category-block d-flex flex-column">
                                 <h5 class="mb-3">Categories</h5>
 

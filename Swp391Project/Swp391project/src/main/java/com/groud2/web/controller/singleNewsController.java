@@ -3,17 +3,15 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
  */
 package com.groud2.web.controller;
-
-import com.groud2.web.DAO.glassesDAO;
-import com.groud2.web.DAO.newsDAO;
-import com.groud2.web.model.glasses;
 import com.groud2.web.model.news;
+import com.groud2.web.DAO.newsDAO;
+import java.io.IOException;
+import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import java.io.IOException;
-import java.io.PrintWriter;
+import jakarta.servlet.http.HttpSession;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;
@@ -21,9 +19,9 @@ import java.util.logging.Logger;
 
 /**
  *
- * @author anhha
+ * @author nguye
  */
-public class homeController extends HttpServlet {
+public class singleNewsController extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -42,10 +40,10 @@ public class homeController extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet homeController</title>");
+            out.println("<title>Servlet singleNewsController</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet homeController at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet singleNewsController at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -63,36 +61,23 @@ public class homeController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        glassesDAO g = new glassesDAO();
-        newsDAO n =new newsDAO() ;   
+      String newsname =request.getParameter("newsname");
+        System.out.println("single news"+ newsname); 
+        newsDAO n = new newsDAO();      
+        ArrayList<news> list;
         try {
-            ArrayList<glasses> list = g.getAllglasses();
-            request.setAttribute("listGlasses", list);
-
-
-            for (glasses item : list) {
-                System.out.println("day" + item.getGlassName());
-            }
-
-            ArrayList<news> listNews = n.ListNews();
-            request.setAttribute("listNews",listNews);
-
-
-        } catch (SQLException ex) {
+            list = n.getSingle(newsname);
+            request.setAttribute("SingleNews", list);  
             
-            Logger.getLogger(glassesController.class.getName()).log(Level.SEVERE, null, ex);
+            request.getRequestDispatcher("SingleNews.jsp").forward(request, response);
+        } catch (SQLException ex) {
+            Logger.getLogger(singleNewsController.class.getName()).log(Level.SEVERE, null, ex);
         }
-        request.getRequestDispatcher("home.jsp").forward(request, response);
+           
     }
+    
 
-    /**
-     * Handles the HTTP <code>POST</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
+    
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -108,5 +93,6 @@ public class homeController extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
+
 
 }
