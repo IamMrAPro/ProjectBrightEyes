@@ -88,29 +88,6 @@ public class loginController extends HttpServlet {
 
 
 
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
-    /**
-     * Handles the HTTP <code>GET</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
-
-    
-
-
-    /**
-     * Handles the HTTP <code>POST</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
-
-
 
 
     @Override
@@ -124,13 +101,16 @@ public class loginController extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        System.out.println("ok oko ko");
-        String account = request.getParameter("account");
+       String account = request.getParameter("account");
         String password = request.getParameter("password");
-
         
-       
-
+        try {
+            password = encyptPass(password);
+        } catch (NoSuchAlgorithmException ex) {
+            System.out.println("encode password error: " + ex.getMessage());
+        }
+        
+        System.out.println("password = " + password);
         //Xu ly           
         userDAO u = new userDAO();
         user loginOK;
@@ -138,10 +118,6 @@ public class loginController extends HttpServlet {
             loginOK = u.checklogin(account, password);
             if (loginOK != null) {
                 HttpSession session = request.getSession();
-
-
-                session.setAttribute("id", account);
-                response.sendRedirect("home");
 
                 String role = u.getUserRole(account);
                 System.out.println("User role: " + role);
@@ -153,7 +129,6 @@ public class loginController extends HttpServlet {
                 else {
                     response.sendRedirect("home");
                 }
-
             } else {
                 response.sendRedirect("loginuser");
 
@@ -161,22 +136,24 @@ public class loginController extends HttpServlet {
         } catch (SQLException ex) {
             Logger.getLogger(loginController.class.getName()).log(Level.SEVERE, null, ex);
         }
-        //Tra ket qua ve cho View
+
 
 
     }
-
-    
-
-   
-//>>>>>>> Stashed changes:Swp391Project/Swp391project/src/main/java/loginController.java
-    
 
 
     @Override
     public String getServletInfo() {
         return "Short description";
     }
-
+    String encyptPass(String pass) throws NoSuchAlgorithmException {
+        MessageDigest md = MessageDigest.getInstance("MD5");
+        md.update(pass.getBytes());
+        byte[] digest = md.digest();
+        String myHash = DatatypeConverter
+                .printHexBinary(digest).toLowerCase();
+        return myHash;
+//>>>>>>> Stashed changes:Swp391Project/Swp391project/src/main/java/loginController.java
+    }
 
 }
