@@ -114,7 +114,7 @@
         <servlet-name>cart</servlet-name>
         <url-pattern>/cart</url-pattern>
     </servlet-mapping>
-
+    <servlet-mapping>
         <servlet-name>registerController</servlet-name>
         <url-pattern>/register</url-pattern>
     </servlet-mapping>

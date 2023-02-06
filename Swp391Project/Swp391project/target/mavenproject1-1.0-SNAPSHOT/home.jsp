@@ -110,7 +110,7 @@
                 </div>
             </section>
 
-           <section class="section-padding section-bg" id="section_2">
+         <section class="section-padding section-bg" id="section_2">
                 <div class="container">
                     <div class="row">
 
@@ -345,7 +345,7 @@
                                 </div>
                             </div>
 
-                          <div class="news-block mt-3">
+                           <div class="news-block mt-3">
                                 <div class="news-block-top">
                                     <a href="#">
                                         <img src="assets/images/news/medium-shot-people-collecting-foodstuff.jpg" class="news-image img-fluid" alt="">
@@ -366,7 +366,7 @@
                                     </div>
                                 </div>-->
 
-                              <div class="news-block-info">
+                                <div class="news-block-info">
                                     <div class="d-flex mt-2">
                                         <div class="news-block-date">
                                             <p>
@@ -397,8 +397,8 @@
                                     <div class="news-block-body">
                                         <p>Sed leo nisl, posuere at molestie ac, suscipit auctor mauris. Etiam quis metus elementum, tempor risus vel, condimentum orci</p>
                                     </div>
-                                </div>-->
-                           </div>
+                                </div>
+                          </div>
                         </div>
 
                         <div class="col-lg-4 col-12 mx-auto">

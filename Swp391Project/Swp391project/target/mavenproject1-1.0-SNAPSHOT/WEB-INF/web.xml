@@ -13,7 +13,6 @@
         <servlet-class>com.groud2.web.controller.bookingController</servlet-class>
     </servlet>
 
-
     <servlet>
         <servlet-name>loginController</servlet-name>
         <servlet-class>com.groud2.web.controller.loginController</servlet-class>
@@ -48,10 +47,10 @@
         <servlet-name>addtoCart</servlet-name>
         <servlet-class>com.groud2.web.controller.AddtoCartController</servlet-class>
     </servlet>
-
-
-
-
+    <servlet>
+        <servlet-name>cart</servlet-name>
+        <servlet-class>com.groud2.web.controller.cartController</servlet-class>
+    </servlet>
 
 
     <servlet>
@@ -80,10 +79,6 @@
         <servlet-name>bookingController</servlet-name>
         <url-pattern>/booking</url-pattern>
     </servlet-mapping>
-
-
-
-
     <servlet-mapping>
         <servlet-name>loginController</servlet-name>
         <url-pattern>/loginuser</url-pattern>
@@ -115,7 +110,11 @@
         <servlet-name>addtoCart</servlet-name>
         <url-pattern>/addtoCart</url-pattern>
     </servlet-mapping>
-
+    <servlet-mapping>
+        <servlet-name>cart</servlet-name>
+        <url-pattern>/cart</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
         <servlet-name>registerController</servlet-name>
         <url-pattern>/register</url-pattern>
     </servlet-mapping>
@@ -134,7 +133,7 @@
             30
         </session-timeout>
     </session-config>
-<!--    <error-page>
+    <!--    <error-page>
         <error-code>404</error-code>
         <location>/404.jsp</location>
     </error-page>

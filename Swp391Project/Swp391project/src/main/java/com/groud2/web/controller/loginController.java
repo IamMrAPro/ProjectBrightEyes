@@ -128,18 +128,8 @@ public class loginController extends HttpServlet {
         String account = request.getParameter("account");
         String password = request.getParameter("password");
 
-//<<<<<<< Updated upstream:Swp391Project/Swp391project/src/main/java/com/groud2/web/controller/loginController.java
-
-        String account = request.getParameter("account");
-        String password = request.getParameter("password");
         
-        try {
-            password = encyptPass(password);
-        } catch (NoSuchAlgorithmException ex) {
-            System.out.println("encode password error: " + ex.getMessage());
-        }
-        
-        System.out.println("password = " + password);
+       
 
         //Xu ly           
         userDAO u = new userDAO();
@@ -176,28 +166,17 @@ public class loginController extends HttpServlet {
 
     }
 
+    
 
-
-
-//=======
-//        processRequest(request, response);
-    }
-
-    String encyptPass(String pass) throws NoSuchAlgorithmException {
-        MessageDigest md = MessageDigest.getInstance("MD5");
-        md.update(pass.getBytes());
-        byte[] digest = md.digest();
-        String myHash = DatatypeConverter
-                .printHexBinary(digest).toLowerCase();
-        return myHash;
+   
 //>>>>>>> Stashed changes:Swp391Project/Swp391project/src/main/java/loginController.java
-    }
+    
 
 
     @Override
     public String getServletInfo() {
         return "Short description";
-    }// </editor-fold>
+    }
 
 
 }
