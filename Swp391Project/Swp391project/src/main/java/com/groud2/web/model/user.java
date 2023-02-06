@@ -6,7 +6,7 @@ package com.groud2.web.model;
 
 
 public class user {
-    private String userId,fullname,account,password,phonenumber,address,email,bod;
+    private String userId,fullname,account,password,phonenumber,address,email,bod,userimages;
 
     public user() {
         
@@ -24,6 +24,22 @@ public class user {
         this.address = address;
         this.email = email;
         this.bod = bod;
+    }
+
+    public user(String userId, String fullname, String account, String password, String phonenumber, String address, String email, String bod, String userimages) {
+        this.userId = userId;
+        this.fullname = fullname;
+        this.account = account;
+        this.password = password;
+        this.phonenumber = phonenumber;
+        this.address = address;
+        this.email = email;
+        this.bod = bod;
+        this.userimages = userimages;
+    }
+
+    public user(String string) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     public String getUserId() {
@@ -88,6 +104,14 @@ public class user {
 
     public void setBod(String bod) {
         this.bod = bod;
+    }
+
+    public String getUserimages() {
+        return userimages;
+    }
+
+    public void setUserimages(String userimages) {
+        this.userimages = userimages;
     }
 
     

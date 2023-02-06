@@ -12,13 +12,26 @@
         <servlet-name>bookingController</servlet-name>
         <servlet-class>com.groud2.web.controller.bookingController</servlet-class>
     </servlet>
-<<<<<<< Updated upstream
-=======
+
+
     <servlet>
         <servlet-name>loginController</servlet-name>
         <servlet-class>com.groud2.web.controller.loginController</servlet-class>
     </servlet>
->>>>>>> Stashed changes
+
+    <servlet>
+        <servlet-name>registerController</servlet-name>
+        <servlet-class>com.groud2.web.controller.registerController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>newsController</servlet-name>
+        <servlet-class>com.groud2.web.controller.newsController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>singleNewsController</servlet-name>
+        <servlet-class>com.groud2.web.controller.singleNewsController</servlet-class>
+    </servlet>
+
     <servlet-mapping>
         <servlet-name>glassesController</servlet-name>
         <url-pattern>/glasses</url-pattern>
@@ -31,6 +44,23 @@
         <servlet-name>bookingController</servlet-name>
         <url-pattern>/booking</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>loginController</servlet-name>
+        <url-pattern>/loginuser</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>registerController</servlet-name>
+        <url-pattern>/register</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>newsController</servlet-name>
+        <url-pattern>/news</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>singleNewsController</servlet-name>
+        <url-pattern>/singleNewsController</url-pattern>
+    </servlet-mapping>
+
     <session-config>
         <session-timeout>
             30

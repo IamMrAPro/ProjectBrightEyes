@@ -83,10 +83,9 @@ protected void doGet(HttpServletRequest request, HttpServletResponse response)
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
+        System.out.println("ok oko ko");
         String account = request.getParameter("account");
         String password = request.getParameter("password");
-
         //Xu ly           
         userDAO u = new userDAO();
         user loginOK;

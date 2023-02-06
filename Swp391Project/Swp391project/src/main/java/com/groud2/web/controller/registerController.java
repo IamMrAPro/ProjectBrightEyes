@@ -4,26 +4,26 @@
  */
 package com.groud2.web.controller;
 
-import com.groud2.web.DAO.glassesDAO;
-import com.groud2.web.DAO.newsDAO;
-import com.groud2.web.model.glasses;
-import com.groud2.web.model.news;
+import com.groud2.web.DAO.userDAO;
+import com.groud2.web.model.user;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpSession;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import java.io.IOException;
-import java.io.PrintWriter;
-import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+
 
 /**
  *
- * @author anhha
+ * @author nguye
  */
-public class homeController extends HttpServlet {
+public class registerController extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -42,10 +42,10 @@ public class homeController extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet homeController</title>");
+            out.println("<title>Servlet registerController</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet homeController at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet registerController at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -63,24 +63,33 @@ public class homeController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        glassesDAO g = new glassesDAO();
-        newsDAO n =new newsDAO() ;   
+       
+        System.out.println("ok ok ");
+        String account = request.getParameter("account");
+        String password = request.getParameter("password");
+        String fullname = request.getParameter("name");
+        String email = request.getParameter("email");
+        String address = request.getParameter("address");
+        String gender=request.getParameter("gender");
+        String birthofdate = request.getParameter("bod");
+        String phonenumber=request.getParameter("phonenumber");
+        
+        userDAO u = new userDAO();
+        boolean registerOK;
         try {
-            ArrayList<glasses> list = g.getAllglasses();
-            request.setAttribute("listGlasses", list);
+            registerOK = u.checkAccount(account);            
+            if (registerOK == true) {              
+                request.getRequestDispatcher("Register.jsp").forward(request, response);
+            } else {
+                u.createData(fullname,account, password,phonenumber,address,email,gender, birthofdate);         
+                request.getRequestDispatcher("Login.jsp").forward(request, response);
+                //response.sendRedirect("loginuser");
 
-            for (glasses item : list) {
-                System.out.println("day" + item.getGlassName());
             }
-
-            ArrayList<news> listNews = n.ListNews();
-            request.setAttribute("listNews",listNews);
-
         } catch (SQLException ex) {
-            
-            Logger.getLogger(glassesController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(loginController.class.getName()).log(Level.SEVERE, null, ex);
         }
-        request.getRequestDispatcher("home.jsp").forward(request, response);
+        
     }
 
     /**
@@ -94,7 +103,7 @@ public class homeController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        System.out.println("hello");
     }
 
     /**

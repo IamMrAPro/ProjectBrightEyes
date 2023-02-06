@@ -17,7 +17,7 @@
                 <a class="nav-link click-scroll" href="glasses">Glasses</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link click-scroll" href="#">News</a>
+                <a class="nav-link click-scroll" href="news">News</a>
             </li>
 
             <li class="nav-item">
