@@ -78,6 +78,7 @@ public class AddtoCartController extends HttpServlet{
                         listItems.add(item);
                         
                     }
+                   
                     session.setAttribute("order", order);
                 }
             }
@@ -85,9 +86,9 @@ public class AddtoCartController extends HttpServlet{
                 Logger.getLogger(AddtoCartController.class.getName()).log(Level.SEVERE, null, ex);
             }
             
-            resp.sendRedirect(req.getContextPath()+"/home");
+            resp.sendRedirect(req.getContextPath()+"/cart");
         }else{
-            resp.sendRedirect(req.getContextPath()+"/home");
+            resp.sendRedirect(req.getContextPath()+"/cart");
         }
     }
     
