@@ -8,35 +8,19 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-
-
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
-
 import jakarta.servlet.http.HttpSession;
-import java.io.IOException;
-import java.io.PrintWriter;
-import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-
-
-import jakarta.servlet.http.HttpSession;
-
-
 import jakarta.xml.bind.DatatypeConverter;
-import java.io.IOException;
-import java.io.PrintWriter;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
-import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+
+
+
 //>>>>>>> Stashed changes:Swp391Project/Swp391project/src/main/java/loginController.java
 
 
@@ -65,7 +49,6 @@ public class loginController extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-
 
             out.println("<title>Servlet loginController</title>");            
 
@@ -129,6 +112,11 @@ public class loginController extends HttpServlet {
                 else {
                     response.sendRedirect("home");
                 }
+                
+                session.setAttribute("id", account);
+                response.sendRedirect("home");
+              
+
             } else {
                 response.sendRedirect("loginuser");
 
@@ -140,9 +128,7 @@ public class loginController extends HttpServlet {
 
 
     }
-
-
-    @Override
+ @Override
     public String getServletInfo() {
         return "Short description";
     }

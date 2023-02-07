@@ -36,7 +36,7 @@
                     <div class="col-lg-7">
                         <div class="card border-0 shadow rounded overflow-hidden">
                             <div class="tab-content p-4" id="pills-tabContent">
-                                <form action="#" method="POST">
+                                <form action="booking" method="get">
                                     <div class="row">
                                         <div class="p-6">
                                             <h6 class="mb-0">Patient information</h6>
@@ -44,20 +44,20 @@
                                         <br><br>
                                         <div class="col-lg-6">
                                             <div class="mb-3">
-                                                <label class="form-label">Name</label>
-                                                <input class="form-control" >
+                                                <label class="form-label" name="">Name</label>
+                                                <input name="name" class="form-control" >
                                             </div>
                                         </div>
                                         <div class="col-lg-6">
                                             <div class="mb-3">
-                                                <label class="form-label">Phone</label>
-                                                <input type="text" class="form-control" ">
+                                                <label class="form-label" >Phone</label>
+                                                <input type="text"name="phone" class="form-control" ">
                                             </div>
                                         </div>
                                         <div class="col-lg-12">
                                             <div class="mb-3">
-                                                <label class="form-label">Email</label>
-                                                <input type="text" class="form-control">
+                                                <label class="form-label" >Email</label>
+                                                <input type="text" name="email" class="form-control">
                                             </div>
                                         </div>
                                         <br>
@@ -68,7 +68,7 @@
                                         <div class="col-md-6">
                                             <div class="mb-3">
                                                 <label class="form-label"> Day : </label>
-                                                <input required="" name="date" type="text" class="flatpickr flatpickr-input form-control" id="checkin-date">
+                                                <input required="" name="date" type="date" class="flatpickr flatpickr-input form-control" id="checkin-date">
                                             </div>
                                         </div>
 

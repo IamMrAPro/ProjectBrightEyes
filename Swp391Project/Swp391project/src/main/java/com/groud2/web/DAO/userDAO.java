@@ -5,38 +5,31 @@
 package com.groud2.web.DAO;
 
 import com.groud2.web.DAO.context.DBContext;
+
 import com.groud2.web.model.user;
 import java.io.IOException;
 import java.sql.Connection;
-
-import java.sql.Date;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-
 
 /**
  *
  * @author nguye
  */
 public class userDAO {
-
     PreparedStatement ps = null;
     ResultSet rs = null;
     DBContext dbc = new DBContext();
     Connection connection = null;
 
+
     public user checklogin(String acc, String pass) throws SQLException, IOException {
 
 
+        
         String sql = "SELECT account,password FROM swp.user where account=? and password =?";
-
-       
 
         try {
             connection = dbc.getConnection();
@@ -45,17 +38,13 @@ public class userDAO {
             ps.setString(2, pass);
             rs = ps.executeQuery();
             while (rs.next()) {
-
-
-
                 return new user(rs.getString(1), rs.getString(2));
             }
         } catch (SQLException e) {
 
-
-            System.out.println("Check login error: " + e.getMessage());
-
-        } finally {
+                
+                return new user(rs.getString(1),rs.getString(2));
+     } finally {
             if (connection != null) {
                 connection.close();
             }
@@ -63,6 +52,7 @@ public class userDAO {
         return null;
 
     }
+
 
 
 public boolean checkAccount(String account) throws SQLException, IOException {
@@ -259,4 +249,44 @@ public boolean checkAccount(String account) throws SQLException, IOException {
     }
 
 
-}
+
+
+public ArrayList<user> getAllByAcc(String account) throws SQLException, IOException {
+        ArrayList<user> list = new ArrayList<>();
+        String sql = "SELECT * FROM user where account=?";
+        try {
+            connection = dbc.getConnection();
+            ps = connection.prepareStatement(sql);
+            ps.setString(1, account);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                String userID = rs.getString(1);
+                String fullname = rs.getString(2);
+                String acc = rs.getString(3);
+                String pass = rs.getString(4);
+                String phonenumber = rs.getString(5);
+                String address = rs.getString(6);
+                String email = rs.getString(7);
+                String bod = rs.getString(9);
+                String userimages = rs.getString(10);
+                String gender = rs.getString(8);
+                if(gender.equals("1")){
+                    gender = "Male";
+                }else{
+                    gender = "FeMale";
+                }
+                user g = new user(userID, fullname, acc, pass, phonenumber, address, email, gender,bod, userimages);
+                list.add(g);
+            }
+        } catch (SQLException e) {
+                System.out.println("get profile error: " + e.getMessage());
+        } finally {
+            if (connection != null) {
+                connection.close();
+            }
+        }
+        return list;
+
+    }
+}  
+

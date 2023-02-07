@@ -1,17 +1,21 @@
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
+<<<<<<< Updated upstream
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
+
 package com.groud2.web.controller;
 
-import com.groud2.web.DAO.glassesDAO;
-import com.groud2.web.DAO.newsDAO;
-import com.groud2.web.model.glasses;
-import com.groud2.web.model.news;
+
+import com.groud2.web.DAO.userDAO;
+
+import com.groud2.web.model.user;
+import static com.sun.corba.se.spi.presentation.rmi.StubAdapter.request;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
@@ -19,11 +23,12 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-/**
- *
- * @author anhha
- */
-public class homeController extends HttpServlet {
+
+
+
+public class changeProfile extends HttpServlet{
+
+  
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -42,10 +47,10 @@ public class homeController extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet homeController</title>");
+            out.println("<title>Servlet profile</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet homeController at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet profile at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -63,31 +68,23 @@ public class homeController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        glassesDAO g = new glassesDAO();
-        newsDAO n =new newsDAO() ;   
+        
+        userDAO g =new userDAO();
+        user p = new user();
+        HttpSession session = request.getSession();
+        String account = (String) session.getAttribute("id");
+       
         try {
-            ArrayList<glasses> list = g.getAllglasses();
-            request.setAttribute("listGlasses", list);
-
-
-
-            for (glasses item : list) {
-                System.out.println("day" + item.getGlassName());
-            }
-
-            ArrayList<news> listNews = n.ListNews();
-            request.setAttribute("listNews",listNews);
-
-            for (glasses item : list) {
-                System.out.println("day" + item.getGlassName());
-            }
-
-        } catch (SQLException ex) {
+            ArrayList<user> list = g.getAllByAcc(account);
+            request.setAttribute("list", list);
+            request.getRequestDispatcher("changeProfile.jsp").forward(request, response);
             
+        } catch (SQLException ex) {
+            System.out.println("hellloooo");
             Logger.getLogger(glassesController.class.getName()).log(Level.SEVERE, null, ex);
         }
-        request.getRequestDispatcher("home.jsp").forward(request, response);
     }
+
 
     /**
      * Handles the HTTP <code>POST</code> method.
@@ -100,17 +97,14 @@ public class homeController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        
     }
 
-    /**
-     * Returns a short description of the servlet.
-     *
-     * @return a String containing servlet description
-     */
     @Override
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
 
+
 }
+
