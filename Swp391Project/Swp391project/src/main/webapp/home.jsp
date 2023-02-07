@@ -31,8 +31,8 @@
                                         <img src="assets/images/slide/volunteer-selecting-organizing-clothes-donations-charity.jpg" class="carousel-image img-fluid" alt="...">
 
                                         <div class="carousel-caption d-flex flex-column justify-content-end">
-
                                             <h1>Staff</h1>
+                                            
                                             <p>Lots of experience</p>
                                         </div>
                                     </div>
@@ -109,54 +109,71 @@
                 </div>
             </section>
 
-         <section class="section-padding section-bg" id="section_2">
-
-                <div class="container">
-                    <div class="row">
-
-                        <div class="col-lg-6 col-12 mb-5 mb-lg-0">
-                            <img src="assets/images/group-people-volunteering-foodbank-poor-people.jpg" class="custom-text-box-image img-fluid" alt="">
-                        </div>
-
-                        <div class="col-lg-6 col-12">
-                            <div class="custom-text-box">
-                                <h2 class="mb-2">Our Story</h2>
-
-                                <h5 class="mb-3">Bright eyes,Eye Clinic</h5>
-
-                                <p class="mb-0">Chưa biết viết gì</p>
-                            </div>
-
-                            <div class="row">
-                                <div class="col-lg-6 col-md-6 col-12">
-                                    <div class="custom-text-box mb-lg-0">
-                                        <h5 class="mb-3">Our Mission</h5>
-
-                                        <p>Sed leo nisl, posuere at molestie ac, suscipit auctor quis metus</p>
-
-                                        <ul class="custom-list mt-2">
-                                            <li class="custom-list-item d-flex">
-                                                <i class="bi-check custom-text-box-icon me-2"></i>
-                                                Charity Theme
-                                            </li>
-
-                                            <li class="custom-list-item d-flex">
-                                                <i class="bi-check custom-text-box-icon me-2"></i>
-                                                Semantic HTML
-                                            </li>
-                                        </ul>
+            <!--            <section class="section-padding section-bg" id="section_2">
+                            <div class="container">
+                                <div class="row">
+            
+                                    <div class="col-lg-6 col-12 mb-5 mb-lg-0">
+                                        <img src="assets/images/group-people-volunteering-foodbank-poor-people.jpg" class="custom-text-box-image img-fluid" alt="">
                                     </div>
-                                </div>
-
-                                <div class="col-lg-6 col-md-6 col-12">
-                                    <div class="custom-text-box d-flex flex-wrap d-lg-block mb-lg-0">
-                                        <div class="counter-thumb">
-                                            <div class="d-flex">
-                                                
-                                                <span class="counter-number-text">Founded</span>
+            
+                                    <div class="col-lg-6 col-12">
+                                        <div class="custom-text-box">
+            <h2 class="mb-2">Our Story</h2>
+            
+                                            <h5 class="mb-3">Bright eyes,Eye Clinic</h5>
+            
+                                            <p class="mb-0">Chưa biết viết gì</p>
+                                        </div>
+            
+                                        <div class="row">
+                                            <div class="col-lg-6 col-md-6 col-12">
+                                                <div class="custom-text-box mb-lg-0">
+                                                    <h5 class="mb-3">Our Mission</h5>
+            
+                                                    <p>Sed leo nisl, posuere at molestie ac, suscipit auctor quis metus</p>
+            
+                                                    <ul class="custom-list mt-2">
+                                                        <li class="custom-list-item d-flex">
+                                                            <i class="bi-check custom-text-box-icon me-2"></i>
+                                                            Charity Theme
+                                                        </li>
+            
+                                                        <li class="custom-list-item d-flex">
+                                                            <i class="bi-check custom-text-box-icon me-2"></i>
+                                                            Semantic HTML
+                                                        </li>
+                                                    </ul>
+                                                </div>
                                             </div>
-
-                                            <span class="counter-text">Founded</span>
+            
+                                            <div class="col-lg-6 col-md-6 col-12">
+                                                <div class="custom-text-box d-flex flex-wrap d-lg-block mb-lg-0">
+                                                    <div class="counter-thumb">
+                                                        <div class="d-flex">
+                                                            
+                                                            <span class="counter-number-text">Founded</span>
+                                                        </div>
+            
+                                                        <span class="counter-text">16/06/2021</span>
+                                                    </div>
+            
+                                                    <div class="counter-thumb mt-4">
+                                                        <div class="d-flex">
+                                                            <span class="counter-number" data-from="1" data-to="120" data-speed="1000"></span>
+                                                            <span class="counter-number-text">B</span>
+                                                        </div>
+            
+                                                        <span class="counter-text">Donations</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+            
+                                </div>
+                            </div>
+                        </section>-->
 
 
             <section class="about-section section-padding">
@@ -205,8 +222,8 @@
 
                         <div class="col-lg-5 col-12">
 
-                            <a href="#" class="me-4">Make a donation</a>
- <a href="#section_4" class="custom-btn btn smoothscroll">Become a member</a>
+
+                            <a href="#section_4" class="custom-btn btn smoothscroll">Become a member</a>
                         </div>
 
                     </div>
@@ -272,7 +289,7 @@
                             <div class="news-block">
                                 <div class="news-block-top">
                                     <a href="#">
-                                        <img src="assets/images/news/1_1.jpg" style="width: 800px" class="news-image img-fluid" alt="">
+                                        <img src="assets/images/news/medium-shot-volunteers-with-clothing-donations.jpg" class="news-image img-fluid" alt="">
                                     </a>
 
                                     <div class="news-category-block">
@@ -281,9 +298,6 @@
                                         </a>
 
 
-                                        <a href="#" class="category-block-link">
-                                            Clothing Donation
-                                        </a>
                                     </div>
                                 </div>
 
@@ -312,82 +326,11 @@
                                     </div>
 
                                     <div class="news-block-title mb-2">
-
-
                                         <h4><a href="#" class="news-block-title-link"> The mechanism of action of the eye</a></h4>
-
-
-                                        <h4><a href="#" class="news-block-title-link">Clothing donation to urban area</a></h4>
-
-                                        <h4><a href="#" class="news-block-title-link"> NHẬN BIẾT, PHÒNG TRÁNH VÀ ĐIỀU TRỊ NHỮNG BỆNH LÝ GÂY MÙ LÒA PHỔ BIẾN TRÊN THẾ GIỚI</a></h4>
-
-
-
-                                        <h4><a href="#" class="news-block-title-link"> The mechanism of action of the eye</a></h4>
-
                                     </div>
 
                                     <div class="news-block-body">
                                         <p></p>
-                                    </div>
-                                </div>
-                            </div>
-
-
-                           
-
-                            <div class="news-block mt-3">
-
-                                <div class="news-block-top">
-                                    <a href="#">
-                                        <img src="assets/images/news/medium-shot-people-collecting-foodstuff.jpg" class="news-image img-fluid" alt="">
-                                    </a>
-
-                                    <div class="news-category-block">
-                                        <a href="#" class="category-block-link">
-                                            Food,
-                                        </a>
-
-                                        <a href="#" class="category-block-link">
-                                            Donation,
-                                        </a>
-
-                                        <a href="#" class="category-block-link">
-                                            Caring
-                                        </a>
-                                    </div>
-                                </div>-->
-
-                                <div class="news-block-info">
-                                    <div class="d-flex mt-2">
-                                        <div class="news-block-date">
-                                            <p>
-                                                <i class="bi-calendar4 custom-icon me-1"></i>
-                                                October 20, 2036
-                                            </p>
-                                        </div>
-
-                                        <div class="news-block-author mx-5">
-                                            <p>
-                                                <i class="bi-person custom-icon me-1"></i>
-                                                By Admin
-                                            </p>
-                                        </div>
-
-                                        <div class="news-block-comment">
-                                            <p>
-                                                <i class="bi-chat-left custom-icon me-1"></i>
-                                                35 Comments
-                                            </p>
-                                        </div>
-                                    </div>
-
-                                    <div class="news-block-title mb-2">
-                                        <h4><a href="#" class="news-block-title-link">Food donation area</a></h4>
-                                    </div>
-
-                                    <div class="news-block-body">
-                                        <p>Sed leo nisl, posuere at molestie ac, suscipit auctor mauris. Etiam quis metus elementum, tempor risus vel, condimentum orci</p>
                                     </div>
                                 </div>
                             </div>
@@ -445,7 +388,6 @@
                                                                 </div>
                                                             </div>
                                                         </div>
-
                         </div>
 
                         <div class="col-lg-4 col-12 mx-auto">
@@ -456,31 +398,51 @@
                                     <i class="bi-search"></i>
                                 </button>
                             </form>
-                              
+
                             <h5 class="mt-5 mb-3">Recent news</h5>
-                             <c:forEach items="${listNews}" var="item"> 
+
                             <div class="news-block news-block-two-col d-flex mt-4">
                                 <div class="news-block-two-col-image-wrap">
-                                    <a href="#" >
-                                        <img  src="assets/images/news/${item.getImages1()}"  class="news-image img-fluid" alt="">
+                                    <a href="#">
+                                        <img src="assets/images/news/africa-humanitarian-aid-doctor.jpg" class="news-image img-fluid" alt="">
                                     </a>
                                 </div>
 
                                 <div class="news-block-two-col-info">
                                     <div class="news-block-title mb-2">
-                                        <a href="#" class="news-block-title-link" style="font-size: 14px">${item.getNewsname()}</a>
+                                        <h6><a href="#" class="news-block-title-link">Food donation area</a></h6>
                                     </div>
 
                                     <div class="news-block-date">
                                         <p>
                                             <i class="bi-calendar4 custom-icon me-1"></i>
-                                           ${item.getDatepublic()}
+                                            October 16, 2036
                                         </p>
                                     </div>
                                 </div>
                             </div>
-                             </c:forEach>
-                            
+
+                            <div class="news-block news-block-two-col d-flex mt-4">
+                                <div class="news-block-two-col-image-wrap">
+                                    <a href="#">
+                                        <img src="assets/images/news/close-up-happy-people-working-together.jpg" class="news-image img-fluid" alt="">
+                                    </a>
+                                </div>
+
+                                <div class="news-block-two-col-info">
+                                    <div class="news-block-title mb-2">
+                                        <h6><a href="#" class="news-block-title-link">Volunteering Clean</a></h6>
+                                    </div>
+
+                                    <div class="news-block-date">
+                                        <p>
+                                            <i class="bi-calendar4 custom-icon me-1"></i>
+                                            October 24, 2036
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
                             <div class="category-block d-flex flex-column">
                                 <h5 class="mb-3">Categories</h5>
 
@@ -705,3 +667,4 @@
     <jsp:include page="layout/footer.jsp"/>
 </body>
 </html>
+

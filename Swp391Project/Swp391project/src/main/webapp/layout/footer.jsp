@@ -1,5 +1,4 @@
-
-    <footer class="site-footer">
+<footer class="site-footer">
         <div class="container">
             <div class="row">
                 <div class="col-lg-3 col-12 mb-4">
@@ -23,7 +22,7 @@
                 </div>
 
                 <div class="col-lg-4 col-md-6 col-12 mx-auto">
-                    <h5 class="site-footer-title mb-3">Contact Information</h5>
+                    <h5 class="site-footer-title mb-3">Contact Infomation</h5>
 
                     <p class="text-white d-flex mb-2">
                         <i class="bi-telephone me-2"></i>
@@ -37,11 +36,7 @@
                         <i class="bi-envelope me-2"></i>
 
                         <a href="mailto:info@yourgmail.com" class="site-footer-link">
-<<<<<<< Updated upstream
-                            vubahe163495@fpt.edu.vn
-=======
                             anhvubui382@gmail.com
->>>>>>> Stashed changes
                         </a>
                     </p>
 
@@ -60,11 +55,7 @@
                 <div class="row">
 
                     <div class="col-lg-6 col-md-7 col-12">
-<<<<<<< Updated upstream
-                        <p class="copyright-text mb-0">Copyright © 2036 <a href="#">Eyes Care</a> Charity Org.
-=======
                         <p class="copyright-text mb-0">Copyright © 2023 <a href="#">Bright Eyes</a> Clinic.
->>>>>>> Stashed changes
                             Design: <a href="https://templatemo.com" target="_blank">Group 2</a></p>
                     </div>
 
@@ -103,4 +94,5 @@
     <script src="assets/js/custom.js"></script>
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
 

@@ -1,35 +1,10 @@
 
-
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <nav class="navbar navbar-expand-lg bg-light shadow-lg">
         <div class="container">
+
             <img src="assets/images/logo.png" class="logo img-fluid col-lg-1" alt="">
-            <ul class="navbar-nav ms-auto col-lg-8">
-                <li class="nav-item">
-                    <a class="nav-link click-scroll" href="home">Home</a>
-                </li>
-
-        <ul class="navbar-nav ms-auto col-lg-8">
-            <li class="nav-item">
-                <a class="nav-link click-scroll" href="home">Home</a>
-            </li>
-
-
-                <li class="nav-item">
-                    <a class="nav-link click-scroll" href="#">About</a>
-                </li>
-
-
-                
-
-            <li class="nav-item">
-                <a class="nav-link click-scroll" href="glasses">Glasses</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link click-scroll" href="news">News</a>
-            </li>
-
 
                 <ul class="navbar-nav ms-auto col-lg-8">
                     <li class="nav-item">
@@ -55,26 +30,19 @@
                         <a class="nav-link click-scroll" href="#">News</a>
                     </li>
 
-
                     <li class="nav-item">
                         <a class="nav-link click-scroll" href="#">Contact</a>
                     </li>
 
-                <li class="nav-item">
-                    <a class="nav-link click-scroll" href="#">Contact</a>
-                </li>
 
 
-        </ul>
 
+                </ul>
 
-            </ul>
-
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-    </div>
-    
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+        </div>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto">
 
@@ -116,4 +84,6 @@
 
         </div>
     </nav>
+
+
 

@@ -9,6 +9,7 @@ import com.groud2.web.DAO.context.DBContext;
 import com.groud2.web.model.user;
 import java.io.IOException;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -288,5 +289,42 @@ public ArrayList<user> getAllByAcc(String account) throws SQLException, IOExcept
         return list;
 
     }
+public user getUser(String account) throws SQLException {
+        user g = new user();
+        
+        String sql = "SELECT * FROM user where account=?";
+        try {
+            connection = dbc.getConnection();
+            ps = connection.prepareStatement(sql);
+            ps.setString(1, account);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                String userID = rs.getString(1);
+                String fullname = rs.getString(2);
+                String acc = rs.getString(3);
+                String pass = rs.getString(4);
+                String phonenumber = rs.getString(5);
+                String address = rs.getString(6);
+                String email = rs.getString(7);
+                String bod = rs.getString(9);
+                String userimages = rs.getString(10);
+                String gender = rs.getString(8);
+                if(gender.equals("1")){
+                    gender = "Male";
+                }else{
+                    gender = "FeMale";
+                }
+                g = new user(userID, fullname, acc, pass, phonenumber, address, email, gender,bod, userimages);
+               
+            }
+        } catch (SQLException e) {
+                System.out.println("get profile error: " + e.getMessage());
+        } finally {
+            if (connection != null) {
+                connection.close();
+            }
+        }
+        return g;
+}
 }  
 
