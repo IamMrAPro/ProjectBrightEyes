@@ -17,18 +17,16 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<<<<<<< Updated upstream
         <title>JSP Page</title>
 <<<<<<< Updated upstream
+=======
+        <title>report</title>
+>>>>>>> Stashed changes
 
         <style>
-            .menu_report{
-                list-style: none;
-                font-size: 40px 
-            }
-            .menu_report:hover{
-                background-color: red;
-            }
         </style>
+<<<<<<< Updated upstream
 =======
 >>>>>>> Stashed changes
     </head>
@@ -101,5 +99,13 @@
         
 <jsp:include page="layout/chatbot.jsp"/>
 <jsp:include page="layout/footer.jsp"/>
+>>>>>>> Stashed changes
+=======
+         
+    </head>
+    
+<jsp:include page="layout/chatbot.jsp"/>
+<jsp:include page="layout/footer.jsp"/>
+</body>
 >>>>>>> Stashed changes
 </html>

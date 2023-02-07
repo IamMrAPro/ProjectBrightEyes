@@ -91,6 +91,7 @@ public class loginController extends HttpServlet {
 protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
     request.getRequestDispatcher("Login.jsp").forward(request, response);
+    
 }
 
     @Override
@@ -107,10 +108,16 @@ protected void doGet(HttpServletRequest request, HttpServletResponse response)
             loginOK = u.checklogin(account, password);
             if (loginOK != null) {
                 HttpSession session = request.getSession();
+<<<<<<< Updated upstream
                 
                 session.setAttribute("id", account);
                 response.sendRedirect("home");
               
+=======
+               
+                session.setAttribute("id", account);
+                response.sendRedirect("home");
+>>>>>>> Stashed changes
             } else {
                 response.sendRedirect("loginuser");
 
