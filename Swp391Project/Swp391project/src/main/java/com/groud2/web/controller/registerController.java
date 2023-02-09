@@ -17,6 +17,9 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.xml.bind.DatatypeConverter;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 
 
 /**
@@ -74,6 +77,12 @@ public class registerController extends HttpServlet {
         String birthofdate = request.getParameter("bod");
         String phonenumber=request.getParameter("phonenumber");
         
+        try {
+            password = encyptPass(password);
+        } catch (NoSuchAlgorithmException ex) {
+            System.out.println("encode password error: " + ex.getMessage());
+        }
+        
         userDAO u = new userDAO();
         boolean registerOK;
         try {
@@ -115,5 +124,14 @@ public class registerController extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
+
+    String encyptPass(String pass) throws NoSuchAlgorithmException {
+        MessageDigest md = MessageDigest.getInstance("MD5");
+        md.update(pass.getBytes());
+        byte[] digest = md.digest();
+        String myHash = DatatypeConverter
+                .printHexBinary(digest).toLowerCase();
+        return myHash;
+    }
 
 }
