@@ -12,11 +12,9 @@
         <servlet-name>bookingController</servlet-name>
         <servlet-class>com.groud2.web.controller.bookingController</servlet-class>
     </servlet>
-
     <servlet>
         <servlet-name>loginController</servlet-name>
         <servlet-class>com.groud2.web.controller.loginController</servlet-class>
-
     </servlet>
     <!--<<<<<<< Updated upstream-->
     <!--=======-->
@@ -36,14 +34,11 @@
     <servlet>
         <servlet-name>addGlass</servlet-name>
         <servlet-class>com.groud2.web.controller.AddGlass</servlet-class>
-
     </servlet>
-
     <servlet>
         <servlet-name>profileController</servlet-name>
         <servlet-class>com.groud2.web.controller.profileController</servlet-class>
     </servlet>
-
     <servlet>
         <servlet-name>addtoCart</servlet-name>
         <servlet-class>com.groud2.web.controller.AddtoCartController</servlet-class>
@@ -52,8 +47,6 @@
         <servlet-name>cart</servlet-name>
         <servlet-class>com.groud2.web.controller.cartController</servlet-class>
     </servlet>
-
-
     <servlet>
         <servlet-name>registerController</servlet-name>
         <servlet-class>com.groud2.web.controller.registerController</servlet-class>
@@ -66,17 +59,15 @@
         <servlet-name>singleNewsController</servlet-name>
         <servlet-class>com.groud2.web.controller.singleNewsController</servlet-class>
     </servlet>
-
     <servlet>
         <servlet-name>loginController</servlet-name>
         <servlet-class>com.groud2.web.controller.loginController</servlet-class>
     </servlet>
     <servlet>
-
         <servlet-name>profile</servlet-name>
         <servlet-class>com.groud2.web.controller.profileController</servlet-class>
     </servlet>
-        <servlet>
+    <servlet>
         <servlet-name>profileController</servlet-name>
         <servlet-class>com.groud2.web.controller.profileController</servlet-class>
     </servlet>
@@ -84,7 +75,6 @@
         <servlet-name>reportController</servlet-name>
         <servlet-class>com.groud2.web.controller.reportController</servlet-class>
     </servlet>
-
     <servlet-mapping>
         <servlet-name>glassesController</servlet-name>
         <url-pattern>/glasses</url-pattern>
@@ -94,7 +84,6 @@
         <url-pattern>/home</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-
         <servlet-name>bookingController</servlet-name>
         <url-pattern>/booking</url-pattern>
     </servlet-mapping>
@@ -103,12 +92,10 @@
         <url-pattern>/loginuser</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-
         <servlet-name>profileController</servlet-name>
         <url-pattern>/profile</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-
         <servlet-name>addtoCart</servlet-name>
         <url-pattern>/addtoCart</url-pattern>
     </servlet-mapping>
@@ -128,12 +115,14 @@
         <servlet-name>singleNewsController</servlet-name>
         <url-pattern>/singleNewsController</url-pattern>
     </servlet-mapping>
-
-<servlet-mapping>
+    <servlet-mapping>
         <servlet-name>reportController</servlet-name>
         <url-pattern>/reportController</url-pattern>
     </servlet-mapping>
-
+    <servlet-mapping>
+        <servlet-name>AdminHome</servlet-name>
+        <url-pattern>/adminHome</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>
             30

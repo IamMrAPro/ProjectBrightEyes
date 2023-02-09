@@ -87,11 +87,11 @@ public class loginController extends HttpServlet {
        String account = request.getParameter("account");
         String password = request.getParameter("password");
         
-//        try {
-////            password = encyptPass(password);
-//        } catch (NoSuchAlgorithmException ex) {
-//            System.out.println("encode password error: " + ex.getMessage());
-//        }
+        try {
+            password = encyptPass(password);
+        } catch (NoSuchAlgorithmException ex) {
+            System.out.println("encode password error: " + ex.getMessage());
+        }
         
         System.out.println("password = " + password);
         //Xu ly           
@@ -113,8 +113,8 @@ public class loginController extends HttpServlet {
                     response.sendRedirect("home");
                 }
                 
-                session.setAttribute("id", account);
-                response.sendRedirect("home");
+//                session.setAttribute("id", account);
+//                response.sendRedirect("home");
               
 
             } else {
@@ -132,6 +132,7 @@ public class loginController extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }
+    
     String encyptPass(String pass) throws NoSuchAlgorithmException {
         MessageDigest md = MessageDigest.getInstance("MD5");
         md.update(pass.getBytes());
@@ -139,7 +140,6 @@ public class loginController extends HttpServlet {
         String myHash = DatatypeConverter
                 .printHexBinary(digest).toLowerCase();
         return myHash;
-//>>>>>>> Stashed changes:Swp391Project/Swp391project/src/main/java/loginController.java
     }
 
 }
