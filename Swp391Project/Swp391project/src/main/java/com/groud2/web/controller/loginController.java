@@ -113,9 +113,7 @@ public class loginController extends HttpServlet {
                     response.sendRedirect("home");
                 }
                 
-//                session.setAttribute("id", account);
-//                response.sendRedirect("home");
-              
+
 
             } else {
                 response.sendRedirect("loginuser");

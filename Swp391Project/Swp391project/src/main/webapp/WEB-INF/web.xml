@@ -71,6 +71,10 @@
         <servlet-name>reportController</servlet-name>
         <servlet-class>com.groud2.web.controller.reportController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>adminHome</servlet-name>
+        <servlet-class>com.groud2.web.controller.AdminHome</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>glassesController</servlet-name>
         <url-pattern>/glasses</url-pattern>
@@ -116,7 +120,15 @@
         <url-pattern>/reportController</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>AdminHome</servlet-name>
+        <servlet-name>addStaff</servlet-name>
+        <url-pattern>/addStaff</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>addRoom</servlet-name>
+        <url-pattern>/addRoom</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>adminHome</servlet-name>
         <url-pattern>/adminHome</url-pattern>
     </servlet-mapping>
     <session-config>
