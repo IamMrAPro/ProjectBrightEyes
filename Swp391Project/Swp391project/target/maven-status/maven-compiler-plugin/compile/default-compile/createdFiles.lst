@@ -7,6 +7,7 @@ com\groud2\web\model\Order.class
 com\groud2\web\controller\loginController.class
 com\groud2\web\controller\AddGlass.class
 com\groud2\web\controller\AddStaff.class
+com\groud2\web\service\sendMail.class
 com\groud2\web\controller\glassesController.class
 com\groud2\web\model\user.class
 com\groud2\web\DAO\bookingDAO.class
@@ -23,6 +24,7 @@ com\groud2\web\access\common\Constants.class
 com\groud2\web\controller\AddtoCartController.class
 com\groud2\web\model\booking.class
 com\groud2\web\model\glasses.class
+com\groud2\web\model\cart.class
 com\groud2\web\controller\AddRoom.class
 com\groud2\web\DAO\glassesDAO.class
 com\groud2\web\DAO\context\DBContext.class

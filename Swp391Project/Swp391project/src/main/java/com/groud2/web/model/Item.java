@@ -24,6 +24,14 @@ public class Item {
         this.price = price;
     }
 
+    public Item(glasses glass, int quantity) {
+        this.glass = glass;
+        this.quantity = quantity;
+    }
+
+   
+    
+
     public int getId() {
         return id;
     }
