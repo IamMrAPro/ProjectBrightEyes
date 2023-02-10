@@ -73,6 +73,15 @@ public class registerController extends HttpServlet {
         String gender=request.getParameter("gender");
         String birthofdate = request.getParameter("bod");
         String phonenumber=request.getParameter("phonenumber");
+<<<<<<< Updated upstream
+=======
+        String role="customer";
+        try {
+            password = encyptPass(password);
+        } catch (NoSuchAlgorithmException ex) {
+            System.out.println("encode password error: " + ex.getMessage());
+        }
+>>>>>>> Stashed changes
         
         userDAO u = new userDAO();
         boolean registerOK;
@@ -81,7 +90,7 @@ public class registerController extends HttpServlet {
             if (registerOK == true) {              
                 request.getRequestDispatcher("Register.jsp").forward(request, response);
             } else {
-                u.createData(fullname,account, password,phonenumber,address,email,gender, birthofdate);         
+                u.createData(fullname,account, password,phonenumber,address,email,gender, birthofdate,role);         
                 request.getRequestDispatcher("Login.jsp").forward(request, response);
                 //response.sendRedirect("loginuser");
 

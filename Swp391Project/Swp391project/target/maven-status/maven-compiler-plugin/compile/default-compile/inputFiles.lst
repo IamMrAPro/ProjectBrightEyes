@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 C:\Users\nguye\Documents\Ki5\SWP\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\DAO\glassesDAO.java
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
@@ -26,5 +27,41 @@ C:\Users\nguye\Documents\Ki5\SWP\g2\Swp391Project\Swp391project\src\main\java\co
 <<<<<<< Updated upstream
 >>>>>>> Stashed changes
 =======
+>>>>>>> Stashed changes
+=======
+C:\Users\nguye\Documents\Ki5\SWP\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\controller\AddGlass.java
+C:\Users\nguye\Documents\Ki5\SWP\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\model\room.java
+C:\Users\nguye\Documents\Ki5\SWP\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\access\google\GooglePojo.java
+C:\Users\nguye\Documents\Ki5\SWP\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\DAO\userDAO.java
+C:\Users\nguye\Documents\Ki5\SWP\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\model\Item.java
+C:\Users\nguye\Documents\Ki5\SWP\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\controller\changeProfile.java
+C:\Users\nguye\Documents\Ki5\SWP\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\DAO\newsDAO.java
+C:\Users\nguye\Documents\Ki5\SWP\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\DAO\bookingDAO.java
+C:\Users\nguye\Documents\Ki5\SWP\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\server\ChatRoomServerEndpoint.java
+C:\Users\nguye\Documents\Ki5\SWP\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\controller\loginController.java
+C:\Users\nguye\Documents\Ki5\SWP\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\controller\AddRoom.java
+C:\Users\nguye\Documents\Ki5\SWP\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\access\facebook\LoginFacebookServlet.java
+C:\Users\nguye\Documents\Ki5\SWP\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\controller\AddtoCartController.java
+C:\Users\nguye\Documents\Ki5\SWP\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\access\google\GoogleUtils.java
+C:\Users\nguye\Documents\Ki5\SWP\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\model\booking.java
+C:\Users\nguye\Documents\Ki5\SWP\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\model\user.java
+C:\Users\nguye\Documents\Ki5\SWP\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\controller\cartController.java
+C:\Users\nguye\Documents\Ki5\SWP\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\access\google\LoginGoogleServlet.java
+C:\Users\nguye\Documents\Ki5\SWP\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\controller\profileController.java
+C:\Users\nguye\Documents\Ki5\SWP\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\controller\bookingController.java
+C:\Users\nguye\Documents\Ki5\SWP\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\controller\newsController.java
+C:\Users\nguye\Documents\Ki5\SWP\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\DAO\roomDAO.java
+C:\Users\nguye\Documents\Ki5\SWP\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\DAO\glassesDAO.java
+C:\Users\nguye\Documents\Ki5\SWP\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\controller\singleNewsController.java
+C:\Users\nguye\Documents\Ki5\SWP\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\controller\AddStaff.java
+C:\Users\nguye\Documents\Ki5\SWP\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\controller\registerController.java
+C:\Users\nguye\Documents\Ki5\SWP\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\controller\glassesController.java
+C:\Users\nguye\Documents\Ki5\SWP\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\controller\homeController.java
+C:\Users\nguye\Documents\Ki5\SWP\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\access\common\Constants.java
+C:\Users\nguye\Documents\Ki5\SWP\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\model\Order.java
+C:\Users\nguye\Documents\Ki5\SWP\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\access\facebook\RestFB.java
+C:\Users\nguye\Documents\Ki5\SWP\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\model\news.java
+C:\Users\nguye\Documents\Ki5\SWP\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\controller\AdminHome.java
+C:\Users\nguye\Documents\Ki5\SWP\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\DAO\context\DBContext.java
 >>>>>>> Stashed changes
 C:\Users\nguye\Documents\Ki5\SWP\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\model\glasses.java
