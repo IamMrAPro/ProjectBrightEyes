@@ -2,11 +2,18 @@ E:\FPT\S5\SWP391\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\DAO
 E:\FPT\S5\SWP391\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\model\Item.java
 E:\FPT\S5\SWP391\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\controller\newsController.java
 E:\FPT\S5\SWP391\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\DAO\profileDAO.java
+<<<<<<< Updated upstream
+=======
+E:\FPT\S5\SWP391\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\controller\AdminController\AdminDasboardController.java
+>>>>>>> Stashed changes
 E:\FPT\S5\SWP391\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\controller\singleNewsController.java
 E:\FPT\S5\SWP391\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\model\room.java
 E:\FPT\S5\SWP391\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\controller\bookingController.java
 E:\FPT\S5\SWP391\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\access\google\GoogleUtils.java
+<<<<<<< Updated upstream
 E:\FPT\S5\SWP391\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\controller\AddStaff.java
+=======
+>>>>>>> Stashed changes
 E:\FPT\S5\SWP391\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\model\news.java
 E:\FPT\S5\SWP391\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\access\facebook\RestFB.java
 E:\FPT\S5\SWP391\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\controller\loginController.java
@@ -15,7 +22,10 @@ E:\FPT\S5\SWP391\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\ser
 E:\FPT\S5\SWP391\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\access\facebook\LoginFacebookServlet.java
 E:\FPT\S5\SWP391\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\controller\glassesController.java
 E:\FPT\S5\SWP391\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\access\google\GooglePojo.java
+<<<<<<< Updated upstream
 E:\FPT\S5\SWP391\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\controller\AddGlass.java
+=======
+>>>>>>> Stashed changes
 E:\FPT\S5\SWP391\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\model\booking.java
 E:\FPT\S5\SWP391\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\DAO\bookingDAO.java
 E:\FPT\S5\SWP391\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\DAO\roomDAO.java
@@ -25,13 +35,22 @@ E:\FPT\S5\SWP391\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\con
 E:\FPT\S5\SWP391\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\controller\homeController.java
 E:\FPT\S5\SWP391\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\controller\profileController.java
 E:\FPT\S5\SWP391\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\access\common\Constants.java
+<<<<<<< Updated upstream
 E:\FPT\S5\SWP391\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\controller\AddRoom.java
 E:\FPT\S5\SWP391\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\model\glasses.java
 E:\FPT\S5\SWP391\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\model\Order.java
 E:\FPT\S5\SWP391\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\controller\AdminHome.java
+=======
+E:\FPT\S5\SWP391\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\model\glasses.java
+E:\FPT\S5\SWP391\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\model\Order.java
+>>>>>>> Stashed changes
 E:\FPT\S5\SWP391\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\DAO\userDAO.java
 E:\FPT\S5\SWP391\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\controller\AddtoCartController.java
 E:\FPT\S5\SWP391\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\controller\changeProfile.java
 E:\FPT\S5\SWP391\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\model\user.java
+<<<<<<< Updated upstream
+=======
+E:\FPT\S5\SWP391\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\controller\AdminController\AdminManagerStaffController.java
+>>>>>>> Stashed changes
 E:\FPT\S5\SWP391\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\access\google\LoginGoogleServlet.java
 E:\FPT\S5\SWP391\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\controller\cartController.java

@@ -18,6 +18,7 @@
     </servlet>
     <!--<<<<<<< Updated upstream-->
     <!--=======-->
+<<<<<<< Updated upstream
     <servlet>
         <servlet-name>addStaff</servlet-name>
         <servlet-class>com.groud2.web.controller.AddStaff</servlet-class>
@@ -26,15 +27,9 @@
         <servlet-name>AdminHome</servlet-name>
         <servlet-class>com.groud2.web.controller.AdminHome</servlet-class>
     </servlet>
+=======
+>>>>>>> Stashed changes
     <!-->>>>>>> Stashed changes-->
-    <servlet>
-        <servlet-name>addRoom</servlet-name>
-        <servlet-class>com.groud2.web.controller.AddRoom</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>addGlass</servlet-name>
-        <servlet-class>com.groud2.web.controller.AddGlass</servlet-class>
-    </servlet>
     <servlet>
         <servlet-name>profileController</servlet-name>
         <servlet-class>com.groud2.web.controller.profileController</servlet-class>
@@ -75,6 +70,17 @@
         <servlet-name>reportController</servlet-name>
         <servlet-class>com.groud2.web.controller.reportController</servlet-class>
     </servlet>
+<<<<<<< Updated upstream
+=======
+    <servlet>
+        <servlet-name>adminDashboardController</servlet-name>
+        <servlet-class>com.groud2.web.controller.AdminController.AdminDasboardController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ManageStaff</servlet-name>
+        <servlet-class>com.groud2.web.controller.AdminController.AdminManagerStaffController</servlet-class>
+    </servlet>
+>>>>>>> Stashed changes
     <servlet-mapping>
         <servlet-name>glassesController</servlet-name>
         <url-pattern>/glasses</url-pattern>
@@ -120,8 +126,17 @@
         <url-pattern>/reportController</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
+<<<<<<< Updated upstream
         <servlet-name>AdminHome</servlet-name>
         <url-pattern>/adminHome</url-pattern>
+=======
+        <servlet-name>adminDashboardController</servlet-name>
+        <url-pattern>/adminDashboard</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ManageStaff</servlet-name>
+        <url-pattern>/manageStaff</url-pattern>
+>>>>>>> Stashed changes
     </servlet-mapping>
     <session-config>
         <session-timeout>
