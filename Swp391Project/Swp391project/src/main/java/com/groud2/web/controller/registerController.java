@@ -76,16 +76,13 @@ public class registerController extends HttpServlet {
         String gender=request.getParameter("gender");
         String birthofdate = request.getParameter("bod");
         String phonenumber=request.getParameter("phonenumber");
-<<<<<<< Updated upstream
-=======
+
         String role="customer";
         try {
             password = encyptPass(password);
         } catch (NoSuchAlgorithmException ex) {
             System.out.println("encode password error: " + ex.getMessage());
-        }
->>>>>>> Stashed changes
-        
+        }     
         try {
             password = encyptPass(password);
         } catch (NoSuchAlgorithmException ex) {
