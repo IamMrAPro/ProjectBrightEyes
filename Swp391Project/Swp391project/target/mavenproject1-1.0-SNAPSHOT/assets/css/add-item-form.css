@@ -1,0 +1,57 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/ClientSide/css.css to edit this template
+*/
+/* 
+    Created on : Feb 5, 2023, 8:54:35 PM
+    Author     : Ao
+*/
+
+#add-item-form {
+    width: 500px;
+    height: 600px;
+    border: 1px solid red;
+    margin: auto;
+}
+
+.group-form {
+    width: 100%;
+}
+
+.group-form-id {
+    width: 30%;
+}
+
+.group-form-name {
+    width: 67%;
+    margin-left: 3%;
+}
+
+.group-form-mid {
+    width: 48%;
+}
+
+.glass-color {
+    margin-left: 4%;
+    margin-top: 32px;
+}
+
+.glass-gender {
+    margin-left: 4%; 
+}
+
+.glass-image {
+    width: 66%;
+}
+
+.glass-upload {
+    margin-left: 4%;
+    margin-top: 32px;
+    width: 160px;
+    /*height: 40px;*/
+}
+
+button {
+    width: 70%;
+    margin-left: 15%;
+}

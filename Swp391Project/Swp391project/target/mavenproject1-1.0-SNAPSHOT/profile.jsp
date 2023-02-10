@@ -76,11 +76,6 @@
                         <div class="d-flex justify-content-between align-items-center mb-3">
                             <h4 class="text-right">User's Profile</h4>
                         </div>
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-                        <div class="row mt-2">
-                            <div class="col-md-12"><label class="labels">Full Name</label><input type="text" class="form-control" value="" readonly></div>
-=======
                         
             
                             <div class="row mt-2">
@@ -102,39 +97,10 @@
                                 <button  class="btn btn-primary" type="button"><a href="changeProfile.jsp" style="color: black;">Update Profile</a></button>
                             </div>
                         </c:forEach>
->>>>>>> Stashed changes
 
 
-<<<<<<< Updated upstream
                         </div>
-                        <div class="d-grid gap-2 col-4 mx-auto" style="margin-top: 10px;color: black">
-                            <button  class="btn btn-primary" type="button"><a href="url" style="color: black;">Change Profile</a></button>
-                        </div>
-=======
-                        <c:forEach items="${list}" var="item">
-                            <div class="row mt-2">
-                                <div class="col-md-12"><label class="labels">Full Name</label><input type="text" class="form-control" value="${item.getFullname()}" readonly></div>
-
-                                <div class="col-md-6"><label class="labels">Account</label><input type="text" class="form-control" value="" readonly></div>
-                                <div class="col-md-6"><label class="labels">Password</label><input type="text" class="form-control" value=""  readonly></div>
-                            </div>
-                            <div class="row mt-3">
-                                <div class="col-md-12"><label class="labels">Mobile Number</label><input type="text" class="form-control" value="${item.getPhonenumber()}" readonly></div>
-                                <div class="col-md-12"><label class="labels">Address</label><input type="text" class="form-control" value="${item.getAddress()}" readonly></div>
-                                <div class="col-md-12"><label class="labels">Email</label><input type="text" class="form-control" value="${item.getEmail()}" readonly></div>
-                            </div>
-                            <div class="row mt-3">
-                                <div class="col-md-12"><label class="labels">Birth Of Date</label><input type="text" class="form-control" value="${item.getBod()}" readonly></div>
-
-                            </div>
-                            <div class="d-grid gap-2 col-4 mx-auto" style="margin-top: 10px;color: black">
-                                <button  class="btn btn-primary" type="button"><a href="url" style="color: black;">Change Profile</a></button>
-                            </div>
-                        </c:forEach>
-
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
+                       
                     </div>
 
                 </div>
