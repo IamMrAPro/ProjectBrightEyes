@@ -159,5 +159,11 @@ public class glassesDAO {
         return listGlass; 
    }
 
+    public glasses getProductInfor(String string) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+   
+
   
 }
