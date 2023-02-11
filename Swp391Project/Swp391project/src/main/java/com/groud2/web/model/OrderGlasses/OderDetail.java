@@ -2,35 +2,26 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package com.groud2.web.model;
+package com.groud2.web.model.OrderGlasses;
 
 /**
  *
  * @author anhha
  */
-public class Item {
-    private int id;
-    private glasses glass;
-    private int quantity;
-    private String price;
+public class OderDetail {
+    private int id,quantity; 
+    private String glassesId;
+    private double  price;
 
-    public Item() {
+    public OderDetail() {
     }
 
-    public Item(int id, glasses glass, int quantity, String price) {
+    public OderDetail(int id, int quantity, String glassesId, double price) {
         this.id = id;
-        this.glass = glass;
         this.quantity = quantity;
+        this.glassesId = glassesId;
         this.price = price;
     }
-
-    public Item(glasses glass, int quantity) {
-        this.glass = glass;
-        this.quantity = quantity;
-    }
-
-   
-    
 
     public int getId() {
         return id;
@@ -38,14 +29,6 @@ public class Item {
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    public glasses getGlass() {
-        return glass;
-    }
-
-    public void setGlass(glasses glass) {
-        this.glass = glass;
     }
 
     public int getQuantity() {
@@ -56,11 +39,19 @@ public class Item {
         this.quantity = quantity;
     }
 
-    public String getPrice() {
+    public String getGlassesId() {
+        return glassesId;
+    }
+
+    public void setGlassesId(String glassesId) {
+        this.glassesId = glassesId;
+    }
+
+    public double getPrice() {
         return price;
     }
 
-    public void setPrice(String price) {
+    public void setPrice(double price) {
         this.price = price;
     }
     

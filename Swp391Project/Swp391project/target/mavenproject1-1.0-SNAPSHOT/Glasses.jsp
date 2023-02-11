@@ -34,7 +34,7 @@
                                         <div class="d-flex align-items-center my-2">
                                             <p class="ms-auto mb-0">
                                                 <strong>Goal:</strong>
-                                                <b>$${item.getPrice()}</b>
+                                                <b>${item.getPrice()}VND</b>
                                             </p>
                                         </div>
                                     </div>

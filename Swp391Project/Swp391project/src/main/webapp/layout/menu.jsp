@@ -47,6 +47,7 @@
 
                 <li class="nav-item ">
                     <a style="font-size: 30px" class="nav-link click-scroll" href="#"><ion-icon name="cart-outline"></ion-icon></a>
+                    <p>${requestScope.size}</p>
                 </li>
 
                 <c:if test="${sessionScope.id == null}">

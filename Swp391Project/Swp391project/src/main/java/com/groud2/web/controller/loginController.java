@@ -1,4 +1,4 @@
-package com.groud2.web.controller;
+    package com.groud2.web.controller;
 
 
 import com.groud2.web.DAO.userDAO;
