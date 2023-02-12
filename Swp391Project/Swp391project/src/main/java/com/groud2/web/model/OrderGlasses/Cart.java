@@ -20,6 +20,7 @@ public class Cart {
     public List<Item> getItems(){
         return  items;
     }
+    
     public int getQuantityById(String id){
         return getItemById(id).getQuantity();
     }
@@ -31,6 +32,7 @@ public class Cart {
     }
         return  null;
     }
+   
     public void addItem(Item t){
         if(getItemById(t.getGlass().getGlassID())!=null){
             Item m = getItemById(t.getGlass().getGlassID());
@@ -56,6 +58,7 @@ public class Cart {
     private glasses getGlassesById(String id,List<glasses> list ){
         for(glasses i : list){
             if(i.getGlassID().equals(id)){
+                
                 return i;
             }
         }
@@ -65,17 +68,22 @@ public class Cart {
         items = new ArrayList<>();
         try{
         if(txt!=null & txt.length()!=0){
-            String[] s = txt.split(",");
-            for(String i : s){
-                String[] n = i.split(":");
-                String id = n[9];
-                int quantity = Integer.parseInt(n[1]);
+            String[] s = txt.split("/");
+            for(String i :s){
+               String [] n = i.split("-");
+               String id = n[0];
+                System.out.println("id");
+               int quantity = Integer.parseInt(n[1]);
                 glasses g  = getGlassesById(id, list);
                 Item t = new Item(g, quantity, Double.parseDouble(g.getPrice()));
                 addItem(t);
             }
+                
+               
+            
         }}catch(NumberFormatException e){
             
         }
     }
+    
 }

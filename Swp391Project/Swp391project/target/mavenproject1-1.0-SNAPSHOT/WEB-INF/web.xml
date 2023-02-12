@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
     <servlet>
-        <servlet-name>glassesController</servlet-name>
-        <servlet-class>com.groud2.web.controller.glassesController</servlet-class>
-    </servlet>
-    <servlet>
         <servlet-name>homeController</servlet-name>
         <servlet-class>com.groud2.web.controller.homeController</servlet-class>
     </servlet>
@@ -61,10 +57,18 @@
         <servlet-name>ManageStaff</servlet-name>
         <servlet-class>com.groud2.web.controller.AdminController.AdminManagerStaffController</servlet-class>
     </servlet>
-    <servlet-mapping>
-        <servlet-name>glassesController</servlet-name>
-        <url-pattern>/glasses</url-pattern>
-    </servlet-mapping>
+    <servlet>
+        <servlet-name>AddtocartController</servlet-name>
+        <servlet-class>com.groud2.web.controller.AddtocartController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>showCartController</servlet-name>
+        <servlet-class>com.groud2.web.controller.showCartController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>glasses</servlet-name>
+        <servlet-class>com.groud2.web.controller.glassesController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>homeController</servlet-name>
         <url-pattern>/home</url-pattern>
@@ -104,6 +108,18 @@
     <servlet-mapping>
         <servlet-name>ManageStaff</servlet-name>
         <url-pattern>/manageStaff</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AddtocartController</servlet-name>
+        <url-pattern>/addtocart</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>showCartController</servlet-name>
+        <url-pattern>/show</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>glasses</servlet-name>
+        <url-pattern>/glasses</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
