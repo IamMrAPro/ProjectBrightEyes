@@ -16,11 +16,6 @@
         <servlet-name>loginController</servlet-name>
         <servlet-class>com.groud2.web.controller.loginController</servlet-class>
     </servlet>
-    
-    <servlet>
-        <servlet-name>addStaff</servlet-name>
-        <servlet-class>com.groud2.web.controller.AddStaff</servlet-class>
-    </servlet>
     <!-->>>>>>> Stashed changes-->
     <servlet>
         <servlet-name>profileController</servlet-name>
@@ -62,7 +57,6 @@
         <servlet-name>reportController</servlet-name>
         <servlet-class>com.groud2.web.controller.reportController</servlet-class>
     </servlet>
-
     <servlet>
         <servlet-name>adminDashboardController</servlet-name>
         <servlet-class>com.groud2.web.controller.AdminController.AdminDasboardController</servlet-class>
@@ -71,7 +65,22 @@
         <servlet-name>ManageStaff</servlet-name>
         <servlet-class>com.groud2.web.controller.AdminController.AdminManagerStaffController</servlet-class>
     </servlet>
-
+    <servlet>
+        <servlet-name>adminManageCustomer</servlet-name>
+        <servlet-class>com.groud2.web.controller.AdminController.AdminManageCustomerController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>adminManageRoom</servlet-name>
+        <servlet-class>com.groud2.web.controller.AdminController.AdminManageRoomController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>adminManageGlasses</servlet-name>
+        <servlet-class>com.groud2.web.controller.AdminController.AdminManageGlassesController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Feedback</servlet-name>
+        <servlet-class>com.groud2.web.controller.AdminController.AdminViewFeedback</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>glassesController</servlet-name>
         <url-pattern>/glasses</url-pattern>
@@ -116,8 +125,6 @@
         <servlet-name>reportController</servlet-name>
         <url-pattern>/reportController</url-pattern>
     </servlet-mapping>
-    
-   
     <servlet-mapping>
         <servlet-name>adminDashboardController</servlet-name>
         <url-pattern>/adminDashboard</url-pattern>
@@ -125,6 +132,22 @@
     <servlet-mapping>
         <servlet-name>ManageStaff</servlet-name>
         <url-pattern>/manageStaff</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>adminManageCustomer</servlet-name>
+        <url-pattern>/manageCustomer</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>adminManageRoom</servlet-name>
+        <url-pattern>/manageRoom</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>adminManageGlasses</servlet-name>
+        <url-pattern>/manageGlasses</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Feedback</servlet-name>
+        <url-pattern>/feedback</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

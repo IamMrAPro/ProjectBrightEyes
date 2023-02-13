@@ -107,7 +107,7 @@ public class loginController extends HttpServlet {
                 System.out.println("Login Account: " + account);
                 session.setAttribute("id", account);
                 if(role.equals("admin")){
-                    response.sendRedirect("adminHome");
+                    response.sendRedirect("adminDashboard");
                 }
                 else {
                     response.sendRedirect("home");

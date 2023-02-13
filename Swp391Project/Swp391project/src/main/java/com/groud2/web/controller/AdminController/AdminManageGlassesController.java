@@ -4,21 +4,28 @@
  */
 package com.groud2.web.controller.AdminController;
 
+import com.groud2.web.DAO.glassesDAO;
+import com.groud2.web.model.glasses;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.ArrayList;
 
 /**
  *
  * @author Ao
  */
-public class AdminDasboardController extends HttpServlet {
+public class AdminManageGlassesController extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req.getRequestDispatcher("AdminView/admin-screen/AdminDashboard.jsp").forward(req, resp);
+        glassesDAO g = new glassesDAO();
+        ArrayList<glasses> listGlasses = g.getListGlass("");
+
+        req.setAttribute("listGlasses", listGlasses);
+        req.getRequestDispatcher("AdminView/admin-screen/ManageGlass.jsp").forward(req, resp);
     }
 
     @Override
@@ -29,12 +36,9 @@ public class AdminDasboardController extends HttpServlet {
         if (position == null) {
             position = setPos;
         }
-
         //Handle request
-        if (!position.equals("1")) {
+        if (!position.equals("5")) {
             changePosition(position, req, resp);
-        } else {
-
         }
     }
 
