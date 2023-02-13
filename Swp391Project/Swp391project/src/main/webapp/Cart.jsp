@@ -10,7 +10,7 @@
         }
         .card{
             margin: auto;
-            max-width: 950px;
+            max-width: 90%;
             width: 90%;
             box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.19);
             border-radius: 1rem;
@@ -73,10 +73,10 @@
         }
         .close{
             margin-left: auto;
-            font-size: 0.7rem;
+            font-size: 1.7rem;
         }
         img{
-            width: 3.5rem;
+            width: 10.5rem;
         }
         .back-to-shop{
             margin-top: 4.5rem;
@@ -158,44 +158,59 @@
                     <div class="col-md-8 cart">
                         <div class="title">
                             <div class="row">
-                                <div class="col"><h4><b>Shopping Cart</b></h4></div>
-                                <div class="col align-self-center text-right text-muted">3 items</div>
-                            </div>
-                        </div>    
-                        <div class="row border-top border-bottom">
-                            <div class="row main align-items-center">
-                                <div class="col-2"><img class="img-fluid" src="https://kinhmateyeplus.com/wp-content/uploads/2023/01/IMG_0023.jpg"></div>
-                                <div class="col">
-                                    <div class="row text-muted">Shirt</div>
-                                    <div class="row">Cotton T-shirt</div>
-                                </div>
-                                <div class="col">
-                                    <a href="#">-</a><a href="#" class="border">1</a><a href="#">+</a>
-                                </div>
-                                <div class="col">&euro; 44.00 <span class="close">&#10005;</span></div>
+                                <div class="col"><h4><b>Shopping Glasses</b></h4></div>
+                                
                             </div>
                         </div>
-                        
-                        <div class="back-to-shop"><a href="home">&leftarrow;</a><span class="text-muted">Back to home</span></div>
+                                <c:set var="o" value="${requestScope.cart}"  />
+                                <c:forEach items="${o.items}" var="i">
+                        <div class="row border-top border-bottom">
+                            <div class="row main align-items-center">
+                                <div class="col-2"><img class="img-fluid" src="${i.getGlass().getImage()} "></div>
+                                <div class="col">
+                                    <div class="row text-muted">${i.getGlass().getGlassName()}</div>
+                                    <div class="row">${i.getGlass().getColor()}</div>
+                                </div>
+                                <div class="col">
+                                    <a href="process?num=-1&id=${i.getGlass().getGlassID()}">-</a><a class="border">${i.getQuantity()}</a>
+                                    <a href="process?num=+1&id=${i.getGlass().getGlassID()}"">+</a>
+                                </div>
+                                <div class="col">${i.getGlass().getPrice()} VND </div>
+                                <div class="col">
+                                    <form action="process" method="post">
+                                        <input type="hidden" name="id" value="${i.getGlass().getGlassID()}"/>
+                                        <input class="btn" type="submit" value="Return item"/>
+                                    </form>
+                                </div>
+                                <div class="col">
+                                    <a href="deleteCart??glassesId=${i.getGlass().getGlassID()}"><span class="close">&#10005;</span></a> 
+                                </div>
+                            </div>
+                        </div>
+                        </c:forEach>
+                        <div class="back-to-shop"><a href="home">&leftarrow;<span class="text-muted">Back to home</span></div></a>
                     </div>
                     <div class="col-md-4 summary">
                         <div><h5><b>Summary</b></h5></div>
-                        <hr>
-                        <div class="row">
-                            <div class="col" style="padding-left:0;">ITEMS 3</div>
-                            <div class="col text-right">&euro; 132.00</div>
-                        </div>
+                       
                         <form>
-                            <p>SHIPPING</p>
-                            <select><option class="text-muted">Standard-Delivery- &euro;5.00</option></select>
-                            <p>GIVE CODE</p>
-                            <input id="code" placeholder="Enter your code">
+                            <p>SHIPPING BY</p>
+                            <select>
+                                <option class="text-muted">VNpost – EMS</option>
+                                <option class="text-muted">Giao hàng tiết kiệm</option>
+                                <option class="text-muted">Giao hàng Nhanh</option>
+                            </select>
+<!--                            <p>GIVE CODE</p>
+                            <input id="code" placeholder="Enter your code">-->
                         </form>
                         <div class="row" style="border-top: 1px solid rgba(0,0,0,.1); padding: 2vh 0;">
                             <div class="col">TOTAL PRICE</div>
-                            <div class="col text-right">${o.getTotalMoney()} VND</div>
+                            <div class="col text-right">${o.getTotalMoney()}</div>
                         </div>
-                        <button class="btn">CHECKOUT</button>
+                        <form action="checkout" method="post">
+                            <input class="btn"value="CHECKOUT"/> 
+                        </form>
+                        
                     </div>
                 </div>
 

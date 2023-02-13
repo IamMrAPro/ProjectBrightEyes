@@ -333,6 +333,10 @@ public user getUser(String account) throws SQLException {
         }
         return g;
 }
+
+    public user getAccountInfomationByEmail(String email) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 }  
 
 

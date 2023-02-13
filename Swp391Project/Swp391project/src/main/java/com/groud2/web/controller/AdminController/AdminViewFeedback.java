@@ -14,11 +14,11 @@ import java.io.IOException;
  *
  * @author Ao
  */
-public class AdminDasboardController extends HttpServlet {
+public class AdminViewFeedback extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req.getRequestDispatcher("AdminView/admin-screen/AdminDashboard.jsp").forward(req, resp);
+        req.getRequestDispatcher("AdminView/admin-screen/ViewFeedBack.jsp").forward(req, resp);
     }
 
     @Override
@@ -29,12 +29,9 @@ public class AdminDasboardController extends HttpServlet {
         if (position == null) {
             position = setPos;
         }
-
         //Handle request
-        if (!position.equals("1")) {
+        if (!position.equals("6")) {
             changePosition(position, req, resp);
-        } else {
-
         }
     }
 

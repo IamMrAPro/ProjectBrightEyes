@@ -4,21 +4,28 @@
  */
 package com.groud2.web.controller.AdminController;
 
+import com.groud2.web.DAO.roomDAO;
+import com.groud2.web.model.room;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.ArrayList;
 
 /**
  *
  * @author Ao
  */
-public class AdminDasboardController extends HttpServlet {
+public class AdminManageRoomController extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req.getRequestDispatcher("AdminView/admin-screen/AdminDashboard.jsp").forward(req, resp);
+        roomDAO r = new roomDAO();
+        ArrayList<room> listRoom = r.getListRoom("");
+
+        req.setAttribute("listRoom", listRoom);
+        req.getRequestDispatcher("AdminView/admin-screen/ManageRoom.jsp").forward(req, resp);
     }
 
     @Override
@@ -31,11 +38,7 @@ public class AdminDasboardController extends HttpServlet {
         }
 
         //Handle request
-        if (!position.equals("1")) {
-            changePosition(position, req, resp);
-        } else {
-
-        }
+        changePosition(position, req, resp);
     }
 
     private void changePosition(String pos, HttpServletRequest req, HttpServletResponse resp) throws IOException {
