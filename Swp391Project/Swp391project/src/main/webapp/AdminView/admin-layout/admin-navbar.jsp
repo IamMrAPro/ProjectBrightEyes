@@ -115,19 +115,26 @@
                             <div class="mx-2">Glass</div>
                         </label>
                     </div>
+                    <div class="admin-link">
+                        <input type="submit" name="position" value="6" id="feedback" class="d-none">
+                        <label for="feedback" class="d-flex px-4 align-items-center admin-nav-label">
+                            <i class="fa-solid fa-face-smile"></i>
+                            <div class="mx-2">Feedback</div>
+                        </label>
+                    </div>
                 </div>
 
                 <br>
                 <div class="fw-bold admin-nav-title mx-1">CLINIC NEWS</div>
                 <div class="admin-link ">
-                    <input type="submit" name="position" value="6" id="news-new" class="d-none">
+                    <input type="submit" name="position" value="7" id="news-new" class="d-none">
                     <label for="news-new" class="d-flex px-4 align-items-center admin-nav-label">
                         <i class="fa-solid fa-square-plus"></i>
                         <div class="mx-2">Create new</div>
                     </label>
                 </div>
                 <div class="admin-link ">
-                    <input type="submit" name="position" value="5" id="news-list" class="d-none">
+                    <input type="submit" name="position" value="8" id="news-list" class="d-none">
                     <label for="news-list" class="d-flex px-4 align-items-center admin-nav-label">
                         <i class="fa-solid fa-list"></i>
                         <div class="mx-2">List news</div>

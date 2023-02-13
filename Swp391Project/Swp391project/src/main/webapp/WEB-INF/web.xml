@@ -12,10 +12,6 @@
         <servlet-name>loginController</servlet-name>
         <servlet-class>com.groud2.web.controller.loginController</servlet-class>
     </servlet>
-    <servlet>
-        <servlet-name>addStaff</servlet-name>
-        <servlet-class>com.groud2.web.controller.AddStaff</servlet-class>
-    </servlet>
     <!-->>>>>>> Stashed changes-->
     <servlet>
         <servlet-name>profileController</servlet-name>
@@ -110,16 +106,20 @@
         <url-pattern>/manageStaff</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>AddtocartController</servlet-name>
-        <url-pattern>/addtocart</url-pattern>
+        <servlet-name>adminManageCustomer</servlet-name>
+        <url-pattern>/manageCustomer</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>showCartController</servlet-name>
-        <url-pattern>/show</url-pattern>
+        <servlet-name>adminManageRoom</servlet-name>
+        <url-pattern>/manageRoom</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>glasses</servlet-name>
-        <url-pattern>/glasses</url-pattern>
+        <servlet-name>adminManageGlasses</servlet-name>
+        <url-pattern>/manageGlasses</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Feedback</servlet-name>
+        <url-pattern>/feedback</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
