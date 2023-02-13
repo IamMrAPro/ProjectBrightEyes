@@ -65,6 +65,22 @@
         <servlet-name>glasses</servlet-name>
         <servlet-class>com.groud2.web.controller.glassesController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>adminManageRoom</servlet-name>
+        <servlet-class>com.groud2.web.controller.AdminController.AdminManageRoomController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>manageGlasses</servlet-name>
+        <servlet-class>com.groud2.web.controller.AdminController.AdminManageGlassesController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Adminfeedback</servlet-name>
+        <servlet-class>com.groud2.web.controller.AdminController.AdminViewFeedback</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AdminmanageCustomer</servlet-name>
+        <servlet-class>com.groud2.web.controller.AdminController.AdminManageCustomerController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>homeController</servlet-name>
         <url-pattern>/home</url-pattern>
@@ -106,20 +122,32 @@
         <url-pattern>/manageStaff</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>adminManageCustomer</servlet-name>
-        <url-pattern>/manageCustomer</url-pattern>
+        <servlet-name>showCartController</servlet-name>
+        <url-pattern>/show</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>glasses</servlet-name>
+        <url-pattern>/glasses</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AddtocartController</servlet-name>
+        <url-pattern>/addtocart</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>adminManageRoom</servlet-name>
         <url-pattern>/manageRoom</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>adminManageGlasses</servlet-name>
+        <servlet-name>manageGlasses</servlet-name>
         <url-pattern>/manageGlasses</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>Feedback</servlet-name>
+        <servlet-name>Adminfeedback</servlet-name>
         <url-pattern>/feedback</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AdminmanageCustomer</servlet-name>
+        <url-pattern>/manageCustomer</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
