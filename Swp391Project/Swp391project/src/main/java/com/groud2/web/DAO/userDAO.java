@@ -292,7 +292,46 @@ public ArrayList<user> getAllByAcc(String account) throws SQLException, IOExcept
         return name;
     }
 
-
+public void addUser(String id,  String name,String mail) {
+    try {
+            String sql = "insert into user(userId, fullname,email) "
+                    + " values(?, ?, ?)";
+            connection = dbc.getConnection();
+            ps = connection.prepareStatement(sql);
+            ps.setString(1, id);
+            ps.setString(2, name);
+            ps.setString(2, mail);
+            
+            
+            ps.execute();
+        } catch (Exception e) {
+            System.out.println("Add new staff to db error: " + e.getMessage());
+        }
+}
+ public boolean createData(String fullname, String account,String email) throws SQLException {
+        String sql = "INSERT INTO `swp`.`user`\n"
+                    + "(`fullname`,`account`,`email`,`role`) values (?,?,?,?)";       
+        try {   
+            System.out.println("name"+fullname);
+            connection = dbc.getConnection();
+            ps = connection.prepareStatement(sql);
+            ps.setString(1, fullname);
+            ps.setString(2, account);
+            
+            ps.setString(3, email);
+             ps.setString(4, "customer");
+            ps.executeUpdate();
+          
+            return true;
+        } catch (SQLException e) {
+                 System.out.println("Create error : " + e.getMessage());
+        } finally {
+            if (connection != null) {
+                connection.close();
+            }
+        }
+        return false;
+      }
 
 
 
@@ -334,9 +373,31 @@ public user getUser(String account) throws SQLException {
         return g;
 }
 
-    public user getAccountInfomationByEmail(String email) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public user checklogin(String id) throws SQLException {
+        String sql = "SELECT account,password FROM swp.user where account=? ";
+
+        try {
+            connection = dbc.getConnection();
+            ps = connection.prepareStatement(sql);
+            ps.setString(1, id);
+            
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                return new user(rs.getString(1));
+            }
+        } catch (SQLException e) {
+
+                
+                return new user(rs.getString(1));
+     } finally {
+            if (connection != null) {
+                connection.close();
+            }
+        }
+        return null;
     }
+
+   
 }  
 
 

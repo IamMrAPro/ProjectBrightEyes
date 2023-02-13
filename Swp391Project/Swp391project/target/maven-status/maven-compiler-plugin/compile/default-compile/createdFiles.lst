@@ -5,6 +5,7 @@ com\groud2\web\model\room.class
 com\groud2\web\controller\registerController.class
 com\groud2\web\Payment\PaymentServices.class
 com\groud2\web\controller\homeController.class
+com\groud2\web\controller\logoutController.class
 com\groud2\web\controller\loginController.class
 com\groud2\web\model\OrderGlasses\Cart.class
 com\groud2\web\service\sendMail.class
@@ -14,7 +15,6 @@ com\groud2\web\model\user.class
 com\groud2\web\DAO\bookingDAO.class
 com\groud2\web\access\google\LoginGoogleServlet.class
 com\groud2\web\DAO\userDAO.class
-com\groud2\web\access\google\GooglePojo.class
 com\groud2\web\model\OrderGlasses\OderDetail.class
 com\groud2\web\controller\changeProfile.class
 com\groud2\web\model\news.class
@@ -28,6 +28,7 @@ com\groud2\web\model\booking.class
 com\groud2\web\model\glasses.class
 com\groud2\web\controller\AdminController\AdminManagerStaffController.class
 com\groud2\web\model\OrderGlasses\Item.class
+com\groud2\web\access\google\GoogleUser.class
 com\groud2\web\controller\ProcessCartController.class
 com\groud2\web\controller\AdminController\AdminManageCustomerController.class
 com\groud2\web\DAO\glassesDAO.class
