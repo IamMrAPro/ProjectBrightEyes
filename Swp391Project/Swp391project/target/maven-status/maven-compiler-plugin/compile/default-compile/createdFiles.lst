@@ -3,6 +3,7 @@ com\groud2\web\controller\profileController.class
 com\groud2\web\DAO\newsDAO.class
 com\groud2\web\model\room.class
 com\groud2\web\controller\registerController.class
+com\groud2\web\Payment\PaymentServices.class
 com\groud2\web\controller\homeController.class
 com\groud2\web\controller\loginController.class
 com\groud2\web\model\OrderGlasses\Cart.class

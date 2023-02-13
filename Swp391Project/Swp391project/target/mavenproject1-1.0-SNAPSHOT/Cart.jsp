@@ -205,7 +205,7 @@
                         </form>
                         <div class="row" style="border-top: 1px solid rgba(0,0,0,.1); padding: 2vh 0;">
                             <div class="col">TOTAL PRICE</div>
-                            <div class="col text-right">${o.getTotalMoney()} VND</div>
+                            <div class="col text-right">${o.getTotalMoney()}</div>
                         </div>
                         <form action="checkout" method="post">
                             <input class="btn"value="CHECKOUT"/> 
