@@ -158,12 +158,8 @@
         <url-pattern>/manageCustomer</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>logoutController</servlet-name>
-        <url-pattern>/logout</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>CheckoutController</servlet-name>
-        <url-pattern>/checkout</url-pattern>
+        <servlet-name>AdminEditUser</servlet-name>
+        <url-pattern>/editUser</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

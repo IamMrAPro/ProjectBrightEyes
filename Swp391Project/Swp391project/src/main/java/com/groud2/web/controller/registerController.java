@@ -82,11 +82,6 @@ public class registerController extends HttpServlet {
             password = encyptPass(password);
         } catch (NoSuchAlgorithmException ex) {
             System.out.println("encode password error: " + ex.getMessage());
-        }     
-        try {
-            password = encyptPass(password);
-        } catch (NoSuchAlgorithmException ex) {
-            System.out.println("encode password error: " + ex.getMessage());
         }
         
         userDAO u = new userDAO();

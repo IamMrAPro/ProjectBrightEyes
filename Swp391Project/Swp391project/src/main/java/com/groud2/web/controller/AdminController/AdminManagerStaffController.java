@@ -10,6 +10,7 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -23,6 +24,9 @@ public class AdminManagerStaffController extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         userDAO u = new userDAO();
         ArrayList<user> listUser = u.getListUser("admin", "");
+        HttpSession session = req.getSession();
+        String username = (String) session.getAttribute("id");
+        req.setAttribute("username", username);
         req.setAttribute("listUser", listUser);
         req.getRequestDispatcher("AdminView/admin-screen/ManageStaff.jsp").forward(req, resp);
     }
@@ -34,15 +38,23 @@ public class AdminManagerStaffController extends HttpServlet {
             //Get request from client
             String position = req.getParameter("position");
             String setPos = req.getParameter("setPosition");
-            if(position == null) position = setPos;
+            if (position == null) {
+                position = setPos;
+            }
             System.out.println("My position: " + position);
             //Handle request
             if (position.equals("2")) {
-                userDAO u = new userDAO();
+
                 String search = req.getParameter("staffSearch");
-                ArrayList<user> listUser = u.getListUser("admin", search);
-                req.setAttribute("listUser", listUser);
-                req.getRequestDispatcher("AdminView/admin-screen/ManageStaff.jsp").forward(req, resp);
+                String sort = req.getParameter("sortByName");
+                
+                
+                //search staff
+                if(search != null){
+                    searchStaff(search, req, resp);
+                }
+                
+                
             } else {
                 changePosition(position, req, resp);
             }
@@ -80,5 +92,13 @@ public class AdminManagerStaffController extends HttpServlet {
             default:
                 throw new AssertionError();
         }
+    }
+
+    //search list staff
+    public void searchStaff(String search, HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        userDAO u = new userDAO();
+        ArrayList<user> listUser = u.getListUser("admin", search);
+        req.setAttribute("listUser", listUser);
+        req.getRequestDispatcher("AdminView/admin-screen/ManageStaff.jsp").forward(req, resp);
     }
 }

@@ -20,6 +20,10 @@
             border: 0.5px solid black;
             outline: none;
         }
+        
+        .table-header-glass {
+            background-color: #5bc1ac;
+        }
     </style>
     <body onload="getPositionNavBar(4)">
         <form action="manageGlasses" class="vw-100 vh-100 d-flex" method="post">
@@ -38,7 +42,7 @@
                 
                 <% int count = 0;%>
                 <table class="table table-bordered mt-4">
-                    <thead>
+                    <thead class="table-header-glass">
                         <tr>
                             <th>No.</th>
                             <th>Image</th>
