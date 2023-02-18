@@ -71,9 +71,9 @@
     </head>
     <body>
         <div class="admin-nav vh-100">
-            <a href="" class="text-center text-decoration-none admin-info">
+            <a href="profile" class="text-center text-decoration-none admin-info">
                 <div class="fs-2"><i class="fa-solid fa-user"></i></div>
-                <div>User name</div>
+                <div>${username}</div>
             </a>
 
             <br>

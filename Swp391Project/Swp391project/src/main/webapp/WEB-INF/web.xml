@@ -81,6 +81,10 @@
         <servlet-name>AdminmanageCustomer</servlet-name>
         <servlet-class>com.groud2.web.controller.AdminController.AdminManageCustomerController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>AdminEditUser</servlet-name>
+        <servlet-class>com.groud2.web.controller.AdminController.AdminEditUser</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>homeController</servlet-name>
         <url-pattern>/home</url-pattern>
@@ -148,6 +152,10 @@
     <servlet-mapping>
         <servlet-name>AdminmanageCustomer</servlet-name>
         <url-pattern>/manageCustomer</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AdminEditUser</servlet-name>
+        <url-pattern>/editUser</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

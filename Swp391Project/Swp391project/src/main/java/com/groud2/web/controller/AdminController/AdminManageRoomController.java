@@ -10,6 +10,7 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -24,6 +25,9 @@ public class AdminManageRoomController extends HttpServlet {
         roomDAO r = new roomDAO();
         ArrayList<room> listRoom = r.getListRoom("");
 
+        HttpSession session = req.getSession();
+         String username = (String)session.getAttribute("id");
+         req.setAttribute("username", username);
         req.setAttribute("listRoom", listRoom);
         req.getRequestDispatcher("AdminView/admin-screen/ManageRoom.jsp").forward(req, resp);
     }
