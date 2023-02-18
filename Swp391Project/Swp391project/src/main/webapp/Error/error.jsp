@@ -1,9 +1,3 @@
-<%-- 
-    Document   : 404
-    Created on : Jan 29, 2023, 9:47:52 AM
-    Author     : anhha
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -15,8 +9,8 @@
             <div class="container">
                 <div class="row justify-content-center">
                     <div class="col-lg-7 col-md-10 text-center">
-                        <img src="assets/images/error.svg" class="img-fluid" alt="">
-                        <h3 class="mb-4">Looks like your link is not available.</h3>
+                        <img src="assets/images/500.svg" class="img-fluid" alt="">
+                        <h3 class="mb-4">There's been a serious problem.</h3>
                         <a href="home" class="btn btn-primary mt-2">Back to home page</a>
                     </div>
                 </div>

@@ -1,4 +1,5 @@
 D:\SubjectSpring2022\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\DAO\newsDAO.java
+D:\SubjectSpring2022\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\Payment\ExecutePaymentServlet.java
 D:\SubjectSpring2022\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\DAO\context\DBContext.java
 D:\SubjectSpring2022\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\Payment\PaymentServices.java
 D:\SubjectSpring2022\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\DAO\glassesDAO.java
@@ -16,6 +17,7 @@ D:\SubjectSpring2022\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web
 D:\SubjectSpring2022\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\controller\AdminController\AdminManagerStaffController.java
 D:\SubjectSpring2022\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\controller\registerController.java
 D:\SubjectSpring2022\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\server\ChatRoomServerEndpoint.java
+D:\SubjectSpring2022\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\Payment\CheckoutController.java
 D:\SubjectSpring2022\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\model\glasses.java
 D:\SubjectSpring2022\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\controller\AdminController\AdminManageRoomController.java
 D:\SubjectSpring2022\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\DAO\bookingDAO.java
@@ -28,11 +30,11 @@ D:\SubjectSpring2022\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web
 D:\SubjectSpring2022\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\model\OrderGlasses\Order.java
 D:\SubjectSpring2022\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\controller\glassesController.java
 D:\SubjectSpring2022\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\controller\bookingController.java
-D:\SubjectSpring2022\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\model\OrderGlasses\OderDetail.java
 D:\SubjectSpring2022\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\model\user.java
 D:\SubjectSpring2022\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\access\facebook\RestFB.java
 D:\SubjectSpring2022\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\controller\homeController.java
 D:\SubjectSpring2022\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\controller\AdminController\AdminManageCustomerController.java
+D:\SubjectSpring2022\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\Payment\ReviewPaymentServlet.java
 D:\SubjectSpring2022\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\model\profile.java
 D:\SubjectSpring2022\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\controller\changeProfile.java
 D:\SubjectSpring2022\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\access\google\LoginGoogleServlet.java

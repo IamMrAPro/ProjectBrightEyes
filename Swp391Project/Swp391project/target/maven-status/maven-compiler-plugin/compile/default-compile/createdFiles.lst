@@ -1,6 +1,7 @@
 com\groud2\web\controller\showCartController.class
 com\groud2\web\controller\profileController.class
 com\groud2\web\DAO\newsDAO.class
+com\groud2\web\Payment\ReviewPaymentServlet.class
 com\groud2\web\model\room.class
 com\groud2\web\controller\registerController.class
 com\groud2\web\Payment\PaymentServices.class
@@ -12,10 +13,10 @@ com\groud2\web\service\sendMail.class
 com\groud2\web\controller\AdminController\AdminManageGlassesController.class
 com\groud2\web\controller\glassesController.class
 com\groud2\web\model\user.class
+com\groud2\web\Payment\CheckoutController.class
 com\groud2\web\DAO\bookingDAO.class
 com\groud2\web\access\google\LoginGoogleServlet.class
 com\groud2\web\DAO\userDAO.class
-com\groud2\web\model\OrderGlasses\OderDetail.class
 com\groud2\web\controller\changeProfile.class
 com\groud2\web\model\news.class
 com\groud2\web\controller\AdminController\AdminManageRoomController.class
@@ -32,6 +33,7 @@ com\groud2\web\access\google\GoogleUser.class
 com\groud2\web\controller\ProcessCartController.class
 com\groud2\web\controller\AdminController\AdminManageCustomerController.class
 com\groud2\web\DAO\glassesDAO.class
+com\groud2\web\Payment\ExecutePaymentServlet.class
 com\groud2\web\DAO\context\DBContext.class
 com\groud2\web\access\facebook\LoginFacebookServlet.class
 com\groud2\web\controller\AdminController\AdminViewFeedback.class

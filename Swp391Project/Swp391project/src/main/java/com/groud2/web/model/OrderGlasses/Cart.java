@@ -32,7 +32,13 @@ public class Cart {
     }
         return  null;
     }
-   
+   public String getListname(){
+       String name ="Glasses: ";
+       for(Item i :items){
+           name +=i.getGlass().getGlassName();
+       }
+       return name;
+   }
     public void addItem(Item t){
         if(getItemById(t.getGlass().getGlassID())!=null){
             Item m = getItemById(t.getGlass().getGlassID());
