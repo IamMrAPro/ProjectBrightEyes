@@ -43,7 +43,8 @@ public class glassesDAO {
                 String style= rs.getString(6);
                 String image= rs.getString(7);
                 String price= rs.getString(8);
-                String quantity= rs.getString(9);
+//                String quantity= rs.getString(9);
+                String quantity = "100";
                 if(gender.equals("1")){
                     gende = "Male";
                 }else{
@@ -147,7 +148,8 @@ public class glassesDAO {
                 String style = rs.getString(6);
                 String image = rs.getString(7);
                 String price = rs.getString(8);
-                 String quantity= rs.getString(9);
+//                 String quantity= rs.getString(9);
+                String quantity = "100";
                 
                 glasses g = new glasses(id, name, color, gender, material, style, image, price,Integer.parseInt(quantity));
                 if(name.toLowerCase().contains(search.toLowerCase())){
