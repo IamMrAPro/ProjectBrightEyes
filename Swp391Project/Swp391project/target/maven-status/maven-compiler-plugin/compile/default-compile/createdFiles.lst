@@ -24,6 +24,7 @@ com\groud2\web\DAO\context\DBContext.class
 com\groud2\web\DAO\roomDAO.class
 com\groud2\web\access\google\GoogleUtils.class
 com\groud2\web\controller\newsController.class
+com\groud2\web\controller\SearchController.class
 com\groud2\web\controller\singleNewsController.class
 com\groud2\web\model\room.class
 com\groud2\web\controller\registerController.class
