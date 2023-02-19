@@ -407,7 +407,7 @@ public user getUser(String account) throws SQLException {
 
                 
                 return new user(rs.getString(1));
-     } finally {
+     } finally {}return null;}
 
 public void updatePass(String newPass, String account) {
         

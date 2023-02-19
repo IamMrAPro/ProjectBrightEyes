@@ -16,6 +16,7 @@
     <servlet>
         <servlet-name>profileController</servlet-name>
         <servlet-class>com.groud2.web.controller.profileController</servlet-class>
+    </servlet>
     <servlet>
         <servlet-name>addStaff</servlet-name>
         <servlet-class>com.groud2.web.controller.AddStaff</servlet-class>
@@ -66,10 +67,6 @@
         <servlet-class>com.groud2.web.controller.showCartController</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>glasses</servlet-name>
-        <servlet-class>com.groud2.web.controller.glassesController</servlet-class>
-    </servlet>
-    <servlet>
         <servlet-name>adminManageRoom</servlet-name>
         <servlet-class>com.groud2.web.controller.AdminController.AdminManageRoomController</servlet-class>
     </servlet>
@@ -105,6 +102,7 @@
         <servlet-name>DeleteGlasses</servlet-name>
         <servlet-class>com.groud2.web.controller.AdminController.DeleteGlasses</servlet-class>
     </servlet>
+    <servlet>
         <servlet-name>PasswordController</servlet-name>
         <servlet-class>com.groud2.web.controller.PasswordController</servlet-class>
     </servlet>
@@ -112,10 +110,10 @@
         <servlet-name>SearchController</servlet-name>
         <servlet-class>com.groud2.web.controller.SearchController</servlet-class>
     </servlet>
-    <servlet-mapping>
+    <servlet>
         <servlet-name>glassesController</servlet-name>
-        <url-pattern>/glasses</url-pattern>
-    </servlet-mapping>
+        <servlet-class>com.groud2.web.controller.glassesController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>homeController</servlet-name>
         <url-pattern>/home</url-pattern>
@@ -131,6 +129,8 @@
     <servlet-mapping>
         <servlet-name>profileController</servlet-name>
         <url-pattern>/profile</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
         <servlet-name>addtoCart</servlet-name>
         <url-pattern>/addtoCart</url-pattern>
     </servlet-mapping>
@@ -166,10 +166,10 @@
         <servlet-name>showCartController</servlet-name>
         <url-pattern>/show</url-pattern>
     </servlet-mapping>
-    <servlet-mapping>
+    <!--    <servlet-mapping>
         <servlet-name>glasses</servlet-name>
         <url-pattern>/glasses</url-pattern>
-    </servlet-mapping>
+    </servlet-mapping>-->
     <servlet-mapping>
         <servlet-name>AddtocartController</servlet-name>
         <url-pattern>/addtocart</url-pattern>
@@ -205,6 +205,8 @@
     <servlet-mapping>
         <servlet-name>CreateCaptcha</servlet-name>
         <url-pattern>/createCaptcha</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
         <servlet-name>PasswordController</servlet-name>
         <url-pattern>/forgotpassword</url-pattern>
     </servlet-mapping>
@@ -215,6 +217,10 @@
     <servlet-mapping>
         <servlet-name>DeleteGlasses</servlet-name>
         <url-pattern>/DeleteGlasses</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>glassesController</servlet-name>
+        <url-pattern>/glasses</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
