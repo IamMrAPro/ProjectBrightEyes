@@ -92,10 +92,14 @@
     <servlet>
         <servlet-name>AdminEditUser</servlet-name>
         <servlet-class>com.groud2.web.controller.AdminController.AdminEditUser</servlet-class>
-        </servlet>
+    </servlet>
     <servlet>
         <servlet-name>CreateCaptcha</servlet-name>
         <servlet-class>com.groud2.web.controller.CaptchaController.CreateCaptchaServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>DeleteGlasses</servlet-name>
+        <servlet-class>com.groud2.web.controller.AdminController.DeleteGlasses</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>homeController</servlet-name>
@@ -180,6 +184,10 @@
     <servlet-mapping>
         <servlet-name>CreateCaptcha</servlet-name>
         <url-pattern>/createCaptcha</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DeleteGlasses</servlet-name>
+        <url-pattern>/DeleteGlasses</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

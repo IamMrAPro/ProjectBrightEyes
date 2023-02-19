@@ -1,5 +1,6 @@
 D:\SubjectSpring2022\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\DAO\newsDAO.java
 D:\SubjectSpring2022\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\Payment\PaymentServices.java
+D:\SubjectSpring2022\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\controller\CaptchaController\CreateCaptchaServlet.java
 D:\SubjectSpring2022\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\controller\ProcessCartController.java
 D:\SubjectSpring2022\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\model\OrderGlasses\Item.java
 D:\SubjectSpring2022\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\controller\AdminController\AdminViewFeedback.java
@@ -37,6 +38,7 @@ D:\SubjectSpring2022\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web
 D:\SubjectSpring2022\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\controller\AdminController\AdminManageRoomController.java
 D:\SubjectSpring2022\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\controller\singleNewsController.java
 D:\SubjectSpring2022\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\access\common\Constants.java
+D:\SubjectSpring2022\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\controller\AdminController\DeleteGlasses.java
 D:\SubjectSpring2022\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\controller\logoutController.java
 D:\SubjectSpring2022\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\model\news.java
 D:\SubjectSpring2022\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\controller\bookingController.java

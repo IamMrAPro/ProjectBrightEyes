@@ -58,7 +58,7 @@
                         <c:forEach items="${listGlasses}" var="g">
                             <tr>
                                 <td><% count++; out.print(count);%></td>
-                                <td>${g.getImage()}</td>
+                                <td><img src="${g.getImage()}" width="60" height="70"alt="alt"/></td>
                                 <td>${g.getGlassName()}</td>
                                 <td>${g.getColor()}</td>
                                 <td>${g.getGender()}</td>
@@ -67,7 +67,7 @@
                                 <td class="d-flex justify-content-around h-100">
                                     <a href=""><i class="fa-solid fa-pen"></i></a>
                                     <a href=""><i class="fa-solid fa-cart-shopping"></i></a>
-                                    <a href=""><i class="fa-solid fa-arrow-right"></i></a>
+                                    <a href="DeleteGlasses?idGlasses=${g.getGlassID()}"><i class="fa-solid fa-close"></i></a>
                                 </td>
                             </tr>
                         </c:forEach>

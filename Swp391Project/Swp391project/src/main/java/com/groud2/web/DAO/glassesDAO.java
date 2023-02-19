@@ -167,6 +167,15 @@ public class glassesDAO {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
+    public void deleteGlasses(String id) throws SQLException {
+       String mysql = "DELETE FROM `swp`.`glasses`\n" +
+"WHERE glassesID = \""+id+"\";";
+            connection = dbc.getConnection();
+            ps = connection.prepareStatement(mysql);
+          
+            ps.executeUpdate();
+    }
+
    
 
   

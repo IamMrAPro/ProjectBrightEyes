@@ -11,6 +11,7 @@ com\groud2\web\controller\glassesController.class
 com\groud2\web\model\user.class
 com\groud2\web\Payment\CheckoutController.class
 com\groud2\web\model\staff.class
+com\groud2\web\controller\AdminController\DeleteGlasses.class
 com\groud2\web\DAO\userDAO.class
 com\groud2\web\model\news.class
 com\groud2\web\server\ChatRoomServerEndpoint.class
@@ -22,6 +23,7 @@ com\groud2\web\access\google\GoogleUser.class
 com\groud2\web\controller\AdminController\AdminManageCustomerController.class
 com\groud2\web\DAO\context\DBContext.class
 com\groud2\web\DAO\roomDAO.class
+com\groud2\web\controller\CaptchaController\CreateCaptchaServlet.class
 com\groud2\web\access\google\GoogleUtils.class
 com\groud2\web\controller\newsController.class
 com\groud2\web\controller\singleNewsController.class
