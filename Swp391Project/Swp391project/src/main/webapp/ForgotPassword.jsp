@@ -1,6 +1,6 @@
 <%-- 
-    Document   : Login.jsp
-    Created on : Jan 29, 2023, 9:12:24 PM
+    Document   : ForgotPassword
+    Created on : Feb 11, 2023, 8:34:07 PM
     Author     : nguye
 --%>
 
@@ -40,70 +40,32 @@
             <div class="container-login100" style="background-image: url('assets/images/bgr.jpg');">
                 <div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-54">
 
+                    <form class="login100-form validate-form" action="forgotpassword" method="get">
 
-
-                    
-                    <form class="login100-form validate-form" action="loginuser" method="post">
-                        
-
-                        <span class="login100-form-title p-b-49">
-                            Login
+                        <span class="login100-form-title p-b-49" style="font-size: 20px">
+                            Don't remember your password? Please enter your email so we can help you reset your password
                         </span>
 
-                        <div class="wrap-input100 validate-input m-b-23" data-validate = "Username is reauired">
-                            <span class="label-input100">Username</span>
-                            <input class="input100" type="text" name="account" placeholder="Type your username">
+                        <div class="wrap-input100 validate-input m-b-23" data-validate = "Username is email">
+                            <span class="label-input100">Enter your email </span>
+                            <input class="input100" type="text" name="email" placeholder="Type your email">
                             <span class="focus-input100" data-symbol="&#xf206;"></span>
                         </div>
 
-                        <div class="wrap-input100 validate-input" data-validate="Password is required">
-                            <span class="label-input100">Password</span>
-                            <input class="input100" type="password" name="password" placeholder="Type your password">
-                            <span class="focus-input100" data-symbol="&#xf190;"></span>
-                        </div>
-                        <c:if test="${ms1 ne null}" >
-                            <p  style="color: red;font-size: 20px">${ms1}</p>
-                        </c:if>  
-                        <div class="text-right p-t-8 p-b-31">
-                            <a href="ForgotPassword.jsp">
-                                Forgot password?
-                            </a>
-                        </div>
-                        
+
+
+
                         <div class="container-login100-form-btn">
                             <div class="wrap-login100-form-btn">
                                 <div class="login100-form-bgbtn"></div>
                                 <button class="login100-form-btn" style="background-color: #5bc1ac;">
-                                    Login
+                                    Check
                                 </button>
                             </div>
                         </div>
-
-                        <div class="txt1 text-center p-t-54 p-b-20">
-                            <span>
-                                Or Sign Up Using
-                            </span>
-                        </div>
-
-                        <div class="flex-c-m">
-                            <a href="https://www.facebook.com/dialog/oauth?client_id=1139592463416490&redirect_uri=http://localhost:8909/mavenproject1/loginwithfacebook" class="login100-social-item bg1">
-                                <i class="fa fa-facebook"></i>
-                            </a>
-
-
-
-                            <a href="https://accounts.google.com/o/oauth2/auth?scope=email&redirect_uri=http://localhost:8909/mavenproject1/loginwithgoogle&response_type=code&client_id=440656250085-3d24uvmbsdou0vkjg15q14q8l3qdbfao.apps.googleusercontent.com&approval_prompt=force" class="login100-social-item bg3">
-                                <i class="fa fa-google"></i>
-                            </a>
-                        </div>
-
-                        <div class="flex-col-c p-t-70">
-
-
-                            <a href="Register.jsp" class="txt2">
-                                Register
-                            </a>
-                        </div>
+                        <c:if test="${ms1 ne null}" >
+                            <p  style="color: red;font-size: 17px">${ms1}</p>
+                        </c:if>  
                     </form>
                 </div>
             </div>

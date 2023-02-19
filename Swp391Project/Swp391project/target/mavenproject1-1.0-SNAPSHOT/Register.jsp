@@ -33,6 +33,8 @@
         <link rel="stylesheet" type="text/css" href="assets/css/util.css">
         <link rel="stylesheet" type="text/css" href="assets/css/main.css">
         <!--===============================================================================================-->
+
+
     </head>
     <body>
 
@@ -40,7 +42,9 @@
             <div class="container-login100" style="background-image: url('assets/images/bgr.jpg');">
                 <div class="wrap-login100 p-l-50 p-r-50 p-t-60 p-b-49">
                     <form class="login100-form validate-form" action="register" method="get">
-
+                        <c:if test="${ms1 ne null}" >
+                            <p  style="color: red;font-size: 20px">${ms1}</p>
+                        </c:if>  
                         <span class="login100-form-title p-b-30">
                             Register
                         </span>
@@ -58,16 +62,13 @@
                         <div class="wrap-input100 validate-input m-b-13" data-validate="Password is required">
                             <span class="label-input100">Password</span>
                             <input class="input100" type="password" name="password" placeholder="Type your password">
+                           
                             <span class="focus-input100" data-symbol="&#xf190;"></span>
                         </div>
-                        <div class="wrap-input100 validate-input m-b-13" data-validate="Password is required">
-                            <span class="label-input100">Re-Password</span>
-                            <input class="input100" type="password" name="repassword" placeholder="Type your Re-password">
-                            <span class="focus-input100" data-symbol="&#xf190;"></span>
-                        </div>
+
                         <div class="wrap-input100 validate-input m-b-13" data-validate="Phone number is required">
                             <span class="label-input100">Phone number</span>
-                            <input class="input100" type="text" name="phonenumber" maxlength="10" minlength="10" placeholder="Type your Phone number">
+                            <input class="input100" type="number" name="phonenumber" maxlength="10" minlength="10"  placeholder="Type your Phone number">
                             <span class="focus-input100" data-symbol="&#xf204;"></span>
                         </div>
                         <div class="wrap-input100 validate-input m-b-13" data-validate="Address is required">
@@ -82,7 +83,7 @@
                             <span class="focus-input100" data-symbol="&#xf195;"></span>
                         </div>
                         <div class="wrap-input100 validate-input m-b-13" >
-                            <input type="radio" name="gender" value="Male" style="margin-left: 50px"> Male
+                            <input type="radio" name="gender" value="Male" style="margin-left: 50px" checked> Male
                             <input type="radio" name="gender" value="FeMale" style="margin-left: 150px"> FeMale 
                         </div>
                         <div class="wrap-input100 validate-input m-b-13" data-validate="Phone number is required">
@@ -95,9 +96,7 @@
                         <div class="container-login100-form-btn">
                             <div class="wrap-login100-form-btn">
                                 <div class="login100-form-bgbtn"></div>
- <!--                                <button class="login100-form-btn" style="background-color: #5bc1ac;">
-                                    Register
-                                </button>-->
+
                                 <input type="submit" name="Register" value="Register" class="login100-form-btn" style="background-color: #5bc1ac" >
                             </div>
                         </div>                 

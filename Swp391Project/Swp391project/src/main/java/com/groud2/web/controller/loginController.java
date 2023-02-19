@@ -1,6 +1,5 @@
 package com.groud2.web.controller;
 
-
 import com.groud2.web.DAO.userDAO;
 import com.groud2.web.model.user;
 
@@ -19,17 +18,12 @@ import jakarta.xml.bind.DatatypeConverter;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
-
-
 //>>>>>>> Stashed changes:Swp391Project/Swp391project/src/main/java/loginController.java
-
-
 /**
  *
  * @author anhha
  */
 public class loginController extends HttpServlet {
-
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -40,7 +34,6 @@ public class loginController extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
@@ -50,10 +43,9 @@ public class loginController extends HttpServlet {
             out.println("<html>");
             out.println("<head>");
 
-            out.println("<title>Servlet loginController</title>");            
-
             out.println("<title>Servlet loginController</title>");
 
+            out.println("<title>Servlet loginController</title>");
 
 //=======
             out.println("<title>Servlet loginController</title>");
@@ -67,32 +59,26 @@ public class loginController extends HttpServlet {
         }
     }
 
-
-
-
-
-
-
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
-
             throws ServletException, IOException {
-    request.getRequestDispatcher("Login.jsp").forward(request, response);
-}
+        
+        request.getRequestDispatcher("Login.jsp").forward(request, response);
+    }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-       String account = request.getParameter("account");
+        String account = request.getParameter("account");
         String password = request.getParameter("password");
-        
+
         try {
             password = encyptPass(password);
         } catch (NoSuchAlgorithmException ex) {
             System.out.println("encode password error: " + ex.getMessage());
         }
-        
+
         System.out.println("password = " + password);
         //Xu ly           
         userDAO u = new userDAO();
@@ -106,31 +92,28 @@ public class loginController extends HttpServlet {
                 System.out.println("User role: " + role);
                 System.out.println("Login Account: " + account);
                 session.setAttribute("id", account);
-                if(role.equals("admin")){
+                if (role.equals("admin")) {
                     response.sendRedirect("adminHome");
-                }
-                else {
+                } else {
                     response.sendRedirect("home");
                 }
-                
-
 
             } else {
-                response.sendRedirect("loginuser");
+                request.setAttribute("ms1", "Wrong user or password");
+               request.getRequestDispatcher("Login.jsp").forward(request, response);
 
             }
         } catch (SQLException ex) {
             Logger.getLogger(loginController.class.getName()).log(Level.SEVERE, null, ex);
         }
 
-
-
     }
- @Override
+
+    @Override
     public String getServletInfo() {
         return "Short description";
     }
-    
+
     String encyptPass(String pass) throws NoSuchAlgorithmException {
         MessageDigest md = MessageDigest.getInstance("MD5");
         md.update(pass.getBytes());

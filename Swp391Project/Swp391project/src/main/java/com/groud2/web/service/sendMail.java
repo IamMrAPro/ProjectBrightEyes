@@ -47,10 +47,8 @@ public class sendMail {
 		mailMessage.setSubject("Demo send gmail from Java");
 		String emailBody = "<p style='color: red'>Demo send HTML from Java<p>";
 		mailMessage.setContent(emailBody, "text/html");
-
 		// Step3: Send mail
 		Transport transport = getMailSession.getTransport("smtp");
-
 		transport.connect("smtp.gmail.com", "anhhq02@gmail.com", "commwhfhhhyzwkbg");
 		transport.sendMessage(mailMessage, mailMessage.getAllRecipients());
 		transport.close();
