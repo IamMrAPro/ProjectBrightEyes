@@ -89,6 +89,10 @@
         <servlet-name>CheckoutController</servlet-name>
         <servlet-class>com.groud2.web.Payment.CheckoutController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>CreateCaptcha</servlet-name>
+        <servlet-class>com.groud2.web.controller.CaptchaController.CreateCaptchaServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>homeController</servlet-name>
         <url-pattern>/home</url-pattern>
@@ -164,6 +168,10 @@
     <servlet-mapping>
         <servlet-name>CheckoutController</servlet-name>
         <url-pattern>/checkout</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CreateCaptcha</servlet-name>
+        <url-pattern>/createCaptcha</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
