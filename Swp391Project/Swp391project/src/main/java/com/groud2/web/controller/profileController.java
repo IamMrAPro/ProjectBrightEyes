@@ -89,11 +89,14 @@ public class profileController extends HttpServlet{
             throws ServletException, IOException {
          HttpSession session = request.getSession();
         userDAO g =new userDAO();
+<<<<<<< Updated upstream
 
         user p = new user();
         
         String account = (String) session.getAttribute("id");
 
+=======
+>>>>>>> Stashed changes
       
         
         String account = (String) session.getAttribute("id");
@@ -182,12 +185,16 @@ public class profileController extends HttpServlet {
                 session.setAttribute("pass", pass);
                 session.setAttribute("image", image); 
                 session.setAttribute("gender", gender);
+<<<<<<< Updated upstream
 
                 
                 System.out.println("test: "+name);
 
                 System.out.println("test name profile: "+name);
 
+=======
+                System.out.println("test name profile: "+name);
+>>>>>>> Stashed changes
                 
                 System.out.println("test: "+account);
             request.setAttribute("list", list);

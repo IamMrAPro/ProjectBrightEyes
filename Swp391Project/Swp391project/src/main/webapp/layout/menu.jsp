@@ -58,6 +58,7 @@
                         <a class="nav-link click-scroll" href="#">News</a>
                     </li>
 
+<<<<<<< Updated upstream
 
                     <li class="nav-item">
                         <a class="nav-link click-scroll" href="#">Contact</a>
@@ -112,6 +113,12 @@
 
     </div>
 </nav>
+=======
+                    <li class="nav-item">
+                        <a class="nav-link click-scroll" href="#">Contact</a>
+                    </li>
+
+>>>>>>> Stashed changes
 
 
 
@@ -150,9 +157,14 @@
 
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="home.jsp">Log out</a>
+<<<<<<< Updated upstream
                  <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="changePass.jsp">Change Password</a>
 
+=======
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="changePass.jsp">Change Password</a>
+>>>>>>> Stashed changes
                         </div>
                     </li>
                 </c:if>

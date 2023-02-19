@@ -6,17 +6,21 @@ package com.groud2.web.controller;
 
 import com.groud2.web.DAO.bookingDAO;
 
+<<<<<<< Updated upstream
 import com.groud2.web.DAO.userDAO;
 import com.groud2.web.model.booking;
 import com.groud2.web.model.user;
 
 
 
+=======
+>>>>>>> Stashed changes
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
+<<<<<<< Updated upstream
 import jakarta.servlet.http.HttpSession;
 
 
@@ -30,6 +34,12 @@ import java.util.logging.Logger;
 
 
 
+=======
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+>>>>>>> Stashed changes
 
 /**
  *
@@ -46,7 +56,7 @@ public class bookingController extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet bookingController</title>");            
+            out.println("<title>Servlet bookingController</title>");
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Servlet bookingController at " + request.getContextPath() + "</h1>");
@@ -58,6 +68,7 @@ public class bookingController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+<<<<<<< Updated upstream
         
         bookingDAO b =new bookingDAO();
 
@@ -65,6 +76,11 @@ public class bookingController extends HttpServlet {
 
         String sbtime = request.getParameter("submit_time");
 
+=======
+
+        bookingDAO b = new bookingDAO();
+        String sbtime;
+>>>>>>> Stashed changes
         String name = request.getParameter("name");
         String phone = request.getParameter("phone");
         String email = request.getParameter("email");
@@ -72,6 +88,7 @@ public class bookingController extends HttpServlet {
         String time = request.getParameter("time");
         String medical = request.getParameter("description");
         String payment = request.getParameter("payment");
+<<<<<<< Updated upstream
         
 
         
@@ -97,12 +114,26 @@ public class bookingController extends HttpServlet {
         
     } 
 
+=======
+        LocalDateTime currentDateTime = LocalDateTime.now();
+        // Định dạng ngày giờ theo định dạng "yyyy-MM-dd HH:mm:ss"
+        String formattedDateTime = currentDateTime.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+        sbtime=formattedDateTime;
+        
+        b.insert(name, phone, email, date, time, medical, payment, sbtime);
+        request.getRequestDispatcher("booking.jsp").forward(request, response);
+   
+    }
+>>>>>>> Stashed changes
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
+<<<<<<< Updated upstream
        
+=======
+>>>>>>> Stashed changes
     }
 
     @Override

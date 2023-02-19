@@ -1,15 +1,25 @@
+<<<<<<< Updated upstream
 com\groud2\web\server\ChatRoomServerEndpoint.class
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
 =======
+=======
+com\groud2\web\controller\bookListController.class
+com\groud2\web\controller\changePass.class
+>>>>>>> Stashed changes
 com\groud2\web\controller\profileController.class
 com\groud2\web\access\facebook\RestFB.class
 com\groud2\web\controller\homeController.class
 com\groud2\web\access\common\Constants.class
 com\groud2\web\model\glasses.class
 com\groud2\web\controller\loginController.class
+<<<<<<< Updated upstream
 >>>>>>> Stashed changes
 com\groud2\web\DAO\glassesDAO.class
+=======
+com\groud2\web\controller\updateController.class
+com\groud2\web\service\sendMail.class
+>>>>>>> Stashed changes
 com\groud2\web\controller\glassesController.class
 com\groud2\web\DAO\context\DBContext.class
 com\groud2\web\controller\homeController.class
@@ -33,6 +43,25 @@ com\groud2\web\DAO\bookingDAO.class
 com\groud2\web\access\google\LoginGoogleServlet.class
 com\groud2\web\DAO\userDAO.class
 com\groud2\web\access\google\GooglePojo.class
+<<<<<<< Updated upstream
+=======
+com\groud2\web\model\news.class
+com\groud2\web\server\ChatRoomServerEndpoint.class
+com\groud2\web\access\facebook\RestFB.class
+com\groud2\web\controller\searchBookingController.class
+com\groud2\web\access\common\Constants.class
+com\groud2\web\controller\AddtoCartController.class
+com\groud2\web\model\booking.class
+com\groud2\web\model\glasses.class
+com\groud2\web\controller\AdminController\AdminManagerStaffController.class
+com\groud2\web\model\cart.class
+com\groud2\web\DAO\glassesDAO.class
+com\groud2\web\DAO\context\DBContext.class
+com\groud2\web\access\facebook\LoginFacebookServlet.class
+com\groud2\web\controller\AdminController\AdminDasboardController.class
+com\groud2\web\controller\cartController.class
+com\groud2\web\DAO\roomDAO.class
+>>>>>>> Stashed changes
 com\groud2\web\controller\bookingController.class
 com\groud2\web\controller\changeProfile.class
 com\groud2\web\model\profile.class

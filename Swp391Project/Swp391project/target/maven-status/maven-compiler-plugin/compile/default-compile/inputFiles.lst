@@ -1,5 +1,6 @@
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 D:\SP2023\SWP_in\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\controller\profileController.java
 D:\SP2023\SWP_in\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\model\profile.java
 D:\SP2023\SWP_in\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\controller\homeController.java
@@ -52,4 +53,45 @@ D:\SWPproject\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\DAO\pr
 D:\SWPproject\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\controller\loginController.java
 D:\SWPproject\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\DAO\context\DBContext.java
 D:\SWPproject\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\server\ChatRoomServerEndpoint.java
+>>>>>>> Stashed changes
+=======
+D:\University\BrightEyes\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\controller\bookingController.java
+D:\University\BrightEyes\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\model\room.java
+D:\University\BrightEyes\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\access\google\LoginGoogleServlet.java
+D:\University\BrightEyes\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\controller\newsController.java
+D:\University\BrightEyes\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\model\booking.java
+D:\University\BrightEyes\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\DAO\glassesDAO.java
+D:\University\BrightEyes\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\controller\AddtoCartController.java
+D:\University\BrightEyes\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\controller\AdminController\AdminManagerStaffController.java
+D:\University\BrightEyes\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\DAO\userDAO.java
+D:\University\BrightEyes\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\model\cart.java
+D:\University\BrightEyes\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\model\Order.java
+D:\University\BrightEyes\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\access\google\GoogleUtils.java
+D:\University\BrightEyes\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\controller\bookListController.java
+D:\University\BrightEyes\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\model\Item.java
+D:\University\BrightEyes\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\DAO\bookingDAO.java
+D:\University\BrightEyes\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\controller\searchBookingController.java
+D:\University\BrightEyes\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\access\facebook\LoginFacebookServlet.java
+D:\University\BrightEyes\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\model\glasses.java
+D:\University\BrightEyes\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\controller\loginController.java
+D:\University\BrightEyes\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\access\google\GooglePojo.java
+D:\University\BrightEyes\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\DAO\roomDAO.java
+D:\University\BrightEyes\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\controller\glassesController.java
+D:\University\BrightEyes\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\model\news.java
+D:\University\BrightEyes\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\service\sendMail.java
+D:\University\BrightEyes\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\controller\AdminController\AdminDasboardController.java
+D:\University\BrightEyes\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\model\profile.java
+D:\University\BrightEyes\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\server\ChatRoomServerEndpoint.java
+D:\University\BrightEyes\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\controller\changePass.java
+D:\University\BrightEyes\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\controller\profileController.java
+D:\University\BrightEyes\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\DAO\context\DBContext.java
+D:\University\BrightEyes\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\controller\singleNewsController.java
+D:\University\BrightEyes\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\access\facebook\RestFB.java
+D:\University\BrightEyes\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\controller\updateController.java
+D:\University\BrightEyes\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\controller\homeController.java
+D:\University\BrightEyes\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\DAO\newsDAO.java
+D:\University\BrightEyes\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\model\user.java
+D:\University\BrightEyes\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\controller\cartController.java
+D:\University\BrightEyes\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\controller\registerController.java
+D:\University\BrightEyes\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\access\common\Constants.java
 >>>>>>> Stashed changes

@@ -18,7 +18,6 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-<<<<<<< Updated upstream
 <<<<<<<< Updated upstream:Swp391Project/Swp391project/src/main/java/com/groud2/web/controller/bookListController.java
 
 ========
@@ -42,13 +41,6 @@ public class searchBookingController extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-=======
-
-
-public class bookListController extends HttpServlet {
-
-
->>>>>>> Stashed changes
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
@@ -57,29 +49,22 @@ public class bookListController extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-<<<<<<< Updated upstream
 <<<<<<<< Updated upstream:Swp391Project/Swp391project/src/main/java/com/groud2/web/controller/bookListController.java
-=======
->>>>>>> Stashed changes
             out.println("<title>Servlet bookListController</title>");            
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Servlet bookListController at " + request.getContextPath() + "</h1>");
-<<<<<<< Updated upstream
 ========
             out.println("<title>Servlet searchBookingController</title>");
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Servlet searchBookingController at " + request.getContextPath() + "</h1>");
 >>>>>>>> Stashed changes:Swp391Project/Swp391project/src/main/java/com/groud2/web/controller/searchBookingController.java
-=======
->>>>>>> Stashed changes
             out.println("</body>");
             out.println("</html>");
         }
     }
 
-<<<<<<< Updated upstream
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
@@ -95,33 +80,18 @@ public class bookListController extends HttpServlet {
 <<<<<<<< Updated upstream:Swp391Project/Swp391project/src/main/java/com/groud2/web/controller/bookListController.java
         bookingDAO b = new bookingDAO();
 //        booking p = new booking();
-=======
-    @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        bookingDAO b = new bookingDAO();
-        booking p = new booking();
->>>>>>> Stashed changes
         System.out.print("Lay du lieu booking: ");
         try {
             ArrayList<booking> list = b.getAllBooking();
             System.out.println("Thanh cong");
             request.setAttribute("list", list);
-<<<<<<< Updated upstream
            
-=======
-           for(booking item : list){
-                 System.out.println("day"+item.getBookingId());
-             }
-            System.out.println("Check naem: "+p.getName());
->>>>>>> Stashed changes
             request.getRequestDispatcher("bookList.jsp").forward(request, response);
             
         } catch (SQLException ex) {
             System.out.println("failed");
             Logger.getLogger(glassesController.class.getName()).log(Level.SEVERE, null, ex);
         }
-<<<<<<< Updated upstream
 ========
         processRequest(request, response);
 >>>>>>>> Stashed changes:Swp391Project/Swp391project/src/main/java/com/groud2/web/controller/searchBookingController.java
@@ -176,20 +146,5 @@ public class bookListController extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
-=======
-    }
-
-
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        processRequest(request, response);
-    }
-
-    @Override
-    public String getServletInfo() {
-        return null;
-    }
->>>>>>> Stashed changes
 
 }

@@ -83,11 +83,15 @@ public class changePass extends HttpServlet {
         System.out.println("Check old password = " + oldPass);
         System.out.println("Check new pass: " + newPass);
         System.out.println("Check account: " + account);
+<<<<<<< Updated upstream
         boolean checkBoo = newPass.equals(checkNewPass);
         if (checkBoo == true) {
 
        
 
+=======
+       
+>>>>>>> Stashed changes
             try {
                 check = g.checkPass(account, oldPass);
                 if (check != null) {
@@ -101,6 +105,7 @@ public class changePass extends HttpServlet {
                 }
             } catch (SQLException ex) {
                 Logger.getLogger(loginController.class.getName()).log(Level.SEVERE, null, ex);
+<<<<<<< Updated upstream
 
         } else {
             String error = "Wrong re-password";
@@ -112,6 +117,11 @@ public class changePass extends HttpServlet {
        
 
 
+=======
+            }
+       
+
+>>>>>>> Stashed changes
     }
 
     /**

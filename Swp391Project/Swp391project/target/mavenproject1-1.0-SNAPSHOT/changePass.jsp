@@ -53,6 +53,8 @@
                         </div>
                         <div class="wrap-input100 validate-input m-b-23">
                             <span class="label-input100">Enter new password </span>
+<<<<<<< Updated upstream
+
                             <input class="input100" type="text" name="newPass" placeholder="Enter new password">
                             <span class="focus-input100" data-symbol="&#xf206;"></span>
                         </div>
@@ -70,9 +72,25 @@
                             %>
                         </div>
 
+=======
+>>>>>>> Stashed changes
+                            <input class="input100" type="text" minlength="8"  name="newPass" placeholder="Enter new password">
+                            <span class="focus-input100" data-symbol="&#xf206;"></span>
+                        </div>
+<!--                        <div class="wrap-input100 validate-input m-b-23">
+                            <span class="label-input100"> </span>
+                            <input class="input100" type="text" name="checkNewPass" placeholder="Enter new password again">
+                            <span class="focus-input100" data-symbol="&#xf206;"></span>
+                            
+                        </div>-->
 
 
 
+
+<<<<<<< Updated upstream
+
+=======
+>>>>>>> Stashed changes
                         <div class="container-login100-form-btn">
                             <div class="wrap-login100-form-btn">
                                 <div class="login100-form-bgbtn"></div>

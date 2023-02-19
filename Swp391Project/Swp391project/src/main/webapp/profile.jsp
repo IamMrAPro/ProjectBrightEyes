@@ -67,6 +67,7 @@
         <div class="container rounded bg-white mt-5 mb-5">
             <div class="row">
 
+<<<<<<< Updated upstream
                 ${fullname}
                <c:forEach items="${list}" var="item">
                 <div class="col-md-4 border-right">
@@ -82,6 +83,8 @@
                             <div class="col-md-12"><label class="labels">Full Name</label><input type="text" class="form-control" value="" readonly></div>
 
 
+=======
+>>>>>>> Stashed changes
                 <c:forEach items="${list}" var="item">
                     <div class="col-md-4 border-right">
                         <div class="d-flex flex-column align-items-center text-center p-3 py-5"><img class="rounded-circle mt-5" width="150px" src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg"><span class="font-weight-bold"></span><span class="text-black-50">edogaru@mail.com.my</span><span> </span></div>
@@ -92,6 +95,10 @@
                                 <h4 class="text-right">User's Profile</h4>
                             </div>
 
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
                             <div class="row mt-2">
                                 <div class="col-md-12"><label class="labels">Full Name</label><input type="text" class="form-control" value="${item.getFullname()}" readonly></div>
 
@@ -112,6 +119,7 @@
                             </div>
                         </c:forEach>
 
+<<<<<<< Updated upstream
                         </div>
                         <div class="d-grid gap-2 col-4 mx-auto" style="margin-top: 10px;color: black">
                             <button  class="btn btn-primary" type="button"><a href="url" style="color: black;">Change Profile</a></button>
@@ -137,6 +145,8 @@
                                 <button  class="btn btn-primary" type="button"><a href="url" style="color: black;">Change Profile</a></button>
                             </div>
                         </c:forEach>
+=======
+>>>>>>> Stashed changes
 
                     </div>
 

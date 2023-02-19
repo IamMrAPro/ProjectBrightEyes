@@ -5,7 +5,11 @@
 <html lang="en">
     <jsp:include page="layout/head.jsp"/>
     <head>
+<<<<<<< Updated upstream
          <link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
+=======
+        <link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
+>>>>>>> Stashed changes
         <!--===============================================================================================-->
         <link rel="stylesheet" type="text/css" href="assets/vendor/bootstrap/css/bootstrap.min.css">
         <!--===============================================================================================-->
@@ -72,13 +76,21 @@
                                         <div class="col-lg-6">
                                             <div class="mb-3">
                                                 <label class="form-label" >Phone</label>
+<<<<<<< Updated upstream
                                                 <input type="text"name="phone" validate-input class="form-control" ">
+=======
+                                                <input type="text"name="phone" minlength="10" maxlength="10" validate-input class="form-control" ">
+>>>>>>> Stashed changes
                                             </div>
                                         </div>
                                         <div class="col-lg-12">
                                             <div class="mb-3">
                                                 <label class="form-label" >Email</label>
+<<<<<<< Updated upstream
                                                 <input type="text" name="email" data-validate="Email is required" validate-input class="form-control">
+=======
+                                                <input type="text" name="email" data-validate="Email is required" required class="form-control">
+>>>>>>> Stashed changes
                                             </div>
                                         </div>
                                         <br>
@@ -88,9 +100,12 @@
                                         <br><br>
                                         <div class="col-md-6">
                                             <div class="mb-3">
-                                                <label class="form-label"> Day : </label>
-                                                <input required="" name="date" type="date" class="flatpickr flatpickr-input form-control" id="checkin-date">
+                                                <label class="form-label" for="dateInput">Select a date:</label>
+                                                <input type="date" id="dateInput" class="flatpickr flatpickr-input form-control" name="dateInput" onchange="checkDateInput()">
+
                                             </div>
+
+
                                         </div>
 
                                         <div class="col-md-6">
@@ -131,7 +146,11 @@
                                         <div class="col-lg-12">
                                             <div class="d-grid">
                                                 <button type="submit" style="display: none" name="submit_time" id="booking" class="default btn btn-primary">Đặt lịch</button>
+<<<<<<< Updated upstream
                                                 <button type="submit"  style="display: none" name="submit_time"  id="booking" class="vnpay btn btn-primary">Thanh toán</button>
+=======
+                                                <button type="submit"  style="display: none" name="submit_time"  id="booking" class="vnpay btn btn-primary"><a href="url">Thanh toán</a>   </button>
+>>>>>>> Stashed changes
                                             </div>
                                         </div>
                                     </div>
@@ -152,7 +171,11 @@
 
 
 
+<<<<<<< Updated upstream
     <script src="assets/vendor/jquery/jquery-3.2.1.min.js"></script>
+=======
+        <script src="assets/vendor/jquery/jquery-3.2.1.min.js"></script>
+>>>>>>> Stashed changes
         <!--===============================================================================================-->
         <script src="assets/vendor/animsition/js/animsition.min.js"></script>
         <!--===============================================================================================-->
@@ -168,6 +191,7 @@
         <!--===============================================================================================-->
         <script src="assets/js/main.js"></script>
         <script>
+<<<<<<< Updated upstream
             $("#checkin-date").flatpickr({
                 defaultDate: "today",
                 minDate: "today",
@@ -194,6 +218,39 @@
                 var now = new Date();
                 document.getElementById("booking").value = now.toISOString();
             }
+=======
+                                                    $("#checkin-date").flatpickr({
+                                                        defaultDate: "today",
+                                                        minDate: "today",
+                                                        maxDate: new Date().fp_incr(14),
+                                                        dateFormat: "d/m/Y",
+                                                        locale: "vn"
+                                                    });
+                                                    function Select(text) {
+                                                        if (text.value == "") {
+                                                            $(".default").hide();
+                                                            $(".vnpay").hide();
+                                                        } else if (text.value == "default") {
+                                                            $(".default").show();
+                                                            $(".vnpay").hide();
+                                                        } else if (text.value == "vnpay") {
+                                                            $(".vnpay").show();
+                                                            $(".default").hide();
+                                                        } else {
+                                                            $(".default").hide();
+                                                            $(".vnpay").hide();
+                                                        }
+                                                    }
+                                                    function checkDateInput() {
+                                                        var dateInput = document.getElementById("dateInput").value;
+                                                        var currentDate = new Date();
+                                                        var inputDate = new Date(dateInput);
+                                                        if (inputDate < currentDate) {
+                                                            alert("Please select a future date!");
+                                                            document.getElementById("dateInput").value = "";
+                                                        }
+                                                    }
+>>>>>>> Stashed changes
 
         </script>
 
