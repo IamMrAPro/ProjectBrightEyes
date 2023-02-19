@@ -1,4 +1,6 @@
+com\groud2\web\controller\changePass.class
 com\groud2\web\controller\showCartController.class
+com\groud2\web\controller\profileController.class
 com\groud2\web\DAO\newsDAO.class
 com\groud2\web\Payment\ReviewPaymentServlet.class
 com\groud2\web\controller\homeController.class
@@ -15,6 +17,7 @@ com\groud2\web\DAO\userDAO.class
 com\groud2\web\model\news.class
 com\groud2\web\server\ChatRoomServerEndpoint.class
 com\groud2\web\access\facebook\RestFB.class
+com\groud2\web\controller\searchBookingController.class
 com\groud2\web\model\OrderGlasses\Order.class
 com\groud2\web\DAO\EmailDAO.class
 com\groud2\web\model\glasses.class
@@ -28,9 +31,11 @@ com\groud2\web\access\google\GoogleUtils.class
 com\groud2\web\controller\newsController.class
 com\groud2\web\controller\SearchController.class
 com\groud2\web\controller\singleNewsController.class
+com\groud2\web\controller\bookListController.class
 com\groud2\web\model\room.class
 com\groud2\web\controller\registerController.class
 com\groud2\web\Payment\PaymentServices.class
+com\groud2\web\controller\updateController.class
 com\groud2\web\DAO\OrderDAO.class
 com\groud2\web\controller\AdminController\AdminManageGlassesController.class
 com\groud2\web\DAO\bookingDAO.class

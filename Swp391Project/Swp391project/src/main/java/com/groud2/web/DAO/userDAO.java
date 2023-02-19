@@ -273,7 +273,57 @@ public ArrayList<user> getAllByAcc(String account) throws SQLException, IOExcept
         }
         return false;
     }
+public void updateProfile(String account, String newName, String newGender,String newPhone, String newAddress, String newEmail, String newBod){
+         String strUpdate = "UPDATE user SET fullname=?,phonenumber=?,address=?,email=?,gender=?,bod=?  WHERE account=?";
+         try {
+            connection = dbc.getConnection();
+            ps = connection.prepareStatement(strUpdate);
+            ps.setString(1, newName);
+            ps.setString(2, newPhone);
+            ps.setString(3, newAddress);
+            ps.setString(4, newEmail);
+            if (newGender.equals("Male")) {
+                ps.setString(5, "1");
+            } else {
+                ps.setString(5, "0");
+            }
+            ps.setDate(6, Date.valueOf(newBod));
+            ps.setString(7, account);
+            ps.executeUpdate();
+           
+        } catch (Exception e) {
+    
+        System.out.println("Update profile error: " + e.getMessage());
+        }
+    }
 
+    public user checkPass(String acc, String pass) throws SQLException, IOException {
+
+        String sql = "select * from User "
+                + "where account=? and "
+                + "password=?";
+
+        try {
+            connection = dbc.getConnection();
+            ps = connection.prepareStatement(sql);
+            ps.setString(1, acc);
+            ps.setString(2, pass);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                return new user(rs.getString(1), rs.getString(2));
+            }
+        } catch (SQLException e) {
+           
+            return new user(rs.getString(1), rs.getString(2));
+            
+        } finally {
+            if (connection != null) {
+                connection.close();
+            }
+        }
+        return null;
+
+    }
 
     public String getUserName(String userId) {
         String name = "";
