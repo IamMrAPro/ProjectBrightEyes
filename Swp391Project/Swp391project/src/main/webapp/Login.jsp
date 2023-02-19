@@ -115,7 +115,8 @@
                             </div>
                         </div>
                         <div class="text-right p-t-8 p-b-31">
-                            <a href="#">
+                            <input type="radio"  >Rememmber password
+                            <a href="ForgotPassword.jsp" style="margin-left: 30px">
                                 Forgot password?
                             </a>
                         </div>

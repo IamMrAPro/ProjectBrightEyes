@@ -19,35 +19,49 @@
     <body>
         <jsp:include page="layout/header.jsp"/>
         <jsp:include page="layout/menu.jsp"/>
+
+
         <div class="container">
 
 
 
             <div class="row align-items-start">
+                <div class="section-title text-center" style="margin: 20px">
+
+                    <form method="post" action="searchBooking">
+                        <label for="email">Email:</label>
+                        <input type="email" name="email" id="email">
+
+                        <label for="phone">Số điện thoại:</label>
+                        <input type="tel" name="phone" id="phone">
+
+                        <button type="submit">Search</button>
+                    </form>
+                </div>
 
 
             </div>
 
             <div class="row align-items-center">
                 <div class="col">
-                   
-                        <table class="table table-bordered">
-                            <thead>
-                                <tr>
-                                    <th>ID</th>
-                                    <th>Name</th>
-                                    <th>Phone</th>
-                                    <th>Email</th>
-                                    <th>Day</th>
-                                    <th>Time</th>
-                                    <th>Medical Information</th>
-                                    <th>Payment</th>
-                                    <th>Time Booking</th>
-                                </tr>
-                            </thead>
+
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Name</th>
+                                <th>Phone</th>
+                                <th>Email</th>
+                                <th>Day</th>
+                                <th>Time</th>
+                                <th>Medical Information</th>
+                                <th>Payment</th>
+                                <th></th>
+                            </tr>
+                        </thead>
 
 
-                             <c:forEach items="${list}" var="p">
+                        <c:forEach items="${list}" var="p">
                             <tbody> 
                                 <tr><td>${p.getBookingId()} </td>
                                     <td>${p.getName()}</td>
@@ -58,7 +72,6 @@
                                     <td>${p.getMedical()}</td>
                                     <td>${p.getPayment()}</td>
                                     <td>${p.getSbtime()}</td>
-                                    
                                     <td>Delete</td>
                                 </tr>
                             </tbody>
@@ -78,7 +91,6 @@
 
 
         </div>
-        
 
         <jsp:include page="layout/chatbot.jsp"/>
         <jsp:include page="layout/footer.jsp"/>

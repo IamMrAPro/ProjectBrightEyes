@@ -114,6 +114,18 @@
         <servlet-name>glassesController</servlet-name>
         <servlet-class>com.groud2.web.controller.glassesController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>searchBookingController</servlet-name>
+        <servlet-class>com.groud2.web.controller.searchBookingController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>updateController</servlet-name>
+        <servlet-class>com.groud2.web.controller.updateController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>changePass</servlet-name>
+        <servlet-class>com.groud2.web.controller.changePass</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>homeController</servlet-name>
         <url-pattern>/home</url-pattern>
@@ -221,6 +233,18 @@
     <servlet-mapping>
         <servlet-name>glassesController</servlet-name>
         <url-pattern>/glasses</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>searchBookingController</servlet-name>
+        <url-pattern>/searchBooking</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>updateController</servlet-name>
+        <url-pattern>/update</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>changePass</servlet-name>
+        <url-pattern>/changePass</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

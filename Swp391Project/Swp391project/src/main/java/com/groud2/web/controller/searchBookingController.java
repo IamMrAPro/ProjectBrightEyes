@@ -5,23 +5,34 @@
 package com.groud2.web.controller;
 
 import com.groud2.web.DAO.bookingDAO;
+import com.groud2.web.model.booking;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
- * @author anhha
+ * @author asus
  */
-public class bookingController extends HttpServlet {
+public class searchBookingController extends HttpServlet {
 
+    /**
+     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
+     * methods.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
@@ -30,10 +41,10 @@ public class bookingController extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet bookingController</title>");
+            out.println("<title>Servlet searchBookingController</title>");
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet bookingController at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet searchBookingController at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -51,24 +62,7 @@ public class bookingController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
-        bookingDAO b = new bookingDAO();
-        String sbtime;
-        String name = request.getParameter("name");
-        String phone = request.getParameter("phone");
-        String email = request.getParameter("email");
-        String date = request.getParameter("date");
-        String time = request.getParameter("time");
-        String medical = request.getParameter("description");
-        String payment = request.getParameter("payment");
-        LocalDateTime currentDateTime = LocalDateTime.now();
-        // Định dạng ngày giờ theo định dạng "yyyy-MM-dd HH:mm:ss"
-        String formattedDateTime = currentDateTime.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
-        sbtime=formattedDateTime;
-        
-        b.insert(name, phone, email, date, time, medical, payment, sbtime);
-        request.getRequestDispatcher("booking.jsp").forward(request, response);
-   
+        processRequest(request, response);
     }
 
     /**
@@ -82,7 +76,29 @@ public class bookingController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
+        String email = request.getParameter("email");
+        String phone = request.getParameter("phone");
+        
+        bookingDAO b = new bookingDAO();
+        try {
+           if (email != null && !email.isEmpty()) {
+                ArrayList<booking> list = b.getAllByEmail(email);
+                System.out.println("check email: "+ email);
+                request.setAttribute("list", list);
+            } else if (phone != null && !phone.isEmpty()) {
+                ArrayList<booking> list = b.getAllByPhone(phone);
+                System.out.println("Search by phone number: " + phone);
+                request.setAttribute("list", list);
+            } else if (email != null && phone != null && !email.isEmpty() && !phone.isEmpty()) {
+                ArrayList<booking> list = b.getAllByBoth(email, phone);
+                request.setAttribute("list", list);
+            }
+            request.getRequestDispatcher("searchBooking.jsp").forward(request, response);
+        
+        } catch (SQLException ex) {
+            System.out.println("hellloooo");
+            Logger.getLogger(glassesController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
