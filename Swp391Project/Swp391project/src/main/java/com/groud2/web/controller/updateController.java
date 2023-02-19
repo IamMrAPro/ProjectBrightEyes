@@ -1,34 +1,30 @@
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
-<<<<<<< Updated upstream
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
  */
-
 package com.groud2.web.controller;
 
-
 import com.groud2.web.DAO.userDAO;
-
 import com.groud2.web.model.user;
-import static com.sun.corba.se.spi.presentation.rmi.StubAdapter.request;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
+import jakarta.xml.bind.DatatypeConverter;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-
-
-
-public class changeProfile extends HttpServlet{
-
-  
+/**
+ *
+ * @author asus
+ */
+public class updateController extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -47,10 +43,10 @@ public class changeProfile extends HttpServlet{
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet profile</title>");            
+            out.println("<title>Servlet updateController</title>");
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet profile at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet updateController at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -68,23 +64,35 @@ public class changeProfile extends HttpServlet{
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
-        userDAO g =new userDAO();
-        user p = new user();
-        HttpSession session = request.getSession();
+        userDAO p = new userDAO();
+        user check;
+        HttpSession session = (HttpSession) request.getSession();
         String account = (String) session.getAttribute("id");
-       
-        try {
-            ArrayList<user> list = g.getAllByAcc(account);
-            request.setAttribute("list", list);
-            request.getRequestDispatcher("changeProfile.jsp").forward(request, response);
-            
-        } catch (SQLException ex) {
-            System.out.println("hellloooo");
-            Logger.getLogger(glassesController.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
+        String password = (String) session.getAttribute("pass");
+        String newPass = request.getParameter("newPass");
 
+        try {
+            password = encyptPass(password);
+        } catch (NoSuchAlgorithmException ex) {
+            System.out.println("encode password error: " + ex.getMessage());
+        }
+
+        try {
+            check = p.checkPass(account, password);
+            if (check != null) {
+                System.out.println("Account update: " + account);
+                session.setAttribute("id", account);
+                p.updatePass(account, newPass);
+
+            } else {
+                response.sendRedirect("loginuser");
+
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(loginController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }
 
     /**
      * Handles the HTTP <code>POST</code> method.
@@ -97,14 +105,32 @@ public class changeProfile extends HttpServlet{
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        userDAO p = new userDAO();
         
+        HttpSession session = (HttpSession) request.getSession();
+        String account = (String) session.getAttribute("id");
+       
+                
+        String newName = request.getParameter("newName");
+        String newGender = request.getParameter("newGender");
+        String newPhone = request.getParameter("newPhone");
+        String newAddress = request.getParameter("newAddress");
+        String newEmail = request.getParameter("newEmail");
+        String newBod = request.getParameter("newBod");
+        System.out.println("check bod: " + newBod); 
+        System.out.println("check address update: " + newAddress);
+
+        p.updateProfile(account, newName, newGender, newPhone, newAddress, newEmail, newBod);
+        response.sendRedirect("profile");
+
     }
 
-    @Override
-    public String getServletInfo() {
-        return "Short description";
-    }// </editor-fold>
-
-
+    String encyptPass(String pass) throws NoSuchAlgorithmException {
+        MessageDigest md = MessageDigest.getInstance("MD5");
+        md.update(pass.getBytes());
+        byte[] digest = md.digest();
+        String myHash = DatatypeConverter
+                .printHexBinary(digest).toLowerCase();
+        return myHash;
+    }
 }
-

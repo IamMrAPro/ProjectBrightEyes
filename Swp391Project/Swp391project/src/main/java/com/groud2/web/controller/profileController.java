@@ -6,19 +6,17 @@
 
 package com.groud2.web.controller;
 
-<<<<<<< Updated upstream
+
 import com.groud2.web.DAO.profileDAO;
 import com.groud2.web.model.profile;
 import static com.sun.corba.se.spi.presentation.rmi.StubAdapter.request;
-=======
+
  * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
  */
 package com.groud2.web.controller;
 import com.groud2.web.DAO.userDAO;
 import com.groud2.web.model.user;
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
+
 
 import com.groud2.web.DAO.userDAO;
 
@@ -28,9 +26,7 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-=======
+
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -38,35 +34,17 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import com.groud2.web.DAO.userDAO;
-import com.groud2.web.model.user;
 import jakarta.servlet.http.HttpSession;
->>>>>>> Stashed changes
-=======
-import jakarta.servlet.http.HttpSession;
->>>>>>> Stashed changes
-import java.io.IOException;
-import java.io.PrintWriter;
-import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-=======
 
->>>>>>> Stashed changes
 /**
  *
  * @author asus
  */
-<<<<<<< Updated upstream
-=======
 
 
 
->>>>>>> Stashed changes
+
 public class profileController extends HttpServlet{
 
   
@@ -109,21 +87,33 @@ public class profileController extends HttpServlet{
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        HttpSession session = request.getSession();
+         HttpSession session = request.getSession();
         userDAO g =new userDAO();
+
         user p = new user();
         
         String account = (String) session.getAttribute("id");
+
+      
+        
+        String account = (String) session.getAttribute("id");
+        user p = new user();
+        try {
+            p = g.getUser(account);
+        } catch (SQLException ex) {
+            Logger.getLogger(profileController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
         String name, pass, phonenumber, address, email, gender, bod, image;
         try {
-<<<<<<< Updated upstream
+
             ArrayList<profile> list = g.getProfileByID(account);
              req.setAttribute("profile", list);
              for(profile item : list){
                  System.out.println("day"+item.getFullname());
              }
              req.getRequestDispatcher("profile.jsp").forward(req, resp);
-=======
+
 public class profileController extends HttpServlet {
 
     /**
@@ -171,8 +161,7 @@ public class profileController extends HttpServlet {
             ArrayList<user> list = g.getAllByAcc(account);
             request.setAttribute("list", list);
             request.getRequestDispatcher("profile.jsp").forward(request, response);
->>>>>>> Stashed changes
-=======
+
             ArrayList<user> list = g.getAllByAcc(account);
                
                 phonenumber = p.getPhonenumber();
@@ -187,31 +176,31 @@ public class profileController extends HttpServlet {
                 session.setAttribute("account", account);
                 session.setAttribute("fullname", name);
                 session.setAttribute("phonenumber", phonenumber);
-                session.setAttribute("mail", email);
+                session.setAttribute("email", email);
                 session.setAttribute("address", address);
                 session.setAttribute("bod", bod);
                 session.setAttribute("pass", pass);
                 session.setAttribute("image", image); 
                 session.setAttribute("gender", gender);
+
                 
                 System.out.println("test: "+name);
+
+                System.out.println("test name profile: "+name);
+
                 
                 System.out.println("test: "+account);
             request.setAttribute("list", list);
             request.getRequestDispatcher("profile.jsp").forward(request, response);
             
->>>>>>> Stashed changes
+
         } catch (SQLException ex) {
             System.out.println("hellloooo");
             Logger.getLogger(glassesController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-=======
-=======
 
->>>>>>> Stashed changes
+
 
     /**
      * Handles the HTTP <code>POST</code> method.
@@ -224,26 +213,35 @@ public class profileController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+         userDAO p = new userDAO();
         
+        HttpSession session = (HttpSession) request.getSession();
+        String account = (String) session.getAttribute("id");
+       
+                
+        String newName = request.getParameter("newName");
+        String newGender = request.getParameter("newGender");
+        String newPhone = request.getParameter("newPhone");
+        String newAddress = request.getParameter("newAddress");
+        String newEmail = request.getParameter("newEmail");
+        String newBod = request.getParameter("newBod");     p.updateProfile(account, newName, newGender, newPhone, newAddress, newEmail, newBod);
+       
+        
+
     }
 
-<<<<<<< Updated upstream
+
     /**
      * Returns a short description of the servlet.
      *
      * @return a String containing servlet description
      */
-=======
->>>>>>> Stashed changes
+
     @Override
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
 
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
 
->>>>>>> Stashed changes
 }
 

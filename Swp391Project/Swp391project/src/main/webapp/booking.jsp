@@ -1,10 +1,31 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 <!DOCTYPE html>
 <html lang="en">
-<jsp:include page="layout/head.jsp"/>
+    <jsp:include page="layout/head.jsp"/>
+    <head>
+         <link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
+        <!--===============================================================================================-->
+        <link rel="stylesheet" type="text/css" href="assets/vendor/bootstrap/css/bootstrap.min.css">
+        <!--===============================================================================================-->
+        <link rel="stylesheet" type="text/css" href="assets/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+        <!--===============================================================================================-->
+        <link rel="stylesheet" type="text/css" href="assets/fonts/iconic/css/material-design-iconic-font.min.css">
+        <!--===============================================================================================-->
+        <link rel="stylesheet" type="text/css" href="assets/vendor/animate/animate.css">
+        <!--===============================================================================================-->	
+        <link rel="stylesheet" type="text/css" href="assets/vendor/css-hamburgers/hamburgers.min.css">
+        <!--===============================================================================================-->
+        <link rel="stylesheet" type="text/css" href="assets/vendor/animsition/css/animsition.min.css">
+        <!--===============================================================================================-->
+        <link rel="stylesheet" type="text/css" href="assets/vendor/select2/select2.min.css">
+        <!--===============================================================================================-->	
+        <link rel="stylesheet" type="text/css" href="assets/vendor/daterangepicker/daterangepicker.css">
+        <!--===============================================================================================-->
+        <link rel="stylesheet" type="text/css" href="assets/css/util.css">
+        <link rel="stylesheet" type="text/css" href="assets/css/main.css">
+    </head>
     <body>
         <jsp:include page="layout/header.jsp"/>
         <jsp:include page="layout/menu.jsp"/>
@@ -16,7 +37,7 @@
                             <h3 class="sub-title mb-4">Book Consulting</h3>
                             <p class="para-desc mx-auto text-muted">Great doctor if you need your family member to get effective immediate assistance, emergency treatment or a simple consultation.</p>
 
-                            
+
                         </div>
                     </div>
                 </div>
@@ -36,7 +57,7 @@
                     <div class="col-lg-7">
                         <div class="card border-0 shadow rounded overflow-hidden">
                             <div class="tab-content p-4" id="pills-tabContent">
-                                <form action="booking" method="get">
+                                <form action="booking" method="get" onsubmit="setSubmitTime()">
                                     <div class="row">
                                         <div class="p-6">
                                             <h6 class="mb-0">Patient information</h6>
@@ -51,13 +72,13 @@
                                         <div class="col-lg-6">
                                             <div class="mb-3">
                                                 <label class="form-label" >Phone</label>
-                                                <input type="text"name="phone" class="form-control" ">
+                                                <input type="text"name="phone" validate-input class="form-control" ">
                                             </div>
                                         </div>
                                         <div class="col-lg-12">
                                             <div class="mb-3">
                                                 <label class="form-label" >Email</label>
-                                                <input type="text" name="email" class="form-control">
+                                                <input type="text" name="email" data-validate="Email is required" validate-input class="form-control">
                                             </div>
                                         </div>
                                         <br>
@@ -109,8 +130,8 @@
 
                                         <div class="col-lg-12">
                                             <div class="d-grid">
-                                                <button type="submit" style="display: none" id="booking" class="default btn btn-primary">Đặt lịch</button>
-                                                <button type="submit"  style="display: none" id="booking" class="vnpay btn btn-primary">Thanh toán</button>
+                                                <button type="submit" style="display: none" name="submit_time" id="booking" class="default btn btn-primary">Đặt lịch</button>
+                                                <button type="submit"  style="display: none" name="submit_time"  id="booking" class="vnpay btn btn-primary">Thanh toán</button>
                                             </div>
                                         </div>
                                     </div>
@@ -118,7 +139,7 @@
                             </div>
                         </div>
                     </div>
-                    
+
                 </div>
             </div>
         </section>
@@ -127,11 +148,25 @@
         <br><!-- comment -->
         <jsp:include page="layout/chatbot.jsp"/>
         <jsp:include page="layout/footer.jsp"/>
-       
-            
-        
 
-        
+
+
+
+    <script src="assets/vendor/jquery/jquery-3.2.1.min.js"></script>
+        <!--===============================================================================================-->
+        <script src="assets/vendor/animsition/js/animsition.min.js"></script>
+        <!--===============================================================================================-->
+        <script src="assets/vendor/bootstrap/js/popper.js"></script>
+        <script src="assets/vendor/bootstrap/js/bootstrap.min.js"></script>
+        <!--===============================================================================================-->
+        <script src="assets/vendor/select2/select2.min.js"></script>
+        <!--===============================================================================================-->
+        <script src="assets/vendor/daterangepicker/moment.min.js"></script>
+        <script src="assets/vendor/daterangepicker/daterangepicker.js"></script>
+        <!--===============================================================================================-->
+        <script src="assets/vendor/countdowntime/countdowntime.js"></script>
+        <!--===============================================================================================-->
+        <script src="assets/js/main.js"></script>
         <script>
             $("#checkin-date").flatpickr({
                 defaultDate: "today",
@@ -155,8 +190,11 @@
                     $(".vnpay").hide();
                 }
             }
-            
-           
+            function setSubmitTime() {
+                var now = new Date();
+                document.getElementById("booking").value = now.toISOString();
+            }
+
         </script>
 
     </body>

@@ -85,6 +85,9 @@ public class changePass extends HttpServlet {
         System.out.println("Check account: " + account);
         boolean checkBoo = newPass.equals(checkNewPass);
         if (checkBoo == true) {
+
+       
+
             try {
                 check = g.checkPass(account, oldPass);
                 if (check != null) {
@@ -98,14 +101,16 @@ public class changePass extends HttpServlet {
                 }
             } catch (SQLException ex) {
                 Logger.getLogger(loginController.class.getName()).log(Level.SEVERE, null, ex);
-            }
+
         } else {
             String error = "Wrong re-password";
             request.setAttribute(error, error);
             
             
             request.getRequestDispatcher("changePass.jsp").forward(request, response);
-        }
+
+       
+
 
     }
 

@@ -9,25 +9,35 @@
         <servlet-class>com.groud2.web.controller.homeController</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>profileController</servlet-name>
-        <servlet-class>com.groud2.web.controller.profileController</servlet-class>
+
+        <servlet-name>bookingController</servlet-name>
+        <servlet-class>com.groud2.web.controller.bookingController</servlet-class>
     </servlet>
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-=======
-=======
->>>>>>> Stashed changes
     <servlet>
         <servlet-name>loginController</servlet-name>
         <servlet-class>com.groud2.web.controller.loginController</servlet-class>
     </servlet>
     <servlet>
-<<<<<<< Updated upstream
+        <servlet-name>addStaff</servlet-name>
+        <servlet-class>com.groud2.web.controller.AddStaff</servlet-class>
+    </servlet>
+    <!-->>>>>>> Stashed changes-->
+    <servlet>
+
+        <servlet-name>profileController</servlet-name>
+        <servlet-class>com.groud2.web.controller.profileController</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>loginController</servlet-name>
+        <servlet-class>com.groud2.web.controller.loginController</servlet-class>
+    </servlet>
+    <servlet>
+
         <servlet-name>profile</servlet-name>
         <servlet-class>com.groud2.web.controller.profileController</servlet-class>
     </servlet>
->>>>>>> Stashed changes
-=======
+
         <servlet-name>profileController</servlet-name>
         <servlet-class>com.groud2.web.controller.profileController</servlet-class>
     </servlet>
@@ -35,7 +45,28 @@
         <servlet-name>reportController</servlet-name>
         <servlet-class>com.groud2.web.controller.reportController</servlet-class>
     </servlet>
->>>>>>> Stashed changes
+
+    <servlet>
+        <servlet-name>adminDashboardController</servlet-name>
+        <servlet-class>com.groud2.web.controller.AdminController.AdminDasboardController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ManageStaff</servlet-name>
+        <servlet-class>com.groud2.web.controller.AdminController.AdminManagerStaffController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>updateController</servlet-name>
+        <servlet-class>com.groud2.web.controller.updateController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>changePass</servlet-name>
+        <servlet-class>com.groud2.web.controller.changePass</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>bookListController</servlet-name>
+        <servlet-class>com.groud2.web.controller.bookListController</servlet-class>
+    </servlet>
+
     <servlet-mapping>
         <servlet-name>glassesController</servlet-name>
         <url-pattern>/glasses</url-pattern>
@@ -45,8 +76,7 @@
         <url-pattern>/home</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-<<<<<<< Updated upstream
-=======
+
         <servlet-name>bookingController</servlet-name>
         <url-pattern>/booking</url-pattern>
     </servlet-mapping>
@@ -55,18 +85,39 @@
         <url-pattern>/loginuser</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
->>>>>>> Stashed changes
+
         <servlet-name>profileController</servlet-name>
         <url-pattern>/profile</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-<<<<<<< Updated upstream
+
         <servlet-name>profile</servlet-name>
         <url-pattern>/profile</url-pattern>
-=======
+
         <servlet-name>reportController</servlet-name>
         <url-pattern>/reportController</url-pattern>
->>>>>>> Stashed changes
+
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>adminDashboardController</servlet-name>
+        <url-pattern>/adminDashboard</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ManageStaff</servlet-name>
+        <url-pattern>/manageStaff</url-pattern>
+
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>updateController</servlet-name>
+        <url-pattern>/update</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>changePass</servlet-name>
+        <url-pattern>/changePass</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>bookListController</servlet-name>
+        <url-pattern>/bookList</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

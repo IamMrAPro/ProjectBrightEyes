@@ -5,14 +5,22 @@
 package com.groud2.web.controller;
 
 import com.groud2.web.DAO.bookingDAO;
+
 import com.groud2.web.DAO.userDAO;
 import com.groud2.web.model.booking;
 import com.groud2.web.model.user;
+
+
+
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+
 import jakarta.servlet.http.HttpSession;
+
+
+
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
@@ -20,6 +28,13 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+
+
+
+/**
+ *
+ * @author anhha
+ */
 
 public class bookingController extends HttpServlet {
 
@@ -45,7 +60,11 @@ public class bookingController extends HttpServlet {
             throws ServletException, IOException {
         
         bookingDAO b =new bookingDAO();
+
         booking p = new booking();
+
+        String sbtime = request.getParameter("submit_time");
+
         String name = request.getParameter("name");
         String phone = request.getParameter("phone");
         String email = request.getParameter("email");
@@ -54,6 +73,7 @@ public class bookingController extends HttpServlet {
         String medical = request.getParameter("description");
         String payment = request.getParameter("payment");
         
+
         
         b.insert(name, phone, email, date, time, medical, payment);
         request.getRequestDispatcher("booking.jsp").forward(request, response);
@@ -70,10 +90,19 @@ public class bookingController extends HttpServlet {
     } 
 
 
+        b.insert(name, phone, email, date, time, medical, payment,sbtime);
+        request.getRequestDispatcher("booking.jsp").forward(request, response);
+        System.out.println("check getPara: "+name);
+        System.out.println("check submit time: "+ sbtime);
+        
+    } 
+
+
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+
+       
     }
 
     @Override

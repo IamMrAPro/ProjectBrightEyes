@@ -25,21 +25,20 @@ public class userDAO {
     DBContext dbc = new DBContext();
     Connection connection = null;
 
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
+
     public user checklogin(String acc, String pass) throws SQLException, IOException {
 
-=======
-  
+
 
     
 public user checklogin(String acc,String pass) throws SQLException, IOException {
-        
->>>>>>> Stashed changes
-=======
+
     public user checklogin(String acc, String pass) throws SQLException, IOException {
 
->>>>>>> Stashed changes
+    public user checklogin(String acc, String pass) throws SQLException, IOException {
+
+        String sql = "SELECT account,password FROM swp.user where account=? and password =?";
+
         String sql = "SELECT account,password FROM swp.user where account=? and password =?";
         try {
             connection = dbc.getConnection();
@@ -48,23 +47,23 @@ public user checklogin(String acc,String pass) throws SQLException, IOException 
             ps.setString(2, pass);
             rs = ps.executeQuery();
             while (rs.next()) {
-<<<<<<< Updated upstream
+
 
                 return new user(rs.getString(1), rs.getString(2));
             }
         } catch (SQLException e) {
-<<<<<<< Updated upstream
-=======
+
                 
                 return new user(rs.getString(1),rs.getString(2));
 }
 } catch (SQLException e) {
->>>>>>> Stashed changes
 
-=======
 
             return new user(rs.getString(1), rs.getString(2));
->>>>>>> Stashed changes
+
+
+            return new user(rs.getString(1), rs.getString(2));
+
         } finally {
             if (connection != null) {
                 connection.close();
@@ -73,18 +72,16 @@ public user checklogin(String acc,String pass) throws SQLException, IOException 
         return null;
 
     }
-<<<<<<< Updated upstream
 
-<<<<<<< Updated upstream
     public ArrayList<user> getAllByAcc(String account) throws SQLException, IOException {
         ArrayList<user> list = new ArrayList<>();
         String sql = "SELECT * FROM user";
         try {
             connection = dbc.getConnection();
             ps = connection.prepareStatement(sql);
-=======
+
 public ArrayList<user> getAllByAcc(String account) throws SQLException, IOException {
-=======
+
     public boolean checkAccount(String account) throws SQLException, IOException {
 
         String sql = "SELECT account FROM swp.user where account=?  ";
@@ -92,6 +89,15 @@ public ArrayList<user> getAllByAcc(String account) throws SQLException, IOExcept
             System.out.println("account " + account);
             connection = dbc.getConnection();
             ps = connection.prepareStatement(sql);
+
+    public boolean checkAccount(String account) throws SQLException, IOException {
+
+        String sql = "SELECT account FROM swp.user where account=?  ";
+        try {
+            System.out.println("account " + account);
+            connection = dbc.getConnection();
+            ps = connection.prepareStatement(sql);
+
             ps.setString(1, account);
             rs = ps.executeQuery();
             while (rs.next()) {
@@ -198,14 +204,14 @@ public ArrayList<user> getAllByAcc(String account) throws SQLException, IOExcept
     }
 
     public ArrayList<user> getAllByAcc(String account) throws SQLException, IOException {
->>>>>>> Stashed changes
+
         ArrayList<user> list = new ArrayList<>();
         String sql = "SELECT * FROM user where account=?";
         try {
             connection = dbc.getConnection();
             ps = connection.prepareStatement(sql);
             ps.setString(1, account);
->>>>>>> Stashed changes
+
             rs = ps.executeQuery();
             while (rs.next()) {
                 String userID = rs.getString(1);
@@ -215,18 +221,34 @@ public ArrayList<user> getAllByAcc(String account) throws SQLException, IOExcept
                 String phonenumber = rs.getString(5);
                 String address = rs.getString(6);
                 String email = rs.getString(7);
-<<<<<<< Updated upstream
+
                 String bod = rs.getString(8);
                 user g = new user(userID, fullname, acc, pass, phonenumber, address, email, bod);
                 list.add(g);
             }
         } catch (SQLException e) {
 
+
+                String bod = rs.getString(9);
+                String userimages = rs.getString(10);
+                String gender = rs.getString(8);
+                if (gender.equals("1")) {
+                    gender = "Male";
+                } else {
+                    gender = "FeMale";
+                }
+                user g = new user(userID, fullname, acc, pass, phonenumber, address, email, gender, bod, userimages);
+                System.out.println("check address: " + address);
+                list.add(g);
+            }
+        } catch (SQLException e) {
+            System.out.println("get profile error: " + e.getMessage());
+
         } finally {
             if (connection != null) {
                 connection.close();
             }
-=======
+
                 String bod = rs.getString(9);
                 String userimages = rs.getString(10);
                 String gender = rs.getString(8);
@@ -244,26 +266,14 @@ public ArrayList<user> getAllByAcc(String account) throws SQLException, IOExcept
             if (connection != null) {
                 connection.close();
             }
->>>>>>> Stashed changes
+
         }
         return list;
 
     }
-<<<<<<< Updated upstream
-   
 
-<<<<<<< Updated upstream
-=======
->>>>>>> Stashed changes
 }
     
-    
-    
-    
-    
-    
-
-=======
     public boolean createData(String fullname, String account, String password, String phonenumber, String address, String email, String gender, String birthofdate, String role) throws SQLException {
         String sql = "INSERT INTO `swp`.`user`\n"
                 + "(`fullname`,`account`,`password`,`phonenumber`,`address`,`email`,`gender`,`bod`,`role`) values (?,?,?,?,?,?,?,?,?)";
@@ -401,6 +411,31 @@ public ArrayList<user> getAllByAcc(String account) throws SQLException, IOExcept
         }
     }
 
+    public void updateProfile(String account, String newName, String newGender,String newPhone, String newAddress, String newEmail, String newBod){
+         String strUpdate = "UPDATE user SET fullname=?,phonenumber=?,address=?,email=?,gender=?,bod=?  WHERE account=?";
+         try {
+            connection = dbc.getConnection();
+            ps = connection.prepareStatement(strUpdate);
+            ps.setString(1, newName);
+            ps.setString(2, newPhone);
+            ps.setString(3, newAddress);
+            ps.setString(4, newEmail);
+            if (newGender.equals("Male")) {
+                ps.setString(5, "1");
+            } else {
+                ps.setString(5, "0");
+            }
+            ps.setDate(6, Date.valueOf(newBod));
+            ps.setString(7, account);
+            ps.executeUpdate();
+           
+        } catch (Exception e) {
+    
+        System.out.println("Update profile error: " + e.getMessage());
+        }
+    }
+
+
     public user checkPass(String acc, String pass) throws SQLException, IOException {
 
         String sql = "select * from User "
@@ -429,4 +464,4 @@ public ArrayList<user> getAllByAcc(String account) throws SQLException, IOExcept
 
     }
 }
->>>>>>> Stashed changes
+

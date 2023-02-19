@@ -4,9 +4,11 @@
  */
 package com.groud2.web.DAO;
 
-import com.groud2.web.DAO.context.DBContext;
-import com.groud2.web.model.booking;
 
+import com.groud2.web.DAO.context.DBContext;
+
+import com.groud2.web.model.booking;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
@@ -25,12 +27,12 @@ public class bookingDAO {
     DBContext dbc = new DBContext();
     Connection connection = null;
 
-    public void insert(String name, String phone, String email, String date, String time, String medical, String payment) {
+    public void insert(String name, String phone, String email, String date, String time, String medical, String payment,String sbtime) {
         try {
             String strSelect = "INSERT INTO `swp`.`booking`\n"
-                    + "(`name`,`phone`,`email`,`date`,`time`,`medical`,`payment`)\n"
+                    + "(`name`,`phone`,`email`,`date`,`time`,`medical`,`payment`,`sbtime`)\n"
                     + "VALUES\n"
-                    + "(?,?,?,?,?,?,?)";
+                    + "(?,?,?,?,?,?,?,?)";
             connection = dbc.getConnection();
             ps = connection.prepareStatement(strSelect);
             ps.setString(1, name);
@@ -40,11 +42,10 @@ public class bookingDAO {
             ps.setString(5, time);
             ps.setString(6, medical);
             ps.setString(7, payment);
-            System.out.println("check date: " + date);
+            ps.setString(8, sbtime);        
             ps.execute();
             System.out.println("insert booking success");
         } catch (Exception e) {
-            System.out.println("check SQL2: " + name);
             System.out.println("Insert booking error:" + e.getMessage());
         }
 
@@ -54,7 +55,8 @@ public class bookingDAO {
         String sql = "SELECT * FROM booking";
         try {
             connection = dbc.getConnection();
-            ps = connection.prepareStatement(sql);      
+            ps = connection.prepareStatement(sql);
+            rs = ps.executeQuery();
             while (rs.next()) {
                 String bookingID = rs.getString(1);
                 String name = rs.getString(2);
@@ -63,11 +65,12 @@ public class bookingDAO {
                 String date = rs.getString(5);
                 String time = rs.getString(6);
                 String medical = rs.getString(7);
-                String payment = rs.getString(9);
-               
+                String payment = rs.getString(8);
+                String sbtime = rs.getString(9);
              
-                booking g = new booking(bookingID, name, phone, email, date, time, medical, payment);
+                booking g = new booking(bookingID, name, phone, email, date, time, medical, payment,sbtime);
                 list.add(g);
+                System.out.println("get booking success");
             }
         } catch (SQLException e) {
                 System.out.println("get booking error: " + e.getMessage());

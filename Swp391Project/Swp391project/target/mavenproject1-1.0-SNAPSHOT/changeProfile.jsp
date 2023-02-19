@@ -63,52 +63,59 @@
         <jsp:include page="layout/header.jsp"/>
         <jsp:include page="layout/menu.jsp"/>
 
+        <form action="update" method="post">
 
-        <div class="container rounded bg-white mt-5 mb-5">
-            <div class="row">
-                <div class="col-md-4 border-right">
-                    <div class="d-flex flex-column align-items-center text-center p-3 py-5"><img class="rounded-circle mt-5" width="150px" src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg"><span class="font-weight-bold"></span><span class="text-black-50">edogaru@mail.com.my</span><span> </span></div>
-                </div>
-                <div class="col-md-6 border-right">
-                    <div class="p-3 py-5">
-                        <div class="d-flex justify-content-between align-items-center mb-3">
-                            <h4 class="text-right">User's Profile ${fullname}</h4> 
-                        </div>
-        
-                
-                
+
+            <div class="container rounded bg-white mt-5 mb-5">
+                <div class="row">
+                    <div class="col-md-4 border-right">
+                        <div class="d-flex flex-column align-items-center text-center p-3 py-5"><img class="rounded-circle mt-5" width="150px" src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg"><span class="font-weight-bold"></span><span class="text-black-50">edogaru@mail.com.my</span><span> </span></div>
+                    </div>
+                    <div class="col-md-6 border-right">
+                        <div class="p-3 py-5">
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <h4 class="text-right">User's Profile </h4> 
+                            </div>
+
+
+
                             <div class="row mt-2">
-                                <div class="col-md-12"><label class="labels">Full Name</label><input type="text" class="form-control" value="${item.getFullname()}" readonly></div>
 
-                                <div class="col-md-6"><label class="labels">Account</label><input type="text" class="form-control" value="${sessionScope.fullname}" readonly></div>
-                                <div class="col-md-6"><label class="labels">Gender</label><input type="text" class="form-control" value="${item.getGender()}"  readonly></div>
-                            </div>
-                            <div class="row mt-3">
-                                <div class="col-md-12"><label class="labels">Mobile Number</label><input type="text" class="form-control" value="${item.getPhonenumber()}" readonly></div>
-                                <div class="col-md-12"><label class="labels">Address</label><input type="text" class="form-control" value="${item.getAddress()}" readonly></div>
-                                <div class="col-md-12"><label class="labels">Email</label><input type="text" class="form-control" value="${item.getEmail()}" readonly></div>
-                            </div>
-                            <div class="row mt-3">
-                                <div class="col-md-12"><label class="labels">Birth Of Date</label><input type="text" class="form-control" value="${item.getBod()}" readonly></div>
+                                <div class="col-md-12"><label class="labels">Full Name</label><input type="text" name="newName" class="form-control" value="${fullname}"></div>
+                                <div class="col-md-6"><label class="labels">Account</label><input type="text" class="form-control" value="${account}" readonly></div>
+
+                                <div class="col-md-6"><label class="labels">Gender</label><input type="text" name="newGender" class="form-control" value="${gender}"  ></div>
+                                <div class="col-md-12"><label class="labels">Choose new gender</label><input type="radio" name="newGender" value="Male" style="margin-left: 50px"> Male
+                                    <input type="radio" name="newGender" value="FeMale" style="margin-left: 150px"> FeMale 
+
+                                </div>
+                                <div class="row mt-3">
+                                    <div class="col-md-12"><label class="labels">Mobile Number</label><input validate-input type="text" name="newPhone" class="form-control" value="${phonenumber}"></div>
+                                    
+                                    <div class="col-md-12"><label class="labels">Address</label><input type="text" name="newAddress" class="form-control" value="${address}"></div>
+
+                                    <div class="col-md-12"><label class="labels">Email</label><input type="text" name="newEmail" validate-input class="form-control" value="${email}" ></div>
+
+                                    <div class="col-md-12"><label class="labels">Birth Of Date</label><input type="date" name="newBod" class="form-control" value="${bod}"></div>
+
+                                    <div class="d-grid gap-2 col-4 mx-auto" style="margin-top: 10px;color: black">
+                                        <input type="submit" value="Update Profile">
+                                    </div>
+
+
+
+                                </div>
 
                             </div>
-                            <div class="d-grid gap-2 col-4 mx-auto" style="margin-top: 10px;color: black">
-                                <button  class="btn btn-primary" type="button"><a href="changeProfile.jsp" style="color: black;">Change Profile</a></button>
-                            </div>
-                      
 
+                        </div>
 
                     </div>
 
                 </div>
-
             </div>
-
-        </div>
-
-    </div>
-</div>
-<jsp:include page="layout/chatbot.jsp"/>
-<jsp:include page="layout/footer.jsp"/>
-</body>
+        </form>
+        <jsp:include page="layout/chatbot.jsp"/>
+        <jsp:include page="layout/footer.jsp"/>
+    </body>
 </html>

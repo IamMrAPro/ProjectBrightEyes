@@ -17,11 +17,11 @@ public class booking {
     private String time;
     private String medical;
     private String payment;
-
+    private String sbtime;
     public booking() {
     }
 
-    public booking(String bookingId, String name, String phone, String email, String day, String time, String medical, String payment) {
+    public booking(String bookingId, String name, String phone, String email, String day, String time, String medical, String payment,String sbtime) {
         this.bookingId = bookingId;
         this.name = name;
         this.phone = phone;
@@ -30,6 +30,15 @@ public class booking {
         this.time = time;
         this.medical = medical;
         this.payment = payment;
+        this.sbtime=sbtime;
+    }
+
+    public String getSbtime() {
+        return sbtime;
+    }
+
+    public void setSbtime(String sbtime) {
+        this.sbtime = sbtime;
     }
 
     public String getBookingId() {
