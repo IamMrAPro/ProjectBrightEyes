@@ -131,6 +131,7 @@ public class CheckoutController extends HttpServlet {
             Cart cart = new Cart(txt, list);
        
             Order o = new Order(cart, idCustom, adress, cityShip, unit,30,0,null, null, "Wait for confirmation");
+            
             PaymentServices paymentServices = new PaymentServices() ;
             String approvalLink = paymentServices.authorizePayment(o);
             response.sendRedirect(approvalLink);

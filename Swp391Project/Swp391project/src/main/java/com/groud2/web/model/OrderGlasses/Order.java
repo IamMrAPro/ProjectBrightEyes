@@ -14,6 +14,8 @@ import java.util.List;
  */
 public class Order {
     private int OrderId;
+    private String Glasses;
+   
     private Cart cart;
     private String CustomerId, ShipAddress, ShipCity, unitShip;
     private float shiping;
@@ -38,6 +40,17 @@ public class Order {
         this.Status = Status;
     }
 
+    public Order(int OrderId, String Glasses, String CustomerId, String ShipAddress, String unitShip, float shiping, String OderDate, String Status) {
+        this.OrderId = OrderId;
+        this.Glasses = Glasses;
+        this.CustomerId = CustomerId;
+        this.ShipAddress = ShipAddress;
+        this.unitShip = unitShip;
+        this.shiping = shiping;
+        this.OderDate = OderDate;
+        this.Status = Status;
+    }
+    
     public String getShiping() {
         return  String.format("%.2f",shiping);
     }
