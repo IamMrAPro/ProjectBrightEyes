@@ -43,12 +43,13 @@ public class glassesDAO {
                 String style= rs.getString(6);
                 String image= rs.getString(7);
                 String price= rs.getString(8);
+                String quantity= rs.getString(9);
                 if(gender.equals("1")){
                     gende = "Male";
                 }else{
                     gende = "FeMale";
                 }
-                glasses g = new glasses(glassID, glassName, color, gende, material, style, image,price);
+                glasses g = new glasses(glassID, glassName, color, gende, material, style, image,price,Integer.parseInt(quantity));
                 
                 list.add(g);
 }
@@ -146,8 +147,9 @@ public class glassesDAO {
                 String style = rs.getString(6);
                 String image = rs.getString(7);
                 String price = rs.getString(8);
+                 String quantity= rs.getString(9);
                 
-                glasses g = new glasses(id, name, color, gender, material, style, image, price);
+                glasses g = new glasses(id, name, color, gender, material, style, image, price,Integer.parseInt(quantity));
                 if(name.toLowerCase().contains(search.toLowerCase())){
                     listGlass.add(g);
                 }

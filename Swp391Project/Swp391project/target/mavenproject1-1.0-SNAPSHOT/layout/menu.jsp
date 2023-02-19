@@ -44,7 +44,8 @@
             <ul class="navbar-nav ms-auto">
 
                 <li class="nav-item ">
-                    <a style="font-size: 30px" class="nav-link click-scroll" href="#"><ion-icon name="cart-outline"></ion-icon></a>
+                    <a style="font-size: 30px" class="nav-link click-scroll " href="show"><ion-icon name="cart-outline"></ion-icon><span class="position-absolute translate-middle p-2"><p>${requestScope.size}</p></span></a>
+                    
                 </li>
 
                 <c:if test="${sessionScope.id == null}">
@@ -73,7 +74,7 @@
                             </li>
 
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="">Log out</a>
+                            <a class="dropdown-item" href="logout">Log out</a>
 
                         </div>
                     </li>

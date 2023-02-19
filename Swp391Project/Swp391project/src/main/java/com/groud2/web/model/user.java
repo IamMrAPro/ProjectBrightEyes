@@ -8,6 +8,10 @@ package com.groud2.web.model;
 public class user {
     private String userId,fullname,account,password,phonenumber,address,email,gender,bod, userimages;
 
+    public user(String account) {
+       this.account = account;
+    }
+
     public String getUserimages() {
         return userimages;
     }
@@ -45,7 +49,7 @@ public class user {
         this.gender = gender;
     }
     
-
+    
     public String getUserId() {
         return userId;
     }
@@ -109,6 +113,8 @@ public class user {
     public void setBod(String bod) {
         this.bod = bod;
     }
+
+    
 
     
     

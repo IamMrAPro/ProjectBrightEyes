@@ -1,4 +1,4 @@
-package com.groud2.web.controller;
+    package com.groud2.web.controller;
 
 import com.groud2.web.DAO.userDAO;
 import com.groud2.web.model.user;
@@ -92,9 +92,10 @@ public class loginController extends HttpServlet {
                 System.out.println("User role: " + role);
                 System.out.println("Login Account: " + account);
                 session.setAttribute("id", account);
-                if (role.equals("admin")) {
-                    response.sendRedirect("adminHome");
-                } else {
+                if(role.equals("admin")){
+                    response.sendRedirect("adminDashboard");
+                }
+                else {
                     response.sendRedirect("home");
                 }
 

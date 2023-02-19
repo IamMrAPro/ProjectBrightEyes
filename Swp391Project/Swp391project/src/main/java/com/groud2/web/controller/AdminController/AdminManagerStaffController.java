@@ -4,22 +4,81 @@
  */
 package com.groud2.web.controller.AdminController;
 
+import com.groud2.web.DAO.userDAO;
+import com.groud2.web.model.user;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.ArrayList;
 
 /**
  *
  * @author Ao
  */
-public class AdminManagerStaffController extends HttpServlet{
+public class AdminManagerStaffController extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req.getRequestDispatcher("AdminView/ManageStaffView.jsp").forward(req, resp);
+        userDAO u = new userDAO();
+        ArrayList<user> listUser = u.getListUser("admin", "");
+        req.setAttribute("listUser", listUser);
+        req.getRequestDispatcher("AdminView/admin-screen/ManageStaff.jsp").forward(req, resp);
     }
-    
-    
+
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
+        try {
+            //Get request from client
+            String position = req.getParameter("position");
+            String setPos = req.getParameter("setPosition");
+            if(position == null) position = setPos;
+            System.out.println("My position: " + position);
+            //Handle request
+            if (position.equals("2")) {
+                userDAO u = new userDAO();
+                String search = req.getParameter("staffSearch");
+                ArrayList<user> listUser = u.getListUser("admin", search);
+                req.setAttribute("listUser", listUser);
+                req.getRequestDispatcher("AdminView/admin-screen/ManageStaff.jsp").forward(req, resp);
+            } else {
+                changePosition(position, req, resp);
+            }
+        } catch (Exception e) {
+            System.out.println("Manager staff servlet error: " + e.getMessage());
+        }
+    }
+
+    private void changePosition(String pos, HttpServletRequest req, HttpServletResponse resp) throws IOException {
+        switch (pos) {
+            case "1":
+                resp.sendRedirect("adminDashboard");
+                break;
+            case "2":
+                resp.sendRedirect("manageStaff");
+                break;
+            case "3":
+                resp.sendRedirect("manageCustomer");
+                break;
+            case "4":
+                resp.sendRedirect("manageRoom");
+                break;
+            case "5":
+                resp.sendRedirect("manageGlasses");
+                break;
+            case "6":
+                resp.sendRedirect("feedback");
+                break;
+            case "7":
+                resp.sendRedirect("adminDashboard");
+                break;
+            case "8":
+                resp.sendRedirect("adminDashboard");
+                break;
+            default:
+                throw new AssertionError();
+        }
+    }
 }
