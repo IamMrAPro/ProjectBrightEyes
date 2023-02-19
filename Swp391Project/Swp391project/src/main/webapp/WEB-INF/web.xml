@@ -16,6 +16,18 @@
     <servlet>
         <servlet-name>profileController</servlet-name>
         <servlet-class>com.groud2.web.controller.profileController</servlet-class>
+    <servlet>
+        <servlet-name>addStaff</servlet-name>
+        <servlet-class>com.groud2.web.controller.AddStaff</servlet-class>
+    </servlet>
+    <!-->>>>>>> Stashed changes-->
+    <servlet>
+        <servlet-name>addtoCart</servlet-name>
+        <servlet-class>com.groud2.web.controller.AddtoCartController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>cart</servlet-name>
+        <servlet-class>com.groud2.web.controller.cartController</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>registerController</servlet-name>
@@ -32,14 +44,6 @@
     <servlet>
         <servlet-name>loginController</servlet-name>
         <servlet-class>com.groud2.web.controller.loginController</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>profile</servlet-name>
-        <servlet-class>com.groud2.web.controller.profileController</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>profileController</servlet-name>
-        <servlet-class>com.groud2.web.controller.profileController</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>reportController</servlet-name>
@@ -101,6 +105,17 @@
         <servlet-name>DeleteGlasses</servlet-name>
         <servlet-class>com.groud2.web.controller.AdminController.DeleteGlasses</servlet-class>
     </servlet>
+        <servlet-name>PasswordController</servlet-name>
+        <servlet-class>com.groud2.web.controller.PasswordController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>SearchController</servlet-name>
+        <servlet-class>com.groud2.web.controller.SearchController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>glassesController</servlet-name>
+        <url-pattern>/glasses</url-pattern>
+    </servlet-mapping>
     <servlet-mapping>
         <servlet-name>homeController</servlet-name>
         <url-pattern>/home</url-pattern>
@@ -116,6 +131,12 @@
     <servlet-mapping>
         <servlet-name>profileController</servlet-name>
         <url-pattern>/profile</url-pattern>
+        <servlet-name>addtoCart</servlet-name>
+        <url-pattern>/addtoCart</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>cart</servlet-name>
+        <url-pattern>/cart</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>registerController</servlet-name>
@@ -184,6 +205,12 @@
     <servlet-mapping>
         <servlet-name>CreateCaptcha</servlet-name>
         <url-pattern>/createCaptcha</url-pattern>
+        <servlet-name>PasswordController</servlet-name>
+        <url-pattern>/forgotpassword</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SearchController</servlet-name>
+        <url-pattern>/search</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>DeleteGlasses</servlet-name>

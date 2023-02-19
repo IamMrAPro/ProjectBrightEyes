@@ -1,6 +1,6 @@
 <%-- 
-    Document   : Register
-    Created on : Feb 2, 2023, 12:00:36 PM
+    Document   : ForgotPassword
+    Created on : Feb 11, 2023, 8:34:07 PM
     Author     : nguye
 --%>
 
@@ -33,80 +33,39 @@
         <link rel="stylesheet" type="text/css" href="assets/css/util.css">
         <link rel="stylesheet" type="text/css" href="assets/css/main.css">
         <!--===============================================================================================-->
-
-
     </head>
     <body>
 
         <div class="limiter">
             <div class="container-login100" style="background-image: url('assets/images/bgr.jpg');">
-                <div class="wrap-login100 p-l-50 p-r-50 p-t-60 p-b-49">
-                    <form class="login100-form validate-form" action="register" method="get">
-                        <c:if test="${ms1 ne null}" >
-                            <p  style="color: red;font-size: 20px">${ms1}</p>
-                        </c:if>  
-                        <span class="login100-form-title p-b-30">
-                            Register
+                <div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-54">
+
+                    <form class="login100-form validate-form" action="forgotpassword" method="get">
+
+                        <span class="login100-form-title p-b-49" style="font-size: 20px">
+                            Don't remember your password? Please enter your email so we can help you reset your password
                         </span>
-                        <div class="wrap-input100 validate-input m-b-13" data-validate = "Username is reauired">
-                            <span class="label-input100">Full Name</span>
-                            <input class="input100" type="text" name="name" placeholder="Type your full name">
-                            <span class="focus-input100" data-symbol="&#xf206;"></span>
-                        </div>
-                        <div class="wrap-input100 validate-input m-b-13" data-validate = "Username is reauired">
-                            <span class="label-input100">Username</span>
-                            <input class="input100" type="text" name="account" placeholder="Type your username">
+
+                        <div class="wrap-input100 validate-input m-b-23" data-validate = "Username is email">
+                            <span class="label-input100">Enter your email </span>
+                            <input class="input100" type="text" name="email" placeholder="Type your email">
                             <span class="focus-input100" data-symbol="&#xf206;"></span>
                         </div>
 
-                        <div class="wrap-input100 validate-input m-b-13" data-validate="Password is required">
-                            <span class="label-input100">Password</span>
-                            <input class="input100" type="password" name="password" placeholder="Type your password">
-                           
-                            <span class="focus-input100" data-symbol="&#xf190;"></span>
-                        </div>
 
-                        <div class="wrap-input100 validate-input m-b-13" data-validate="Phone number is required">
-                            <span class="label-input100">Phone number</span>
-                            <input class="input100" type="number" name="phonenumber" maxlength="10" minlength="10"  placeholder="Type your Phone number">
-                            <span class="focus-input100" data-symbol="&#xf204;"></span>
-                        </div>
-                        <div class="wrap-input100 validate-input m-b-13" data-validate="Address is required">
-                            <span class="label-input100">Address</span>
-                            <input class="input100" type="text" name="address" placeholder="Type your Address">
-                            <span class="focus-input100" data-symbol="&#xf215;"></span>
-                        </div>
-
-                        <div class="wrap-input100 validate-input m-b-13" data-validate="Email is required">
-                            <span class="label-input100">Email</span>
-                            <input class="input100" type="text" name="email" placeholder="Type your Email">
-                            <span class="focus-input100" data-symbol="&#xf195;"></span>
-                        </div>
-                        <div class="wrap-input100 validate-input m-b-13" >
-                            <input type="radio" name="gender" value="Male" style="margin-left: 50px" checked> Male
-                            <input type="radio" name="gender" value="FeMale" style="margin-left: 150px"> FeMale 
-                        </div>
-                        <div class="wrap-input100 validate-input m-b-13" data-validate="Phone number is required">
-                            <span class="label-input100">Birth of Date</span>
-                            <input class="input100" type="date" name="bod" placeholder="Type your Birth of Date">
-                            <span class="focus-input100" data-symbol="&#xf160;"></span>
-                        </div>
 
 
                         <div class="container-login100-form-btn">
                             <div class="wrap-login100-form-btn">
                                 <div class="login100-form-bgbtn"></div>
-
-                                <input type="submit" name="Register" value="Register" class="login100-form-btn" style="background-color: #5bc1ac" >
+                                <button class="login100-form-btn" style="background-color: #5bc1ac;">
+                                    Check
+                                </button>
                             </div>
-                        </div>                 
-                        <div class="flex-col-c p-t-20">
-
-
-                            <a href="Login.jsp" class="txt2">
-                                Comeback Login
-                            </a>
                         </div>
+                        <c:if test="${ms1 ne null}" >
+                            <p  style="color: red;font-size: 17px">${ms1}</p>
+                        </c:if>  
                     </form>
                 </div>
             </div>
@@ -134,4 +93,3 @@
 
     </body>
 </html>
-

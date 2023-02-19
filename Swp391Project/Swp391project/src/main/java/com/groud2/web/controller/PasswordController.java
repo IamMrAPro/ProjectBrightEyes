@@ -1,33 +1,31 @@
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
-<<<<<<< Updated upstream
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
  */
-
 package com.groud2.web.controller;
 
+import com.groud2.web.DAO.EmailDAO;
 
 import com.groud2.web.DAO.userDAO;
-
-import com.groud2.web.model.user;
+import jakarta.mail.MessagingException;
+import java.io.IOException;
+import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.HttpSession;
-import java.io.IOException;
-import java.io.PrintWriter;
+import jakarta.xml.bind.DatatypeConverter;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-
-
-
-public class profileController extends HttpServlet{
-
-  
+/**
+ *
+ * @author nguye
+ */
+public class PasswordController extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -46,10 +44,10 @@ public class profileController extends HttpServlet{
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet profile</title>");            
+            out.println("<title>Servlet PasswordController</title>");
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet profile at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet PasswordController at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -67,52 +65,32 @@ public class profileController extends HttpServlet{
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        HttpSession session = request.getSession();
-        userDAO g =new userDAO();
+        String email = request.getParameter("email");
+        EmailDAO e = new EmailDAO();
         userDAO u = new userDAO();
-        
-        String account = (String) session.getAttribute("id");
-        user p = new user();
-        try {
-            p = u.getUser(account);
-        } catch (SQLException ex) {
-            Logger.getLogger(profileController.class.getName()).log(Level.SEVERE, null, ex);
+        String account = u.checkEmail(email);
+        String password;
+        String newpassword = e.RandomPassword();
+
+        if (account.equals("")) {
+             request.setAttribute("ms1", "Your email does not exist, please try again!!!");
+            request.getRequestDispatcher("ForgotPassword.jsp").forward(request, response);
         }
-        String name, pass, phonenumber, address, email, gender, bod, image;
         try {
-            ArrayList<user> list = g.getAllByAcc(account);
-               
-                phonenumber = p.getPhonenumber();
-                name=p.getFullname();
-                pass=p.getPassword();
-                email=p.getEmail();
-                address=p.getAddress();
-                bod=p.getBod();
-                gender = p.getGender();
-                image = p.getUserimages(); 
-                
-                session.setAttribute("account", account);
-                session.setAttribute("fullname", name);
-                session.setAttribute("phonenumber", phonenumber);
-                session.setAttribute("mail", email);
-                session.setAttribute("address", address);
-                session.setAttribute("bod", bod);
-                session.setAttribute("pass", pass);
-                session.setAttribute("image", image); 
-                session.setAttribute("gender", gender);
-                
-                System.out.println("test name: "+name);
-                
-                System.out.println("test: "+account);
-            request.setAttribute("list", list);
-            request.getRequestDispatcher("profile.jsp").forward(request, response);
-            
-        } catch (SQLException ex) {
-            System.out.println("hellloooo");
-            Logger.getLogger(glassesController.class.getName()).log(Level.SEVERE, null, ex);
+
+            e.MailResetPassword(email, newpassword, account);
+            try {
+                newpassword = encyptPass(newpassword);
+                u.updatePass(newpassword, account);
+                 request.getRequestDispatcher("Login.jsp").forward(request, response);
+            } catch (NoSuchAlgorithmException ex) {
+                System.out.println("encode password error: " + ex.getMessage());
+            }
+
+        } catch (MessagingException ex) {
+            Logger.getLogger(PasswordController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-
 
     /**
      * Handles the HTTP <code>POST</code> method.
@@ -125,13 +103,26 @@ public class profileController extends HttpServlet{
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+        processRequest(request, response);
     }
 
+    /**
+     * Returns a short description of the servlet.
+     *
+     * @return a String containing servlet description
+     */
     @Override
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
 
+    String encyptPass(String pass) throws NoSuchAlgorithmException {
+        MessageDigest md = MessageDigest.getInstance("MD5");
+        md.update(pass.getBytes());
+        byte[] digest = md.digest();
+        String myHash = DatatypeConverter
+                .printHexBinary(digest).toLowerCase();
+        return myHash;
+    }
 
 }

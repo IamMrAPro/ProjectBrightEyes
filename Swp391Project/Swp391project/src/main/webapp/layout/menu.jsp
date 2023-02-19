@@ -16,25 +16,23 @@
                             About
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="#">Overview</a>
+                            <a class="dropdown-item" href="Overview.jsp">Overview</a>
                             <a class="dropdown-item" href="#">Staffs</a>
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="#">Machine System</a>
                         </div>
                     </li>
 
-            <li class="nav-item">
-                <a class="nav-link click-scroll" href="glasses">Glasses</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link click-scroll" href="news">News</a>
-            </li>
+                    <li class="nav-item">
+                        <a class="nav-link click-scroll" href="glasses">Glasses</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link click-scroll" href="news">News</a>
+                    </li>
 
-            <li class="nav-item">
-                <a class="nav-link click-scroll" href="#">Contact</a>
-            </li>
-
-
+                    <li class="nav-item">
+                        <a class="nav-link click-scroll" href="#">Contact</a>
+                    </li>
 
                 </ul>
 

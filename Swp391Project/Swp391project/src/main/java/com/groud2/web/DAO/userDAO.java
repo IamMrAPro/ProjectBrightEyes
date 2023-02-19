@@ -332,6 +332,24 @@ public void addUser(String id,  String name,String mail) {
         }
         return false;
       }
+ public String checkEmail( String email) {
+        String name = "";
+        try {
+            String sql = "Select account from user where email = ?";
+            connection = dbc.getConnection();
+            ps = connection.prepareStatement(sql);
+            ps.setString(1, email);
+            rs = ps.executeQuery();
+            while(rs.next()){
+                name = rs.getString(1);
+               
+            }
+        } catch (Exception e) {
+            System.out.println("Get user name: " + e.getMessage());
+            
+        }
+        return name;
+    }
 
 
 
@@ -390,14 +408,45 @@ public user getUser(String account) throws SQLException {
                 
                 return new user(rs.getString(1));
      } finally {
+
+public void updatePass(String newPass, String account) {
+        
+        String strSelect = "UPDATE user SET password=? WHERE account =?";
+        try {
+            connection = dbc.getConnection();
+            ps = connection.prepareStatement(strSelect);
+            ps.setString(1, newPass);
+            ps.setString(2, account);
+            ps.executeUpdate();
+            System.out.println("Update password success");
+            System.out.println("New Pass: " + newPass);
+        } catch (Exception e) {
+            System.out.println("Update new pass error" + e.getMessage());
+        }
+    }
+
+    public boolean checkEmailRegister(String email) throws SQLException {
+      String sql = "SELECT account FROM swp.user where email=?  ";
+        try { 
+            System.out.println("account "+ email);
+            connection = dbc.getConnection();
+            ps = connection.prepareStatement(sql);
+            ps.setString(1, email);      
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                System.out.println("accccc   "+ rs.getString(1));
+                return true;
+            }
+        } catch (SQLException e) {
+
+        } finally {
             if (connection != null) {
                 connection.close();
             }
         }
-        return null;
+        return false;    
+    
     }
-
-   
 }  
 
 
