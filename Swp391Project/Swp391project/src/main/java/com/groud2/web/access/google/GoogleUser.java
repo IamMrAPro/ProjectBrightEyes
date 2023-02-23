@@ -8,7 +8,7 @@ package com.groud2.web.access.google;
  *
  * @author anhha
  */
-class GooglePojo {
+class GoogleUser {
     private String id;
   private String email;
   private boolean verified_email;
@@ -18,10 +18,10 @@ class GooglePojo {
   private String link;
   private String picture;
 
-    public GooglePojo() {
+    public GoogleUser() {
     }
 
-    public GooglePojo(String id, String email, boolean verified_email, String name, String given_name, String family_name, String link, String picture) {
+    public GoogleUser(String id, String email, boolean verified_email, String name, String given_name, String family_name, String link, String picture) {
         this.id = id;
         this.email = email;
         this.verified_email = verified_email;

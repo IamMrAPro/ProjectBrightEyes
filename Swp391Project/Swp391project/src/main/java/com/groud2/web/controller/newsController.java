@@ -15,6 +15,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -62,7 +63,40 @@ public class newsController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        String id=request.getParameter("id");
+        String newsname=request.getParameter("newsname");
+        String category=request.getParameter("category");
+        String authour=request.getParameter("authour");
+        String date=request.getParameter("date");
+        String images1=request.getParameter("images1");
+        String images2=request.getParameter("images2");
+        String images3=request.getParameter("images3");
+        String images4=request.getParameter("images4");
+        String newscontent1=request.getParameter("newscontent1");
+        String newscontent2=request.getParameter("newscontent2");
+        String newscontent3=request.getParameter("newscontent3");
+        String newscontent4=request.getParameter("newscontent4");
+        String issue1=request.getParameter("issue1");
+        String issue2=request.getParameter("issue2");
+        String issue3=request.getParameter("issue3");
+        String issue4=request.getParameter("issue4");
+        
+        newsDAO n=new newsDAO();
+     
+        
+        try {
+            n.CreateNews(id,newsname,category,authour,date,images1,images2,images3,images4,newscontent1,newscontent2,newscontent3,newscontent4,issue1,issue2,issue3,issue4);
+             request.getRequestDispatcher("Addnews.jsp").forward(request, response);
+        } catch (SQLException ex) {
+            Logger.getLogger(newsController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        
+        
+        
+        
+        
+        
     }
 
 

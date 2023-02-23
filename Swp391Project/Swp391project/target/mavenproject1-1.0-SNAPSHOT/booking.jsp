@@ -1,10 +1,31 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 <!DOCTYPE html>
 <html lang="en">
-<jsp:include page="layout/head.jsp"/>
+    <jsp:include page="layout/head.jsp"/>
+    <head>
+        <link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
+        <!--===============================================================================================-->
+        <link rel="stylesheet" type="text/css" href="assets/vendor/bootstrap/css/bootstrap.min.css">
+        <!--===============================================================================================-->
+        <link rel="stylesheet" type="text/css" href="assets/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+        <!--===============================================================================================-->
+        <link rel="stylesheet" type="text/css" href="assets/fonts/iconic/css/material-design-iconic-font.min.css">
+        <!--===============================================================================================-->
+        <link rel="stylesheet" type="text/css" href="assets/vendor/animate/animate.css">
+        <!--===============================================================================================-->	
+        <link rel="stylesheet" type="text/css" href="assets/vendor/css-hamburgers/hamburgers.min.css">
+        <!--===============================================================================================-->
+        <link rel="stylesheet" type="text/css" href="assets/vendor/animsition/css/animsition.min.css">
+        <!--===============================================================================================-->
+        <link rel="stylesheet" type="text/css" href="assets/vendor/select2/select2.min.css">
+        <!--===============================================================================================-->	
+        <link rel="stylesheet" type="text/css" href="assets/vendor/daterangepicker/daterangepicker.css">
+        <!--===============================================================================================-->
+        <link rel="stylesheet" type="text/css" href="assets/css/util.css">
+        <link rel="stylesheet" type="text/css" href="assets/css/main.css">
+    </head>
     <body>
         <jsp:include page="layout/header.jsp"/>
         <jsp:include page="layout/menu.jsp"/>
@@ -16,7 +37,7 @@
                             <h3 class="sub-title mb-4">Book Consulting</h3>
                             <p class="para-desc mx-auto text-muted">Great doctor if you need your family member to get effective immediate assistance, emergency treatment or a simple consultation.</p>
 
-                            
+
                         </div>
                     </div>
                 </div>
@@ -51,13 +72,13 @@
                                         <div class="col-lg-6">
                                             <div class="mb-3">
                                                 <label class="form-label" >Phone</label>
-                                                <input type="text"name="phone" class="form-control" ">
+                                                <input type="text"name="phone" minlength="10" maxlength="10" validate-input class="form-control" ">
                                             </div>
                                         </div>
                                         <div class="col-lg-12">
                                             <div class="mb-3">
                                                 <label class="form-label" >Email</label>
-                                                <input type="text" name="email" class="form-control">
+                                                <input type="text" name="email" data-validate="Email is required" required class="form-control">
                                             </div>
                                         </div>
                                         <br>
@@ -67,9 +88,12 @@
                                         <br><br>
                                         <div class="col-md-6">
                                             <div class="mb-3">
-                                                <label class="form-label"> Day : </label>
-                                                <input required="" name="date" type="date" class="flatpickr flatpickr-input form-control" id="checkin-date">
+                                                <label class="form-label" for="dateInput">Select a date:</label>
+                                                <input type="date" id="dateInput" class="flatpickr flatpickr-input form-control" name="dateInput" onchange="checkDateInput()">
+
                                             </div>
+
+
                                         </div>
 
                                         <div class="col-md-6">
@@ -102,23 +126,22 @@
                                                 <select name="payment" oninvalid="Select(this);" oninput="Select(this);" id="mySelect" class="form-control department-name select2input">
                                                     <option selected="">Chọn phương thức thanh toán</option>
                                                     <option value="default">Select a payment method</option>
-                                                    <option value="vnpay">Payment through VNPay</option>
+                                                   
                                                 </select>
                                             </div>
                                         </div><!--end col-->
 
                                         <div class="col-lg-12">
                                             <div class="d-grid">
-                                                <button type="submit" style="display: none" id="booking" class="default btn btn-primary">Đặt lịch</button>
-                                                <button type="submit"  style="display: none" id="booking" class="vnpay btn btn-primary">Thanh toán</button>
-                                            </div>
+                                                <button type="submit" style="display: none" name="submit_time" id="booking" class="default btn btn-primary">Đặt lịch</button>
+                                               </div>
                                         </div>
                                     </div>
                                 </form>
                             </div>
                         </div>
                     </div>
-                    
+
                 </div>
             </div>
         </section>
@@ -127,36 +150,58 @@
         <br><!-- comment -->
         <jsp:include page="layout/chatbot.jsp"/>
         <jsp:include page="layout/footer.jsp"/>
-       
-            
-        
 
-        
+
+
+
+        <script src="assets/vendor/jquery/jquery-3.2.1.min.js"></script>
+        <!--===============================================================================================-->
+        <script src="assets/vendor/animsition/js/animsition.min.js"></script>
+        <!--===============================================================================================-->
+        <script src="assets/vendor/bootstrap/js/popper.js"></script>
+        <script src="assets/vendor/bootstrap/js/bootstrap.min.js"></script>
+        <!--===============================================================================================-->
+        <script src="assets/vendor/select2/select2.min.js"></script>
+        <!--===============================================================================================-->
+        <script src="assets/vendor/daterangepicker/moment.min.js"></script>
+        <script src="assets/vendor/daterangepicker/daterangepicker.js"></script>
+        <!--===============================================================================================-->
+        <script src="assets/vendor/countdowntime/countdowntime.js"></script>
+        <!--===============================================================================================-->
+        <script src="assets/js/main.js"></script>
         <script>
-            $("#checkin-date").flatpickr({
-                defaultDate: "today",
-                minDate: "today",
-                maxDate: new Date().fp_incr(14),
-                dateFormat: "d/m/Y",
-                locale: "vn"
-            });
-            function Select(text) {
-                if (text.value == "") {
-                    $(".default").hide();
-                    $(".vnpay").hide();
-                } else if (text.value == "default") {
-                    $(".default").show();
-                    $(".vnpay").hide();
-                } else if (text.value == "vnpay") {
-                    $(".vnpay").show();
-                    $(".default").hide();
-                } else {
-                    $(".default").hide();
-                    $(".vnpay").hide();
-                }
-            }
-            
-           
+                                                    $("#checkin-date").flatpickr({
+                                                        defaultDate: "today",
+                                                        minDate: "today",
+                                                        maxDate: new Date().fp_incr(14),
+                                                        dateFormat: "d/m/Y",
+                                                        locale: "vn"
+                                                    });
+                                                    function Select(text) {
+                                                        if (text.value == "") {
+                                                            $(".default").hide();
+                                                            $(".vnpay").hide();
+                                                        } else if (text.value == "default") {
+                                                            $(".default").show();
+                                                            $(".vnpay").hide();
+                                                        } else if (text.value == "vnpay") {
+                                                            $(".vnpay").show();
+                                                            $(".default").hide();
+                                                        } else {
+                                                            $(".default").hide();
+                                                            $(".vnpay").hide();
+                                                        }
+                                                    }
+                                                    function checkDateInput() {
+                                                        var dateInput = document.getElementById("dateInput").value;
+                                                        var currentDate = new Date();
+                                                        var inputDate = new Date(dateInput);
+                                                        if (inputDate < currentDate) {
+                                                            alert("Please select a future date!");
+                                                            document.getElementById("dateInput").value = "";
+                                                        }
+                                                    }
+
         </script>
 
     </body>

@@ -21,6 +21,11 @@ import jakarta.xml.bind.DatatypeConverter;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Date;
 
 /**
  *
@@ -45,7 +50,7 @@ public class registerController extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet registerController</title>");            
+            out.println("<title>Servlet registerController</title>");
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Servlet registerController at " + request.getContextPath() + "</h1>");
@@ -66,32 +71,51 @@ public class registerController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-       
-        System.out.println("ok ok ");
+
         String account = request.getParameter("account");
         String password = request.getParameter("password");
         String fullname = request.getParameter("name");
         String email = request.getParameter("email");
         String address = request.getParameter("address");
-        String gender=request.getParameter("gender");
+        String gender = request.getParameter("gender");
         String birthofdate = request.getParameter("bod");
-        String phonenumber=request.getParameter("phonenumber");
+        String phonenumber = request.getParameter("phonenumber");
+        String role = "customer";
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 
-        String role="customer";
+        try {
+            LocalDate now = LocalDate.now();
+            LocalDate date = LocalDate.parse(birthofdate);
+            System.out.println(date);
+            if (date.isBefore(now)) {
+                // Thời gian do người dùng nhập vào hợp lệ, tiếp tục xử lý
+                System.out.println("Thời gian hợp lệ");
+            } else {
+                // Thời gian do người dùng nhập vào trước thời gian hiện tại, thông báo lỗi
+                request.setAttribute("ms1", "The time you entered is not valid. Please try again!!!");
+                request.getRequestDispatcher("Register.jsp").forward(request, response);
+            }
+        } catch (Exception e) {
+
+        }
+        
         try {
             password = encyptPass(password);
         } catch (NoSuchAlgorithmException ex) {
             System.out.println("encode password error: " + ex.getMessage());
         }
+
         
         userDAO u = new userDAO();
-        boolean registerOK;
+        boolean registerOK,emailOK;
         try {
-            registerOK = u.checkAccount(account);            
-            if (registerOK == true) {              
+            registerOK = u.checkAccount(account);
+            emailOK = u.checkEmailRegister(email);           
+            if (registerOK == true || emailOK==true) {
+                request.setAttribute("ms1", "Account creation failed , Please try again!!!");
                 request.getRequestDispatcher("Register.jsp").forward(request, response);
             } else {
-                u.createData(fullname,account, password,phonenumber,address,email,gender, birthofdate,role);         
+                u.createData(fullname, account, password, phonenumber, address, email, gender, birthofdate, role);
                 request.getRequestDispatcher("Login.jsp").forward(request, response);
                 //response.sendRedirect("loginuser");
 
@@ -99,7 +123,7 @@ public class registerController extends HttpServlet {
         } catch (SQLException ex) {
             Logger.getLogger(loginController.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+
     }
 
     /**

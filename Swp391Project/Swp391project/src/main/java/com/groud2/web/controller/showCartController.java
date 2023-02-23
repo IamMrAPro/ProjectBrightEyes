@@ -75,9 +75,9 @@ public class showCartController extends HttpServlet {
                     }
                 }
             }
-            System.out.println("dmm");
+            
             Cart cart = new Cart(txt, list);
-            System.out.println("hello");
+            
             request.setAttribute("cart", cart);
             
             request.getRequestDispatcher("Cart.jsp").forward(request, response);

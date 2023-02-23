@@ -20,52 +20,65 @@
         <jsp:include page="layout/header.jsp"/>
         <jsp:include page="layout/menu.jsp"/>
         <div class="container">
+
+
+
             <div class="row align-items-start">
 
 
             </div>
+
             <div class="row align-items-center">
                 <div class="col">
-                    <form action="booking" method="post">
+                   
                         <table class="table table-bordered">
-                        <thead>
-                            <tr>
-                                <th>Name</th>
-                                <th>Phone</th>
-                                <th>Email</th>
-                                <th>Day</th>
-                                <th>Time</th>
-                                <th>Medical Information</th>
-                            </tr>
-                        </thead>
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Name</th>
+                                    <th>Phone</th>
+                                    <th>Email</th>
+                                    <th>Day</th>
+                                    <th>Time</th>
+                                    <th>Medical Information</th>
+                                    <th>Payment</th>
+                                    <th>Time Booking</th>
+                                </tr>
+                            </thead>
 
-                        <c:forEach items="listBooking" var="b">
+
+                             <c:forEach items="${list}" var="p">
                             <tbody> 
-                            <tr>${b.getBookingId()}</tr>
-                            <tr></tr>
-                            <tr></tr>
-                            <tr></tr>
-                            <tr></tr>
-                            <tr></tr>
-                            <tr></tr>
-                            <tr></tr>
-                        </tbody>
+                                <tr><td>${p.getBookingId()} </td>
+                                    <td>${p.getName()}</td>
+                                    <td>${p.getPhone()}</td>
+                                    <td>${p.getEmail()}</td>
+                                    <td>${p.getDay()}</td>
+                                    <td>${p.getTime()}</td>
+                                    <td>${p.getMedical()}</td>
+                                    <td>${p.getPayment()}</td>
+                                    <td>${p.getSbtime()}</td>
+                                    
+                                    <td>Delete</td>
+                                </tr>
+                            </tbody>
                         </c:forEach>
-                        
+
                     </table>
 
                 </div>
 
             </div>
+
             <div class="row align-items-end">
 
 
             </div>
-                        
-                    </form>
-                    
-        </div>
 
+
+
+        </div>
+        
 
         <jsp:include page="layout/chatbot.jsp"/>
         <jsp:include page="layout/footer.jsp"/>

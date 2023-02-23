@@ -67,14 +67,14 @@ public class profileController extends HttpServlet{
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        HttpSession session = request.getSession();
+         HttpSession session = request.getSession();
         userDAO g =new userDAO();
-        userDAO u = new userDAO();
+      
         
         String account = (String) session.getAttribute("id");
         user p = new user();
         try {
-            p = u.getUser(account);
+            p = g.getUser(account);
         } catch (SQLException ex) {
             Logger.getLogger(profileController.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -94,14 +94,13 @@ public class profileController extends HttpServlet{
                 session.setAttribute("account", account);
                 session.setAttribute("fullname", name);
                 session.setAttribute("phonenumber", phonenumber);
-                session.setAttribute("mail", email);
+                session.setAttribute("email", email);
                 session.setAttribute("address", address);
                 session.setAttribute("bod", bod);
                 session.setAttribute("pass", pass);
                 session.setAttribute("image", image); 
                 session.setAttribute("gender", gender);
-                
-                System.out.println("test name: "+name);
+                System.out.println("test name profile: "+name);
                 
                 System.out.println("test: "+account);
             request.setAttribute("list", list);
@@ -125,7 +124,22 @@ public class profileController extends HttpServlet{
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+         userDAO p = new userDAO();
         
+        HttpSession session = (HttpSession) request.getSession();
+        String account = (String) session.getAttribute("id");
+       
+                
+        String newName = request.getParameter("newName");
+        String newGender = request.getParameter("newGender");
+        String newPhone = request.getParameter("newPhone");
+        String newAddress = request.getParameter("newAddress");
+        String newEmail = request.getParameter("newEmail");
+        String newBod = request.getParameter("newBod");     
+        p.updateProfile(account, newName, newGender, newPhone, newAddress, newEmail, newBod);
+       
+        
+
     }
 
     @Override

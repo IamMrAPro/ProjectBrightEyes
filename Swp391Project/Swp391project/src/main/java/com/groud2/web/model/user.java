@@ -8,6 +8,10 @@ package com.groud2.web.model;
 public class user {
     private String userId,fullname,account,password,phonenumber,address,email,gender,bod, userimages;
 
+    public user(String account) {
+       this.account = account;
+    }
+
     public String getUserimages() {
         return userimages;
     }
@@ -45,7 +49,7 @@ public class user {
         this.gender = gender;
     }
     
-
+    
     public String getUserId() {
         return userId;
     }
@@ -110,9 +114,7 @@ public class user {
         this.bod = bod;
     }
 
-    public int getAccountID() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
+    
 
     
     

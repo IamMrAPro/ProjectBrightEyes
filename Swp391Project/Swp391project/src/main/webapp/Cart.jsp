@@ -4,7 +4,7 @@
 <html>
     <jsp:include page="layout/head.jsp"/>
     <style>
-       
+
         .title{
             margin-bottom: 5vh;
         }
@@ -159,69 +159,108 @@
                         <div class="title">
                             <div class="row">
                                 <div class="col"><h4><b>Shopping Glasses</b></h4></div>
-                                
+
                             </div>
                         </div>
-                                <c:set var="o" value="${requestScope.cart}"  />
-                                <c:forEach items="${o.items}" var="i">
-                        <div class="row border-top border-bottom">
-                            <div class="row main align-items-center">
-                                <div class="col-2"><img class="img-fluid" src="${i.getGlass().getImage()} "></div>
-                                <div class="col">
-                                    <div class="row text-muted">${i.getGlass().getGlassName()}</div>
-                                    <div class="row">${i.getGlass().getColor()}</div>
-                                </div>
-                                <div class="col">
-                                    <a href="process?num=-1&id=${i.getGlass().getGlassID()}">-</a><a class="border">${i.getQuantity()}</a>
-                                    <a href="process?num=+1&id=${i.getGlass().getGlassID()}"">+</a>
-                                </div>
-                                <div class="col">${i.getGlass().getPrice()} VND </div>
-                                <div class="col">
-                                    <form action="process" method="post">
-                                        <input type="hidden" name="id" value="${i.getGlass().getGlassID()}"/>
-                                        <input class="btn" type="submit" value="Return item"/>
-                                    </form>
-                                </div>
-                                <div class="col">
-                                    <a href="deleteCart??glassesId=${i.getGlass().getGlassID()}"><span class="close">&#10005;</span></a> 
+                        <c:set var="o" value="${requestScope.cart}"  />
+                        <c:forEach items="${o.items}" var="i">
+                            <div class="row border-top border-bottom">
+                                <div class="row main align-items-center">
+                                    <div class="col-2"><img class="img-fluid" src="${i.getGlass().getImage()} "></div>
+                                    <div class="col">
+                                        <div class="row text-muted">${i.getGlass().getGlassName()}</div>
+                                        <div class="row">${i.getGlass().getColor()}</div>
+                                    </div>
+                                    <div class="col">
+                                        
+                                        <a href="process?num=-1&id=${i.getGlass().getGlassID()}">-</a><a class="border">${i.getQuantity()}</a>
+                                        <a href="process?num=1&id=${i.getGlass().getGlassID()}">+</a>
+                                       
+                                    </div>
+                                    <div class="col">${i.getGlass().getPrice()} VND </div>
+                                    <div class="col">
+                                        <form action="process" method="post">
+                                            <input type="hidden" name="id" value="${i.getGlass().getGlassID()}"/>
+                                            <button  type="submit" ><span class="close">&#10005;</span></button>
+                                        </form>
+                                    </div>
+                                   
                                 </div>
                             </div>
-                        </div>
                         </c:forEach>
                         <div class="back-to-shop"><a href="home">&leftarrow;<span class="text-muted">Back to home</span></div></a>
                     </div>
                     <div class="col-md-4 summary">
                         <div><h5><b>Summary</b></h5></div>
-                       
-                        <form>
-                            <p>SHIPPING BY</p>
-                            <select>
-                                <option class="text-muted">VNpost – EMS</option>
-                                <option class="text-muted">Giao hàng tiết kiệm</option>
-                                <option class="text-muted">Giao hàng Nhanh</option>
-                            </select>
-<!--                            <p>GIVE CODE</p>
-                            <input id="code" placeholder="Enter your code">-->
-                        </form>
-                        <div class="row" style="border-top: 1px solid rgba(0,0,0,.1); padding: 2vh 0;">
-                            <div class="col">TOTAL PRICE</div>
-                            <div class="col text-right">${o.getTotalMoney()}</div>
-                        </div>
                         <form action="checkout" method="post">
-                            <input class="btn"value="CHECKOUT"/> 
-                        </form>
-                        
-                    </div>
-                </div>
+                        <c:if test="${sessionScope.id == null}">
+                            <div class="row">
 
+                                <div class="col-lg-6 col-md-6 col-12">
+                                    <label><p>Name</p></label>
+                                    <input type="text" name="name" class="form-control" placeholder="Enter full Name" required/>
+                                </div>
+
+                                <div class="col-lg-6 col-md-6 col-12">
+                                    <label><p>Email</p></label>
+                                    <input type="email" name="emailOrder" id="emailOrder" pattern="[^ @]*@[^ @]*" class="form-control" placeholder="Enter your mail" required/>
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-12">
+                                    <label><p>Phone</p></label>
+                                    <input type="text" name="phone" id="phoneOrder" class="form-control" placeholder="Enter your Phone" required/>
+                                </div>
+
+                                <div class="col-lg-6 col-md-6 col-12">
+                                    <label><p>City</p></label>
+                                    <select name="city"class="form-control">
+                                        <option value="1"class="text-muted">Hà Nội</option>
+                                        <option value="2"class="text-muted">Hồ Chí Minh</option>
+                                        <option value="3"class="text-muted">Cần Thơ</option>
+
+                                        <option value="4" class="text-muted">Lào Cai</option>
+                                        <option value="5" class="text-muted">Hà Tĩnh</option>
+                                        <option value="6" class="text-muted">Đà Nẵng</option>
+
+                                    </select>
+                                </div>
+                                <div class="col-12">
+                                    <label><p>Adress</p></label>
+                                    <input type="text" name="adress"  class="form-control"required/>
+                                </div>
+                            </div>
+
+                        </c:if>
+                    
+                    
+                        <p>Choose Unit Ship</p>
+                        <select name="unitShip">
+                            <option value="1"class="text-muted">VNpost – EMS</option>
+                            <option value="2"class="text-muted">Giao hàng tiết kiệm</option>
+                            <option value="3"class="text-muted">Giao hàng Nhanh</option>
+                        </select>
+                        <p>Shiping : 30.000 VND</p>
+                        <!--                            <p>GIVE CODE</p>
+                                                    <input id="code" placeholder="Enter your code">-->
+                    
+                    <div class="row" style="border-top: 1px solid rgba(0,0,0,.1); padding: 2vh 0;">
+                        <div class="col">TOTAL PRICE</div>
+                        <div class="col text-right">${o.getTotalMoney()}</div>
+                    </div>
+                    
+                        <input type="submit"class="btn"value="CHECKOUT"/> 
+                    </form>
+
+                </div>
             </div>
 
-        </main>
-        <br><!-- comment -->
-        <br><!-- comment -->
+        </div>
 
-        <jsp:include page="layout/chatbot.jsp"/>
-        <jsp:include page="layout/footer.jsp"/>
-    </body>
+    </main>
+    <br><!-- comment -->
+    <br><!-- comment -->
+
+    <jsp:include page="layout/chatbot.jsp"/>
+    <jsp:include page="layout/footer.jsp"/>
+</body>
 </html>
 

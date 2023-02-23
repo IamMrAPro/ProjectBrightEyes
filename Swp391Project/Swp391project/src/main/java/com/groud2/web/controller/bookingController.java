@@ -4,13 +4,17 @@
  */
 package com.groud2.web.controller;
 
+import com.groud2.web.DAO.bookingDAO;
+
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+
 import java.io.IOException;
 import java.io.PrintWriter;
-
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 /**
  *
@@ -18,15 +22,6 @@ import java.io.PrintWriter;
  */
 public class bookingController extends HttpServlet {
 
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
@@ -35,7 +30,7 @@ public class bookingController extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet bookingController</title>");            
+            out.println("<title>Servlet bookingController</title>");
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Servlet bookingController at " + request.getContextPath() + "</h1>");
@@ -56,7 +51,24 @@ public class bookingController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-         request.getRequestDispatcher("booking.jsp").forward(request, response);
+
+        bookingDAO b = new bookingDAO();
+        String sbtime;
+        String name = request.getParameter("name");
+        String phone = request.getParameter("phone");
+        String email = request.getParameter("email");
+        String date = request.getParameter("date");
+        String time = request.getParameter("time");
+        String medical = request.getParameter("description");
+        String payment = request.getParameter("payment");
+        LocalDateTime currentDateTime = LocalDateTime.now();
+        // Định dạng ngày giờ theo định dạng "yyyy-MM-dd HH:mm:ss"
+        String formattedDateTime = currentDateTime.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+        sbtime=formattedDateTime;
+        
+        b.insert(name, phone, email, date, time, medical, payment, sbtime);
+        request.getRequestDispatcher("booking.jsp").forward(request, response);
+   
     }
 
     /**
@@ -70,7 +82,7 @@ public class bookingController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+
     }
 
     /**

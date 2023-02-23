@@ -273,7 +273,57 @@ public ArrayList<user> getAllByAcc(String account) throws SQLException, IOExcept
         }
         return false;
     }
+public void updateProfile(String account, String newName, String newGender,String newPhone, String newAddress, String newEmail, String newBod){
+         String strUpdate = "UPDATE user SET fullname=?,phonenumber=?,address=?,email=?,gender=?,bod=?  WHERE account=?";
+         try {
+            connection = dbc.getConnection();
+            ps = connection.prepareStatement(strUpdate);
+            ps.setString(1, newName);
+            ps.setString(2, newPhone);
+            ps.setString(3, newAddress);
+            ps.setString(4, newEmail);
+            if (newGender.equals("Male")) {
+                ps.setString(5, "1");
+            } else {
+                ps.setString(5, "0");
+            }
+            ps.setDate(6, Date.valueOf(newBod));
+            ps.setString(7, account);
+            ps.executeUpdate();
+           
+        } catch (Exception e) {
+    
+        System.out.println("Update profile error: " + e.getMessage());
+        }
+    }
 
+    public user checkPass(String acc, String pass) throws SQLException, IOException {
+
+        String sql = "select * from User "
+                + "where account=? and "
+                + "password=?";
+
+        try {
+            connection = dbc.getConnection();
+            ps = connection.prepareStatement(sql);
+            ps.setString(1, acc);
+            ps.setString(2, pass);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                return new user(rs.getString(1), rs.getString(2));
+            }
+        } catch (SQLException e) {
+           
+            return new user(rs.getString(1), rs.getString(2));
+            
+        } finally {
+            if (connection != null) {
+                connection.close();
+            }
+        }
+        return null;
+
+    }
 
     public String getUserName(String userId) {
         String name = "";
@@ -292,7 +342,64 @@ public ArrayList<user> getAllByAcc(String account) throws SQLException, IOExcept
         return name;
     }
 
-
+public void addUser(String id,  String name,String mail) {
+    try {
+            String sql = "insert into user(userId, fullname,email) "
+                    + " values(?, ?, ?)";
+            connection = dbc.getConnection();
+            ps = connection.prepareStatement(sql);
+            ps.setString(1, id);
+            ps.setString(2, name);
+            ps.setString(2, mail);
+            
+            
+            ps.execute();
+        } catch (Exception e) {
+            System.out.println("Add new staff to db error: " + e.getMessage());
+        }
+}
+ public boolean createData(String fullname, String account,String email) throws SQLException {
+        String sql = "INSERT INTO `swp`.`user`\n"
+                    + "(`fullname`,`account`,`email`,`role`) values (?,?,?,?)";       
+        try {   
+            System.out.println("name"+fullname);
+            connection = dbc.getConnection();
+            ps = connection.prepareStatement(sql);
+            ps.setString(1, fullname);
+            ps.setString(2, account);
+            
+            ps.setString(3, email);
+             ps.setString(4, "customer");
+            ps.executeUpdate();
+          
+            return true;
+        } catch (SQLException e) {
+                 System.out.println("Create error : " + e.getMessage());
+        } finally {
+            if (connection != null) {
+                connection.close();
+            }
+        }
+        return false;
+      }
+ public String checkEmail( String email) {
+        String name = "";
+        try {
+            String sql = "Select account from user where email = ?";
+            connection = dbc.getConnection();
+            ps = connection.prepareStatement(sql);
+            ps.setString(1, email);
+            rs = ps.executeQuery();
+            while(rs.next()){
+                name = rs.getString(1);
+               
+            }
+        } catch (Exception e) {
+            System.out.println("Get user name: " + e.getMessage());
+            
+        }
+        return name;
+    }
 
 
 
@@ -334,8 +441,61 @@ public user getUser(String account) throws SQLException {
         return g;
 }
 
-    public user getAccountInfomationByEmail(String email) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public user checklogin(String id) throws SQLException {
+        String sql = "SELECT account,password FROM swp.user where account=? ";
+
+        try {
+            connection = dbc.getConnection();
+            ps = connection.prepareStatement(sql);
+            ps.setString(1, id);
+            
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                return new user(rs.getString(1));
+            }
+        } catch (SQLException e) {
+
+                
+                return new user(rs.getString(1));
+     } finally {}return null;}
+
+public void updatePass(String newPass, String account) {
+        
+        String strSelect = "UPDATE user SET password=? WHERE account =?";
+        try {
+            connection = dbc.getConnection();
+            ps = connection.prepareStatement(strSelect);
+            ps.setString(1, newPass);
+            ps.setString(2, account);
+            ps.executeUpdate();
+            System.out.println("Update password success");
+            System.out.println("New Pass: " + newPass);
+        } catch (Exception e) {
+            System.out.println("Update new pass error" + e.getMessage());
+        }
+    }
+
+    public boolean checkEmailRegister(String email) throws SQLException {
+      String sql = "SELECT account FROM swp.user where email=?  ";
+        try { 
+            System.out.println("account "+ email);
+            connection = dbc.getConnection();
+            ps = connection.prepareStatement(sql);
+            ps.setString(1, email);      
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                System.out.println("accccc   "+ rs.getString(1));
+                return true;
+            }
+        } catch (SQLException e) {
+
+        } finally {
+            if (connection != null) {
+                connection.close();
+            }
+        }
+        return false;    
+    
     }
 }  
 
