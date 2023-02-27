@@ -108,6 +108,7 @@ public boolean checkAccount(String account) throws SQLException, IOException {
         ArrayList<user> listUser = new ArrayList<>();
         try {
             String mySelect = "Select * from user";
+            System.out.println("Step 1");
             connection = dbc.getConnection();
             ps = connection.prepareStatement(mySelect);
             rs = ps.executeQuery();

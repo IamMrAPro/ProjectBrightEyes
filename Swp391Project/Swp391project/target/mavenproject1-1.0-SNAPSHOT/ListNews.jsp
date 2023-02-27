@@ -23,9 +23,9 @@
                                 <a class="nav-link dropdown-toggle" href="#" id="dropdownMenuButton2" data-toggle="dropdown"
                                    aria-haspopup="true" aria-expanded="false">Category <span class="sr-only">(current)</span></a>
                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink_1" ">
-                                    <a class="dropdown-item" href="search?categoryname=TIN SỰ KIỆN"  >TIN SỰ KIỆN</a>
-                                    <a class="dropdown-item" href="search?categoryname=CÂU CHUYỆN KHÁCH HÀNG">CÂU CHUYỆN KHÁCH HÀNG </a>
-                                    <a class="dropdown-item" href="search?categoryname=THÔNG TIN NHÃN KHOA">THÔNG TIN NHÃN KHOA</a>
+                                    <a class="dropdown-item" href="search?categoryname=TIN SỰ KIỆN"  >Events</a>
+                                    <a class="dropdown-item" href="search?categoryname=CÂU CHUYỆN KHÁCH HÀNG">Customer Story </a>
+                                    <a class="dropdown-item" href="search?categoryname=THÔNG TIN NHÃN KHOA">Ophthalmic information</a>
                                     
                                 </div>
                             </li>   

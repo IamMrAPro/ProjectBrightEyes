@@ -142,7 +142,7 @@
                 </div>
             </div>
             
-            <input type="submit" name="logout" value="Logout" class="btn btn-logout">
+            <input type="submit" name="home" value="Logout" class="btn btn-logout">
         </div>
 
     </body>
