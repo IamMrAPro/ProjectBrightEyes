@@ -5,6 +5,7 @@
 package com.groud2.web.DAO;
 
 import com.groud2.web.DAO.context.DBContext;
+import com.groud2.web.model.Attendance;
 
 import com.groud2.web.model.user;
 import java.io.IOException;
@@ -115,18 +116,18 @@ public boolean checkAccount(String account) throws SQLException, IOException {
             while(rs.next()){
                 String id = rs.getString(1);
                 String fullname = rs.getString(2);
-                String gender = rs.getString(3);
-                String account = rs.getString(4);
-                String password = rs.getString(5);
-                String phonenumber = rs.getString(6);
-                String address = rs.getString(7);
-                String email = rs.getString(8);
+                String account = rs.getString(3);
+                String password = rs.getString(4);
+                String phonenumber = rs.getString(5);
+                String address = rs.getString(6);
+                String email = rs.getString(7);
+                String gender = rs.getString(8);
                 String dob = rs.getString(9);
-                String role = rs.getString(10);
+                String image = rs.getString(10);
+                String role = rs.getString(11).toUpperCase();
+                user us = new user(id, fullname, account, password, phonenumber, address, email, gender, dob, image, role);
                 
-                user us = new user(id, fullname, account, password, phonenumber, address, email, dob, role, gender);
-                
-                if(!account.equals(userId) && (!role.equals("") || !role.equals("customer")) && fullname.toLowerCase().contains(searcName.toLowerCase())){
+                if(!account.equals(userId) && !(role.equals("") || role.equals("customer".toUpperCase())) && fullname.toLowerCase().contains(searcName.toLowerCase())){
                     listUser.add(us);
                 }
             }
@@ -148,16 +149,16 @@ public boolean checkAccount(String account) throws SQLException, IOException {
             while(rs.next()){
                 String id = rs.getString(1);
                 String fullname = rs.getString(2);
-                String gender = rs.getString(3);
-                String account = rs.getString(4);
-                String password = rs.getString(5);
-                String phonenumber = rs.getString(6);
-                String address = rs.getString(7);
-                String email = rs.getString(8);
+                String account = rs.getString(3);
+                String password = rs.getString(4);
+                String phonenumber = rs.getString(5);
+                String address = rs.getString(6);
+                String email = rs.getString(7);
+                String gender = rs.getString(8);
                 String dob = rs.getString(9);
-                String role = rs.getString(10);
-                
-                user us = new user(id, fullname, account, password, phonenumber, address, email, dob, role, gender);
+                String image = rs.getString(10);
+                String role = rs.getString(11);
+                user us = new user(id, fullname, account, password, phonenumber, address, email, gender, dob, image, role);
                 
                 if((role.equals("") || role.equals("customer")) && fullname.toLowerCase().contains(search.toLowerCase())){
                     listUser.add(us);
@@ -424,12 +425,14 @@ public user getUser(String account) throws SQLException {
                 String bod = rs.getString(9);
                 String userimages = rs.getString(10);
                 String gender = rs.getString(8);
+
+
                 if(gender.equals("1")){
                     gender = "Male";
                 }else{
                     gender = "FeMale";
                 }
-                g = new user(userID, fullname, acc, pass, phonenumber, address, email, gender,bod, userimages);
+                g = new user(userID, fullname, acc, pass, phonenumber, address, email, gender,bod, "admin");
                
             }
         } catch (SQLException e) {
@@ -497,6 +500,63 @@ public void updatePass(String newPass, String account) {
         }
         return false;    
     
+    }
+    
+    public boolean takeAttendance(String id, String date, String userId, String name, String checkin1, String checkout1, String checkin2, String checkout2, String checkin3, String checkout3, String checkin4, String checkout4){
+        String sql = "INSERT INTO attendance(attendanceID, userID, fullname, checkin1, checkout1, checkin2, checkout2, checkin3, checkout3, checkin4, checkout4)"
+                + " values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
+        try {
+            connection = dbc.getConnection();
+            ps = connection.prepareStatement(sql);
+            ps.setString(1, id);
+            ps.setString(2, date);
+            ps.setString(3, userId);
+            ps.setString(4, name);
+            ps.setString(5, checkin1);
+            ps.setString(6, checkout1);
+            ps.setString(7, checkin2);
+            ps.setString(8, checkout2);
+            ps.setString(9, checkin3);
+            ps.setString(10, checkout3);
+            ps.setString(11, checkin4);
+            ps.setString(12, checkout4);
+            ps.execute();
+            return true;
+        } catch (Exception e) {
+            System.out.println("Take attendance into db error: " +e.getMessage());
+        }
+        return false;
+    }
+    
+    public ArrayList<Attendance> getAttendanceHistory() throws SQLException{
+        String sql = "SELECT * FROM attendance";
+        ArrayList<Attendance> list = new ArrayList<>();
+        try {
+            connection = dbc.getConnection();
+            ps = connection.prepareStatement(sql);
+            rs = ps.executeQuery();
+            while(rs.next()){
+                String id = rs.getString(1);
+                String date = rs.getString(2);
+                String userId = rs.getString(3);
+                String name = rs.getString(4);
+                String checkin1 = rs.getString(5);
+                String checkout1 = rs.getString(6);
+                String checkin2 = rs.getString(7);
+                String checkout2 = rs.getString(8);
+                String checkin3 = rs.getString(9);
+                String checkout3 = rs.getString(10);
+                String checkin4 = rs.getString(11);
+                String checkout4 = rs.getString(12);
+                
+                Attendance at = new Attendance(id, date, userId, name, checkin1, checkout1, checkin2, checkout2, checkin3, checkout3, checkin4, checkout4);
+                list.add(at);
+            }
+            
+        } catch (Exception e) {
+            System.out.println("Get history of attendance error: " + e.getMessage());
+        }
+        return list;
     }
 }  
 

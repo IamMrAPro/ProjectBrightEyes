@@ -1,5 +1,6 @@
 com\groud2\web\controller\changePass.class
 com\groud2\web\controller\showCartController.class
+com\groud2\web\controller\AdminController\AdminAddNewUserController.class
 com\groud2\web\controller\profileController.class
 com\groud2\web\DAO\newsDAO.class
 com\groud2\web\Payment\ReviewPaymentServlet.class
@@ -26,12 +27,14 @@ com\groud2\web\access\google\GoogleUser.class
 com\groud2\web\controller\AdminController\AdminManageCustomerController.class
 com\groud2\web\DAO\context\DBContext.class
 com\groud2\web\DAO\roomDAO.class
+com\groud2\web\controller\AdminController\TakeStaffAttendanceController.class
 com\groud2\web\controller\CaptchaController\CreateCaptchaServlet.class
 com\groud2\web\access\google\GoogleUtils.class
 com\groud2\web\controller\newsController.class
 com\groud2\web\controller\SearchController.class
 com\groud2\web\controller\singleNewsController.class
 com\groud2\web\controller\bookListController.class
+com\groud2\web\model\Attendance.class
 com\groud2\web\model\room.class
 com\groud2\web\controller\registerController.class
 com\groud2\web\Payment\PaymentServices.class

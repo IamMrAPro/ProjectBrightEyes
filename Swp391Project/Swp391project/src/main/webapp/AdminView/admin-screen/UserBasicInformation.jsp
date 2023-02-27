@@ -20,7 +20,7 @@
         </div>
         <div class="input-group info-input-line mx-3 mt-3">
             <!--<label for="user-name" class="input-group-text"><i class="fa-regular fa-id-card"></i></label>-->
-            <input type="text" name="ID" class="form-control" id="user-id" placeholder="ID" readonly="">  
+            <input type="text" name="ID" class="form-control" id="user-id" placeholder="ID" readonly="" value="${id}">  
         </div>
     </div>
 
@@ -29,7 +29,7 @@
 <div class="mt-3 d-flex info-line">
     <div class="w-50">
         <span id="addon-wrapping">Account:</span>
-        <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="addon-wrapping">
+        <input type="text" name="account" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="addon-wrapping">
     </div>
     <div class="mx-5">
         <div>Gender:</div>
