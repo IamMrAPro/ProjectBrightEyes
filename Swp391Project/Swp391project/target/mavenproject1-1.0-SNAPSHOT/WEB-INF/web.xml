@@ -126,6 +126,14 @@
         <servlet-name>changePass</servlet-name>
         <servlet-class>com.groud2.web.controller.changePass</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>AdminAddNewUser</servlet-name>
+        <servlet-class>com.groud2.web.controller.AdminController.AdminAddNewUserController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AdminTakeAttendance</servlet-name>
+        <servlet-class>com.groud2.web.controller.AdminController.TakeStaffAttendanceController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>homeController</servlet-name>
         <url-pattern>/home</url-pattern>
@@ -245,6 +253,14 @@
     <servlet-mapping>
         <servlet-name>changePass</servlet-name>
         <url-pattern>/changePass</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AdminAddNewUser</servlet-name>
+        <url-pattern>/addUser</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AdminTakeAttendance</servlet-name>
+        <url-pattern>/takeAttendance</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

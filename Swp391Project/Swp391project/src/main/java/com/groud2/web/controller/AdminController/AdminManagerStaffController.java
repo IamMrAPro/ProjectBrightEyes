@@ -45,8 +45,7 @@ public class AdminManagerStaffController extends HttpServlet {
             //Handle request
             if (position.equals("2")) {
 
-                String search = req.getParameter("staffSearch");
-                String sort = req.getParameter("sortByName");
+                String search = req.getParameter("search");
                 
                 
                 //search staff
