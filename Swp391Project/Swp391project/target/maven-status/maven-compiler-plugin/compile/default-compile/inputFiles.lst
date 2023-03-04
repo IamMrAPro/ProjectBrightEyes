@@ -10,7 +10,9 @@ D:\SubjectSpring2022\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web
 D:\SubjectSpring2022\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\server\ChatRoomServerEndpoint.java
 D:\SubjectSpring2022\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\DAO\bookingDAO.java
 D:\SubjectSpring2022\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\service\sendMail.java
+D:\SubjectSpring2022\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\controller\AdminController\TakeStaffAttendanceController.java
 D:\SubjectSpring2022\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\DAO\OrderDAO.java
+D:\SubjectSpring2022\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\model\Attendance.java
 D:\SubjectSpring2022\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\model\OrderGlasses\Order.java
 D:\SubjectSpring2022\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\controller\glassesController.java
 D:\SubjectSpring2022\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\DAO\EmailDAO.java
@@ -25,6 +27,7 @@ D:\SubjectSpring2022\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web
 D:\SubjectSpring2022\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\controller\AdminController\AdminManageGlassesController.java
 D:\SubjectSpring2022\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\Payment\ExecutePaymentServlet.java
 D:\SubjectSpring2022\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\DAO\context\DBContext.java
+D:\SubjectSpring2022\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\controller\AdminController\AdminAddNewUserController.java
 D:\SubjectSpring2022\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\model\staff.java
 D:\SubjectSpring2022\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\DAO\glassesDAO.java
 D:\SubjectSpring2022\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\controller\newsController.java

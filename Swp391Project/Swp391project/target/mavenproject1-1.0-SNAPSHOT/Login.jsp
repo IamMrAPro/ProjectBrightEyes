@@ -5,6 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -81,7 +82,7 @@
 
 
 
-
+                    <c:set var="cookie" value="${pageScope.cookies}"/>
                     <form class="login100-form validate-form" action="loginuser" method="post">
 
                         <span class="login100-form-title p-b-49">
@@ -90,13 +91,14 @@
 
                         <div class="wrap-input100 validate-input m-b-23" data-validate = "Username is reauired">
                             <span class="label-input100">Username</span>
-                            <input class="input100" type="text" name="account" placeholder="Type your username">
+                            <input class="input100" type="text" name="account" placeholder="Type your username" 
+                                   value="${cookie.acc.value}">
                             <span class="focus-input100" data-symbol="&#xf206;"></span>
                         </div>
 
                         <div class="wrap-input100 validate-input" data-validate="Password is required">
                             <span class="label-input100">Password</span>
-                            <input class="input100" type="password" name="password" placeholder="Type your password">
+                            <input class="input100" type="password" name="password" placeholder="Type your password" value="${cookie.pass.value}">
                             <span class="focus-input100" data-symbol="&#xf190;"></span>
                         </div>
 
@@ -114,8 +116,10 @@
                                 <label for="load-captcha" id="re-load-icon"><i class="fa-solid fa-repeat"></i></label>
                             </div>
                         </div>
+                        <br><!-- comment -->
                         <div class="text-right p-t-8 p-b-31">
-                            <input type="radio"  >Rememmber password
+                            <input type="checkbox" name="rememberpass"  
+                                   ${cookie.status!=null?'checked':''} value="ON"/> Rememmber password
                             <a href="ForgotPassword.jsp" style="margin-left: 30px">
                                 Forgot password?
                             </a>
