@@ -49,7 +49,7 @@ public class CreateCaptchaServlet extends HttpServlet {
         g.fillRect(0, 0, width, height);
 
         // Thiết lập phông chữ cho mã captcha  
-        Font font = new Font("Verdana", Font.BOLD, 30);
+        Font font = new Font("Verdana", Font.BOLD + Font.ITALIC, 30);
         g.setFont(font);
 
         // Tạo mã captcha 

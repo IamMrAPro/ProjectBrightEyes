@@ -5,6 +5,7 @@
 
 package com.groud2.web.Payment;
 
+import com.groud2.web.DAO.OrderDAO;
 import com.groud2.web.DAO.glassesDAO;
 import com.groud2.web.controller.glassesController;
 import com.groud2.web.model.OrderGlasses.Cart;
@@ -22,6 +23,7 @@ import jakarta.servlet.http.HttpSession;
 import java.sql.Date;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -129,9 +131,10 @@ public class CheckoutController extends HttpServlet {
             HttpSession session = request.getSession();
             String idCustom = String.valueOf(session.getAttribute("id"));
             Cart cart = new Cart(txt, list);
-       
-            Order o = new Order(cart, idCustom, adress, cityShip, unit,30,0,null, null, "Wait for confirmation");
-            
+            LocalDate now = LocalDate.now();
+            Order o = new Order(cart, idCustom, adress, cityShip, unit,3,0,null, null, "Wait for confirmation");
+            OrderDAO od = new OrderDAO();
+            od.insertOrder(0, o.getCart().getListname(), idCustom, (adress+cityShip), UnitShip, 3, String.valueOf(now), "Wait for confirmation");
             PaymentServices paymentServices = new PaymentServices() ;
             String approvalLink = paymentServices.authorizePayment(o);
             response.sendRedirect(approvalLink);
