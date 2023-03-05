@@ -134,6 +134,10 @@
         <servlet-name>AdminTakeAttendance</servlet-name>
         <servlet-class>com.groud2.web.controller.AdminController.TakeStaffAttendanceController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>AdminViewUserProfile</servlet-name>
+        <servlet-class>com.groud2.web.controller.AdminController.AdminViewUserProfileController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>homeController</servlet-name>
         <url-pattern>/home</url-pattern>
@@ -261,6 +265,10 @@
     <servlet-mapping>
         <servlet-name>AdminTakeAttendance</servlet-name>
         <url-pattern>/takeAttendance</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AdminViewUserProfile</servlet-name>
+        <url-pattern>/adminViewUserProfile</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

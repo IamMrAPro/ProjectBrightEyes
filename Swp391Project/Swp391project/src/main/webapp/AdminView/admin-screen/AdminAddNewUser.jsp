@@ -41,7 +41,7 @@
         <div class="limiter">
             <div class="container-login100" style="background-image: url('assets/images/bgr.jpg');">
                 <div class="wrap-login100 p-l-50 p-r-50 p-t-60 p-b-49">
-                    <form class="login100-form validate-form" action="register" method="get">
+                    <form class="login100-form validate-form" action="addUser" method="post">
                         <c:if test="${ms1 ne null}" >
                             <p  style="color: red;font-size: 20px">${ms1}</p>
                         </c:if>  
@@ -96,7 +96,8 @@
                         <div class="container-login100-form-btn">
                             <div class="wrap-login100-form-btn">
                                 <div class="login100-form-bgbtn"></div>
-
+                                
+                                <input type="text" name="backPage" value="${backPage}" class="d-none">
                                 <input type="submit" name="ADD" value="ADD" class="login100-form-btn" style="background-color: #5bc1ac" >
                             </div>
                         </div>                 

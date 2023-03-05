@@ -122,6 +122,12 @@ public boolean checkAccount(String account) throws SQLException, IOException {
                 String email = rs.getString(7);
                 String gender = rs.getString(8);
                 String dob = rs.getString(9);
+                if(gender.equals("0")){
+                    gender = "Female";
+                }
+                else {
+                    gender = "Male";
+                }
                 String image = rs.getString(10);
                 String role = rs.getString(11).toUpperCase();
                 user us = new user(id, fullname, account, password, phonenumber, address, email, gender, dob, image, role);
@@ -154,6 +160,12 @@ public boolean checkAccount(String account) throws SQLException, IOException {
                 String address = rs.getString(6);
                 String email = rs.getString(7);
                 String gender = rs.getString(8);
+                if(gender.equals("0")){
+                    gender = "Female";
+                }
+                else {
+                    gender = "Male";
+                }
                 String dob = rs.getString(9);
                 String image = rs.getString(10);
                 String role = rs.getString(11);
@@ -190,12 +202,13 @@ public ArrayList<user> getAllByAcc(String account) throws SQLException, IOExcept
                 String bod = rs.getString(9);
                 String userimages = rs.getString(10);
                 String gender = rs.getString(8);
+                String role = rs.getString(11);
                 if(gender.equals("1")){
                     gender = "Male";
                 }else{
                     gender = "FeMale";
                 }
-                user g = new user(userID, fullname, acc, pass, phonenumber, address, email, gender,bod, userimages);
+                user g = new user(userID, fullname, acc, pass, phonenumber, address, email, gender,bod, userimages, role);
                 list.add(g);
             }
         } catch (SQLException e) {

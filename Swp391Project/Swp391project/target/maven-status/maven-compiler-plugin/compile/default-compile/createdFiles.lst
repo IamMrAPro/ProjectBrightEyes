@@ -4,10 +4,12 @@ com\groud2\web\controller\AdminController\AdminAddNewUserController.class
 com\groud2\web\controller\profileController.class
 com\groud2\web\DAO\newsDAO.class
 com\groud2\web\Payment\ReviewPaymentServlet.class
+com\groud2\web\controller\AdminController\AdminViewUserProfileController.class
 com\groud2\web\controller\homeController.class
 com\groud2\web\controller\logoutController.class
 com\groud2\web\controller\loginController.class
 com\groud2\web\model\OrderGlasses\Cart.class
+com\groud2\web\controller\AdminController\AdminManageCustomerController$1.class
 com\groud2\web\service\sendMail.class
 com\groud2\web\controller\glassesController.class
 com\groud2\web\model\user.class
