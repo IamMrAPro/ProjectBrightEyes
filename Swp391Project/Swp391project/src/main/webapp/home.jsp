@@ -77,10 +77,10 @@
 
                         <div class="col-lg-3 col-md-6 col-12 mb-4 mb-lg-0 mb-md-4">
                             <div class="d-flex justify-content-center align-items-center">
-                                <a href="#" class="d-block">
+                                <a href="testOnline.jsp" class="d-block">
                                     <img src="assets/images/icons/heart.png" class="featured-block-image img-fluid" alt="">
 
-                                    <p class="featured-block-text"><strong>Share</strong> knowledge</p>
+                                    <p class="featured-block-text"><strong>Test</strong> your eyes</p>
                                 </a>
                             </div>
                         </div>

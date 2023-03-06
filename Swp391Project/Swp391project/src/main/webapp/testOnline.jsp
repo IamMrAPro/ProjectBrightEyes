@@ -38,7 +38,7 @@
                         </div>
                         <br>
                         <p>Take the Eyes Online Eye Test</p>
-                        <a class="btn btn-secondary btn-lg active" href="#">Take the test</a>
+                        <a class="btn btn-secondary btn-lg active" href="testEyes">Take the test</a>
                         </div>
                     </div>
                     <div class=" col-lg-6  mb-4">
@@ -48,9 +48,16 @@
                         </div>
                         <br>
                         <p>Take the Eyes Online Eye Test</p>
-                        <a class="btn btn-secondary btn-lg active" href="#">Take the test</a>
+                        <a class="btn btn-secondary btn-lg active" href="test.jsp">Take the test</a>
                         </div>
                     </div>
+                    <c:if test="${requestScope.mess !=null}">
+                        <div class="text-center" style="padding:   40px 20px; border: 1px solid #5bc1ac">
+                        <img src="https://www.personaleyes.com.au/images/site/tick-big.webp" width="90px" height="90px" class="logo">
+                        <p>Congratulations on completing the test!</p>
+                        <p>${requestScope.mess}</p>
+                        </div>
+                    </c:if>
                     <div >
                         <p>Test your visual acuity from the comfort of your 
                             couch or office chair with our online eye test. This test could help give you 
@@ -79,7 +86,7 @@
                         <p>If you wear glasses or contact lenses, it's important to test both <strong>with</strong> and <strong>without</strong> your corrective lenses. This will give you an idea as to whether your current script is the correct strength for you.</p>
                         <p>Book a Consultation at a personal EYES clinic</p>
                         <p>Although the test is designed to give you an idea of how good your eyesight is, it's important to have an optometrist give you a proper examination every two years. They will be able to give you a more accurate test, in addition to testing for things like glaucoma and cataracts. They'll also be able to discuss treatment options, like laser eye surgery, with you</p>
-                        <p>Give personalEYES a call today on <strong><a href="#">09489539479</a></strong> to book a consultation at any of our <a href="#"><strong>locations</strong></a>.</p>
+                        <p>Give personal EYES a call today on <a href="tel:09489539479" style="color: red" ><b>09489539479</b></a> to <a href="booking.jsp" style="color: red" >book a consultation</a> at any of our <a href="#" style="color: red"><strong>locations</strong></a>.</p>
                     </div>
 
 

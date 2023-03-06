@@ -8,6 +8,7 @@ com\groud2\web\controller\homeController.class
 com\groud2\web\controller\logoutController.class
 com\groud2\web\controller\loginController.class
 com\groud2\web\model\OrderGlasses\Cart.class
+com\groud2\web\controller\TestEyes\TestController.class
 com\groud2\web\service\sendMail.class
 com\groud2\web\controller\glassesController.class
 com\groud2\web\model\user.class
