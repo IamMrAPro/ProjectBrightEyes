@@ -190,6 +190,7 @@
                     </thead>
                     <tbody>
                         <c:forEach items="${listCustomer}" var="c">
+                        <input type="hidden" value="${c.getAccount()}" id="acc">
                             <tr>
                                 <th><% count++;
                                     out.print(count);%></th>

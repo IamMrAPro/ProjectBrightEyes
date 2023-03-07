@@ -191,22 +191,7 @@
                 <!-- Message Container -->
                 <div class="outer-container">
                     <!-- User input name -->
-                    <div class="chat-bar-input-block" id="name">
-                        <div >
-                            <c:if test="${sessionScope.id != null}">
-                                <input id="nameInput" class="input-box" type="text" name="msg" 
-                                       value="${sessionScope.id}" readonly>
-                            </c:if>
-                            <input id="nameInput" class="input-box" type="text" name="msg" 
-                                   placeholder="Enter your name ...">
-                            <p></p>
-                        </div>
-
-                        <div class="chat-bar-icons">
-                            <i id="chat-icon" style="color: #333;" class="fa fa-fw fa-send"
-                               onclick="sendName()"></i>
-                        </div>
-                    </div>
+                    
                     <div class="chat-container">
                         <!-- Messages -->
                         <div id="chatbox">
@@ -244,22 +229,10 @@
 </body>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script>
-                                       function randomFiveChars() {
-                                           const lettersAndDigits = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
-                                           let result = '';
-                                           for (let i = 0; i < 5; i++) {
-                                               result += lettersAndDigits.charAt(Math.floor(Math.random() * lettersAndDigits.length));
-                                           }
-                                           return result;
-                                       }
-                                       var name;
-                                       if (${sessionScope.id == null}) {
-                                           name = randomFiveChars();
-                                       } else {
-                                           name = ${sessionScope.id};
-                                       }
-
-                                       document.getElementById("user").style.display = 'none';
+                                       
+                                       var name = document.getElementById('acc').value;
+                                       
+                                       
                                        var coll = document.getElementsByClassName("collapsible");
 
                                        for (let i = 0; i < coll.length; i++) {
