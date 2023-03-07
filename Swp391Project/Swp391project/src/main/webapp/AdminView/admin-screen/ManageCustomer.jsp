@@ -24,7 +24,7 @@
         #table-head {
             background-color: #5bc1ac;
         }
-        
+
         #search-staff-content {
             height: 40px;
         }
@@ -35,7 +35,7 @@
             outline: none;
             border: 1px solid black;
         }
-        
+
         /*------------------*/
         .cssbuttons-io-button {
             display: flex;
@@ -109,12 +109,14 @@
             color: #f39c12;
         }
     </style>
+
     <body onload="getPositionNavBar(2)">
         <form action="manageCustomer" class="vw-100 vh-100 d-flex" method="post">
             <!--            set position for not select case-->
             <input name="setPosition" type="text" value="1" class="d-none">
             <!--            --------------------------------------------------------------------->
             <%@include file="../admin-layout/admin-navbar.jsp" %>
+
             <div class="main-view main-view-content">
                 <div class="d-flex justify-content-between header-staff-list align-items-center mb-4">
                     <h2 class="text-center w-100">MANAGE CUSTOMER</h2>
@@ -126,23 +128,23 @@
                     <div class="d-flex align-items-center text-center justify-content-between">
                         <div class="d-flex">
                             <div class="select">
-                            <select>
-                                <option value="1">Display All</option>
-                                <option value="2">Working</option>
-                                <option value="3">Stop</option>
-                            </select>
+                                <select>
+                                    <option value="1">Display All</option>
+                                    <option value="2">Working</option>
+                                    <option value="3">Stop</option>
+                                </select>
+                            </div>
+
+                            <a href="addUser" class="cssbuttons-io-button mx-3">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"></path><path fill="currentColor" d="M11 11V5h2v6h6v2h-6v6h-2v-6H5v-2z"></path></svg>
+                                <span>ADD NEW</span>
+                            </a>
                         </div>
 
-                        <a href="addUser" class="cssbuttons-io-button mx-3">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"></path><path fill="currentColor" d="M11 11V5h2v6h6v2h-6v6h-2v-6H5v-2z"></path></svg>
-                            <span>ADD NEW</span>
-                        </a>
-                        </div>
-
-<!--                        <div class="form-floating align-items-center d-flex" id="search-staff">
-                            <input name="staffSearch" type="text" id="search-staff-content" placeholder="Search by name">
-                            <button id="staff-search-btn"><i class="fa-solid fa-magnifying-glass"></i></button>
-                        </div>-->
+                        <!--                        <div class="form-floating align-items-center d-flex" id="search-staff">
+                                                    <input name="staffSearch" type="text" id="search-staff-content" placeholder="Search by name">
+                                                    <button id="staff-search-btn"><i class="fa-solid fa-magnifying-glass"></i></button>
+                                                </div>-->
                     </div>
 
                     <!-- Modal -->
@@ -202,9 +204,11 @@
                                 </th>
                             </tr>
                         </c:forEach>
+
                     </tbody>
                 </table>
             </div>
         </form>
+        <%@include file="../admin-layout/chatbotofAdmin.jsp" %>
     </body>
 </html>
