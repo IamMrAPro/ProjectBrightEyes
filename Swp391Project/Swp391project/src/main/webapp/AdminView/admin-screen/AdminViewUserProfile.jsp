@@ -94,13 +94,7 @@
                             </div>
                         </div>
                         <div class="col-md-4">
-                            <div class="p-3 py-5">
-                                <% if(role.equals("customer") || role.equals("")){ %>
-                                <%@include file="../admin-layout/user-profile-medical-record-list.jsp" %>
-                                <% }else { %>
-                                <%@include file="../admin-layout/user-profile-staff-internal-information.jsp" %>
-                                <% } %>
-                            </div>
+                            
                         </div>
                     </div>
                 </div>
