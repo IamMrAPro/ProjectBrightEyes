@@ -49,7 +49,6 @@
                                 <th>Time</th>
                                 <th>Medical Information</th>
                                 <th>Time Booking</th>                             
-                                <th>Status</th>                             
                             </tr>
                         </thead>
 

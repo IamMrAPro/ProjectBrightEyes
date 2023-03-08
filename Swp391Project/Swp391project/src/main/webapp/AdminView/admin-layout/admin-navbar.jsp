@@ -121,12 +121,11 @@
                             <div class="mx-2">Feedback</div>
                         </label>
                     </div>
-                     <div class="admin-link">
-                        <input type="submit" name="position" value="6" id="feedback" class="d-none">
-                        <label for="feedback" class="d-flex px-4 align-items-center admin-nav-label">
-                            <ion-icon name="bookmarks-outline"></ion-icon>
-                            <div class="mx-2"><a href="">Booking</a></div>
-                        </label>
+                    <div class="admin-link">
+                        <a href="" class="d-flex px-4 align-items-center admin-nav-label text-decoration-none">
+                            <i class="fa-solid fa-calendar-days" style="color: white;"></i>
+                            <div class="mx-2" style="color: white;">Booking</div>
+                        </a>
                     </div>
                 </div>
 
