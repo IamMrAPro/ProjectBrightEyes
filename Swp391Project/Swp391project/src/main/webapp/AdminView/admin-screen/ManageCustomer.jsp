@@ -209,8 +209,10 @@
 <!--                                        <label for="${c.getUserId()}" class="btn btn-success m-auto">
                                             <i class="fa-solid fa-pen"></i>
                                         </label>-->
-                                        <div class="btn btn-success m-auto">
-                                            <i class="fa-brands fa-facebook-messenger"></i>
+                                        <div class="btn btn-success m-auto chatboxClass" id="chat${c.getAccount()}" >
+                                            
+                                            chat
+                                            
                                         </div>
                                     </div>
                                 </th>

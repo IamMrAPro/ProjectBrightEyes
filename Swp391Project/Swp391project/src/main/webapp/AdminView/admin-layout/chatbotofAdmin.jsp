@@ -1,6 +1,4 @@
 
-
-
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <style>
@@ -9,6 +7,7 @@
         bottom: 0;
         right: 50px;
         box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+        display: none;
     }
 
     .collapsible {
@@ -26,9 +25,7 @@
     }
 
     .content {
-        max-height: 0;
-        overflow: hidden;
-        transition: max-height 0.2s ease-out;
+
         background-color: #f1f1f1;
     }
 
@@ -36,10 +33,10 @@
         width: 350px;
         background: white;
         text-align: center;
-        overflow: auto;
-        scrollbar-width: none;
-        height: max-content;
-        transition: max-height 0.2s ease-out;
+        /*        overflow: auto;
+                scrollbar-width: none;
+                height: max-content;
+                transition: max-height 0.2s ease-out;*/
     }
 
     .outer-container {
@@ -181,17 +178,16 @@
 
 <body>
     <!-- CHAT BAR BLOCK -->
-    <div class="chat-bar-collapsible">
-        <button id="chat-button" type="button" class="collapsible">Chat with us!
+    <div class="chat-bar-collapsible" id="chatScreen">
+        <button id="chat-button" type="button" class="collapsible">Chat with Customer!
             <i id="chat-icon" style="color: #fff;" class="fa fa-fw fa-comments-o"></i>
         </button>
-
         <div class="content">
             <div class="full-chat-block">
                 <!-- Message Container -->
                 <div class="outer-container">
                     <!-- User input name -->
-                    
+
                     <div class="chat-container">
                         <!-- Messages -->
                         <div id="chatbox">
@@ -229,27 +225,32 @@
 </body>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script>
-                                       
+
                                        var name = document.getElementById('acc').value;
-                                       
+
                                        
                                        var coll = document.getElementsByClassName("collapsible");
-
-                                       for (let i = 0; i < coll.length; i++) {
-                                           coll[i].addEventListener("click", function () {
-                                               this.classList.toggle("active");
-
-                                               var content = this.nextElementSibling;
-
-                                               if (content.style.maxHeight) {
-                                                   content.style.maxHeight = null;
-                                               } else {
-                                                   content.style.maxHeight = content.scrollHeight + "px";
-                                               }
-
-                                           });
+                                       console.log("===================");
+                                       var box = document.getElementsByClassName("chatboxClass");
+                                       var  url;
+                                       console.log(box[0].id);
+                                       for (let i = 0; i < box.length; i++) {
+                                           document.getElementById(box[i].id).onclick = function () {
+                                                           document.getElementById("chatScreen").style.display = 'block';
+                                                            console.log("may lan" + box[i].id);
+                                                           
+                                                            
+                                                   };
+                                        url= box[i].id;
                                        }
-                                       var websocket = new WebSocket("ws://" + document.location.host + "<%= request.getContextPath()%>/chatRoomServer/" + name);
+                                       
+                                       document.getElementById("chat-button").onclick = function () {
+                                           url=null;
+                                           document.getElementById("chatScreen").style.display = 'none';
+                                           
+                                       };
+                                       var websocket = new WebSocket("ws://" + document.location.host + "<%= request.getContextPath()%>/chatRoomServer/" + url);
+                                       console.log("ws://" + document.location.host + "<%= request.getContextPath()%>/chatRoomServer/" + url);
                                        websocket.onopen = function (message) {
                                            processOpen(message);
                                        };
@@ -296,7 +297,7 @@
                                            }
                                        }
                                        function sendName() {
-                                           
+
                                            document.getElementById("name").style.display = 'none';
                                            document.getElementById("user").style.display = 'block';
                                            document.getElementById("botStarterMessage").innerHTML = '<p class="botText"><span>' + "Hello " + nameInput.value + '</span></p>';

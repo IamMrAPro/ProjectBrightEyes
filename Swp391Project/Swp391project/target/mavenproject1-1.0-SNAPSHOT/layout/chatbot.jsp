@@ -193,13 +193,19 @@
                     <!-- User input name -->
                     <div class="chat-bar-input-block" id="name">
                         <div >
+                            <c:if test="${sessionScope.id == null}">
+                                <input id="nameInput" class="input-box" type="text" name="msg" 
+                                   placeholder="Enter your name ...">
+                            <p></p>
+                                
+                            </c:if>
                             <c:if test="${sessionScope.id != null}">
                                 <input id="nameInput" class="input-box" type="text" name="msg" 
                                        value="${sessionScope.id}" readonly>
-                            </c:if>
-                            <input id="nameInput" class="input-box" type="text" name="msg" 
-                                   placeholder="Enter your name ...">
                             <p></p>
+                                
+                            </c:if>
+                            
                         </div>
 
                         <div class="chat-bar-icons">
@@ -256,12 +262,10 @@
                                        if (${sessionScope.id == null}) {
                                            name = randomFiveChars();
                                        } else {
-                                           name = ${sessionScope.id};
+                                          ${sessionScope.id == name}
                                        }
-
-                                       document.getElementById("user").style.display = 'none';
                                        var coll = document.getElementsByClassName("collapsible");
-
+                                       document.getElementById("user").style.display = 'none';
                                        for (let i = 0; i < coll.length; i++) {
                                            coll[i].addEventListener("click", function () {
                                                this.classList.toggle("active");
