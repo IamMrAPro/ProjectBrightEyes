@@ -73,7 +73,7 @@ public class AdminAddNewUserController extends HttpServlet {
             emailOK = u.checkEmailRegister(email);
             if (registerOK == true || emailOK == true) {
                 req.setAttribute("ms1", "Add new user failed , Please try again!!!");
-                req.getRequestDispatcher("AdminView/admin-sceen/AdminAddNewUser.jsp").forward(req, resp);
+                req.getRequestDispatcher("AdminView/admin-screen/AdminAddNewUser.jsp").forward(req, resp);
             } else {
                 u.createData(name, account, password, phone, address, email, gender, dob, role);
                 resp.sendRedirect(backPage);
@@ -88,7 +88,10 @@ public class AdminAddNewUserController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String backPage = req.getParameter("backPage");
+        String userRole = req.getParameter("userRole");
         String id = String.valueOf(GetLastUserID());
+        System.out.println("back page = " + backPage);
+        req.setAttribute("userRole", userRole);
         req.setAttribute("id", id);
         req.setAttribute("backPage", backPage);
         req.getRequestDispatcher("AdminView/admin-screen/AdminAddNewUser.jsp").forward(req, resp);

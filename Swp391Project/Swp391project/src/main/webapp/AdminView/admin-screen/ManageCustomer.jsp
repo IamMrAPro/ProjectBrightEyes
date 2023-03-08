@@ -128,7 +128,7 @@
                 <div class="mb-5 mx-3">
                     <div class="row align-items-center justify-content-between">
                         <div class="d-flex">
-                            <a href="addUser?backPage=manageCustomer" class="btn btn-success">ADD NEW</a>
+                            <a href="addUser?backPage=manageCustomer&userRole=customer" class="btn btn-success">ADD NEW</a>
                         </div>
                         <div id="search" class="d-flex">
                             <input type="text" name="search" id="search-text" placeholder="Search by name">
@@ -169,7 +169,7 @@
                                 <th>
                                     <div class="d-flex align-items-center">
                                         <!--<input type="submit" name="viewProfile" value="${c.getAccount()}" class="d-none" id="${c.getUserId()}">-->
-                                        <a href="adminViewUserProfile?account=${c.getAccount()}" class="btn btn-success m-auto"><i class="fa-solid fa-pen"></i></a>
+                                        <a href="adminViewUserProfile?account=${c.getAccount()}&backPage=manageCustomer" class="btn btn-success m-auto"><i class="fa-solid fa-pen"></i></a>
 <!--                                        <label for="${c.getUserId()}" class="btn btn-success m-auto">
                                             <i class="fa-solid fa-pen"></i>
                                         </label>-->

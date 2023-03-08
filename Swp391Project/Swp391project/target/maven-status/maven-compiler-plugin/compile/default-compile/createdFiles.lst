@@ -26,6 +26,7 @@ com\groud2\web\DAO\EmailDAO.class
 com\groud2\web\model\glasses.class
 com\groud2\web\controller\AdminController\AdminManagerStaffController.class
 com\groud2\web\access\google\GoogleUser.class
+com\groud2\web\controller\AdminController\AdminAddNewGlassController.class
 com\groud2\web\controller\AdminController\AdminManageCustomerController.class
 com\groud2\web\DAO\context\DBContext.class
 com\groud2\web\DAO\roomDAO.class
@@ -48,6 +49,7 @@ com\groud2\web\access\google\LoginGoogleServlet.class
 com\groud2\web\controller\changeProfile.class
 com\groud2\web\controller\PasswordController.class
 com\groud2\web\controller\AdminController\AdminManageRoomController.class
+com\groud2\web\controller\AdminController\AdminUpdateRoomController.class
 com\groud2\web\access\common\Constants.class
 com\groud2\web\model\booking.class
 com\groud2\web\model\OrderGlasses\Item.class

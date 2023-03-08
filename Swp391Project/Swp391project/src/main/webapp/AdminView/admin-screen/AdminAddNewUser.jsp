@@ -82,6 +82,11 @@
                             <input class="input100" type="text" name="email" placeholder="Type user Email">
                             <span class="focus-input100" data-symbol="&#xf195;"></span>
                         </div>
+                        <div class="wrap-input100 validate-input m-b-13" data-validate="Address is required">
+                            <span class="label-input100">Role</span>
+                            <input class="input100" type="text" name="role" placeholder="Type user Role" value="${userRole}" readonly="">
+                            <span class="focus-input100" data-symbol="&#xf215;"></span>
+                        </div>
                         <div class="wrap-input100 validate-input m-b-13" >
                             <input type="radio" name="gender" value="Male" style="margin-left: 50px" checked> Male
                             <input type="radio" name="gender" value="FeMale" style="margin-left: 150px"> FeMale 

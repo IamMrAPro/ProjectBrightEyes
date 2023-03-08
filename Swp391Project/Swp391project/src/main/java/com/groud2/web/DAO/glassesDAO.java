@@ -20,13 +20,12 @@ import java.util.List;
  */
 public class glassesDAO {
 
-  
     PreparedStatement ps = null;
     ResultSet rs = null;
     DBContext dbc = new DBContext();
     Connection connection = null;
 
-    public  ArrayList<glasses> getAllglasses() throws SQLException, IOException {
+    public ArrayList<glasses> getAllglasses() throws SQLException, IOException {
         ArrayList<glasses> list = new ArrayList<>();
         String sql = "SELECT * FROM glasses";
         try {
@@ -36,25 +35,25 @@ public class glassesDAO {
             while (rs.next()) {
                 String gende;
                 String glassID = rs.getString(1);
-                String glassName= rs.getString(2);
-                String color= rs.getString(3);
-                String gender= rs.getString(4);
-                String material= rs.getString(5);
-                String style= rs.getString(6);
-                String image= rs.getString(7);
-                String price= rs.getString(8);
+                String glassName = rs.getString(2);
+                String color = rs.getString(3);
+                String gender = rs.getString(4);
+                String material = rs.getString(5);
+                String style = rs.getString(6);
+                String image = rs.getString(7);
+                String price = rs.getString(8);
 //                String quantity= rs.getString(9);
                 String quantity = "100";
-                if(gender.equals("1")){
+                if (gender.equals("1")) {
                     gende = "Male";
-                }else{
+                } else {
                     gende = "FeMale";
                 }
-                glasses g = new glasses(glassID, glassName, color, gende, material, style, image,price,Integer.parseInt(quantity));
-                
+                glasses g = new glasses(glassID, glassName, color, gende, material, style, image, price, Integer.parseInt(quantity));
+
                 list.add(g);
-}
-} catch (SQLException e) {
+            }
+        } catch (SQLException e) {
 
         } finally {
             if (connection != null) {
@@ -65,41 +64,34 @@ public class glassesDAO {
 
     }
 
-      public glasses getGlassesId(String id) throws SQLException, IOException  {
+    public glasses getGlassesId(String id) throws SQLException, IOException {
         glasses g = new glasses();
-        String sql = "SELECT * FROM swp.glasses where glassesID ="+id;
+        String sql = "SELECT * FROM swp.glasses where glassID = ?";
         try {
             connection = dbc.getConnection();
             ps = connection.prepareStatement(sql);
+            ps.setString(1, id);
             rs = ps.executeQuery();
             while (rs.next()) {
                 String gende;
                 String glassID = rs.getString(1);
-                String glassName= rs.getString(2);
-                String color= rs.getString(3);
-                String gender= rs.getString(4);
-                String material= rs.getString(5);
-                String style= rs.getString(6);
-                String image= rs.getString(7);
-                String price= rs.getString(8);
-                if(gender.equals("1")){
+                String glassName = rs.getString(2);
+                String color = rs.getString(3);
+                String gender = rs.getString(4);
+                String material = rs.getString(5);
+                String style = rs.getString(6);
+                String image = rs.getString(7);
+                String price = rs.getString(8);
+                if (gender.equals("1")) {
                     gende = "Male";
-                }else{
+                } else {
                     gende = "FeMale";
                 }
-                g.setColor(color);
-                g.setGender(gender);
-                g.setGlassID(glassID);
-                g.setGlassName(glassName);
-                g.setImage(image);
-                g.setMaterial(material);
-                g.setPrice(price);
-                g.setStyle(style);
                 
-                
-}
-} catch (SQLException e) {
-
+                g = new glasses(glassID, glassName, color, gender, material, style, image, price, 0);
+            }
+        } catch (SQLException e) {
+            System.out.println("Get glass by id error: " + e.getMessage());
         } finally {
             if (connection != null) {
                 connection.close();
@@ -107,8 +99,6 @@ public class glassesDAO {
         }
         return g;
     }
-
-
 
     public boolean addNewGlass(glasses gl) {
         try {
@@ -139,7 +129,7 @@ public class glassesDAO {
             connection = dbc.getConnection();
             ps = connection.prepareStatement(sql);
             rs = ps.executeQuery();
-            while(rs.next()){
+            while (rs.next()) {
                 String id = rs.getString(1);
                 String name = rs.getString(2);
                 String color = rs.getString(3);
@@ -150,9 +140,9 @@ public class glassesDAO {
                 String price = rs.getString(8);
 //                 String quantity= rs.getString(9);
                 String quantity = "100";
-                
-                glasses g = new glasses(id, name, color, gender, material, style, image, price,Integer.parseInt(quantity));
-                if(name.toLowerCase().contains(search.toLowerCase())){
+
+                glasses g = new glasses(id, name, color, gender, material, style, image, price, Integer.parseInt(quantity));
+                if (name.toLowerCase().contains(search.toLowerCase())) {
                     listGlass.add(g);
                 }
             }
@@ -160,23 +150,63 @@ public class glassesDAO {
             System.out.println("Get list glass from db error: " + e.getMessage());
             return new ArrayList<>();
         }
-        return listGlass; 
-   }
+        return listGlass;
+    }
 
     public glasses getProductInfor(String string) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     public void deleteGlasses(String id) throws SQLException {
-       String mysql = "DELETE FROM `swp`.`glasses`\n" +
-"WHERE glassesID = \""+id+"\";";
-            connection = dbc.getConnection();
-            ps = connection.prepareStatement(mysql);
-          
-            ps.executeUpdate();
+        String mysql = "DELETE FROM `swp`.`glasses`\n"
+                + "WHERE glassesID = \"" + id + "\";";
+        connection = dbc.getConnection();
+        ps = connection.prepareStatement(mysql);
+
+        ps.executeUpdate();
     }
 
-   
+    public String getLastID() {
+        try {
+            String SQL = "Select glassID from glasses";
+            connection = dbc.getConnection();
+            ps = connection.prepareStatement(SQL);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                return rs.getString(1);
+            }
+        } catch (Exception e) {
+            System.out.println("Get last id error: " + e.getMessage());
+        }
+        return null;
+    }
 
-  
+    public boolean updateGlasses(glasses gl) {
+        try {
+            String mysql = "update glasses"
+                    + " set glassName= ?,"
+                    + " color= ?,"
+                    + " gender= ?,"
+                    + " material= ?,"
+                    + " style= ?,"
+                    + " image= ?,"
+                    + " price= ?"
+                    + " where glassID = ?";
+            connection = dbc.getConnection();
+            ps = connection.prepareStatement(mysql);
+            ps.setString(8, gl.getGlassID());
+            ps.setString(1, gl.getGlassName());
+            ps.setString(2, gl.getColor());
+            ps.setString(3, gl.getGender());
+            ps.setString(4, gl.getMaterial());
+            ps.setString(5, gl.getStyle());
+            ps.setString(6, gl.getImage());
+            ps.setString(7, gl.getPrice());
+            ps.execute();
+        } catch (Exception e) {
+            System.out.println("Update glass into db error: " + e.getMessage());
+            return false;
+        }
+        return true;
+    }
 }

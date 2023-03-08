@@ -138,6 +138,14 @@
         <servlet-name>AdminViewUserProfile</servlet-name>
         <servlet-class>com.groud2.web.controller.AdminController.AdminViewUserProfileController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>AdminUpdateRoom</servlet-name>
+        <servlet-class>com.groud2.web.controller.AdminController.AdminUpdateRoomController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AddNewGlass</servlet-name>
+        <servlet-class>com.groud2.web.controller.AdminController.AdminAddNewGlassController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>homeController</servlet-name>
         <url-pattern>/home</url-pattern>
@@ -269,6 +277,14 @@
     <servlet-mapping>
         <servlet-name>AdminViewUserProfile</servlet-name>
         <url-pattern>/adminViewUserProfile</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AdminUpdateRoom</servlet-name>
+        <url-pattern>/updateRoom</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AddNewGlass</servlet-name>
+        <url-pattern>/addGlass</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

@@ -72,19 +72,19 @@
                                     <h4 class="text-right">Profile Settings</h4>
                                 </div>
                                 <div class="row mt-2">
-                                    <div class="col-md-12"><label class="labels">Name</label><input type="text" class="form-control" placeholder="first name" value="${u.getFullname()}"></div>
+                                    <div class="col-md-12"><label class="labels">Name</label><input type="text" class="form-control" placeholder="first name" value="${u.getFullname()}" required=""></div>
                                 </div>
                                 <div class="row mt-3">
                                     <div class="row mx-1">
-                                        <div class="col-md-6"><label class="labels">User ID</label><input type="text" class="form-control" placeholder="ID" value="${u.getUserId()}"></div>
-                                        <div class="col-md-6"><label class="labels">Gender</label><input type="text" class="form-control" placeholder="Gender" value="${u.getGender()}"></div>
+                                        <div class="col-md-6"><label class="labels">User ID</label><input type="text" class="form-control" placeholder="ID" value="${u.getUserId()}" required=""></div>
+                                        <div class="col-md-6"><label class="labels">Gender</label><input type="text" class="form-control" placeholder="Gender" value="${u.getGender()}" required=""></div>
                                     </div>
-                                    <div class="col-md-12"><label class="labels">Mobile Number</label><input type="text" class="form-control" placeholder="enter phone number" value="${u.getPhonenumber()}"></div>
-                                    <div class="col-md-12"><label class="labels">Email</label><input type="text" class="form-control" placeholder="Email" value="${u.getEmail()}"></div>
-                                    <div class="col-md-12"><label class="labels">Account</label><input type="text" class="form-control" placeholder="Account" value="${u.getAccount()}"></div>
-                                    <div class="col-md-12"><label class="labels">Date of birth</label><input type="text" class="form-control" placeholder="Date of birth" value="${u.getBod()}"></div>
-                                    <div class="col-md-12"><label class="labels">Address</label><input type="text" class="form-control" placeholder="address" value="${u.getAddress()}"></div>
-                                    <div class="col-md-12"><label class="labels">Role</label><input type="text" class="form-control" placeholder="role" value="${u.getRole().toUpperCase()}"></div>
+                                    <div class="col-md-12"><label class="labels">Mobile Number</label><input type="text" class="form-control" placeholder="enter phone number" value="${u.getPhonenumber()}" required=""></div>
+                                    <div class="col-md-12"><label class="labels">Email</label><input type="email" class="form-control" placeholder="Email" value="${u.getEmail()}" required=""></div>
+                                    <div class="col-md-12"><label class="labels">Account</label><input type="text" class="form-control" placeholder="Account" value="${u.getAccount()}" required=""></div>
+                                    <div class="col-md-12"><label class="labels">Date of birth</label><input type="text" class="form-control" placeholder="Date of birth" value="${u.getBod()}" required=""></div>
+                                    <div class="col-md-12"><label class="labels">Address</label><input type="text" class="form-control" placeholder="address" value="${u.getAddress()}" required=""></div>
+                                    <div class="col-md-12"><label class="labels">Role</label><input type="text" class="form-control" placeholder="role" value="${u.getRole().toUpperCase()}" required=""></div>
                                     
                                 </div>
                                     <div class="mt-5 text-center">

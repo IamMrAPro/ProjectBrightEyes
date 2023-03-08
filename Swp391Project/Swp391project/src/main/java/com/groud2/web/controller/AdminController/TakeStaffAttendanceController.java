@@ -160,6 +160,27 @@ public class TakeStaffAttendanceController extends HttpServlet {
                 }
             }
         }
+
+        if (update != null) {
+            Attendance at = u.getAttendanceByID(update);
+            ArrayList<user> staff = null;
+            try {
+                staff = u.getAllByAcc(staffAccount);
+            } catch (SQLException ex) {
+                Logger.getLogger(TakeStaffAttendanceController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            ArrayList<Attendance> listAt = new ArrayList<>();
+            if (staff != null) {
+                listAt = u.listAttendance(at.getDate(), staff.get(0).getUserId());
+            }
+
+            req.setAttribute("listAtt", listAt);
+            req.setAttribute("adminAccount", adminAccount);
+            req.setAttribute("today", at.getDate());
+            req.setAttribute("nowTime", at.getTime());
+            req.setAttribute("staff", staff);
+            req.getRequestDispatcher("AdminView/admin-screen/TakeStaffAttendance.jsp").forward(req, resp);
+        }
     }
 
     @Override

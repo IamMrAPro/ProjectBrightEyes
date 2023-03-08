@@ -233,7 +233,7 @@ public class userDAO {
                 ps.setString(7, "0");
             }
 
-            ps.setDate(8, Date.valueOf(birthofdate));
+            ps.setString(8, birthofdate);
             ps.setString(9, role);
             ps.executeUpdate();
             System.out.println("Them vao thanh cong");
@@ -546,6 +546,22 @@ public class userDAO {
             System.out.println("Get attendance history error: " + e.getMessage());
         } 
         return list;
+    }
+    
+    public Attendance getAttendanceByID(String attID){
+        String sql = "Select * from attendance where attendanceID = ?";
+        try {
+            connection = dbc.getConnection();
+            ps = connection.prepareStatement(sql);
+            ps.setString(1, attID);
+            rs = ps.executeQuery();
+            while(rs.next()){
+                return new Attendance(rs.getString(1),rs.getString(2), rs.getString(3), rs.getString(4));
+            }
+        } catch (Exception e) {
+            System.out.println("Get total attendance error: " + e.getMessage());
+        }
+        return null;
     }
     
     // count total attendance

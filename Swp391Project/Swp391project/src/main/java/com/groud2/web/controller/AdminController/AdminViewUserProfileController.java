@@ -31,6 +31,7 @@ public class AdminViewUserProfileController extends HttpServlet{
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String account = req.getParameter("account");
+        String backPage = req.getParameter("backPage");
         //String backpage = req.getParameter("backpage");
         System.out.println("Current account is: " + account);
         userDAO u = new userDAO();
@@ -43,7 +44,8 @@ public class AdminViewUserProfileController extends HttpServlet{
         HttpSession session = req.getSession();
         String role = user.get(0).getRole();
         session.setAttribute("viewUserRole", role);
-        //req.setAttribute("backpage", backpage);
+        req.setAttribute("backpage", backPage);
+        System.out.println("back page = " + backPage);
         req.setAttribute("user", user);
         req.getRequestDispatcher("AdminView/admin-screen/AdminViewUserProfile.jsp").forward(req, resp);
     }
