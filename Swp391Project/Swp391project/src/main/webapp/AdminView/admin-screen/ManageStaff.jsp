@@ -81,8 +81,8 @@
 
         .staff-info-card {
             /*            border: 1px solid red;*/
-            width: 550px;
-            height: 233px;
+            /*width: 550px;*/
+            height: 255px;
             margin-right: 40px;
             margin-bottom: 30px;
             border-radius: 5px;
@@ -211,7 +211,7 @@
                     </div>
                     <div class="row align-items-center">
                         <div class="d-flex">
-                            <a href="addUser" class="btn btn-success">ADD NEW</a>
+                            <a href="addUser?backPage=manageStaff" class="btn btn-success">ADD NEW</a>
                             <a href="takeAttendance" class="btn btn-success mx-3">TAKE ATTENDANCE</a>
                         </div>
                         <div id="search" class="d-flex">
@@ -222,7 +222,7 @@
                 </div>
                 <div class="flex-wrap staff-list">
                     <c:forEach items="${listUser}" var="s">
-                        <div class="staff-info-card">
+                        <div class="staff-info-card col-sm-5">
                             <div class="card profile-header">
                                 <div class="body">
                                     <div class="row staff-content-block">
@@ -235,8 +235,9 @@
                                             <div class="job_post d-flex text-center align-items-center"><i class="fa-solid fa-user-nurse"></i> <div class="mx-2">${s.getRole()}</div></div>
                                             <div class="d-flex text-center align-items-center"><i class="fa-solid fa-phone"></i> <div class="mx-2">${s.getPhonenumber()}</div></div>
                                             <div class="staff-link mt-4">
-                                                <a href="" class="btn btn-primary btn-round edit-profile">View profile</a>
+                                                <a href="adminViewUserProfile?account=${s.getAccount()}" class="btn btn-primary btn-round edit-profile">View profile</a>
                                                 <div class="btn btn-primary btn-round btn-simple">Message</div>
+                                                <a href="takeAttendance?staffAccount=${s.getAccount()}" class="btn btn-primary btn-round edit-profile mt-2">Take attendance</a>
                                             </div>
                                             <p class="social-icon m-t-5 m-b-0 staff-link-media">
                                                 <a title="Twitter" href="javascript:void(0);"><i class="fa-brands fa-twitter"></i></a>
