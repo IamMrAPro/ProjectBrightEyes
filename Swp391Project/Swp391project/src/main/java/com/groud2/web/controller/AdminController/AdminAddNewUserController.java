@@ -53,6 +53,8 @@ public class AdminAddNewUserController extends HttpServlet{
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String id = String.valueOf(GetLastUserID());
+        System.out.println("back page = " + backPage);
+        req.setAttribute("userRole", userRole);
         req.setAttribute("id", id);
         req.getRequestDispatcher("AdminView/admin-screen/AdminAddNewUser.jsp").forward(req, resp);
     }

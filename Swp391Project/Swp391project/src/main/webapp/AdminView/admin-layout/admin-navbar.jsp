@@ -57,7 +57,6 @@
                 height: 40px;
                 background-color: white;
                 color: #5a6f80;
-                margin-top: 50px;
             }
         </style>
         <script>

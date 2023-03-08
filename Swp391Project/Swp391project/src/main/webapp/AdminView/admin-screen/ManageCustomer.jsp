@@ -131,6 +131,7 @@
                                 <option value="2">Working</option>
                                 <option value="3">Stop</option>
                             </select>
+                            <a href="addUser?backPage=manageCustomer&userRole=customer" class="btn btn-success">ADD NEW</a>
                         </div>
 
                         <a href="addUser" class="cssbuttons-io-button mx-3">
@@ -196,8 +197,15 @@
                                 <th>Online</th>
                                 <th>Buy glass</th>
                                 <th>
-                                    <div class="btn btn-success">
-                                        <i class="fa-brands fa-facebook-messenger"></i>
+                                    <div class="d-flex align-items-center">
+                                        <!--<input type="submit" name="viewProfile" value="${c.getAccount()}" class="d-none" id="${c.getUserId()}">-->
+                                        <a href="adminViewUserProfile?account=${c.getAccount()}&backPage=manageCustomer" class="btn btn-success m-auto"><i class="fa-solid fa-pen"></i></a>
+<!--                                        <label for="${c.getUserId()}" class="btn btn-success m-auto">
+                                            <i class="fa-solid fa-pen"></i>
+                                        </label>-->
+                                        <div class="btn btn-success m-auto">
+                                            <i class="fa-brands fa-facebook-messenger"></i>
+                                        </div>
                                     </div>
                                 </th>
                             </tr>

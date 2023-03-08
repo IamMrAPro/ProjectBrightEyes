@@ -80,18 +80,17 @@ public class loginController extends HttpServlet {
             System.out.println("encode password error: " + ex.getMessage());
         }
 
-        System.out.println("password = " + password);
-
         //reload captcha code
         try {
             if (!captchaAgain.isEmpty()) {
-            request.setAttribute("account", account);
-            request.setAttribute("password", password);
-            request.setAttribute("captchaErr", "");
-            request.getRequestDispatcher("Login.jsp").forward(request, response);
-        }
+                request.setAttribute("account", account);
+                request.setAttribute("password", password);
+                request.setAttribute("captchaErr", "");
+                request.getRequestDispatcher("Login.jsp").forward(request, response);
+            }
+
         } catch (Exception e) {
-            System.out.println("Error here 111: " +e.getMessage());
+            System.out.println("Error here 111: " + e.getMessage());
         }
         //Xu ly           
         userDAO u = new userDAO();
