@@ -90,6 +90,8 @@ public class AdminAddNewUserController extends HttpServlet {
         String backPage = req.getParameter("backPage");
         String userRole = req.getParameter("userRole");
         String id = String.valueOf(GetLastUserID());
+//        String backPage = req.getParameter("backPage");
+//        String userRole = req.getParameter("userRole");
         System.out.println("back page = " + backPage);
         req.setAttribute("userRole", userRole);
         req.setAttribute("id", id);
