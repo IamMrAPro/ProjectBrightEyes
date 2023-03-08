@@ -82,14 +82,19 @@ public class changePass extends HttpServlet {
        
             try {
                 check = g.checkPass(account, oldPass);
-                if (check != null) {
+                if(newPass.equals(oldPass)){
+                    request.setAttribute("ms2", "New password same old password. Please check again.");
+                    request.getRequestDispatcher("changePass.jsp").forward(request, response);
+                }
+                else if (check != null) {
                     System.out.println("Account, password correct: " + account + "," + oldPass);
                     g.updatePass(newPass, account);
                     response.sendRedirect("home");
 
                 } else {
                     System.out.println("Wrong password");
-                    response.sendRedirect("updatePass");
+                    request.setAttribute("ms2", "Your old password was wrong. Please check again");
+                    request.getRequestDispatcher("changePass.jsp").forward(request, response);
                 }
             } catch (SQLException ex) {
                 Logger.getLogger(loginController.class.getName()).log(Level.SEVERE, null, ex);

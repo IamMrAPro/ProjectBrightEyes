@@ -78,26 +78,36 @@ public class searchBookingController extends HttpServlet {
             throws ServletException, IOException {
         String email = request.getParameter("email");
         String phone = request.getParameter("phone");
-        
+
         bookingDAO b = new bookingDAO();
+
         try {
-           if (email != null && !email.isEmpty()) {
-                ArrayList<booking> list = b.getAllByEmail(email);
-                System.out.println("check email: "+ email);
-                request.setAttribute("list", list);
-            } else if (phone != null && !phone.isEmpty()) {
-                ArrayList<booking> list = b.getAllByPhone(phone);
-                System.out.println("Search by phone number: " + phone);
-                request.setAttribute("list", list);
-            } else if (email != null && phone != null && !email.isEmpty() && !phone.isEmpty()) {
-                ArrayList<booking> list = b.getAllByBoth(email, phone);
-                request.setAttribute("list", list);
+
+            if (b.checkExist(email, phone)) {
+                System.out.println("Email ton tai");
+                if (email != null && !email.isEmpty() && phone != null && !phone.isEmpty()) {
+                    ArrayList<booking> list = b.getAllByBoth(email, phone);
+                    System.out.println("get booking by both");
+                    request.setAttribute("list", list);
+                } else if (email != null && !email.isEmpty()) {
+                    ArrayList<booking> list = b.getAllByEmail(email);
+                    System.out.println("get booking by email: " + email);
+                    request.setAttribute("list", list);
+                } else if (phone != null && !phone.isEmpty()) {
+                    ArrayList<booking> list = b.getAllByPhone(phone);
+                    System.out.println("Search by phone number: " + phone);
+                    request.setAttribute("list", list);
+                }
+            } else {
+                System.out.println("email khong ton tai");
+                request.setAttribute("check", "Your information was wrong. Please check again");
             }
+
             request.getRequestDispatcher("searchBooking.jsp").forward(request, response);
-        
+
         } catch (SQLException ex) {
             System.out.println("hellloooo");
-            Logger.getLogger(glassesController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(searchBookingController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

@@ -8,12 +8,12 @@
         <title>Eyes</title>
 
         <!-- CSS FILES -->
-        <link href="./assets/css/bootstrap.min.css" rel="stylesheet">
+        <link href="assets/css/bootstrap.min.css" rel="stylesheet">
         
 
-        <link href="./assets/css/bootstrap-icons.css" rel="stylesheet">
+        <link href="assets/css/bootstrap-icons.css" rel="stylesheet">
 
-        <link href="./assets/css/templatemo-kind-heart-charity.css" rel="stylesheet">
+        <link href="assets/css/templatemo-kind-heart-charity.css" rel="stylesheet">
         
         
         

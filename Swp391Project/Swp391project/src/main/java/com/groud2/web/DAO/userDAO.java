@@ -21,14 +21,16 @@ import java.util.ArrayList;
  * @author nguye
  */
 public class userDAO {
-
     PreparedStatement ps = null;
     ResultSet rs = null;
     DBContext dbc = new DBContext();
     Connection connection = null;
 
+
     public user checklogin(String acc, String pass) throws SQLException, IOException {
 
+
+        
         String sql = "SELECT account,password FROM swp.user where account=? and password =?";
 
         try {
@@ -42,8 +44,9 @@ public class userDAO {
             }
         } catch (SQLException e) {
 
-            return new user(rs.getString(1), rs.getString(2));
-        } finally {
+                
+                return new user(rs.getString(1),rs.getString(2));
+     } finally {
             if (connection != null) {
                 connection.close();
             }
@@ -52,17 +55,19 @@ public class userDAO {
 
     }
 
-    public boolean checkAccount(String account) throws SQLException, IOException {
+
+
+public boolean checkAccount(String account) throws SQLException, IOException {
 
         String sql = "SELECT account FROM swp.user where account=?  ";
-        try {
-            System.out.println("account " + account);
+        try { 
+            System.out.println("account "+ account);
             connection = dbc.getConnection();
             ps = connection.prepareStatement(sql);
-            ps.setString(1, account);
+            ps.setString(1, account);      
             rs = ps.executeQuery();
             while (rs.next()) {
-                System.out.println("accccc   " + rs.getString(1));
+                System.out.println("accccc   "+ rs.getString(1));
                 return true;
             }
         } catch (SQLException e) {
@@ -75,6 +80,8 @@ public class userDAO {
         return false;
 
     }
+
+
 
     public void addUser(String id, String name, String gender, String role, String email, String phone, String address, String account, String password) {
         try {
@@ -91,7 +98,7 @@ public class userDAO {
             ps.setString(7, address);
             ps.setString(8, account);
             ps.setString(9, password);
-
+            
             ps.execute();
         } catch (Exception e) {
             System.out.println("Add new staff to db error: " + e.getMessage());
@@ -106,7 +113,7 @@ public class userDAO {
             connection = dbc.getConnection();
             ps = connection.prepareStatement(mySelect);
             rs = ps.executeQuery();
-            while (rs.next()) {
+            while(rs.next()){
                 String id = rs.getString(1);
                 String fullname = rs.getString(2);
                 String account = rs.getString(3);
@@ -116,16 +123,11 @@ public class userDAO {
                 String email = rs.getString(7);
                 String gender = rs.getString(8);
                 String dob = rs.getString(9);
-                if (gender.equals("0")) {
-                    gender = "Female";
-                } else {
-                    gender = "Male";
-                }
                 String image = rs.getString(10);
                 String role = rs.getString(11).toUpperCase();
                 user us = new user(id, fullname, account, password, phonenumber, address, email, gender, dob, image, role);
-
-                if (!account.equals(userId) && !(role.equals("") || role.equals("customer".toUpperCase())) && fullname.toLowerCase().contains(searcName.toLowerCase())) {
+                
+                if(!account.equals(userId) && !(role.equals("") || role.equals("customer".toUpperCase())) && fullname.toLowerCase().contains(searcName.toLowerCase())){
                     listUser.add(us);
                 }
             }
@@ -133,7 +135,7 @@ public class userDAO {
             System.out.println("Get list user from database error: " + e.getMessage());
             return new ArrayList<>();
         }
-
+        
         return listUser;
     }
 
@@ -144,7 +146,7 @@ public class userDAO {
             connection = dbc.getConnection();
             ps = connection.prepareStatement(mySelect);
             rs = ps.executeQuery();
-            while (rs.next()) {
+            while(rs.next()){
                 String id = rs.getString(1);
                 String fullname = rs.getString(2);
                 String account = rs.getString(3);
@@ -153,17 +155,12 @@ public class userDAO {
                 String address = rs.getString(6);
                 String email = rs.getString(7);
                 String gender = rs.getString(8);
-                if (gender.equals("0")) {
-                    gender = "Female";
-                } else {
-                    gender = "Male";
-                }
                 String dob = rs.getString(9);
                 String image = rs.getString(10);
                 String role = rs.getString(11);
                 user us = new user(id, fullname, account, password, phonenumber, address, email, gender, dob, image, role);
-
-                if ((role.equals("") || role.equals("customer")) && fullname.toLowerCase().contains(search.toLowerCase())) {
+                
+                if((role.equals("") || role.equals("customer")) && fullname.toLowerCase().contains(search.toLowerCase())){
                     listUser.add(us);
                 }
             }
@@ -171,11 +168,11 @@ public class userDAO {
             System.out.println("Get list customer from database error: " + e.getMessage());
             return new ArrayList<>();
         }
-
+        
         return listUser;
     }
 
-    public ArrayList<user> getAllByAcc(String account) throws SQLException, IOException {
+public ArrayList<user> getAllByAcc(String account) throws SQLException, IOException {
         ArrayList<user> list = new ArrayList<>();
         String sql = "SELECT * FROM user where account=?";
         try {
@@ -194,17 +191,16 @@ public class userDAO {
                 String bod = rs.getString(9);
                 String userimages = rs.getString(10);
                 String gender = rs.getString(8);
-                String role = rs.getString(11);
-                if (gender.equals("1")) {
+                if(gender.equals("1")){
                     gender = "Male";
-                } else {
+                }else{
                     gender = "FeMale";
                 }
-                user g = new user(userID, fullname, acc, pass, phonenumber, address, email, gender, bod, userimages, role);
+                user g = new user(userID, fullname, acc, pass, phonenumber, address, email, gender,bod, userimages);
                 list.add(g);
             }
         } catch (SQLException e) {
-            System.out.println("get profile error: " + e.getMessage());
+                System.out.println("get profile error: " + e.getMessage());
         } finally {
             if (connection != null) {
                 connection.close();
@@ -214,11 +210,12 @@ public class userDAO {
         return list;
     }
 
+
     public boolean createData(String fullname, String account, String password, String phonenumber, String address, String email, String gender, String birthofdate, String role) throws SQLException {
         String sql = "INSERT INTO `swp`.`user`\n"
-                + "(`fullname`,`account`,`password`,`phonenumber`,`address`,`email`,`gender`,`bod`,`role`) values (?,?,?,?,?,?,?,?,?)";
-        try {
-            System.out.println("name" + fullname);
+                    + "(`fullname`,`account`,`password`,`phonenumber`,`address`,`email`,`gender`,`bod`,`role`) values (?,?,?,?,?,?,?,?,?)";       
+        try {   
+            System.out.println("name"+fullname);
             connection = dbc.getConnection();
             ps = connection.prepareStatement(sql);
             ps.setString(1, fullname);
@@ -227,26 +224,25 @@ public class userDAO {
             ps.setString(4, phonenumber);
             ps.setString(5, address);
             ps.setString(6, email);
-            if (gender == "Male") {
-                ps.setString(7, "1");
-            } else {
+            if (gender=="Male") {
+                 ps.setString(7, "1");
+            }else
                 ps.setString(7, "0");
-            }
-
+            
             ps.setDate(8, Date.valueOf(birthofdate));
-            ps.setString(9, role);
+             ps.setString(9, role);
             ps.executeUpdate();
             System.out.println("Them vao thanh cong");
             return true;
         } catch (SQLException e) {
-            System.out.println("Create error : " + e.getMessage());
+                 System.out.println("Create error : " + e.getMessage());
         } finally {
             if (connection != null) {
                 connection.close();
             }
         }
         return false;
-    }
+      }
 
     public String getUserRole(String account) {
         try {
@@ -255,7 +251,7 @@ public class userDAO {
             ps = connection.prepareStatement(sql);
             ps.setString(1, account);
             rs = ps.executeQuery();
-            while (rs.next()) {
+            while(rs.next()){
                 return rs.getString(1);
             }
         } catch (Exception e) {
@@ -271,7 +267,7 @@ public class userDAO {
             ps = connection.prepareStatement(sql);
             ps.setString(1, id);
             rs = ps.executeQuery();
-            while (rs.next()) {
+            while(rs.next()){
                 return true;
             }
         } catch (Exception e) {
@@ -279,10 +275,9 @@ public class userDAO {
         }
         return false;
     }
-
-    public void updateProfile(String account, String newName, String newGender, String newPhone, String newAddress, String newEmail, String newBod) {
-        String strUpdate = "UPDATE user SET fullname=?,phonenumber=?,address=?,email=?,gender=?,bod=?  WHERE account=?";
-        try {
+public void updateProfile(String account, String newName, String newGender,String newPhone, String newAddress, String newEmail, String newBod){
+         String strUpdate = "UPDATE user SET fullname=?,phonenumber=?,address=?,email=?,gender=?,bod=?  WHERE account=?";
+         try {
             connection = dbc.getConnection();
             ps = connection.prepareStatement(strUpdate);
             ps.setString(1, newName);
@@ -297,10 +292,10 @@ public class userDAO {
             ps.setDate(6, Date.valueOf(newBod));
             ps.setString(7, account);
             ps.executeUpdate();
-
+           
         } catch (Exception e) {
-
-            System.out.println("Update profile error: " + e.getMessage());
+    
+        System.out.println("Update profile error: " + e.getMessage());
         }
     }
 
@@ -320,9 +315,9 @@ public class userDAO {
                 return new user(rs.getString(1), rs.getString(2));
             }
         } catch (SQLException e) {
-
+           
             return new user(rs.getString(1), rs.getString(2));
-
+            
         } finally {
             if (connection != null) {
                 connection.close();
@@ -340,7 +335,7 @@ public class userDAO {
             ps = connection.prepareStatement(sql);
             ps.setString(1, userId);
             rs = ps.executeQuery();
-            while (rs.next()) {
+            while(rs.next()){
                 name = rs.getString(1);
             }
         } catch (Exception e) {
@@ -349,8 +344,8 @@ public class userDAO {
         return name;
     }
 
-    public void addUser(String id, String name, String mail) {
-        try {
+public void addUser(String id,  String name,String mail) {
+    try {
             String sql = "insert into user(userId, fullname,email) "
                     + " values(?, ?, ?)";
             connection = dbc.getConnection();
@@ -358,39 +353,38 @@ public class userDAO {
             ps.setString(1, id);
             ps.setString(2, name);
             ps.setString(2, mail);
-
+            
+            
             ps.execute();
         } catch (Exception e) {
             System.out.println("Add new staff to db error: " + e.getMessage());
         }
-    }
-
-    public boolean createData(String fullname, String account, String email) throws SQLException {
+}
+ public boolean createData(String fullname, String account,String email) throws SQLException {
         String sql = "INSERT INTO `swp`.`user`\n"
-                + "(`fullname`,`account`,`email`,`role`) values (?,?,?,?)";
-        try {
-            System.out.println("name" + fullname);
+                    + "(`fullname`,`account`,`email`,`role`) values (?,?,?,?)";       
+        try {   
+            System.out.println("name"+fullname);
             connection = dbc.getConnection();
             ps = connection.prepareStatement(sql);
             ps.setString(1, fullname);
             ps.setString(2, account);
-
+            
             ps.setString(3, email);
-            ps.setString(4, "customer");
+             ps.setString(4, "customer");
             ps.executeUpdate();
-
+          
             return true;
         } catch (SQLException e) {
-            System.out.println("Create error : " + e.getMessage());
+                 System.out.println("Create error : " + e.getMessage());
         } finally {
             if (connection != null) {
                 connection.close();
             }
         }
         return false;
-    }
-
-    public String checkEmail(String email) {
+      }
+public String checkEmail( String email) {
         String name = "";
         try {
             String sql = "Select account from user where email = ?";
@@ -398,20 +392,22 @@ public class userDAO {
             ps = connection.prepareStatement(sql);
             ps.setString(1, email);
             rs = ps.executeQuery();
-            while (rs.next()) {
+            while(rs.next()){
                 name = rs.getString(1);
-
+               
             }
         } catch (Exception e) {
             System.out.println("Get user name: " + e.getMessage());
-
+            
         }
         return name;
     }
 
-    public user getUser(String account) throws SQLException {
-        user g = new user();
 
+
+public user getUser(String account) throws SQLException {
+        user g = new user();
+        
         String sql = "SELECT * FROM user where account=?";
         try {
             connection = dbc.getConnection();
@@ -430,23 +426,24 @@ public class userDAO {
                 String userimages = rs.getString(10);
                 String gender = rs.getString(8);
 
-                if (gender.equals("1")) {
+
+                if(gender.equals("1")){
                     gender = "Male";
-                } else {
+                }else{
                     gender = "FeMale";
                 }
-                g = new user(userID, fullname, acc, pass, phonenumber, address, email, gender, bod, "admin");
-
+                g = new user(userID, fullname, acc, pass, phonenumber, address, email, gender,bod, "admin");
+               
             }
         } catch (SQLException e) {
-            System.out.println("get profile error: " + e.getMessage());
+                System.out.println("get profile error: " + e.getMessage());
         } finally {
             if (connection != null) {
                 connection.close();
             }
         }
         return g;
-    }
+}
 
     public user checklogin(String id) throws SQLException {
         String sql = "SELECT account,password FROM swp.user where account=? ";
@@ -455,21 +452,19 @@ public class userDAO {
             connection = dbc.getConnection();
             ps = connection.prepareStatement(sql);
             ps.setString(1, id);
-
+            
             rs = ps.executeQuery();
             while (rs.next()) {
                 return new user(rs.getString(1));
             }
         } catch (SQLException e) {
 
-            return new user(rs.getString(1));
-        } finally {
-        }
-        return null;
-    }
+                
+                return new user(rs.getString(1));
+     } finally {}return null;}
 
-    public void updatePass(String newPass, String account) {
-
+public void updatePass(String newPass, String account) {
+        
         String strSelect = "UPDATE user SET password=? WHERE account =?";
         try {
             connection = dbc.getConnection();
@@ -485,15 +480,15 @@ public class userDAO {
     }
 
     public boolean checkEmailRegister(String email) throws SQLException {
-        String sql = "SELECT account FROM swp.user where email=?  ";
-        try {
-            System.out.println("account " + email);
+      String sql = "SELECT account FROM swp.user where email=?  ";
+        try { 
+            System.out.println("account "+ email);
             connection = dbc.getConnection();
             ps = connection.prepareStatement(sql);
-            ps.setString(1, email);
+            ps.setString(1, email);      
             rs = ps.executeQuery();
             while (rs.next()) {
-                System.out.println("accccc   " + rs.getString(1));
+                System.out.println("accccc   "+ rs.getString(1));
                 return true;
             }
         } catch (SQLException e) {
@@ -503,62 +498,66 @@ public class userDAO {
                 connection.close();
             }
         }
-        return false;
-
-    }
-
-    public boolean takeAttendance(String id, String staffId, String date, String time) {
-        String sql = "Insert into attendance(attendanceID, staffID, date, time) values(? ,? ,?, ?)";
-            try {
-                connection = dbc.getConnection();
-                ps = connection.prepareStatement(sql);
-                ps.setString(1, id);
-                ps.setString(2, staffId);
-                ps.setString(3, date);
-                ps.setString(4, time);
-                ps.execute();
-                return true;
-            } catch (SQLException e) {
-                System.out.println("Add attendance error: " + e.getMessage());
-            }
-        return false;
+        return false;    
+    
     }
     
-    // get list history of attendance by date, staffId
-    public ArrayList<Attendance> listAttendance(String date, String staffId){
-        ArrayList<Attendance> list = new ArrayList<Attendance>();
-        String sql = "SELECT * FROM attendance where staffId = ? and date = ?";
+    public boolean takeAttendance(String id, String date, String userId, String name, String checkin1, String checkout1, String checkin2, String checkout2, String checkin3, String checkout3, String checkin4, String checkout4){
+        String sql = "INSERT INTO attendance(attendanceID, userID, fullname, checkin1, checkout1, checkin2, checkout2, checkin3, checkout3, checkin4, checkout4)"
+                + " values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
         try {
             connection = dbc.getConnection();
             ps = connection.prepareStatement(sql);
-            ps.setString(1, staffId);
+            ps.setString(1, id);
             ps.setString(2, date);
+            ps.setString(3, userId);
+            ps.setString(4, name);
+            ps.setString(5, checkin1);
+            ps.setString(6, checkout1);
+            ps.setString(7, checkin2);
+            ps.setString(8, checkout2);
+            ps.setString(9, checkin3);
+            ps.setString(10, checkout3);
+            ps.setString(11, checkin4);
+            ps.setString(12, checkout4);
+            ps.execute();
+            return true;
+        } catch (Exception e) {
+            System.out.println("Take attendance into db error: " +e.getMessage());
+        }
+        return false;
+    }
+    
+    public ArrayList<Attendance> getAttendanceHistory() throws SQLException{
+        String sql = "SELECT * FROM attendance";
+        ArrayList<Attendance> list = new ArrayList<>();
+        try {
+            connection = dbc.getConnection();
+            ps = connection.prepareStatement(sql);
             rs = ps.executeQuery();
-            while (rs.next()) {
+            while(rs.next()){
                 String id = rs.getString(1);
-//                String staff = rs.getString(2);
-//                String atDate = rs.getString(3);
-                String time = rs.getString(4);
-                Attendance at = new Attendance(id, staffId, date, time);
+                String date = rs.getString(2);
+                String userId = rs.getString(3);
+                String name = rs.getString(4);
+                String checkin1 = rs.getString(5);
+                String checkout1 = rs.getString(6);
+                String checkin2 = rs.getString(7);
+                String checkout2 = rs.getString(8);
+                String checkin3 = rs.getString(9);
+                String checkout3 = rs.getString(10);
+                String checkin4 = rs.getString(11);
+                String checkout4 = rs.getString(12);
+                
+                Attendance at = new Attendance(id, date, userId, name, checkin1, checkout1, checkin2, checkout2, checkin3, checkout3, checkin4, checkout4);
                 list.add(at);
             }
-        } catch (SQLException e) {
-            System.out.println("Get attendance history error: " + e.getMessage());
-        } 
+            
+        } catch (Exception e) {
+            System.out.println("Get history of attendance error: " + e.getMessage());
+        }
         return list;
     }
-    
-    // count total attendance
-    public int getLastID(){
-        String sql = "Select Count(attendanceID) from attendance";
-        try {
-            connection = dbc.getConnection();
-            ps = connection.prepareStatement(sql);
-            rs = ps.executeQuery();
-            while(rs.next()) return rs.getInt(1);
-        } catch (Exception e) {
-            System.out.println("Get total attendance error: " + e.getMessage());
-        }
-        return 0;
-    }
-}
+}  
+
+

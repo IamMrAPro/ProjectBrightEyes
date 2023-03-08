@@ -4,10 +4,8 @@
  */
 package com.groud2.web.model;
 
-import java.util.Comparator;
 
-
-public class user implements Comparator<user>{
+public class user {
     private String userId,fullname,account,password,phonenumber,address,email,gender,bod, userimages;
     private String role;
 
@@ -140,13 +138,6 @@ public class user implements Comparator<user>{
 
     public void setRole(String role) {
         this.role = role;
-    }
-
-    @Override
-    public int compare(user u1, user u2) {
-        String[] name1 = u1.getFullname().split(" ");
-        String[] name2 = u2.getFullname().split(" ");
-        return name1[name1.length-1].compareToIgnoreCase(name2[name2.length]);
     }
 
     

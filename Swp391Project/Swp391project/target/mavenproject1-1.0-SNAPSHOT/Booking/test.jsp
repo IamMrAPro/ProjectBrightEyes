@@ -1,211 +1,164 @@
+<%-- 
+    Document   : ListWattingPatient
+    Created on : Mar 6, 2023, 10:47:17 PM
+    Author     : nguye
+--%>
+
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
+    <%@include file="../doctor-layout/doctor-head.jsp" %>
     <style>
-        .carousel{
-            padding:   8%
-
-        }
-        .bt-next{
-            margin:  10%
-        }
-        input[type="text" ] {
-            padding: 1px 2px;
-        }
-        input {
-            writing-mode: horizontal-tb !important;
-            font-style: ;
-            font-variant-ligatures: ;
-            font-variant-caps: ;
-            font-variant-numeric: ;
-            font-variant-east-asian: ;
-            font-weight: ;
-            font-stretch: ;
-            font-size: ;
-            font-family: ;
-            text-rendering: auto;
-            color: fieldtext;
-            letter-spacing: normal;
-            word-spacing: normal;
-            line-height: normal;
-            text-transform: none;
-            text-indent: 0px;
-            text-shadow: none;
-            display: inline-block;
-            text-align: start;
-            appearance: auto;
-            -webkit-rtl-ordering: logical;
-            cursor: text;
-            background-color: field;
-            margin: 0em;
-            padding: 1px 2px;
-            border-width: 2px;
-            border-style: inset;
-            border-color: -internal-light-dark(rgb(118, 118, 118), rgb(133, 133, 133));
-            border-image: initial;
-        }
-        .text-box {
+        .sort-icon {
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            background-color: #5a6f80;
+            color: white;
             text-align: center;
-            text-transform: uppercase;
-            letter-spacing: 5px;
-            height: 32px;
+            line-height: 25px;
+            cursor: pointer;
         }
-        #step1text {
-            font-family: gotham-medium;
-            font-size: 19px;
-            font-style: normal;
-            font-weight: 700;
-            font-variant: normal;
-            text-transform: uppercase;
-            color: #000;
-            letter-spacing: 5px;
+
+        #table-head {
+            background-color: #5bc1ac;
         }
-        #step2text {
-            font-family: gotham-medium;
-            font-size: 17px;
-            font-style: normal;
-            font-weight: 700;
-            font-variant: normal;
-            text-transform: uppercase;
-            color: #000;
-            letter-spacing: 5px;
+
+        #search-staff-content {
+            height: 40px;
         }
-        #step3text {
-            font-family: gotham-medium;
-            font-size: 14.5px;
-            font-style: normal;
-            font-weight: 700;
-            font-variant: normal;
-            text-transform: uppercase;
-            color: #000;
-            letter-spacing: 5px;
+
+        #staff-search-btn {
+            width: 70px;
+            height: 40px;
+            outline: none;
+            border: 1px solid black;
         }
-        #step4text {
-            font-family: gotham-medium;
-            font-size: 11px;
-            font-style: normal;
-            font-weight: 700;
-            font-variant: normal;
-            text-transform: uppercase;
-            color: #000;
-            letter-spacing: 5px;
+
+        /*------------------*/
+        .cssbuttons-io-button {
+            display: flex;
+            align-items: center;
+            font-family: inherit;
+            font-weight: 500;
+            font-size: 16px;
+            padding: 0.7em 1.4em 0.7em 1.1em;
+            color: white;
+            background: #ad5389;
+            background: linear-gradient(0deg, rgba(20,167,62,1) 0%, rgba(102,247,113,1) 100%);
+            border: none;
+            box-shadow: 0 0.7em 1.5em -0.5em #14a73e98;
+            letter-spacing: 0.05em;
+            border-radius: 20em;
         }
-        #step5text {
-            font-family: gotham-medium;
-            font-size: 9px;
-            font-style: normal;
-            font-weight: 700;
-            font-variant: normal;
-            text-transform: uppercase;
-            color: #000;
-            letter-spacing: 5px;
+
+        .cssbuttons-io-button svg {
+            margin-right: 6px;
         }
-        #step6text {
-    font-family: gotham-medium;
-    font-size: 7px;
-    font-style: normal;
-    font-weight: 700;
-    font-variant: normal;
-    text-transform: uppercase;
-    color: #000;
-    letter-spacing: 5px;
-}
+
+        .cssbuttons-io-button:hover {
+            box-shadow: 0 0.5em 1.5em -0.5em #14a73e98;
+        }
+
+        .cssbuttons-io-button:active {
+            box-shadow: 0 0.3em 1em -0.5em #14a73e98;
+        }
+
+        /*--------------------------------------------*/
+        select {
+            /* Reset Select */
+            appearance: none;
+            outline: 0;
+            border: 0;
+            box-shadow: none;
+            /* Personalize */
+            flex: 1;
+            padding: 0 1em;
+            color: white;
+            background-color: #5a6f80;
+            background-image: none;
+            cursor: pointer;
+        }
+        /* Remove IE arrow */
+        select::-ms-expand {
+            display: none;
+        }
+        /* Custom Select wrapper */
+        .select {
+            position: relative;
+            display: flex;
+            width: 10em;
+            height: 3em;
+            border-radius: .25em;
+            overflow: hidden;
+        }
+        /* Arrow */
+        .select::after {
+            content: '\25BC';
+            position: absolute;
+            top: 0;
+            right: 0;
+            padding: 1em;
+            background-color: #5a6f80;
+            transition: .25s all ease;
+            pointer-events: none;
+        }
+        /* Transition */
+        .select:hover::after {
+            color: #f39c12;
+        }
     </style>
-    <jsp:include page="layout/head.jsp"/>
-    <body>
-        <jsp:include page="layout/header.jsp"/>
-        <jsp:include page="layout/menu.jsp"/>
-
-        <div id="carouselExampleCaptions" class="carousel slide text-center">
-            <h2>ONLINE EYES TEST</h2>
-            <br><!-- comment -->
-            <form action="testEyes" method="post" id="clicks">
-                <div class="carousel-indicators">
-                    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
-                    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="3" aria-label="Slide 4"></button>
-                    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="4" aria-label="Slide 5"></button>
-                    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="5" aria-label="Slide 6"></button>
+    <body onload="getPositionNavBar(1)">
+        <form action="manageCustomer" class="vw-100 vh-100 d-flex" method="post">
+            <!--            set position for not select case-->
+            <input name="setPosition" type="text" value="1" class="d-none">
+            <!--            --------------------------------------------------------------------->
+            <%@include file="../doctor-layout/doctor-navbar.jsp" %>
+            <div class="main-view main-view-content">
+                <br><br>
+                <div class="d-flex justify-content-between header-staff-list align-items-center mb-4">
+                    <h2 class="text-center w-100">PATIENT MANAGEMENT </h2>
                 </div>
+                <br>
+                <% int count = 0;%>
+                <!-- Modal -->
+                <table class="table table-bordered">
+                    <thead id="table-head">
+                        <tr>
+                            <th>No.</th>
+                            <th>
+                                <div class="d-flex justify-content-between">
+                                    <div>Name</div>                                   
+                                </div>
+                            </th>
+                            <th>Email</th>
+                            <th>Phone</th>
+                            <th>Status</th>
+                            <th>Manage</th>
+                        </tr>
+                    </thead>
+                    <tbody>
 
-                <div class="carousel-inner">
+                       <c:forEach items="${list}" var="c">
+                            <tr>
+                                <th><% count++;
+                                    out.print(count);%></th>
+                                <th>${c.getName()}</th>
+                                <th>${c.getPhone()}</th>
+                                <th>${c.getEmail()}</th>
+                                <th>${c.getPhone()}</th>
+                                <th>
+                                    <div class="btn btn-success">
+                                        <i class="fa-brands fa-facebook-messenger"></i>
+                                    </div>
+                                </th>
+                            </tr>
+                        </c:forEach>
 
-                    <div class="carousel-item active">
-
-
-                        <input type="hidden" name="chars1" value="${sessionScope.testcase1}"><!-- comment -->
-                        <p><strong id="step1text">${sessionScope.testcase1}</strong></p>
-                        <input type="text" name="stepInput1" class="text-box">
-
-                    </div>
-                    <div class="carousel-item">
-
-                        <input type="hidden" name="chars2" value="${sessionScope.testcase2}"><!-- comment -->
-                        <p><strong id="step2text">${sessionScope.testcase2}</strong></p>
-                        <input type="text" name="stepInput2" class="text-box">
-
-                    </div>
-                    <div class="carousel-item">
-
-                        <input type="hidden" name="chars3" value="${sessionScope.testcase3}"><!-- comment -->
-                        <p><strong id="step3text">${sessionScope.testcase3}</strong></p>
-                        <input type="text" name="stepInput3" class="text-box">
-
-                    </div>
-                    <div class="carousel-item">
-
-                        <input type="hidden" name="chars4" value="${sessionScope.testcase4}"><!-- comment -->
-                        <p><strong id="step4text">${sessionScope.testcase4}</strong></p>
-                        <input type="text" name="stepInput4" class="text-box">
-
-                    </div>
-                    <div class="carousel-item">
-
-                        <input type="hidden" name="chars5" value="${sessionScope.testcase5}"><!-- comment -->
-                        <p><strong id="step5text">${sessionScope.testcase5}</strong></p>
-                        <input type="text" name="stepInput5" class="text-box">
-                        
-
-                    </div>
-                        <div class="carousel-item">
-
-                        <input type="hidden" name="chars6" value="${sessionScope.testcase5}"><!-- comment -->
-                        <p><strong id="step6text">${sessionScope.testcase6}</strong></p>
-                        <input type="text" name="stepInput6" class="text-box">
-                       
-
-                    </div>
-                </div>
-
-                        <button id="button" onClick="onClick()" class="bt-next btn btn-success" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
-                    Next
-                </button>
-            </form>
-        </div>
-
-        <script type="text/javascript">
-            var clicks = 0;
-
-            function onClick() {
-                clicks += 1;
-                if (clicks == 5) {
-                    document.getElementById("button").textContent="Submit";
-                   
-                }
-                if (clicks == 6) {
-                    
-                    document.getElementById("clicks").submit();
-                }
-                // document.getElementById("clicks").innerHTML = clicks;
-            }
-            ;
-        </script>
-
-
-        <jsp:include page="layout/chatbot.jsp"/>
-        <jsp:include page="layout/footer.jsp"/>
+                    </tbody>
+                </table>
+            </div>
+        </form>
     </body>
 </html>
-

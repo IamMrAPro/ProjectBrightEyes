@@ -4,7 +4,6 @@ import com.groud2.web.DAO.userDAO;
 import com.groud2.web.model.user;
 
 import jakarta.servlet.ServletException;
-import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -74,24 +73,7 @@ public class loginController extends HttpServlet {
         String password = request.getParameter("password");
         String captchaText = request.getParameter("captchaInput");
         String captchaAgain = request.getParameter("loadCaptchaAgain");
-        String rememberpass = request.getParameter("rememberpass");
-        //tao 3 cookie 
-        //username,pass,status checkbox
-        Cookie acc = new Cookie("acc", account);
-        Cookie pass = new Cookie("pass", password);
-        Cookie status = new Cookie("status", rememberpass);
-        if (status.getValue() != null) {
-            acc.setMaxAge(60 * 60 * 24 * 7);
-            pass.setMaxAge(60 * 60 * 24 * 7);
-            status.setMaxAge(60 * 60 * 24 * 7);
-        } else {
-            acc.setMaxAge(0);
-            pass.setMaxAge(0);
-            status.setMaxAge(0);
-        }
-        response.addCookie(acc);
-        response.addCookie(pass);
-        response.addCookie(status);
+
         try {
             password = encyptPass(password);
         } catch (NoSuchAlgorithmException ex) {
@@ -103,13 +85,13 @@ public class loginController extends HttpServlet {
         //reload captcha code
         try {
             if (!captchaAgain.isEmpty()) {
-                request.setAttribute("account", account);
-                request.setAttribute("password", password);
-                request.setAttribute("captchaErr", "");
-                request.getRequestDispatcher("Login.jsp").forward(request, response);
-            }
+            request.setAttribute("account", account);
+            request.setAttribute("password", password);
+            request.setAttribute("captchaErr", "");
+            request.getRequestDispatcher("Login.jsp").forward(request, response);
+        }
         } catch (Exception e) {
-            System.out.println("Error here 111: " + e.getMessage());
+            System.out.println("Error here 111: " +e.getMessage());
         }
         //Xu ly           
         userDAO u = new userDAO();
@@ -124,10 +106,8 @@ public class loginController extends HttpServlet {
                 System.out.println("Login Account: " + account);
                 session.setAttribute("id", account);
                 if (role.equals("admin")) {
-
                     response.sendRedirect("adminDashboard");
                 } else {
-
                     response.sendRedirect("home");
                 }
 

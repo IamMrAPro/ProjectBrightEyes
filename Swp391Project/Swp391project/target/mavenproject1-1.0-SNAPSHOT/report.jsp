@@ -1,111 +1,23 @@
-<%-- 
-<<<<<<< Updated upstream
-    Document   : detail
-    Created on : Jan 29, 2023, 9:40:02 PM
-    Author     : asus
---%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-=======
-    Document   : report
-    Created on : Feb 4, 2023, 4:25:23 PM
-    Author     : asus
---%>
-
->>>>>>> Stashed changes
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
+<%@ page contentType="text/html; charset=UTF-8" language="java" %>
 <html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<<<<<<< Updated upstream
-        <title>JSP Page</title>
-<<<<<<< Updated upstream
-=======
-        <title>report</title>
->>>>>>> Stashed changes
-
-        <style>
-        </style>
-<<<<<<< Updated upstream
-=======
->>>>>>> Stashed changes
-    </head>
-    <jsp:include page="layout/head.jsp"/>
-    <body>
-        <jsp:include page="layout/header.jsp"/>
-        <jsp:include page="layout/menu.jsp"/>
-<<<<<<< Updated upstream
-          <div class="container rounded bg-white mt-5 mb-5">
-            <div class="row">
-                <div class="col-md-3 border-right">
-                    <ul>
-                        <li class="menu_report" ><a href="url">Sale</a></li>
-                        <li class="menu_report" ><a href="url">Total Customer</a></li>
-                        <li class="menu_report" ><a href="url">Revenue</a></li>
-                        <li class="menu_report" ><a href="url">Customer Feedback</a></li>
-                    </ul>
-
-                </div>
-                <div class="col-md-8 border-right">
-                    <table class="table table-bordered">
-                        <thead>
-                            <tr>
-                                <th>No.</th>
-                                <th>Item Id</th>
-                                <th>Item Name</th>
-                                <th>Price(VND)</th>
-                                <th>Amount</th>
-                                <th>Total Price</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td>2</td>
-                                <td>3</td>
-                                <td>4</td>
-                                <td>5</td>
-                                <td>6</td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                            </tr>
-                        </tbody>
-                    </table>
-
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </div>
-</div>
-
-
-
-        <jsp:include page="layout/chatbot.jsp"/>
-        <jsp:include page="layout/footer.jsp"/>
-    </body>
-=======
-
-
-        
-<jsp:include page="layout/chatbot.jsp"/>
-<jsp:include page="layout/footer.jsp"/>
->>>>>>> Stashed changes
-=======
-         
-    </head>
-    
-<jsp:include page="layout/chatbot.jsp"/>
-<jsp:include page="layout/footer.jsp"/>
+<head>
+    <title>Check date input in JSP</title>
+    <script>
+        function checkDateInput() {
+            var dateInput = document.getElementById("dateInput").value;
+            var currentDate = new Date();
+            var inputDate = new Date(dateInput);
+            if (inputDate < currentDate) {
+                alert("Please select a future date!");
+                document.getElementById("dateInput").value = "";
+            }
+        }
+    </script>
+</head>
+<body>
+    <form>
+        <label for="dateInput">Select a date:</label>
+        <input type="date" id="dateInput" name="dateInput" onchange="checkDateInput()">
+    </form>
 </body>
->>>>>>> Stashed changes
 </html>

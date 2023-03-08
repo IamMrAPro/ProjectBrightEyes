@@ -135,10 +135,12 @@
         <servlet-class>com.groud2.web.controller.AdminController.TakeStaffAttendanceController</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>TestController</servlet-name>
-        <servlet-class>com.groud2.web.controller.TestEyes.TestController</servlet-class>
-        <servlet-name>AdminViewUserProfile</servlet-name>
-        <servlet-class>com.groud2.web.controller.AdminController.AdminViewUserProfileController</servlet-class>
+        <servlet-name>userBookingController</servlet-name>
+        <servlet-class>com.groud2.web.controller.userBookingController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>cancelBookingController</servlet-name>
+        <servlet-class>com.groud2.web.controller.cancelBookingController</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>homeController</servlet-name>
@@ -269,10 +271,12 @@
         <url-pattern>/takeAttendance</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>TestController</servlet-name>
-        <url-pattern>/testEyes</url-pattern>
-        <servlet-name>AdminViewUserProfile</servlet-name>
-        <url-pattern>/adminViewUserProfile</url-pattern>
+        <servlet-name>userBookingController</servlet-name>
+        <url-pattern>/userBooking</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>cancelBookingController</servlet-name>
+        <url-pattern>/cancelBooking</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
