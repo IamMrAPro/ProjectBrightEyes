@@ -1,29 +1,31 @@
-
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
  */
 package com.groud2.web.controller;
 
-import com.groud2.web.DAO.bookingDAO;
-import com.groud2.web.model.booking;
-
-import jakarta.servlet.ServletException;
-import jakarta.servlet.http.HttpServlet;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
+import com.groud2.web.DAO.patientDAO;
+import com.groud2.web.DAO.userDAO;
+import com.groud2.web.model.user;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 /**
  *
- * @author asus
+ * @author Admin
  */
-public class searchBookingController extends HttpServlet {
+public class recordController extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -42,10 +44,10 @@ public class searchBookingController extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet searchBookingController</title>");
+            out.println("<title>Servlet recordController</title>");
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet searchBookingController at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet recordController at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -63,14 +65,17 @@ public class searchBookingController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        bookingDAO b = new bookingDAO();
+        userDAO u = new userDAO();
+
         try {
-            ArrayList<booking> list = b.getAllBooking();
-            request.setAttribute("list", list);
+            ArrayList<user> listrole = u.getUsersByRole();
+            request.setAttribute("listrole", listrole);
+            System.out.println("heo");
+            request.getRequestDispatcher("recordOffline.jsp").forward(request, response);
         } catch (SQLException ex) {
-            Logger.getLogger(searchBookingController.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("hellloooo");
+            Logger.getLogger(recordController.class.getName()).log(Level.SEVERE, null, ex);
         }
-        request.getRequestDispatcher("searchBooking.jsp").forward(request, response);
     }
 
     /**
@@ -84,30 +89,30 @@ public class searchBookingController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String email = request.getParameter("email");
+
+        patientDAO pa = new patientDAO();
+        String IdCard = request.getParameter("idcard");
+        String patientName = request.getParameter("patientName");
         String phone = request.getParameter("phone");
-
-        bookingDAO b = new bookingDAO();
-
+        String email = request.getParameter("email");
+        String address = request.getParameter("address");
+        String bod = request.getParameter("bod");
+        String gender = request.getParameter("gender");
+        System.out.println("Gender: " + gender);
+        LocalDate now = LocalDate.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd"); // Định dạng chuỗi
+        String medicalDate = now.format(formatter);
+        String symptom = request.getParameter("symptom");
+        String doctorName = request.getParameter("doctor");
+        System.out.println(medicalDate);
         try {
 
-            if (b.checkExist(email, phone)) {
-                System.out.println("Email ton tai");
-                if (email != null && !email.isEmpty() && phone != null && !phone.isEmpty()) {
-                    ArrayList<booking> list = b.getAllByBoth(email, phone);
-                    System.out.println("get booking by both");
-                    request.setAttribute("list", list);
-                }
-            } else {
-                
-                request.setAttribute("check", "Your information was wrong. Please check again");
-            }
-
-            request.getRequestDispatcher("searchBooking.jsp").forward(request, response);
-
-        } catch (SQLException ex) {
-            System.out.println("hellloooo");
-            Logger.getLogger(searchBookingController.class.getName()).log(Level.SEVERE, null, ex);
+            pa.insertPatient(IdCard, patientName, phone, email, address, bod, gender, medicalDate, symptom, doctorName);
+            response.sendRedirect("searchBooking.jsp");
+            System.out.println("success");
+        } catch (SQLException e) {
+            e.printStackTrace();
+            System.out.println("fail");
         }
     }
 
@@ -121,4 +126,6 @@ public class searchBookingController extends HttpServlet {
         return "Short description";
     }// </editor-fold>
 
+    
+    
 }

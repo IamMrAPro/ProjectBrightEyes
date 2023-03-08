@@ -1,29 +1,25 @@
-
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
  */
 package com.groud2.web.controller;
 
-import com.groud2.web.DAO.bookingDAO;
-import com.groud2.web.model.booking;
-
+import com.groud2.web.DAO.patientDAO;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.sql.SQLException;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import java.io.IOException;
-import java.io.PrintWriter;
-import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
- * @author asus
+ * @author Admin
  */
-public class searchBookingController extends HttpServlet {
+public class recordOnlineController extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -42,10 +38,10 @@ public class searchBookingController extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet searchBookingController</title>");
+            out.println("<title>Servlet recordOnlineController</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet searchBookingController at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet recordOnlineController at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -63,14 +59,7 @@ public class searchBookingController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        bookingDAO b = new bookingDAO();
-        try {
-            ArrayList<booking> list = b.getAllBooking();
-            request.setAttribute("list", list);
-        } catch (SQLException ex) {
-            Logger.getLogger(searchBookingController.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        request.getRequestDispatcher("searchBooking.jsp").forward(request, response);
+        processRequest(request, response);
     }
 
     /**
@@ -84,32 +73,34 @@ public class searchBookingController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String email = request.getParameter("email");
+         patientDAO pa = new patientDAO();
+        String patientName = request.getParameter("patientName");
+        String IdCard = request.getParameter("idcard");
         String phone = request.getParameter("phone");
-
-        bookingDAO b = new bookingDAO();
-
+        String email = request.getParameter("email");
+        String address = request.getParameter("address");
+        String timeOder = request.getParameter("time");
+        String bod = request.getParameter("bod");
+        String gender = request.getParameter("gender");
+        System.out.println("Gender: " + gender);
+        LocalDate now = LocalDate.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd"); // Định dạng chuỗi
+        String medicalDate = now.format(formatter);
+        String symptom = request.getParameter("symptom");
+        String doctorName = request.getParameter("doctor");
+        System.out.println(medicalDate);
         try {
 
-            if (b.checkExist(email, phone)) {
-                System.out.println("Email ton tai");
-                if (email != null && !email.isEmpty() && phone != null && !phone.isEmpty()) {
-                    ArrayList<booking> list = b.getAllByBoth(email, phone);
-                    System.out.println("get booking by both");
-                    request.setAttribute("list", list);
-                }
-            } else {
-                
-                request.setAttribute("check", "Your information was wrong. Please check again");
-            }
-
-            request.getRequestDispatcher("searchBooking.jsp").forward(request, response);
-
-        } catch (SQLException ex) {
-            System.out.println("hellloooo");
-            Logger.getLogger(searchBookingController.class.getName()).log(Level.SEVERE, null, ex);
+            pa.insertPatient2(IdCard, patientName, phone, email, address, bod, gender, timeOder, medicalDate, symptom, doctorName, symptom);
+            response.sendRedirect("searchBooking.jsp");
+            System.out.println("success");
+        } catch (SQLException e) {
+            e.printStackTrace();
+            System.out.println("fail");
         }
     }
+
+    
 
     /**
      * Returns a short description of the servlet.

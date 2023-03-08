@@ -1,17 +1,15 @@
-
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
  */
 package com.groud2.web.controller;
-
-import com.groud2.web.DAO.bookingDAO;
-import com.groud2.web.model.booking;
-
+ import com.groud2.web.model.overview;       
+import com.groud2.web.DAO.overviewDAO;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
@@ -21,9 +19,9 @@ import java.util.logging.Logger;
 
 /**
  *
- * @author asus
+ * @author Admin
  */
-public class searchBookingController extends HttpServlet {
+public class overviewController extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -42,10 +40,10 @@ public class searchBookingController extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet searchBookingController</title>");
+            out.println("<title>Servlet overviewController</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet searchBookingController at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet overviewController at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -63,15 +61,20 @@ public class searchBookingController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        bookingDAO b = new bookingDAO();
-        try {
-            ArrayList<booking> list = b.getAllBooking();
-            request.setAttribute("list", list);
+       overviewDAO  f = new overviewDAO() ;
+        System.out.println("ddddddo");
+         try {
+            ArrayList<overview> list = f.getAlloverview();
+             request.setAttribute("listOv", list);
+             request.getRequestDispatcher("Overview.jsp").forward(request, response);
         } catch (SQLException ex) {
-            Logger.getLogger(searchBookingController.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("hellloooo");
+//            Logger.getLogger(glassesController.class.getName()).log(Level.SEVERE, null, ex);
         }
-        request.getRequestDispatcher("searchBooking.jsp").forward(request, response);
+   
     }
+        
+    
 
     /**
      * Handles the HTTP <code>POST</code> method.
@@ -84,31 +87,7 @@ public class searchBookingController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String email = request.getParameter("email");
-        String phone = request.getParameter("phone");
-
-        bookingDAO b = new bookingDAO();
-
-        try {
-
-            if (b.checkExist(email, phone)) {
-                System.out.println("Email ton tai");
-                if (email != null && !email.isEmpty() && phone != null && !phone.isEmpty()) {
-                    ArrayList<booking> list = b.getAllByBoth(email, phone);
-                    System.out.println("get booking by both");
-                    request.setAttribute("list", list);
-                }
-            } else {
-                
-                request.setAttribute("check", "Your information was wrong. Please check again");
-            }
-
-            request.getRequestDispatcher("searchBooking.jsp").forward(request, response);
-
-        } catch (SQLException ex) {
-            System.out.println("hellloooo");
-            Logger.getLogger(searchBookingController.class.getName()).log(Level.SEVERE, null, ex);
-        }
+      
     }
 
     /**

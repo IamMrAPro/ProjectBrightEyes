@@ -4,10 +4,13 @@
  */
 package com.groud2.web.controller;
 
+
 import com.groud2.web.DAO.EmailDAO;
 import com.groud2.web.DAO.bookingDAO;
 import com.groud2.web.DAO.userDAO;
 import jakarta.mail.MessagingException;
+
+
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
@@ -60,12 +63,16 @@ public class bookingController extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
+
         bookingDAO b = new bookingDAO();
+
+  
+       
         String sbtime;
         String name = request.getParameter("name");
         String phone = request.getParameter("phone");
         String email = request.getParameter("email");
-        String date = request.getParameter("dateInput");
+        String date = request.getParameter("date");
         String time = request.getParameter("time");
         String medical = request.getParameter("description");
         String payment = request.getParameter("payment");
@@ -93,6 +100,10 @@ public class bookingController extends HttpServlet {
       
         request.getRequestDispatcher("booking.jsp").forward(request, response);
    
+        b.insert(name, phone, email, date, time, medical, payment, sbtime);
+        request.getRequestDispatcher("booking.jsp").forward(request, response);
+   
+
     }
 
     /**
