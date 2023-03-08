@@ -3,26 +3,25 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
  */
 package com.groud2.web.controller;
-
-<<<<<<< Updated upstream
-=======
-import com.groud2.web.DAO.bookingDAO;
-import com.groud2.web.DAO.userDAO;
-
->>>>>>> Stashed changes
+ import com.groud2.web.model.overview;       
+import com.groud2.web.DAO.overviewDAO;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.PrintWriter;
-
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
- * @author anhha
+ * @author Admin
  */
-public class bookingController extends HttpServlet {
+public class overviewController extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -41,10 +40,10 @@ public class bookingController extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet bookingController</title>");            
+            out.println("<title>Servlet overviewController</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet bookingController at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet overviewController at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -62,30 +61,20 @@ public class bookingController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-<<<<<<< Updated upstream
-         request.getRequestDispatcher("booking.jsp").forward(request, response);
-=======
-            
-        bookingDAO b = new bookingDAO();
-       
-        String sbtime;
-        String name = request.getParameter("name");
-        String phone = request.getParameter("phone");
-        String email = request.getParameter("email");
-        String date = request.getParameter("date");
-        String time = request.getParameter("time");
-        String medical = request.getParameter("description");
-        String payment = request.getParameter("payment");
-        LocalDateTime currentDateTime = LocalDateTime.now();
-        // Định dạng ngày giờ theo định dạng "yyyy-MM-dd HH:mm:ss"
-        String formattedDateTime = currentDateTime.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
-        sbtime=formattedDateTime;
-        
-        b.insert(name, phone, email, date, time, medical, payment, sbtime);
-        request.getRequestDispatcher("booking.jsp").forward(request, response);
+       overviewDAO  f = new overviewDAO() ;
+        System.out.println("ddddddo");
+         try {
+            ArrayList<overview> list = f.getAlloverview();
+             request.setAttribute("listOv", list);
+             request.getRequestDispatcher("Overview.jsp").forward(request, response);
+        } catch (SQLException ex) {
+            System.out.println("hellloooo");
+//            Logger.getLogger(glassesController.class.getName()).log(Level.SEVERE, null, ex);
+        }
    
->>>>>>> Stashed changes
     }
+        
+    
 
     /**
      * Handles the HTTP <code>POST</code> method.
@@ -98,7 +87,7 @@ public class bookingController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+      
     }
 
     /**

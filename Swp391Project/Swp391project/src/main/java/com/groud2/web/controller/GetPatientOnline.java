@@ -4,25 +4,24 @@
  */
 package com.groud2.web.controller;
 
-<<<<<<< Updated upstream
-=======
 import com.groud2.web.DAO.bookingDAO;
 import com.groud2.web.DAO.userDAO;
-
->>>>>>> Stashed changes
+import com.groud2.web.model.booking;
+import com.groud2.web.model.user;
+import java.io.IOException;
+import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
+import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import java.io.IOException;
-import java.io.PrintWriter;
-
+import java.util.ArrayList;
 
 /**
  *
- * @author anhha
+ * @author Admin
  */
-public class bookingController extends HttpServlet {
+public class GetPatientOnline extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -41,10 +40,10 @@ public class bookingController extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet bookingController</title>");            
+            out.println("<title>Servlet GetPatientOnline</title>");
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet bookingController at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet GetPatientOnline at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -62,29 +61,18 @@ public class bookingController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-<<<<<<< Updated upstream
-         request.getRequestDispatcher("booking.jsp").forward(request, response);
-=======
-            
+        userDAO u = new userDAO();
         bookingDAO b = new bookingDAO();
-       
-        String sbtime;
-        String name = request.getParameter("name");
-        String phone = request.getParameter("phone");
-        String email = request.getParameter("email");
-        String date = request.getParameter("date");
-        String time = request.getParameter("time");
-        String medical = request.getParameter("description");
-        String payment = request.getParameter("payment");
-        LocalDateTime currentDateTime = LocalDateTime.now();
-        // Định dạng ngày giờ theo định dạng "yyyy-MM-dd HH:mm:ss"
-        String formattedDateTime = currentDateTime.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
-        sbtime=formattedDateTime;
-        
-        b.insert(name, phone, email, date, time, medical, payment, sbtime);
-        request.getRequestDispatcher("booking.jsp").forward(request, response);
-   
->>>>>>> Stashed changes
+        String id = request.getParameter("id");
+        try {
+            ArrayList<user> listrole = u.getUsersByRole();
+            request.setAttribute("listrole", listrole);
+            ArrayList<booking> listid = b.getAllById(id);
+            request.setAttribute("listid", listid);
+        } catch (Exception e) {
+        }
+        request.getRequestDispatcher("recordOnline.jsp").forward(request, response);
+
     }
 
     /**

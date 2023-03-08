@@ -4,25 +4,28 @@
  */
 package com.groud2.web.controller;
 
-<<<<<<< Updated upstream
-=======
-import com.groud2.web.DAO.bookingDAO;
+import com.groud2.web.DAO.patientDAO;
 import com.groud2.web.DAO.userDAO;
-
->>>>>>> Stashed changes
+import com.groud2.web.model.user;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import java.io.IOException;
-import java.io.PrintWriter;
-
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 /**
  *
- * @author anhha
+ * @author Admin
  */
-public class bookingController extends HttpServlet {
+public class recordController extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -41,10 +44,10 @@ public class bookingController extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet bookingController</title>");            
+            out.println("<title>Servlet recordController</title>");
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet bookingController at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet recordController at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -62,29 +65,17 @@ public class bookingController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-<<<<<<< Updated upstream
-         request.getRequestDispatcher("booking.jsp").forward(request, response);
-=======
-            
-        bookingDAO b = new bookingDAO();
-       
-        String sbtime;
-        String name = request.getParameter("name");
-        String phone = request.getParameter("phone");
-        String email = request.getParameter("email");
-        String date = request.getParameter("date");
-        String time = request.getParameter("time");
-        String medical = request.getParameter("description");
-        String payment = request.getParameter("payment");
-        LocalDateTime currentDateTime = LocalDateTime.now();
-        // Định dạng ngày giờ theo định dạng "yyyy-MM-dd HH:mm:ss"
-        String formattedDateTime = currentDateTime.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
-        sbtime=formattedDateTime;
-        
-        b.insert(name, phone, email, date, time, medical, payment, sbtime);
-        request.getRequestDispatcher("booking.jsp").forward(request, response);
-   
->>>>>>> Stashed changes
+        userDAO u = new userDAO();
+
+        try {
+            ArrayList<user> listrole = u.getUsersByRole();
+            request.setAttribute("listrole", listrole);
+            System.out.println("heo");
+            request.getRequestDispatcher("recordOffline.jsp").forward(request, response);
+        } catch (SQLException ex) {
+            System.out.println("hellloooo");
+            Logger.getLogger(recordController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -98,7 +89,31 @@ public class bookingController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+
+        patientDAO pa = new patientDAO();
+        String IdCard = request.getParameter("idcard");
+        String patientName = request.getParameter("patientName");
+        String phone = request.getParameter("phone");
+        String email = request.getParameter("email");
+        String address = request.getParameter("address");
+        String bod = request.getParameter("bod");
+        String gender = request.getParameter("gender");
+        System.out.println("Gender: " + gender);
+        LocalDate now = LocalDate.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd"); // Định dạng chuỗi
+        String medicalDate = now.format(formatter);
+        String symptom = request.getParameter("symptom");
+        String doctorName = request.getParameter("doctor");
+        System.out.println(medicalDate);
+        try {
+
+            pa.insertPatient(IdCard, patientName, phone, email, address, bod, gender, medicalDate, symptom, doctorName);
+            response.sendRedirect("searchBooking.jsp");
+            System.out.println("success");
+        } catch (SQLException e) {
+            e.printStackTrace();
+            System.out.println("fail");
+        }
     }
 
     /**
@@ -111,4 +126,6 @@ public class bookingController extends HttpServlet {
         return "Short description";
     }// </editor-fold>
 
+    
+    
 }

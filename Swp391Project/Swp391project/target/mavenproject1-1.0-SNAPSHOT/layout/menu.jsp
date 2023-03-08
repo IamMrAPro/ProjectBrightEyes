@@ -10,9 +10,23 @@
                 <a class="nav-link click-scroll" href="home">Home</a>
             </li>
 
+<<<<<<< Updated upstream
             <li class="nav-item">
                 <a class="nav-link click-scroll" href="#">About</a>
             </li>
+=======
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            About
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="overview">Overview</a>
+                            <a class="dropdown-item" href="AboutStaff.jsp">Staffs</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#">Machine System</a>
+                        </div>
+                    </li>
+>>>>>>> Stashed changes
 
             <li class="nav-item">
                 <a class="nav-link click-scroll" href="glasses">Glasses</a>
