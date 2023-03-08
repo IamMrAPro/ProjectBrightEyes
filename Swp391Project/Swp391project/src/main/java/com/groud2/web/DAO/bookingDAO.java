@@ -305,4 +305,38 @@ public class bookingDAO {
 
         ps.executeUpdate();
     }
+    
+    public ArrayList<booking> getAllById(String bookId) throws SQLException, IOException {
+        ArrayList<booking> listId = new ArrayList<>();
+        String sql = "SELECT * FROM booking where bookId=?";
+        try {
+            connection = dbc.getConnection();
+            ps = connection.prepareStatement(sql);
+            ps.setString(1, bookId);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+              
+                String name = rs.getString(2);
+                String phone = rs.getString(3);
+                 String email = rs.getString(4);
+                String date = rs.getString(5);
+                String time = rs.getString(6);
+                String medical = rs.getString(7);
+                String payment = rs.getString(8);
+                String sbtime = rs.getString(9);
+
+                booking g = new booking(bookId, name, phone, email, date, time, medical, payment, sbtime);
+                System.out.println("get booking by id success");
+                listId.add(g);
+            }
+        } catch (SQLException e) {
+            System.out.println("get booking by email error: " + e.getMessage());
+        } finally {
+            if (connection != null) {
+                connection.close();
+            }
+        }
+
+        return listId;
+    }
 }

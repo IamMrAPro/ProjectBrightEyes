@@ -38,14 +38,24 @@
             font-size: 5em;
         }
 
+        .hidden{
+            display: none;
+        }
+        .display {
+            display: block !important;
+        }
     </style>
     <body onload="getPositionNavBar(3)">
         <form action="manageRoom" class="vw-100 vh-100 d-flex" method="post">
             <!--            set position for not select case-->
-                <input name="setPosition" type="text" value="1" class="d-none">
-<!--            --------------------------------------------------------------------->
+            <input name="setPosition" type="text" value="4" class="d-none">
+            <!--            --------------------------------------------------------------------->
             <%@include file="../admin-layout/admin-navbar.jsp" %>
             <div class="main-view main-view-content">
+                <div class="alert alert-success alert-dismissible hidden ${display}">
+                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                    ${message}
+                </div>
                 <div class="d-flex justify-content-between mt-3">
                     <h2>Room Management</h2>
                     <div class="d-flex" id="manage-room-header">
@@ -93,7 +103,7 @@
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                        <button type="button" class="btn btn-primary">Save changes</button>
+                                        <input type="submit" name="addRoom" value="Create" class="btn btn-success">
                                     </div>
                                 </div>
                             </div>
@@ -102,9 +112,8 @@
 
                     <c:forEach items="${listRoom}" var="r">
                         <div>
-                            <!-- Button trigger modal -->
-                            <button type="button" class="btn room-modal-btn" data-toggle="modal" data-target="#roomInformation">
-                                <div class="card card-room">
+                            <a href="updateRoom?roomID=${r.getRoomID()}" style="text-decoration: none;">
+                                <div class="card card-room mt-1 mx-2">
                                     <div class="card-header text-left text-light">
                                         ${r.getRoomName()}
                                     </div>
@@ -113,37 +122,7 @@
                                         <div>Room Function: ${r.getRoomFunction()}</div>
                                     </div>
                                 </div>
-                            </button>
-
-                            <!-- Modal -->
-                            <div class="modal fade" id="roomInformation" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-                                 aria-hidden="true">
-                                <div class="modal-dialog" role="document">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title" id="exampleModalLabel">${r.getRoomName()}</h5>
-                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                <span aria-hidden="true">&times;</span>
-                                            </button>
-                                        </div>
-                                        <div class="modal-body">
-                                            <div class="form-floating">
-                                                <input type="text" name="newRoomID" class="form-control" id="new-room-id" value="${r.getRoomID()}">
-                                            </div>
-                                            <div class="form-floating mt-3">
-                                                <input type="text" name="newRoomName" class="form-control" id="new-room-name" value="${r.getRoomName()}">
-                                            </div>
-                                            <div class="form-floating mt-3">
-                                                <input type="text" name="newRoomFunction" class="form-control" id="new-room-function" value="${r.getRoomFunction()}">
-                                            </div>
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                            <button type="button" class="btn btn-primary">Save changes</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            </a>
                         </div>
                     </c:forEach>
                 </div>

@@ -57,7 +57,6 @@
                 height: 40px;
                 background-color: white;
                 color: #5a6f80;
-                margin-top: 50px;
             }
         </style>
         <script>
@@ -122,6 +121,12 @@
                             <div class="mx-2">Feedback</div>
                         </label>
                     </div>
+                    <div class="admin-link">
+                        <a href="searchBooking" class="d-flex px-4 align-items-center admin-nav-label text-decoration-none">
+                            <i class="fa-solid fa-calendar-days" style="color: white;"></i>
+                            <div class="mx-2" style="color: white;">Booking</div>
+                        </a>
+                    </div>
                 </div>
 
                 <br>
@@ -142,7 +147,7 @@
                 </div>
             </div>
             
-            <input type="submit" name="home" value="Logout" class="btn btn-logout">
+            <a href="logout" class="btn btn-logout text-decoration-none">Logout</a>
         </div>
 
     </body>
