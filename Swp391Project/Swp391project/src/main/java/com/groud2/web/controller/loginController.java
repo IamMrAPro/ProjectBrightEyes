@@ -4,6 +4,7 @@ import com.groud2.web.DAO.userDAO;
 import com.groud2.web.model.user;
 
 import jakarta.servlet.ServletException;
+import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -72,7 +73,30 @@ public class loginController extends HttpServlet {
 
         String account = request.getParameter("account");
         String password = request.getParameter("password");
+<<<<<<< Updated upstream
 
+=======
+        String captchaText = request.getParameter("captchaInput");
+        String captchaAgain = request.getParameter("loadCaptchaAgain");
+        String rememberpass = request.getParameter("rememberpass");
+        //tao 3 cookie 
+        //username,pass,status checkbox
+        Cookie acc = new Cookie("acc", account);
+        Cookie pass = new Cookie("pass", password);
+        Cookie status = new Cookie("status", rememberpass);
+        if (status.getValue() != null) {
+            acc.setMaxAge(60 * 60 * 24 * 7);
+            pass.setMaxAge(60 * 60 * 24 * 7);
+            status.setMaxAge(60 * 60 * 24 * 7);
+        } else {
+            acc.setMaxAge(0);
+            pass.setMaxAge(0);
+            status.setMaxAge(0);
+        }
+        response.addCookie(acc);
+        response.addCookie(pass);
+        response.addCookie(status);
+>>>>>>> Stashed changes
         try {
             password = encyptPass(password);
         } catch (NoSuchAlgorithmException ex) {
@@ -88,13 +112,24 @@ public class loginController extends HttpServlet {
             if (loginOK != null) {
                 HttpSession session = request.getSession();
 
+                String fullname=u.getUserName(account);
+                session.setAttribute("id", account);
+                session.setAttribute("fullname", fullname);
                 String role = u.getUserRole(account);
                 System.out.println("User role: " + role);
                 System.out.println("Login Account: " + account);
                 session.setAttribute("id", account);
+<<<<<<< Updated upstream
                 if(role.equals("admin")){
                     response.sendRedirect("adminDashboard");
                 }
+=======
+                session.setAttribute("fullname", fullname);
+                if (role.equals("admin")) {
+                    response.sendRedirect("adminDashboard");
+                }else if(role.equals("doctor"))
+                        response.sendRedirect("listWattingPatient");
+>>>>>>> Stashed changes
                 else {
                     response.sendRedirect("home");
                 }

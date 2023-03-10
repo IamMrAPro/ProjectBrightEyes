@@ -38,6 +38,9 @@
                             <div class="tab-content p-4" id="pills-tabContent">
                                 <form action="booking" method="get">
                                     <div class="row">
+                        <c:if test="${success ne null}" >
+                            <p style="color: red;font-size: 20px">${success}</p>
+                        </c:if>
                                         <div class="p-6">
                                             <h6 class="mb-0">Patient information</h6>
                                         </div>
@@ -45,7 +48,7 @@
                                         <div class="col-lg-6">
                                             <div class="mb-3">
                                                 <label class="form-label" name="">Name</label>
-                                                <input name="name" class="form-control" >
+                                                <input name="name" id="name" class="form-control" >
                                             </div>
                                         </div>
                                         <div class="col-lg-6">
@@ -96,6 +99,7 @@
                                             </div>
                                         </div><!--end col-->
 
+<<<<<<< Updated upstream
                                         <div class="col-md-12">
                                             <div class="mb-3">
                                                 <label class="form-label">Payment methods</label>
@@ -111,6 +115,15 @@
                                             <div class="d-grid">
                                                 <button type="submit" style="display: none" id="booking" class="default btn btn-primary">Đặt lịch</button>
                                                 <button type="submit"  style="display: none" id="booking" class="vnpay btn btn-primary">Thanh toán</button>
+=======
+
+
+                                        <div class="col-lg-12">
+
+                                            <div class="d-grid gap-2 col-6 mx-auto">
+                                                <button type="submit" class="btn btn-primary" type="button">Đặt lịch</button>
+
+>>>>>>> Stashed changes
                                             </div>
                                         </div>
                                     </div>
@@ -133,6 +146,7 @@
 
         
         <script>
+<<<<<<< Updated upstream
             $("#checkin-date").flatpickr({
                 defaultDate: "today",
                 minDate: "today",
@@ -157,6 +171,36 @@
             }
             
            
+=======
+                                                    $("#checkin-date").flatpickr({
+                                                        defaultDate: "today",
+                                                        minDate: "today",
+                                                        maxDate: new Date().fp_incr(14),
+                                                        dateFormat: "d/m/Y",
+                                                        locale: "vn"
+                                                    });
+                                                    function Select(text) {
+                                                        if (text.value == "") {
+                                                            $(".default").hide();
+                                                            $(".vnpay").hide();
+                                                        } else if (text.value == "default") {
+                                                            $(".default").show();
+                                                            $(".vnpay").hide();
+                                                        } else if (text.value == "vnpay") {
+                                                            $(".vnpay").show();
+                                                            $(".default").hide();
+                                                        } else {
+                                                            $(".default").hide();
+                                                            $(".vnpay").hide();
+                                                        }
+                                                    }
+                                                    const nameInput = document.getElementById("name");
+                                                    const regex = /^[a-zA-Z\s-]+$/;
+
+                                                    if (!regex.test(nameInput.value)) {
+                                                        console.log("Tên không hợp lệ. Vui lòng nhập lại.");
+                                                    }
+>>>>>>> Stashed changes
         </script>
 
     </body>

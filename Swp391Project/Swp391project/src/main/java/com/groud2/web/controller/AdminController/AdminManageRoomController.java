@@ -23,7 +23,37 @@ public class AdminManageRoomController extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         roomDAO r = new roomDAO();
         ArrayList<room> listRoom = r.getListRoom("");
+        String mess = req.getParameter("message");
 
+<<<<<<< Updated upstream
+=======
+        HttpSession session = req.getSession();
+        String username = (String) session.getAttribute("id");
+
+        if (mess != null) {
+            if (mess.equals("OK")) {
+                mess = "Add new room successfuly!";
+            } else if(mess.equals("Error")) {
+                mess = "Add new room error with data!";
+            }
+            else if(mess.equals("updateOK")){
+                mess = "Update room information successfully!";
+            }
+            else if(mess.equals("updateFailed")){
+                mess = "Update room error with data!";
+            }
+            else if(mess.equals("deleteOK")){
+                mess = "Delete room information successfully!";
+            }
+            else if(mess.equals("deleteFailed")){
+                mess = "Delete room error with data!";
+            }
+            req.setAttribute("display", "display");
+            req.setAttribute("message", mess);
+        }
+
+        req.setAttribute("username", username);
+>>>>>>> Stashed changes
         req.setAttribute("listRoom", listRoom);
         req.getRequestDispatcher("AdminView/admin-screen/ManageRoom.jsp").forward(req, resp);
     }
@@ -38,7 +68,24 @@ public class AdminManageRoomController extends HttpServlet {
         }
 
         //Handle request
-        changePosition(position, req, resp);
+        if (position.equals("4")) {
+            String roomID = req.getParameter("newRoomID");
+            String roomName = req.getParameter("newRoomName");
+            String roomFunction = req.getParameter("newRoomFunction");
+
+            String add = req.getParameter("addRoom");
+            if (add != null) {
+                roomDAO rd = new roomDAO();
+                if (rd.addNewRoom(roomID, roomName, roomFunction)) {
+                    resp.sendRedirect("manageRoom?message=OK");
+                } else {
+                    resp.sendRedirect("manageRoom?message=Error");
+                }
+            }
+
+        } else {
+            changePosition(position, req, resp);
+        }
     }
 
     private void changePosition(String pos, HttpServletRequest req, HttpServletResponse resp) throws IOException {

@@ -23,7 +23,7 @@ public class roomDAO {
     DBContext dbc = new DBContext();
     Connection connection = null;
 
-    public boolean addNewRoom(String roomID, String roomName, String roomFunction) throws SQLException {
+    public boolean addNewRoom(String roomID, String roomName, String roomFunction) {
         String mysql = "insert into room(roomId, roomName, roomFunction) values(?, ?, ?);";
         try {
             connection = dbc.getConnection();
@@ -42,18 +42,18 @@ public class roomDAO {
 
     public ArrayList<room> getListRoom(String search) {
         ArrayList<room> listRoom = new ArrayList<>();
-       String mysql = "select * from room";
+        String mysql = "select * from room";
         try {
             connection = dbc.getConnection();
             ps = connection.prepareStatement(mysql);
             rs = ps.executeQuery();
-            while(rs.next()){
+            while (rs.next()) {
                 String id = rs.getString(1);
                 String name = rs.getString(2);
                 String function = rs.getString(3);
-                
+
                 room r = new room(id, name, function);
-                if(name.toLowerCase().contains(search.toLowerCase())){
+                if (name.toLowerCase().contains(search.toLowerCase())) {
                     listRoom.add(r);
                 }
             }
@@ -61,8 +61,76 @@ public class roomDAO {
             System.out.println("Get list room from db error: " + e.getMessage());
             return new ArrayList<>();
         }
-        
+
         return listRoom;
     }
 
+    public ArrayList<room> getRoomByID(String roomID) {
+        ArrayList<room> listRoom = new ArrayList<>();
+        String mysql = "select * from room where roomID = ?";
+        try {
+            connection = dbc.getConnection();
+            ps = connection.prepareStatement(mysql);
+            ps.setString(1, roomID);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                String id = rs.getString(1);
+                String name = rs.getString(2);
+                String function = rs.getString(3);
+
+                room r = new room(id, name, function);
+                listRoom.add(r);
+            }
+        } catch (Exception e) {
+            System.out.println("Get list room from db error: " + e.getMessage());
+            return new ArrayList<>();
+        }
+
+        return listRoom;
+    }
+    
+    public boolean updateRoom(String roomID, String roomName, String roomFunction) {
+        String mysql = "update room set roomName = ?, roomFunction = ? where roomId = ?";
+        try {
+            connection = dbc.getConnection();
+            ps = connection.prepareStatement(mysql);
+            ps.setString(1, roomName);
+            ps.setString(2, roomFunction);
+            ps.setString(3, roomID);
+
+            ps.execute();
+        } catch (Exception e) {
+            System.out.println("Update room to db error: " + e.getMessage());
+            return false;
+        }
+        return true;
+    }
+    
+    public boolean deleteRoom(String roomID){
+        try {
+            String SQL = "delete from room where roomId = ?";
+            connection = dbc.getConnection();
+            ps = connection.prepareStatement(SQL);
+            ps.setString(1, roomID);
+            ps.execute();
+            return true;
+        } catch (Exception e) {
+            System.out.println("Delete room error: " + e.getMessage());
+        }
+        return false;
+    }
+    
+    public int getListRoomID(){
+        try {
+            String SQL = "select roomId from room";
+            connection = dbc.getConnection();
+            ps = connection.prepareStatement(SQL);
+            
+            rs = ps.executeQuery();
+            while(rs.next()) return rs.getInt(1);
+        } catch (Exception e) {
+            System.out.println("get last room id error: " + e.getMessage());
+        }
+        return 0;
+    }
 }

@@ -23,7 +23,24 @@ public class AdminManageGlassesController extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         glassesDAO g = new glassesDAO();
         ArrayList<glasses> listGlasses = g.getListGlass("");
+<<<<<<< Updated upstream
 
+=======
+        String mess = req.getParameter("message");
+        HttpSession session = req.getSession();
+         String username = (String)session.getAttribute("id");
+         
+         if(mess != null){
+             if(mess.equals("addOK")){
+                 req.setAttribute("message", "Add new glass successfully!");
+             }
+             else if(mess.equals("updateOK")){
+                 req.setAttribute("message", "Update glass successfully!");
+             }
+             req.setAttribute("display", "display");
+         }
+         req.setAttribute("username", username);
+>>>>>>> Stashed changes
         req.setAttribute("listGlasses", listGlasses);
         req.getRequestDispatcher("AdminView/admin-screen/ManageGlass.jsp").forward(req, resp);
     }
@@ -33,12 +50,21 @@ public class AdminManageGlassesController extends HttpServlet {
         //Get request from client
         String position = req.getParameter("position");
         String setPos = req.getParameter("setPosition");
+        String search = req.getParameter("searchGlass");
         if (position == null) {
             position = setPos;
         }
         //Handle request
         if (!position.equals("5")) {
             changePosition(position, req, resp);
+        }
+        else {
+            if(search != null){
+                glassesDAO gd = new glassesDAO();
+                ArrayList<glasses> listGlasses = gd.getListGlass(search);
+                req.setAttribute("listGlasses", listGlasses);
+        req.getRequestDispatcher("AdminView/admin-screen/ManageGlass.jsp").forward(req, resp);
+            }
         }
     }
 
