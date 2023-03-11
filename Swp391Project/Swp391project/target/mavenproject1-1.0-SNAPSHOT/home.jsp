@@ -21,9 +21,9 @@
                                         
                                         <img src="assets/images/healthcare-telemedicine-banner.jpg" class="carousel-image img-fluid"  alt=""/>
                                         <div class="carousel-caption d-flex flex-column justify-content-end">
-                                            <h1>be a Kind Heart</h1>
+                                            <h1>Take care</h1>
 
-                                            <p>Professional charity theme based on Bootstrap 5.2.2</p>
+                                            <p>Dedicated, professional</p>
                                         </div>
                                     </div>
 
@@ -31,23 +31,6 @@
                                         <img src="assets/images/slide/volunteer-selecting-organizing-clothes-donations-charity.jpg" class="carousel-image img-fluid" alt="...">
 
                                         <div class="carousel-caption d-flex flex-column justify-content-end">
-<<<<<<< Updated upstream
-                                            <h1>Non-profit</h1>
-
-                                            <p>You can support us to grow more</p>
-                                        </div>
-                                    </div>
-
-                                    <div class="carousel-item">
-                                        <img src="images/slide/medium-shot-people-collecting-donations.jpg" class="carousel-image img-fluid" alt="...">
-
-                                        <div class="carousel-caption d-flex flex-column justify-content-end">
-                                            <h1>Humanity</h1>
-
-                                            <p>Please tell your friends about our website</p>
-                                        </div>
-                                    </div>
-=======
                                             <h1>Staff</h1>
                                             
                                             <p>Lots of experience</p>
@@ -55,7 +38,6 @@
                                     </div>
 
 
->>>>>>> Stashed changes
                                 </div>
 
                                 <button class="carousel-control-prev" type="button" data-bs-target="#hero-slide" data-bs-slide="prev">
@@ -74,108 +56,59 @@
                 </div>
             </section>
 
-<!--
+
             <section class="section-padding">
                 <div class="container">
                     <div class="row">
 
                         <div class="col-lg-10 col-12 text-center mx-auto">
-                            <h2 class="mb-5">Welcome to Kind Heart Charity</h2>
+                            <h2 class="mb-5">Welcome to Bright eyes</h2>
                         </div>
 
                         <div class="col-lg-3 col-md-6 col-12 mb-4 mb-lg-0">
-                            <div class="featured-block d-flex justify-content-center align-items-center">
+                            <div class="d-flex justify-content-center align-items-center">
                                 <a href="#" class="d-block">
                                     <img src="assets/images/icons/hands.png" class="featured-block-image img-fluid" alt="">
 
-                                    <p class="featured-block-text">Become a <strong>volunteer</strong></p>
+                                    <p class="featured-block-text">Become a <strong>member</strong></p>
                                 </a>
                             </div>
                         </div>
 
                         <div class="col-lg-3 col-md-6 col-12 mb-4 mb-lg-0 mb-md-4">
-                            <div class="featured-block d-flex justify-content-center align-items-center">
+                            <div class="d-flex justify-content-center align-items-center">
                                 <a href="#" class="d-block">
                                     <img src="assets/images/icons/heart.png" class="featured-block-image img-fluid" alt="">
 
-                                    <p class="featured-block-text"><strong>Caring</strong> Earth</p>
+                                    <p class="featured-block-text"><strong>Share</strong> knowledge</p>
                                 </a>
                             </div>
                         </div>
 
                         <div class="col-lg-3 col-md-6 col-12 mb-4 mb-lg-0 mb-md-4">
-                            <div class="featured-block d-flex justify-content-center align-items-center">
+                            <div class="d-flex justify-content-center align-items-center">
                                 <a href="#" class="d-block">
                                     <img src="assets/images/icons/receive.png" class="featured-block-image img-fluid" alt="">
 
-                                    <p class="featured-block-text">Make a <strong>Donation</strong></p>
+                                    <p class="featured-block-text"> <strong>Corneal donation</strong></p>
                                 </a>
                             </div>
                         </div>
 
                         <div class="col-lg-3 col-md-6 col-12 mb-4 mb-lg-0">
-                            <div class="featured-block d-flex justify-content-center align-items-center">
+                            <div class=" d-flex justify-content-center align-items-center">
                                 <a href="#" class="d-block">
                                     <img src="assets/images/icons/scholarship.png" class="featured-block-image img-fluid" alt="">
 
-                                    <p class="featured-block-text"><strong>Scholarship</strong> Program</p>
+                                    <p class="featured-block-text"><strong>Learn</strong> eye knowledge</p>
                                 </a>
                             </div>
                         </div>
 
                     </div>
                 </div>
-            </section>-->
+            </section>
 
-<<<<<<< Updated upstream
-            <section class="section-padding section-bg" id="section_2">
-                <div class="container">
-                    <div class="row">
-
-                        <div class="col-lg-6 col-12 mb-5 mb-lg-0">
-                            <img src="assets/images/group-people-volunteering-foodbank-poor-people.jpg" class="custom-text-box-image img-fluid" alt="">
-                        </div>
-
-                        <div class="col-lg-6 col-12">
-                            <div class="custom-text-box">
-                                <h2 class="mb-2">Our Story</h2>
-
-                                <h5 class="mb-3">Kind Heart Charity, Non-Profit Organization</h5>
-
-                                <p class="mb-0">This is a Bootstrap 5.2.2 CSS template for charity organization websites. You can feel free to use it. Please tell your friends about TemplateMo website. Thank you. HTML CSS files updated on 20 Oct 2022.</p>
-                            </div>
-
-                            <div class="row">
-                                <div class="col-lg-6 col-md-6 col-12">
-                                    <div class="custom-text-box mb-lg-0">
-                                        <h5 class="mb-3">Our Mission</h5>
-
-                                        <p>Sed leo nisl, posuere at molestie ac, suscipit auctor quis metus</p>
-
-                                        <ul class="custom-list mt-2">
-                                            <li class="custom-list-item d-flex">
-                                                <i class="bi-check custom-text-box-icon me-2"></i>
-                                                Charity Theme
-                                            </li>
-
-                                            <li class="custom-list-item d-flex">
-                                                <i class="bi-check custom-text-box-icon me-2"></i>
-                                                Semantic HTML
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-
-                                <div class="col-lg-6 col-md-6 col-12">
-                                    <div class="custom-text-box d-flex flex-wrap d-lg-block mb-lg-0">
-                                        <div class="counter-thumb">
-                                            <div class="d-flex">
-                                                <span class="counter-number" data-from="1" data-to="2009" data-speed="1000"></span>
-                                                <span class="counter-number-text"></span>
-                                            </div>
-
-                                            <span class="counter-text">Founded</span>
-=======
             <!--            <section class="section-padding section-bg" id="section_2">
                             <div class="container">
                                 <div class="row">
@@ -191,7 +124,6 @@
                                             <h5 class="mb-3">Bright eyes,Eye Clinic</h5>
             
                                             <p class="mb-0">Chưa biết viết gì</p>
->>>>>>> Stashed changes
                                         </div>
             
                                         <div class="row">
@@ -249,18 +181,16 @@
                     <div class="row">
 
                         <div class="col-lg-6 col-md-5 col-12">
-                            <img src="assets/images/portrait-volunteer-who-organized-donations-charity.jpg" class="about-image ms-lg-auto bg-light shadow-lg img-fluid" alt="">
+                            <img src="assets/nhat.png" class="about-image ms-lg-auto bg-light shadow-lg img-fluid" alt="">
                         </div>
 
                         <div class="col-lg-5 col-md-7 col-12">
                             <div class="custom-text-block">
-                                <h2 class="mb-0">Sandy Chan</h2>
+                                <h2 class="mb-0"> Nguyễn Đình Nhật</h2>
 
-                                <p class="text-muted mb-lg-4 mb-md-4">Co-Founding Partner</p>
+                                <p class="text-muted mb-lg-4 mb-md-4">Patient</p>
 
-                                <p>Lorem Ipsum dolor sit amet, consectetur adipsicing kengan omeg kohm tokito Professional charity theme based</p>
-
-                                <p>You are not allowed to redistribute this template ZIP file on any other template collection website. Please contact TemplateMo for more information.</p>
+                                <p>This clinic is very good, the service is very enthusiastic and attentive</p>
 
                                 <ul class="social-icon mt-4">
                                     <li class="social-icon-item">
@@ -287,17 +217,13 @@
                     <div class="row justify-content-center align-items-center">
 
                         <div class="col-lg-5 col-12 ms-auto">
-                            <h2 class="mb-0">Make an impact. <br> Save lives.</h2>
+                            <h2 class="mb-0">Make an impact. <br> Help more many people.</h2>
                         </div>
 
                         <div class="col-lg-5 col-12">
-<<<<<<< Updated upstream
-                            <a href="#" class="me-4">Make a donation</a>
-=======
 
->>>>>>> Stashed changes
 
-                            <a href="#section_4" class="custom-btn btn smoothscroll">Become a volunteer</a>
+                            <a href="#section_4" class="custom-btn btn smoothscroll">Become a member</a>
                         </div>
 
                     </div>
@@ -356,7 +282,7 @@
                     <div class="row">
 
                         <div class="col-lg-12 col-12 mb-5">
-                            <h2>Latest News</h2>
+                            <h2>Eye knowledge</h2>
                         </div>
 
                         <div class="col-lg-7 col-12">
@@ -368,16 +294,10 @@
 
                                     <div class="news-category-block">
                                         <a href="#" class="category-block-link">
-                                            Lifestyle,
+                                            Knowledge
                                         </a>
 
-<<<<<<< Updated upstream
-                                        <a href="#" class="category-block-link">
-                                            Clothing Donation
-                                        </a>
-=======
 
->>>>>>> Stashed changes
                                     </div>
                                 </div>
 
@@ -386,7 +306,7 @@
                                         <div class="news-block-date">
                                             <p>
                                                 <i class="bi-calendar4 custom-icon me-1"></i>
-                                                October 12, 2036
+                                                October 12, 2021
                                             </p>
                                         </div>
 
@@ -400,81 +320,21 @@
                                         <div class="news-block-comment">
                                             <p>
                                                 <i class="bi-chat-left custom-icon me-1"></i>
-                                                32 Comments
+                                                Comments
                                             </p>
                                         </div>
                                     </div>
 
                                     <div class="news-block-title mb-2">
-<<<<<<< Updated upstream
-                                        <h4><a href="#" class="news-block-title-link">Clothing donation to urban area</a></h4>
-=======
                                         <h4><a href="#" class="news-block-title-link"> The mechanism of action of the eye</a></h4>
->>>>>>> Stashed changes
                                     </div>
 
                                     <div class="news-block-body">
-                                        <p>Lorem Ipsum dolor sit amet, consectetur adipsicing kengan omeg kohm tokito Professional charity theme based on Bootstrap</p>
+                                        <p></p>
                                     </div>
                                 </div>
                             </div>
 
-<<<<<<< Updated upstream
-                            <div class="news-block mt-3">
-                                <div class="news-block-top">
-                                    <a href="#">
-                                        <img src="assets/images/news/medium-shot-people-collecting-foodstuff.jpg" class="news-image img-fluid" alt="">
-                                    </a>
-
-                                    <div class="news-category-block">
-                                        <a href="#" class="category-block-link">
-                                            Food,
-                                        </a>
-
-                                        <a href="#" class="category-block-link">
-                                            Donation,
-                                        </a>
-
-                                        <a href="#" class="category-block-link">
-                                            Caring
-                                        </a>
-                                    </div>
-                                </div>
-
-                                <div class="news-block-info">
-                                    <div class="d-flex mt-2">
-                                        <div class="news-block-date">
-                                            <p>
-                                                <i class="bi-calendar4 custom-icon me-1"></i>
-                                                October 20, 2036
-                                            </p>
-                                        </div>
-
-                                        <div class="news-block-author mx-5">
-                                            <p>
-                                                <i class="bi-person custom-icon me-1"></i>
-                                                By Admin
-                                            </p>
-                                        </div>
-
-                                        <div class="news-block-comment">
-                                            <p>
-                                                <i class="bi-chat-left custom-icon me-1"></i>
-                                                35 Comments
-                                            </p>
-                                        </div>
-                                    </div>
-
-                                    <div class="news-block-title mb-2">
-                                        <h4><a href="#" class="news-block-title-link">Food donation area</a></h4>
-                                    </div>
-
-                                    <div class="news-block-body">
-                                        <p>Sed leo nisl, posuere at molestie ac, suscipit auctor mauris. Etiam quis metus elementum, tempor risus vel, condimentum orci</p>
-                                    </div>
-                                </div>
-                            </div>
-=======
                                                         <div class="news-block mt-3">
                                                             <div class="news-block-top">
                                                                 <a href="#">
@@ -528,7 +388,6 @@
                                                                 </div>
                                                             </div>
                                                         </div>
->>>>>>> Stashed changes
                         </div>
 
                         <div class="col-lg-4 col-12 mx-auto">
@@ -730,16 +589,9 @@
             </section>
 
 
-<<<<<<< Updated upstream
-           
-               <section class="contact-section section-padding" id="section_6">
-                <div class="container">
-                    <div class="row">
-=======
             <section class="contact-section section-padding" id="section_6">
             <div class="container">
                 <div class="row">
->>>>>>> Stashed changes
 
                     <div class="col-lg-4 col-12 ms-auto mb-5 mb-lg-0">
                         <div class="contact-info-wrap">
@@ -751,45 +603,22 @@
                                 <img src="assets/images/map.jpg" class="img-thumbnail"  alt=""/>
                             </div>
 
-<<<<<<< Updated upstream
-                                    <p class="d-flex mb-2">
-                                        <i class="bi-geo-alt me-2"></i>
-                                        FPT University, Hoa Lac, Ha Noi
-                                    </p>
-=======
                             <div class="contact-info">
                                 <h5 class="mb-3">Contact Infomation</h5>
->>>>>>> Stashed changes
 
                                 <p class="d-flex mb-2">
                                     <i class="bi-geo-alt me-2"></i>
                                     FPT University, Hoa Lac, Ha Noi
                                 </p>
 
-<<<<<<< Updated upstream
-                                        <a href="tel: 120-240-9600">
-                                            0948539479
-                                        </a>
-                                    </p>
-=======
                                 <p class="d-flex mb-2">
                                     <i class="bi-telephone me-2"></i>
->>>>>>> Stashed changes
 
                                     <a href="tel: 120-240-9600">
                                         0948539479
                                     </a>
                                 </p>
 
-<<<<<<< Updated upstream
-                                        <a href="mailto:info@yourgmail.com">
-                                            vubahe163495@fpt.edu.vn
-                                        </a>
-                                    </p>
-
-                                  
-                                </div>
-=======
                                 <p class="d-flex">
                                     <i class="bi-envelope me-2"></i>
 
@@ -799,7 +628,6 @@
                                 </p>
 
                                 <a href="https://www.google.com/maps/place/FPT+University/@21.013255,105.5248756,17z/data=!3m1!4b1!4m5!3m4!1s0x31345b465a4e65fb:0xaae6040cfabe8fe!8m2!3d21.01325!4d105.5270643" class="custom-btn btn mt-3">Get Direction</a>
->>>>>>> Stashed changes
                             </div>
                         </div>
                     </div>
@@ -839,3 +667,4 @@
     <jsp:include page="layout/footer.jsp"/>
 </body>
 </html>
+

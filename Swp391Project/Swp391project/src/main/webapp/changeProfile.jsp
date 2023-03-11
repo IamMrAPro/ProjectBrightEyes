@@ -84,7 +84,7 @@
                                 <div class="col-md-12"><label class="labels">Full Name</label><input type="text" name="newName" class="form-control" value="${fullname}"></div>
                                 <div class="col-md-6"><label class="labels">Account</label><input type="text" class="form-control" value="${account}" readonly></div>
 
-                                <div class="col-md-6"><label class="labels">Gender</label><input type="text" class="form-control" value="${gender}"  ></div>
+                                <div class="col-md-6"><label class="labels">Gender</label><input type="text" name="newGender" class="form-control" value="${gender}"  ></div>
                                 <div class="col-md-12"><label class="labels">Choose new gender</label><input type="radio" name="newGender" value="Male" style="margin-left: 50px"> Male
                                     <input type="radio" name="newGender" value="FeMale" style="margin-left: 150px"> FeMale 
 

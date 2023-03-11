@@ -5,8 +5,8 @@
 package com.groud2.web.DAO;
 
 import com.groud2.web.DAO.context.DBContext;
+import com.groud2.web.model.booking;
 import com.groud2.web.model.service;
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -18,11 +18,12 @@ import java.util.ArrayList;
  * @author asus
  */
 public class serviceDAO {
-      PreparedStatement ps = null;
+    
+    PreparedStatement ps = null;
     ResultSet rs = null;
     DBContext dbc = new DBContext();
     Connection connection = null;
-    public ArrayList<service> getAllService() throws SQLException {
+public ArrayList<service> getService() throws SQLException {
         ArrayList<service> list = new ArrayList<>();
         String sql = "SELECT * FROM service";
         try {
@@ -34,12 +35,13 @@ public class serviceDAO {
                 String service = rs.getString(2);
                 String description = rs.getString(3);
                 String price = rs.getString(4);
+                
                 service g = new service(serviceID, service, description, price);
                 list.add(g);
                 System.out.println("get service success");
             }
         } catch (SQLException e) {
-            System.out.println("get booking error: " + e.getMessage());
+            System.out.println("get service error: " + e.getMessage());
         } finally {
             if (connection != null) {
                 connection.close();
@@ -48,5 +50,4 @@ public class serviceDAO {
         return list;
 
     }
-
 }

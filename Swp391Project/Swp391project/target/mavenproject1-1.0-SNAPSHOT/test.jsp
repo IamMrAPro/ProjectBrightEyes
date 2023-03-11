@@ -1,150 +1,188 @@
-<%-- 
-    Document   : AdminDashboard
-    Created on : Feb 10, 2023, 7:50:47 PM
-    Author     : Ao
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
-    <%@include file="AdminView/admin-layout/admin-head.jsp" %>
     <style>
-
-        #dashboard-left {
-            width: 65%;
+        .carousel{
+            padding:   8%
         }
-        #rate-customer {
-            width: 100%;
-            height: 400px;
-            border: 1px solid red;
+        .bt-next{
+            margin:  10%
         }
-
-        #revenue {
-            width: 100%;
-            height: 480px;
-            border: 1px solid red;
+        input[type="text" ] {
+            padding: 1px 2px;
         }
-
-        #dashboard-right {
-            width: 33%;
-            margin-left: 2%;
-            height: 930px;
-            /*border: 1px solid red;*/
+        input {
+            writing-mode: horizontal-tb !important;
+            font-style: ;
+            font-variant-ligatures: ;
+            font-variant-caps: ;
+            font-variant-numeric: ;
+            font-variant-east-asian: ;
+            font-weight: ;
+            font-stretch: ;
+            font-size: ;
+            font-family: ;
+            text-rendering: auto;
+            color: fieldtext;
+            letter-spacing: normal;
+            word-spacing: normal;
+            line-height: normal;
+            text-transform: none;
+            text-indent: 0px;
+            text-shadow: none;
+            display: inline-block;
+            text-align: start;
+            appearance: auto;
+            -webkit-rtl-ordering: logical;
+            cursor: text;
+            background-color: field;
+            margin: 0em;
+            padding: 1px 2px;
+            border-width: 2px;
+            border-style: inset;
+            border-color: -internal-light-dark(rgb(118, 118, 118), rgb(133, 133, 133));
+            border-image: initial;
         }
-        
-        #revenue-rate-box {
-            width: 100%;
-            height: 450px;
-            border: 1px solid blue;
+        .text-box {
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 5px;
+            height: 32px;
         }
-        #rate-of-revenue {
-            width: 100%;
-            
+        #step1text {
+            font-family: gotham-medium;
+            font-size: 19px;
+            font-style: normal;
+            font-weight: 700;
+            font-variant: normal;
+            text-transform: uppercase;
+            color: #000;
+            letter-spacing: 5px;
+        }
+        #step2text {
+            font-family: gotham-medium;
+            font-size: 17px;
+            font-style: normal;
+            font-weight: 700;
+            font-variant: normal;
+            text-transform: uppercase;
+            color: #000;
+            letter-spacing: 5px;
+        }
+        #step3text {
+            font-family: gotham-medium;
+            font-size: 14.5px;
+            font-style: normal;
+            font-weight: 700;
+            font-variant: normal;
+            text-transform: uppercase;
+            color: #000;
+            letter-spacing: 5px;
+        }
+        #step4text {
+            font-family: gotham-medium;
+            font-size: 11px;
+            font-style: normal;
+            font-weight: 700;
+            font-variant: normal;
+            text-transform: uppercase;
+            color: #000;
+            letter-spacing: 5px;
+        }
+        #step5text {
+            font-family: gotham-medium;
+            font-size: 9px;
+            font-style: normal;
+            font-weight: 700;
+            font-variant: normal;
+            text-transform: uppercase;
+            color: #000;
+            letter-spacing: 5px;
+        }
+        #step6text {
+            font-family: gotham-medium;
+            font-size: 7px;
+            font-style: normal;
+            font-weight: 700;
+            font-variant: normal;
+            text-transform: uppercase;
+            color: #000;
+            letter-spacing: 5px;
         }
     </style>
-    <body onload="getPositionNavBar(0)">
-        <form action="adminDashboard" class="vw-100 vh-100 d-flex" method="post">
-            <!--            set position for not select case-->
-            <input name="setPosition" type="text" value="1" class="d-none">
-            <!--            --------------------------------------------------------------------->
-            <%@include file="AdminView/admin-layout/admin-navbar.jsp" %>
-            <div class="main-view main-view-content justify-content-between d-flex">
-                <div id="dashboard-left">
-                    <div class="d-flex justify-content-between">
-                        <div id="rate-customer">
-                            <canvas id="rate-customer-chart"></canvas>
-                        </div>
-                        
+    <jsp:include page="layout/head.jsp"/>
+    <body>
+        <jsp:include page="layout/header.jsp"/>
+        <jsp:include page="layout/menu.jsp"/>
+        <div id="carouselExampleCaptions" class="carousel slide text-center">
+            <h2>ONLINE EYES TEST</h2>
+            <br><!-- comment -->
+            <form action="TestController" method="post" id="clicks">
+                <div class="carousel-indicators">
+                    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="3" aria-label="Slide 4"></button>
+                    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="4" aria-label="Slide 5"></button>
+                    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="5" aria-label="Slide 6"></button>
+                </div>
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <input type="hidden" name="chars1" value="${sessionScope.testcase1}"><!-- comment -->
+                        <p><strong id="step1text">${sessionScope.testcase1}</strong></p>
+                        <input type="text" name="stepInput1" class="text-box">
                     </div>
-                    <div id="revenue" class="mt-5">
-                        <h3 class="text-center mb-3">REVENUE REPORT</h3>
-                        <div class="text-center">Total: ${totalRevenue}</div>
-                        <input type="text" name="getDays" id="get-all-days" class="d-none" value="${totalDaysOfCurrentMonth}">
-                        <canvas id="month-revenue"></canvas>
+                    <div class="carousel-item">
+                        <input type="hidden" name="chars2" value="${sessionScope.testcase2}"><!-- comment -->
+                        <p><strong id="step2text">${sessionScope.testcase2}</strong></p>
+                        <input type="text" name="stepInput2" class="text-box">
+                    </div>
+                    <div class="carousel-item">
+                        <input type="hidden" name="chars3" value="${sessionScope.testcase3}"><!-- comment -->
+                        <p><strong id="step3text">${sessionScope.testcase3}</strong></p>
+                        <input type="text" name="stepInput3" class="text-box">
+                    </div>
+                    <div class="carousel-item">
+                        <input type="hidden" name="chars4" value="${sessionScope.testcase4}"><!-- comment -->
+                        <p><strong id="step4text">${sessionScope.testcase4}</strong></p>
+                        <input type="text" name="stepInput4" class="text-box">
+                    </div>
+                    <div class="carousel-item">
+                        <input type="hidden" name="chars5" value="${sessionScope.testcase5}"><!-- comment -->
+                        <p><strong id="step5text">${sessionScope.testcase5}</strong></p>
+                        <input type="text" name="stepInput5" class="text-box">
+
+                    </div>
+                    <div class="carousel-item">
+                        <input type="hidden" name="chars6" value="${sessionScope.testcase5}"><!-- comment -->
+                        <p><strong id="step6text">${sessionScope.testcase6}</strong></p>
+                        <input type="text" name="stepInput6" class="text-box">
+
                     </div>
                 </div>
+                <button id="button" onClick="onClick()" class="bt-next btn btn-success" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+                    Next
+                </button>
+            </form>
+        </div>
+        <script type="text/javascript">
+            var clicks = 0;
+            function onClick() {
+                clicks += 1;
+                if (clicks == 5) {
+                    document.getElementById("button").textContent = "Submit";
 
-                <div id="dashboard-right">
-                    <div id="revenue-rate-box">
-                        <canvas id="rate-of-revenue"></canvas>
-                        <div class="text-center fs-2">Rate of Revenue</div>
-                    </div>
-                </div>
-            </div>
-        </form>
-
-        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-        <script>
-        const rateCustomerChart = document.getElementById("rate-customer-chart");
-        new Chart(rateCustomerChart, {
-            type: 'line',
-            data: {
-                labels: ["8h", "9h", "10h", "11h", "13h", "14h", "15h", "16h"],
-                datasets: [{
-                        label: 'Rate of customer in hours',
-                        data: [65, 59, 80, 81, 56, 55, 40, 2],
-                        fill: false,
-                        borderColor: 'rgb(75, 192, 192)',
-                        tension: 0.1
-                    }]
-            }
-        });
-
-
-        const monthRevenue = document.getElementById("month-revenue");
-        var allDays = document.getElementById('get-all-days').value;
-        console.log('Total days of month: ' + allDays);
-
-        var labels = [];
-
-        for (var i = 1; i <= allDays; i++) {
-            labels.push(i + "");
-        }
-
-        console.log(labels);
-
-
-        new Chart(monthRevenue, {
-            type: 'bar',
-            data: {
-                labels: labels,
-                datasets: [{
-                        label: 'Revenue of day',
-                        data: [12, 19, 3, 5, 2, 3],
-                        borderWidth: 1
-                    }]
-            },
-            options: {
-                scales: {
-                    y: {
-                        beginAtZero: true
-                    }
                 }
-            }
-        });
+                if (clicks == 6) {
 
-        const revenueRate = document.getElementById('rate-of-revenue');
-
-        new Chart(revenueRate, {
-            type: 'doughnut',
-            data: {
-                labels: [
-                    'Treatment',
-                    'Glasses Sale',
-                    'Other'
-                ],
-                datasets: [{
-                        label: 'My First Dataset',
-                        data: [300, 50, 100],
-                        backgroundColor: [
-                            'rgb(255, 99, 132)',
-                            'rgb(54, 162, 235)',
-                            'rgb(255, 205, 86)'
-                        ],
-                        hoverOffset: 4
-                    }]
+                    document.getElementById("clicks").submit();
+                }
+                // document.getElementById("clicks").innerHTML = clicks;
             }
-        });
+            ;
         </script>
+        <jsp:include page="layout/chatbot.jsp"/>
+        <jsp:include page="layout/footer.jsp"/>
     </body>
 </html>

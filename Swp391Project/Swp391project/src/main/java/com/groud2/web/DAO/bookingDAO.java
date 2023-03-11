@@ -298,20 +298,13 @@ public class bookingDAO {
     }
 
     public void cancelBooking(String id) throws SQLException {
-<<<<<<< Updated upstream
-        String sql = "DELETE FROM `swp`.`booking`\n"
-=======
         String sql = "DELETE FROM swp.`booking`\n"
->>>>>>> Stashed changes
                 + "WHERE bookId = \"" + id + "\";";
         connection = dbc.getConnection();
         ps = connection.prepareStatement(sql);
 
         ps.executeUpdate();
     }
-<<<<<<< Updated upstream
-}
-=======
     
     public ArrayList<booking> getAllById(String bookId) throws SQLException, IOException {
         ArrayList<booking> listId = new ArrayList<>();
@@ -347,4 +340,3 @@ public class bookingDAO {
         return listId;
     }
 }
->>>>>>> Stashed changes

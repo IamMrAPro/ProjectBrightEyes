@@ -9,10 +9,10 @@ package com.groud2.web.model;
  * @author asus
  */
 public class service {
-    String id, service, description, price;
+    private String serviceID, service, description, price;
 
-    public service(String id, String service, String description, String price) {
-        this.id = id;
+    public service(String serviceID, String service, String description, String price) {
+        this.serviceID = serviceID;
         this.service = service;
         this.description = description;
         this.price = price;
@@ -21,12 +21,12 @@ public class service {
     public service() {
     }
 
-    public String getId() {
-        return id;
+    public String getServiceID() {
+        return serviceID;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setServiceID(String serviceID) {
+        this.serviceID = serviceID;
     }
 
     public String getService() {

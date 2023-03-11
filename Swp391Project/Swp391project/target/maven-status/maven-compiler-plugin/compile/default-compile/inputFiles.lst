@@ -1,114 +1,18 @@
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-D:\SP2023\SWP_in\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\controller\profileController.java
-D:\SP2023\SWP_in\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\model\profile.java
-D:\SP2023\SWP_in\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\controller\homeController.java
-D:\SP2023\SWP_in\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\DAO\profileDAO.java
-D:\SP2023\SWP_in\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\DAO\glassesDAO.java
-D:\SP2023\SWP_in\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\server\ChatRoomServerEndpoint.java
-D:\SP2023\SWP_in\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\model\report.java
-D:\SP2023\SWP_in\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\controller\glassesController.java
-D:\SP2023\SWP_in\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\model\glasses.java
-D:\SP2023\SWP_in\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\DAO\context\DBContext.java
-=======
-D:\Project\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\controller\profileController.java
-D:\Project\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\DAO\userDAO.java
-D:\Project\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\DAO\context\DBContext.java
-D:\Project\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\model\glasses.java
-D:\Project\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\server\ChatRoomServerEndpoint.java
-D:\Project\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\controller\homeController.java
-D:\Project\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\access\common\Constants.java
-D:\Project\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\access\google\GooglePojo.java
-D:\Project\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\DAO\glassesDAO.java
-D:\Project\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\controller\loginController.java
-D:\Project\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\controller\glassesController.java
-D:\Project\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\access\google\LoginGoogleServlet.java
-D:\Project\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\access\facebook\RestFB.java
-D:\Project\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\access\facebook\LoginFacebookServlet.java
-D:\Project\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\access\google\GoogleUtils.java
-D:\Project\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\controller\bookingController.java
-D:\Project\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\model\user.java
->>>>>>> Stashed changes
-=======
-D:\SWPproject\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\DAO\glassesDAO.java
-D:\SWPproject\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\access\facebook\RestFB.java
-D:\SWPproject\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\DAO\userDAO.java
-D:\SWPproject\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\access\common\Constants.java
-D:\SWPproject\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\controller\bookingController.java
-D:\SWPproject\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\controller\profileController.java
-D:\SWPproject\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\model\glasses.java
-D:\SWPproject\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\model\profile.java
-D:\SWPproject\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\controller\homeController.java
-D:\SWPproject\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\model\booking.java
-D:\SWPproject\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\model\user.java
-D:\SWPproject\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\access\google\GooglePojo.java
-D:\SWPproject\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\access\facebook\LoginFacebookServlet.java
-D:\SWPproject\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\access\google\GoogleUtils.java
-D:\SWPproject\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\DAO\bookingDAO.java
-D:\SWPproject\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\access\google\LoginGoogleServlet.java
-D:\SWPproject\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\controller\glassesController.java
-D:\SWPproject\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\controller\changeProfile.java
-D:\SWPproject\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\DAO\profileDAO.java
-D:\SWPproject\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\controller\loginController.java
-D:\SWPproject\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\DAO\context\DBContext.java
-D:\SWPproject\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\server\ChatRoomServerEndpoint.java
->>>>>>> Stashed changes
-=======
-D:\University\BrightEyes\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\controller\bookingController.java
-D:\University\BrightEyes\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\model\room.java
-D:\University\BrightEyes\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\access\google\LoginGoogleServlet.java
-D:\University\BrightEyes\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\controller\newsController.java
-D:\University\BrightEyes\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\model\booking.java
-D:\University\BrightEyes\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\DAO\glassesDAO.java
-D:\University\BrightEyes\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\controller\AddtoCartController.java
-D:\University\BrightEyes\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\controller\AdminController\AdminManagerStaffController.java
-D:\University\BrightEyes\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\DAO\userDAO.java
-D:\University\BrightEyes\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\model\cart.java
-D:\University\BrightEyes\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\model\Order.java
-D:\University\BrightEyes\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\access\google\GoogleUtils.java
-D:\University\BrightEyes\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\controller\bookListController.java
-D:\University\BrightEyes\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\model\Item.java
-D:\University\BrightEyes\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\DAO\bookingDAO.java
-D:\University\BrightEyes\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\controller\searchBookingController.java
-D:\University\BrightEyes\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\access\facebook\LoginFacebookServlet.java
-D:\University\BrightEyes\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\model\glasses.java
-D:\University\BrightEyes\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\controller\loginController.java
-D:\University\BrightEyes\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\access\google\GooglePojo.java
-D:\University\BrightEyes\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\DAO\roomDAO.java
-D:\University\BrightEyes\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\controller\glassesController.java
-D:\University\BrightEyes\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\model\news.java
-D:\University\BrightEyes\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\service\sendMail.java
-D:\University\BrightEyes\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\controller\AdminController\AdminDasboardController.java
-D:\University\BrightEyes\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\model\profile.java
-D:\University\BrightEyes\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\server\ChatRoomServerEndpoint.java
-D:\University\BrightEyes\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\controller\changePass.java
-D:\University\BrightEyes\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\controller\profileController.java
-D:\University\BrightEyes\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\DAO\context\DBContext.java
-D:\University\BrightEyes\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\controller\singleNewsController.java
-D:\University\BrightEyes\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\access\facebook\RestFB.java
-D:\University\BrightEyes\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\controller\updateController.java
-D:\University\BrightEyes\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\controller\homeController.java
-D:\University\BrightEyes\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\DAO\newsDAO.java
-D:\University\BrightEyes\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\model\user.java
-D:\University\BrightEyes\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\controller\cartController.java
-D:\University\BrightEyes\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\controller\registerController.java
-D:\University\BrightEyes\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\access\common\Constants.java
->>>>>>> Stashed changes
-=======
 D:\project_SWP\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\controller\showCartController.java
+D:\project_SWP\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\DAO\patientDAO.java
 D:\project_SWP\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\model\news.java
 D:\project_SWP\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\server\ChatRoomServerEndpoint.java
 D:\project_SWP\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\access\common\Constants.java
 D:\project_SWP\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\model\OrderGlasses\Cart.java
 D:\project_SWP\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\access\google\LoginGoogleServlet.java
 D:\project_SWP\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\controller\updateController.java
+D:\project_SWP\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\DAO\overviewDAO.java
+D:\project_SWP\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\model\overview.java
 D:\project_SWP\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\controller\singleNewsController.java
 D:\project_SWP\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\controller\getServiceController.java
 D:\project_SWP\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\controller\AdminController\AdminDasboardController.java
 D:\project_SWP\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\model\OrderGlasses\Order.java
+D:\project_SWP\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\controller\DoctorController\ReportError.java
 D:\project_SWP\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\controller\logoutController.java
 D:\project_SWP\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\DAO\context\DBContext.java
 D:\project_SWP\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\controller\homeController.java
@@ -118,11 +22,16 @@ D:\project_SWP\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\Payme
 D:\project_SWP\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\model\staff.java
 D:\project_SWP\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\controller\glassesController.java
 D:\project_SWP\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\controller\AdminController\TakeStaffAttendanceController.java
+D:\project_SWP\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\controller\GetPatientOnline.java
 D:\project_SWP\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\controller\bookingController.java
 D:\project_SWP\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\controller\profileController.java
+D:\project_SWP\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\controller\DoctorController\medicalRecord.java
 D:\project_SWP\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\access\google\GoogleUser.java
+D:\project_SWP\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\controller\currentBooking.java
 D:\project_SWP\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\controller\loginController.java
 D:\project_SWP\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\service\sendMail.java
+D:\project_SWP\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\controller\DoctorController\listCompletePatient.java
+D:\project_SWP\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\controller\DoctorController\listWattingPatient.java
 D:\project_SWP\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\access\facebook\RestFB.java
 D:\project_SWP\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\controller\registerController.java
 D:\project_SWP\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\controller\PasswordController.java
@@ -148,17 +57,20 @@ D:\project_SWP\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\model
 D:\project_SWP\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\Payment\CheckoutController.java
 D:\project_SWP\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\controller\userBookingController.java
 D:\project_SWP\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\access\google\GoogleUtils.java
+D:\project_SWP\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\model\patient.java
 D:\project_SWP\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\model\service.java
 D:\project_SWP\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\controller\AdminController\DeleteGlasses.java
 D:\project_SWP\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\controller\changeProfile.java
-D:\project_SWP\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\controller\currentBookingController.java
 D:\project_SWP\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\model\Attendance.java
+D:\project_SWP\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\controller\DoctorController\ChooseOn_Of.java
 D:\project_SWP\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\DAO\newsDAO.java
 D:\project_SWP\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\controller\changePass.java
 D:\project_SWP\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\DAO\roomDAO.java
 D:\project_SWP\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\model\profile.java
 D:\project_SWP\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\controller\AdminController\AdminAddNewGlassController.java
+D:\project_SWP\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\controller\recordController.java
 D:\project_SWP\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\controller\cancelBookingController.java
+D:\project_SWP\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\controller\overviewController.java
 D:\project_SWP\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\DAO\EmailDAO.java
 D:\project_SWP\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\DAO\OrderDAO.java
 D:\project_SWP\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\controller\searchBookingController.java
@@ -168,86 +80,4 @@ D:\project_SWP\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\model
 D:\project_SWP\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\controller\bookListController.java
 D:\project_SWP\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\DAO\userDAO.java
 D:\project_SWP\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\Payment\PaymentServices.java
->>>>>>> Stashed changes
-=======
-C:\Users\nguye\OneDrive\Máy tính\alo\Swp391project\src\main\java\com\groud2\web\access\google\GoogleUtils.java
-C:\Users\nguye\OneDrive\Máy tính\alo\Swp391project\src\main\java\com\groud2\web\controller\newsController.java
-C:\Users\nguye\OneDrive\Máy tính\alo\Swp391project\src\main\java\com\groud2\web\controller\AdminController\DeleteGlasses.java
-C:\Users\nguye\OneDrive\Máy tính\alo\Swp391project\src\main\java\com\groud2\web\controller\currentBooking.java
-C:\Users\nguye\OneDrive\Máy tính\alo\Swp391project\src\main\java\com\groud2\web\controller\registerController.java
-C:\Users\nguye\OneDrive\Máy tính\alo\Swp391project\src\main\java\com\groud2\web\controller\bookingController.java
-C:\Users\nguye\OneDrive\Máy tính\alo\Swp391project\src\main\java\com\groud2\web\controller\AdminController\AdminManagerStaffController.java
-C:\Users\nguye\OneDrive\Máy tính\alo\Swp391project\src\main\java\com\groud2\web\access\google\GoogleUser.java
-C:\Users\nguye\OneDrive\Máy tính\alo\Swp391project\src\main\java\com\groud2\web\controller\AdminController\AdminManageRoomController.java
-C:\Users\nguye\OneDrive\Máy tính\alo\Swp391project\src\main\java\com\groud2\web\DAO\newsDAO.java
-C:\Users\nguye\OneDrive\Máy tính\alo\Swp391project\src\main\java\com\groud2\web\controller\bookListController.java
-C:\Users\nguye\OneDrive\Máy tính\alo\Swp391project\src\main\java\com\groud2\web\controller\overviewController.java
-C:\Users\nguye\OneDrive\Máy tính\alo\Swp391project\src\main\java\com\groud2\web\controller\AdminController\AdminViewFeedback.java
-C:\Users\nguye\OneDrive\Máy tính\alo\Swp391project\src\main\java\com\groud2\web\controller\userBookingController.java
-C:\Users\nguye\OneDrive\Máy tính\alo\Swp391project\src\main\java\com\groud2\web\model\booking.java
-C:\Users\nguye\OneDrive\Máy tính\alo\Swp391project\src\main\java\com\groud2\web\service\sendMail.java
-C:\Users\nguye\OneDrive\Máy tính\alo\Swp391project\src\main\java\com\groud2\web\model\user.java
-C:\Users\nguye\OneDrive\Máy tính\alo\Swp391project\src\main\java\com\groud2\web\controller\DoctorController\ChooseOn_Of.java
-C:\Users\nguye\OneDrive\Máy tính\alo\Swp391project\src\main\java\com\groud2\web\controller\PasswordController.java
-C:\Users\nguye\OneDrive\Máy tính\alo\Swp391project\src\main\java\com\groud2\web\model\OrderGlasses\Cart.java
-C:\Users\nguye\OneDrive\Máy tính\alo\Swp391project\src\main\java\com\groud2\web\DAO\patientDAO.java
-C:\Users\nguye\OneDrive\Máy tính\alo\Swp391project\src\main\java\com\groud2\web\controller\AdminController\AdminDasboardController.java
-C:\Users\nguye\OneDrive\Máy tính\alo\Swp391project\src\main\java\com\groud2\web\model\glasses.java
-C:\Users\nguye\OneDrive\Máy tính\alo\Swp391project\src\main\java\com\groud2\web\model\OrderGlasses\Item.java
-C:\Users\nguye\OneDrive\Máy tính\alo\Swp391project\src\main\java\com\groud2\web\access\facebook\LoginFacebookServlet.java
-C:\Users\nguye\OneDrive\Máy tính\alo\Swp391project\src\main\java\com\groud2\web\controller\AdminController\AdminEditUser.java
-C:\Users\nguye\OneDrive\Máy tính\alo\Swp391project\src\main\java\com\groud2\web\controller\DoctorController\listCompletePatient.java
-C:\Users\nguye\OneDrive\Máy tính\alo\Swp391project\src\main\java\com\groud2\web\DAO\glassesDAO.java
-C:\Users\nguye\OneDrive\Máy tính\alo\Swp391project\src\main\java\com\groud2\web\controller\showCartController.java
-C:\Users\nguye\OneDrive\Máy tính\alo\Swp391project\src\main\java\com\groud2\web\DAO\bookingDAO.java
-C:\Users\nguye\OneDrive\Máy tính\alo\Swp391project\src\main\java\com\groud2\web\controller\AdminController\AdminViewUserProfileController.java
-C:\Users\nguye\OneDrive\Máy tính\alo\Swp391project\src\main\java\com\groud2\web\controller\DoctorController\medicalRecord.java
-C:\Users\nguye\OneDrive\Máy tính\alo\Swp391project\src\main\java\com\groud2\web\controller\GetPatientOnline.java
-C:\Users\nguye\OneDrive\Máy tính\alo\Swp391project\src\main\java\com\groud2\web\model\staff.java
-C:\Users\nguye\OneDrive\Máy tính\alo\Swp391project\src\main\java\com\groud2\web\controller\searchBookingController.java
-C:\Users\nguye\OneDrive\Máy tính\alo\Swp391project\src\main\java\com\groud2\web\controller\AdminController\AdminAddNewUserController.java
-C:\Users\nguye\OneDrive\Máy tính\alo\Swp391project\src\main\java\com\groud2\web\controller\AdminController\AdminUpdateRoomController.java
-C:\Users\nguye\OneDrive\Máy tính\alo\Swp391project\src\main\java\com\groud2\web\access\facebook\RestFB.java
-C:\Users\nguye\OneDrive\Máy tính\alo\Swp391project\src\main\java\com\groud2\web\controller\DoctorController\ReportError.java
-C:\Users\nguye\OneDrive\Máy tính\alo\Swp391project\src\main\java\com\groud2\web\controller\DoctorController\listWattingPatient.java
-C:\Users\nguye\OneDrive\Máy tính\alo\Swp391project\src\main\java\com\groud2\web\controller\changePass.java
-C:\Users\nguye\OneDrive\Máy tính\alo\Swp391project\src\main\java\com\groud2\web\model\Attendance.java
-C:\Users\nguye\OneDrive\Máy tính\alo\Swp391project\src\main\java\com\groud2\web\access\google\LoginGoogleServlet.java
-C:\Users\nguye\OneDrive\Máy tính\alo\Swp391project\src\main\java\com\groud2\web\controller\AdminController\TakeStaffAttendanceController.java
-C:\Users\nguye\OneDrive\Máy tính\alo\Swp391project\src\main\java\com\groud2\web\controller\AdminController\AdminManageCustomerController.java
-C:\Users\nguye\OneDrive\Máy tính\alo\Swp391project\src\main\java\com\groud2\web\controller\AddtocartController.java
-C:\Users\nguye\OneDrive\Máy tính\alo\Swp391project\src\main\java\com\groud2\web\model\OrderGlasses\Order.java
-C:\Users\nguye\OneDrive\Máy tính\alo\Swp391project\src\main\java\com\groud2\web\controller\updateController.java
-C:\Users\nguye\OneDrive\Máy tính\alo\Swp391project\src\main\java\com\groud2\web\model\news.java
-C:\Users\nguye\OneDrive\Máy tính\alo\Swp391project\src\main\java\com\groud2\web\controller\cancelBookingController.java
-C:\Users\nguye\OneDrive\Máy tính\alo\Swp391project\src\main\java\com\groud2\web\model\profile.java
-C:\Users\nguye\OneDrive\Máy tính\alo\Swp391project\src\main\java\com\groud2\web\Payment\PaymentServices.java
-C:\Users\nguye\OneDrive\Máy tính\alo\Swp391project\src\main\java\com\groud2\web\Payment\ExecutePaymentServlet.java
-C:\Users\nguye\OneDrive\Máy tính\alo\Swp391project\src\main\java\com\groud2\web\controller\AdminController\AdminManageGlassesController.java
-C:\Users\nguye\OneDrive\Máy tính\alo\Swp391project\src\main\java\com\groud2\web\controller\logoutController.java
-C:\Users\nguye\OneDrive\Máy tính\alo\Swp391project\src\main\java\com\groud2\web\controller\glassesController.java
-C:\Users\nguye\OneDrive\Máy tính\alo\Swp391project\src\main\java\com\groud2\web\Payment\CheckoutController.java
-C:\Users\nguye\OneDrive\Máy tính\alo\Swp391project\src\main\java\com\groud2\web\DAO\overviewDAO.java
-C:\Users\nguye\OneDrive\Máy tính\alo\Swp391project\src\main\java\com\groud2\web\controller\recordOnlineController.java
-C:\Users\nguye\OneDrive\Máy tính\alo\Swp391project\src\main\java\com\groud2\web\Payment\ReviewPaymentServlet.java
-C:\Users\nguye\OneDrive\Máy tính\alo\Swp391project\src\main\java\com\groud2\web\controller\homeController.java
-C:\Users\nguye\OneDrive\Máy tính\alo\Swp391project\src\main\java\com\groud2\web\controller\profileController.java
-C:\Users\nguye\OneDrive\Máy tính\alo\Swp391project\src\main\java\com\groud2\web\DAO\userDAO.java
-C:\Users\nguye\OneDrive\Máy tính\alo\Swp391project\src\main\java\com\groud2\web\DAO\EmailDAO.java
-C:\Users\nguye\OneDrive\Máy tính\alo\Swp391project\src\main\java\com\groud2\web\controller\AdminController\AdminAddNewGlassController.java
-C:\Users\nguye\OneDrive\Máy tính\alo\Swp391project\src\main\java\com\groud2\web\DAO\OrderDAO.java
-C:\Users\nguye\OneDrive\Máy tính\alo\Swp391project\src\main\java\com\groud2\web\model\overview.java
-C:\Users\nguye\OneDrive\Máy tính\alo\Swp391project\src\main\java\com\groud2\web\controller\singleNewsController.java
-C:\Users\nguye\OneDrive\Máy tính\alo\Swp391project\src\main\java\com\groud2\web\DAO\context\DBContext.java
-C:\Users\nguye\OneDrive\Máy tính\alo\Swp391project\src\main\java\com\groud2\web\controller\changeProfile.java
-C:\Users\nguye\OneDrive\Máy tính\alo\Swp391project\src\main\java\com\groud2\web\access\common\Constants.java
-C:\Users\nguye\OneDrive\Máy tính\alo\Swp391project\src\main\java\com\groud2\web\controller\recordController.java
-C:\Users\nguye\OneDrive\Máy tính\alo\Swp391project\src\main\java\com\groud2\web\controller\loginController.java
-C:\Users\nguye\OneDrive\Máy tính\alo\Swp391project\src\main\java\com\groud2\web\DAO\roomDAO.java
-C:\Users\nguye\OneDrive\Máy tính\alo\Swp391project\src\main\java\com\groud2\web\model\room.java
-C:\Users\nguye\OneDrive\Máy tính\alo\Swp391project\src\main\java\com\groud2\web\controller\SearchController.java
-C:\Users\nguye\OneDrive\Máy tính\alo\Swp391project\src\main\java\com\groud2\web\server\ChatRoomServerEndpoint.java
-C:\Users\nguye\OneDrive\Máy tính\alo\Swp391project\src\main\java\com\groud2\web\controller\ProcessCartController.java
-C:\Users\nguye\OneDrive\Máy tính\alo\Swp391project\src\main\java\com\groud2\web\controller\CaptchaController\CreateCaptchaServlet.java
-C:\Users\nguye\OneDrive\Máy tính\alo\Swp391project\src\main\java\com\groud2\web\model\patient.java
->>>>>>> Stashed changes
+D:\project_SWP\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\controller\recordOnlineController.java

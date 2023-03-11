@@ -155,10 +155,6 @@
         <servlet-class>com.groud2.web.controller.AdminController.AdminViewUserProfileController</servlet-class>
     </servlet>
     <servlet>
-<<<<<<< Updated upstream
-        <servlet-name>currentBookingController</servlet-name>
-        <servlet-class>com.groud2.web.controller.currentBookingController</servlet-class>
-=======
         <servlet-name>overviewController</servlet-name>
         <servlet-class>com.groud2.web.controller.overviewController</servlet-class>
     </servlet>
@@ -197,7 +193,10 @@
     <servlet>
         <servlet-name>listWattingPatient</servlet-name>
         <servlet-class>com.groud2.web.controller.DoctorController.listWattingPatient</servlet-class>
->>>>>>> Stashed changes
+    </servlet>
+    <servlet>
+        <servlet-name>getServiceController</servlet-name>
+        <servlet-class>com.groud2.web.controller.getServiceController</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>homeController</servlet-name>
@@ -344,11 +343,6 @@
         <url-pattern>/adminViewUserProfile</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-<<<<<<< Updated upstream
-        <servlet-name>currentBookingController</servlet-name>
-        <url-pattern>/currentBooking</url-pattern>
-    </servlet-mapping>
-=======
         <servlet-name>overviewController</servlet-name>
         <url-pattern>/overview</url-pattern>
     </servlet-mapping>
@@ -392,7 +386,10 @@
         <servlet-name>listWattingPatient</servlet-name>
         <url-pattern>/listWattingPatient</url-pattern>
     </servlet-mapping>
->>>>>>> Stashed changes
+    <servlet-mapping>
+        <servlet-name>getServiceController</servlet-name>
+        <url-pattern>/getService</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>
             30
