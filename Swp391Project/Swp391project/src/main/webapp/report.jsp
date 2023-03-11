@@ -1,40 +1,27 @@
-<%-- 
-<<<<<<< Updated upstream
-    Document   : detail
-    Created on : Jan 29, 2023, 9:40:02 PM
-    Author     : asus
---%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-=======
-    Document   : report
-    Created on : Feb 4, 2023, 4:25:23 PM
-    Author     : asus
---%>
 
->>>>>>> Stashed changes
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<<<<<<< Updated upstream
+
         <title>JSP Page</title>
-<<<<<<< Updated upstream
-=======
         <title>report</title>
->>>>>>> Stashed changes
 
         <style>
         </style>
-<<<<<<< Updated upstream
-=======
->>>>>>> Stashed changes
+
+
+
     </head>
     <jsp:include page="layout/head.jsp"/>
     <body>
         <jsp:include page="layout/header.jsp"/>
         <jsp:include page="layout/menu.jsp"/>
-<<<<<<< Updated upstream
+
           <div class="container rounded bg-white mt-5 mb-5">
             <div class="row">
                 <div class="col-md-3 border-right">
@@ -93,19 +80,6 @@
         <jsp:include page="layout/chatbot.jsp"/>
         <jsp:include page="layout/footer.jsp"/>
     </body>
-=======
 
 
-        
-<jsp:include page="layout/chatbot.jsp"/>
-<jsp:include page="layout/footer.jsp"/>
->>>>>>> Stashed changes
-=======
-         
-    </head>
-    
-<jsp:include page="layout/chatbot.jsp"/>
-<jsp:include page="layout/footer.jsp"/>
-</body>
->>>>>>> Stashed changes
 </html>

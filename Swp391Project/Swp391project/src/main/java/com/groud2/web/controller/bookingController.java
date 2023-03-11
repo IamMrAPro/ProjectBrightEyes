@@ -72,7 +72,7 @@ public class bookingController extends HttpServlet {
         String name = request.getParameter("name");
         String phone = request.getParameter("phone");
         String email = request.getParameter("email");
-        String date = request.getParameter("date");
+        String date = request.getParameter("dateInput");
         String time = request.getParameter("time");
         String medical = request.getParameter("description");
         String payment = request.getParameter("payment");
@@ -100,8 +100,7 @@ public class bookingController extends HttpServlet {
       
         request.getRequestDispatcher("booking.jsp").forward(request, response);
    
-        b.insert(name, phone, email, date, time, medical, payment, sbtime);
-        request.getRequestDispatcher("booking.jsp").forward(request, response);
+       
    
 
     }
