@@ -131,8 +131,68 @@
         <servlet-class>com.groud2.web.controller.AdminController.AdminAddNewUserController</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>AdminTakeAttendance</servlet-name>
+        <servlet-name>userBookingController</servlet-name>
+        <servlet-class>com.groud2.web.controller.userBookingController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>cancelBookingController</servlet-name>
+        <servlet-class>com.groud2.web.controller.cancelBookingController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AdminUpdateRoom</servlet-name>
+        <servlet-class>com.groud2.web.controller.AdminController.AdminUpdateRoomController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AddNewGlass</servlet-name>
+        <servlet-class>com.groud2.web.controller.AdminController.AdminAddNewGlassController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AdminTakeStaffAttendance</servlet-name>
         <servlet-class>com.groud2.web.controller.AdminController.TakeStaffAttendanceController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AdminViewUserProfile</servlet-name>
+        <servlet-class>com.groud2.web.controller.AdminController.AdminViewUserProfileController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>overviewController</servlet-name>
+        <servlet-class>com.groud2.web.controller.overviewController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>recordController</servlet-name>
+        <servlet-class>com.groud2.web.controller.recordController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>GetPatientOnline</servlet-name>
+        <servlet-class>com.groud2.web.controller.GetPatientOnline</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>recordOnlineController</servlet-name>
+        <servlet-class>com.groud2.web.controller.recordOnlineController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>currentBooking</servlet-name>
+        <servlet-class>com.groud2.web.controller.currentBooking</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>listCompletePatient</servlet-name>
+        <servlet-class>com.groud2.web.controller.DoctorController.listCompletePatient</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>medicalRecord</servlet-name>
+        <servlet-class>com.groud2.web.controller.DoctorController.medicalRecord</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ChooseOn_Of</servlet-name>
+        <servlet-class>com.groud2.web.controller.DoctorController.ChooseOn_Of</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ReportError</servlet-name>
+        <servlet-class>com.groud2.web.controller.DoctorController.ReportError</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>listWattingPatient</servlet-name>
+        <servlet-class>com.groud2.web.controller.DoctorController.listWattingPatient</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>homeController</servlet-name>
@@ -239,10 +299,6 @@
         <url-pattern>/DeleteGlasses</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>glassesController</servlet-name>
-        <url-pattern>/glasses</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
         <servlet-name>searchBookingController</servlet-name>
         <url-pattern>/searchBooking</url-pattern>
     </servlet-mapping>
@@ -259,8 +315,72 @@
         <url-pattern>/addUser</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>AdminTakeAttendance</servlet-name>
+        <servlet-name>userBookingController</servlet-name>
+        <url-pattern>/userBooking</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>cancelBookingController</servlet-name>
+        <url-pattern>/cancelBooking</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AdminUpdateRoom</servlet-name>
+        <url-pattern>/updateRoom</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AddNewGlass</servlet-name>
+        <url-pattern>/addGlass</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AdminTakeStaffAttendance</servlet-name>
         <url-pattern>/takeAttendance</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AdminViewUserProfile</servlet-name>
+        <url-pattern>/adminViewUserProfile</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>overviewController</servlet-name>
+        <url-pattern>/overview</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>recordController</servlet-name>
+        <url-pattern>/record</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>GetPatientOnline</servlet-name>
+        <url-pattern>/GetPatientOnline</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>recordOnlineController</servlet-name>
+        <url-pattern>/recordOnline</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>glassesController</servlet-name>
+        <url-pattern>/glasses</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>currentBooking</servlet-name>
+        <url-pattern>/currentBooking</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>listCompletePatient</servlet-name>
+        <url-pattern>/listCompletePatient</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>medicalRecord</servlet-name>
+        <url-pattern>/medicalRecord</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ChooseOn_Of</servlet-name>
+        <url-pattern>/ChooseOn_Of</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ReportError</servlet-name>
+        <url-pattern>/ReportError</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>listWattingPatient</servlet-name>
+        <url-pattern>/listWattingPatient</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

@@ -2,6 +2,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
+
+/* Ao master file */
+
 package com.groud2.web.controller.AdminController;
 
 import com.groud2.web.DAO.userDAO;
@@ -53,6 +56,10 @@ public class AdminAddNewUserController extends HttpServlet{
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String id = String.valueOf(GetLastUserID());
+        String backPage = req.getParameter("backPage");
+        String userRole = req.getParameter("userRole");
+        System.out.println("back page = " + backPage);
+        req.setAttribute("userRole", userRole);
         req.setAttribute("id", id);
         req.getRequestDispatcher("AdminView/admin-screen/AdminAddNewUser.jsp").forward(req, resp);
     }

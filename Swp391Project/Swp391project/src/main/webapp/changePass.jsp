@@ -48,20 +48,18 @@
 
                         <div class="wrap-input100 validate-input m-b-23">
                             <span class="label-input100">Enter your old password </span>
-                            <input class="input100" type="text" name="oldPass" placeholder="Enter old password">
+                            <input class="input100" type="password" name="oldPass" placeholder="Enter old password">
                             <span class="focus-input100" data-symbol="&#xf206;"></span>
+                              
                         </div>
+                        <c:if test="${ms2 ne null}" >
+                            <p  style="color: red;font-size: 20px">${ms2}</p>
+                        </c:if>
                         <div class="wrap-input100 validate-input m-b-23">
                             <span class="label-input100">Enter new password </span>
-                            <input class="input100" type="text" minlength="8"  name="newPass" placeholder="Enter new password">
+                            <input class="input100" type="password" minlength="8"  name="newPass" placeholder="Enter new password">
                             <span class="focus-input100" data-symbol="&#xf206;"></span>
                         </div>
-<!--                        <div class="wrap-input100 validate-input m-b-23">
-                            <span class="label-input100"> </span>
-                            <input class="input100" type="text" name="checkNewPass" placeholder="Enter new password again">
-                            <span class="focus-input100" data-symbol="&#xf206;"></span>
-                            
-                        </div>-->
 
 
 

@@ -1,4 +1,3 @@
-
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <nav class="navbar navbar-expand-lg bg-light shadow-lg">
@@ -18,6 +17,7 @@
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item" href="Overview.jsp">Overview</a>
                             <a class="dropdown-item" href="#">Staffs</a>
+                            <a class="dropdown-item" href="getService">Service</a>
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="#">Machine System</a>
                         </div>
@@ -34,6 +34,9 @@
                         <a class="nav-link click-scroll" href="#">Contact</a>
                     </li>
 
+                    <li class="nav-item">
+                        <a class="nav-link click-scroll" href="FAQ.jsp">FAQ</a>
+                    </li>
                 </ul>
 
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -85,7 +88,3 @@
 
         </div>
     </nav>
-
-
-
-

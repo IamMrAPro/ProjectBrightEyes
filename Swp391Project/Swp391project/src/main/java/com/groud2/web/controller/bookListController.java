@@ -45,15 +45,15 @@ public class bookListController extends HttpServlet {
             throws ServletException, IOException {
         bookingDAO b = new bookingDAO();
         booking p = new booking();
-        System.out.print("Lay du lieu booking: ");
+       
         try {
             ArrayList<booking> list = b.getAllBooking();
-            System.out.println("Thanh cong");
+          
             request.setAttribute("list", list);
            for(booking item : list){
                  System.out.println("day"+item.getBookingId());
              }
-            System.out.println("Check naem: "+p.getName());
+          
             request.getRequestDispatcher("bookList.jsp").forward(request, response);
             
         } catch (SQLException ex) {

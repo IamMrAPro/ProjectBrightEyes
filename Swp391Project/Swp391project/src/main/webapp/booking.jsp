@@ -59,6 +59,9 @@
                             <div class="tab-content p-4" id="pills-tabContent">
                                 <form action="booking" method="get">
                                     <div class="row">
+                        <c:if test="${success ne null}" >
+                            <p style="color: red;font-size: 20px">${success}</p>
+                        </c:if>
                                         <div class="p-6">
                                             <h6 class="mb-0">Patient information</h6>
                                         </div>
@@ -66,7 +69,7 @@
                                         <div class="col-lg-6">
                                             <div class="mb-3">
                                                 <label class="form-label" name="">Name</label>
-                                                <input name="name" class="form-control" >
+                                                <input name="name" id="name" class="form-control" >
                                             </div>
                                         </div>
                                         <div class="col-lg-6">
@@ -120,21 +123,14 @@
                                             </div>
                                         </div><!--end col-->
 
-                                        <div class="col-md-12">
-                                            <div class="mb-3">
-                                                <label class="form-label">Payment methods</label>
-                                                <select name="payment" oninvalid="Select(this);" oninput="Select(this);" id="mySelect" class="form-control department-name select2input">
-                                                    <option selected="">Chọn phương thức thanh toán</option>
-                                                    <option value="default">Select a payment method</option>
-                                                   
-                                                </select>
-                                            </div>
-                                        </div><!--end col-->
+
 
                                         <div class="col-lg-12">
-                                            <div class="d-grid">
-                                                <button type="submit" style="display: none" name="submit_time" id="booking" class="default btn btn-primary">Đặt lịch</button>
-                                               </div>
+
+                                            <div class="d-grid gap-2 col-6 mx-auto">
+                                                <button type="submit" class="btn btn-primary" type="button">Đặt lịch</button>
+
+                                            </div>
                                         </div>
                                     </div>
                                 </form>
@@ -192,16 +188,12 @@
                                                             $(".vnpay").hide();
                                                         }
                                                     }
-                                                    function checkDateInput() {
-                                                        var dateInput = document.getElementById("dateInput").value;
-                                                        var currentDate = new Date();
-                                                        var inputDate = new Date(dateInput);
-                                                        if (inputDate < currentDate) {
-                                                            alert("Please select a future date!");
-                                                            document.getElementById("dateInput").value = "";
-                                                        }
-                                                    }
+                                                    const nameInput = document.getElementById("name");
+                                                    const regex = /^[a-zA-Z\s-]+$/;
 
+                                                    if (!regex.test(nameInput.value)) {
+                                                        console.log("Tên không hợp lệ. Vui lòng nhập lại.");
+                                                    }
         </script>
 
     </body>
