@@ -6,6 +6,12 @@ com\groud2\web\server\ChatRoomServerEndpoint.class
 =======
 com\groud2\web\controller\bookListController.class
 com\groud2\web\controller\changePass.class
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
+com\groud2\web\controller\showCartController.class
+com\groud2\web\controller\AdminController\AdminAddNewUserController.class
+com\groud2\web\controller\cancelBookingController.class
 >>>>>>> Stashed changes
 com\groud2\web\controller\profileController.class
 <<<<<<< Updated upstream
@@ -14,7 +20,10 @@ com\groud2\web\access\facebook\RestFB.class
 com\groud2\web\DAO\newsDAO.class
 com\groud2\web\Payment\ReviewPaymentServlet.class
 com\groud2\web\controller\AdminController\AdminViewUserProfileController.class
+<<<<<<< Updated upstream
 com\groud2\web\DAO\serviceDAO.class
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 com\groud2\web\controller\homeController.class
 com\groud2\web\access\common\Constants.class
@@ -28,6 +37,7 @@ com\groud2\web\controller\updateController.class
 com\groud2\web\service\sendMail.class
 >>>>>>> Stashed changes
 com\groud2\web\controller\glassesController.class
+<<<<<<< Updated upstream
 com\groud2\web\DAO\context\DBContext.class
 com\groud2\web\controller\homeController.class
 com\groud2\web\model\glasses.class
@@ -44,21 +54,37 @@ com\groud2\web\controller\loginController.class
 com\groud2\web\DAO\glassesDAO.class
 com\groud2\web\controller\glassesController.class
 com\groud2\web\DAO\context\DBContext.class
+=======
+com\groud2\web\model\patient.class
+com\groud2\web\DAO\patientDAO.class
+>>>>>>> Stashed changes
 com\groud2\web\model\user.class
 com\groud2\web\access\facebook\LoginFacebookServlet.class
 com\groud2\web\DAO\bookingDAO.class
 com\groud2\web\access\google\LoginGoogleServlet.class
 com\groud2\web\DAO\userDAO.class
+<<<<<<< Updated upstream
 com\groud2\web\access\google\GooglePojo.class
 <<<<<<< Updated upstream
 =======
+=======
+com\groud2\web\controller\recordController.class
+>>>>>>> Stashed changes
 com\groud2\web\model\news.class
 com\groud2\web\server\ChatRoomServerEndpoint.class
+com\groud2\web\controller\recordOnlineController.class
 com\groud2\web\access\facebook\RestFB.class
 com\groud2\web\controller\searchBookingController.class
+<<<<<<< Updated upstream
 com\groud2\web\access\common\Constants.class
 com\groud2\web\controller\AddtoCartController.class
 com\groud2\web\model\booking.class
+=======
+com\groud2\web\model\OrderGlasses\Order.class
+com\groud2\web\model\overview.class
+com\groud2\web\DAO\EmailDAO.class
+com\groud2\web\controller\overviewController.class
+>>>>>>> Stashed changes
 com\groud2\web\model\glasses.class
 com\groud2\web\controller\AdminController\AdminManagerStaffController.class
 <<<<<<< Updated upstream
@@ -81,6 +107,7 @@ com\groud2\web\model\Attendance.class
 com\groud2\web\model\room.class
 com\groud2\web\controller\registerController.class
 com\groud2\web\Payment\PaymentServices.class
+com\groud2\web\controller\DoctorController\listCompletePatient.class
 com\groud2\web\controller\updateController.class
 com\groud2\web\DAO\OrderDAO.class
 com\groud2\web\controller\AdminController\AdminManageGlassesController.class
@@ -91,23 +118,41 @@ com\groud2\web\controller\changeProfile.class
 com\groud2\web\controller\getServiceController.class
 com\groud2\web\controller\PasswordController.class
 com\groud2\web\controller\AdminController\AdminManageRoomController.class
+<<<<<<< Updated upstream
 com\groud2\web\controller\AdminController\AdminUpdateRoomController.class
 com\groud2\web\model\service.class
+=======
+com\groud2\web\controller\DoctorController\medicalRecord.class
+com\groud2\web\controller\AdminController\AdminUpdateRoomController.class
+com\groud2\web\controller\GetPatientOnline.class
+com\groud2\web\controller\DoctorController\listWattingPatient.class
+>>>>>>> Stashed changes
 com\groud2\web\access\common\Constants.class
 com\groud2\web\model\booking.class
+com\groud2\web\DAO\overviewDAO.class
 com\groud2\web\model\OrderGlasses\Item.class
 com\groud2\web\controller\AdminController\AdminEditUser.class
 com\groud2\web\controller\ProcessCartController.class
 >>>>>>> Stashed changes
 com\groud2\web\DAO\glassesDAO.class
+<<<<<<< Updated upstream
 com\groud2\web\DAO\context\DBContext.class
+=======
+com\groud2\web\Payment\ExecutePaymentServlet.class
+com\groud2\web\controller\DoctorController\ChooseOn_Of.class
+com\groud2\web\controller\DoctorController\ReportError.class
+>>>>>>> Stashed changes
 com\groud2\web\access\facebook\LoginFacebookServlet.class
 com\groud2\web\controller\AdminController\AdminDasboardController.class
 com\groud2\web\controller\cartController.class
 com\groud2\web\DAO\roomDAO.class
 >>>>>>> Stashed changes
 com\groud2\web\controller\bookingController.class
+<<<<<<< Updated upstream
 com\groud2\web\controller\changeProfile.class
+=======
+com\groud2\web\controller\currentBooking.class
+>>>>>>> Stashed changes
 com\groud2\web\model\profile.class
 com\groud2\web\access\google\GoogleUtils.class
 >>>>>>> Stashed changes

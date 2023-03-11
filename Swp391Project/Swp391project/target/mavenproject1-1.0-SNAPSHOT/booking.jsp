@@ -63,6 +63,9 @@
                             <div class="tab-content p-4" id="pills-tabContent">
                                 <form action="booking" method="get" onsubmit="setSubmitTime()">
                                     <div class="row">
+                        <c:if test="${success ne null}" >
+                            <p style="color: red;font-size: 20px">${success}</p>
+                        </c:if>
                                         <div class="p-6">
                                             <h6 class="mb-0">Patient information</h6>
                                         </div>
@@ -70,7 +73,7 @@
                                         <div class="col-lg-6">
                                             <div class="mb-3">
                                                 <label class="form-label" name="">Name</label>
-                                                <input name="name" class="form-control" >
+                                                <input name="name" id="name" class="form-control" >
                                             </div>
                                         </div>
                                         <div class="col-lg-6">
@@ -132,6 +135,7 @@
                                             </div>
                                         </div><!--end col-->
 
+<<<<<<< Updated upstream
                                         <div class="col-md-12">
                                             <div class="mb-3">
                                                 <label class="form-label">Payment methods</label>
@@ -150,6 +154,15 @@
                                                 <button type="submit"  style="display: none" name="submit_time"  id="booking" class="vnpay btn btn-primary">Thanh toán</button>
 =======
                                                 <button type="submit"  style="display: none" name="submit_time"  id="booking" class="vnpay btn btn-primary"><a href="url">Thanh toán</a>   </button>
+>>>>>>> Stashed changes
+=======
+
+
+                                        <div class="col-lg-12">
+
+                                            <div class="d-grid gap-2 col-6 mx-auto">
+                                                <button type="submit" class="btn btn-primary" type="button">Đặt lịch</button>
+
 >>>>>>> Stashed changes
                                             </div>
                                         </div>
@@ -241,6 +254,7 @@
                                                             $(".vnpay").hide();
                                                         }
                                                     }
+<<<<<<< Updated upstream
                                                     function checkDateInput() {
                                                         var dateInput = document.getElementById("dateInput").value;
                                                         var currentDate = new Date();
@@ -251,7 +265,14 @@
                                                         }
                                                     }
 >>>>>>> Stashed changes
+=======
+                                                    const nameInput = document.getElementById("name");
+                                                    const regex = /^[a-zA-Z\s-]+$/;
+>>>>>>> Stashed changes
 
+                                                    if (!regex.test(nameInput.value)) {
+                                                        console.log("Tên không hợp lệ. Vui lòng nhập lại.");
+                                                    }
         </script>
 
     </body>

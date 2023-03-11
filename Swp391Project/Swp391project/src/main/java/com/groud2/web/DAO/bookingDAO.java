@@ -30,8 +30,8 @@ public class bookingDAO {
 
     public void insert(String name, String phone, String email, String date, String time, String medical, String payment, String sbtime) {
         try {
-            String strSelect = "INSERT INTO `swp`.`booking`\n"
-                    + "(`name`,`phone`,`email`,`date`,`time`,`medical`,`payment`,`sbtime`)\n"
+            String strSelect = "INSERT INTO swp.`booking`\n"
+                    + "(name,`phone`,`email`,`date`,`time`,`medical`,`payment`,`sbtime`)\n"
                     + "VALUES\n"
                     + "(?,?,?,?,?,?,?,?)";
             connection = dbc.getConnection();
@@ -298,11 +298,53 @@ public class bookingDAO {
     }
 
     public void cancelBooking(String id) throws SQLException {
+<<<<<<< Updated upstream
         String sql = "DELETE FROM `swp`.`booking`\n"
+=======
+        String sql = "DELETE FROM swp.`booking`\n"
+>>>>>>> Stashed changes
                 + "WHERE bookId = \"" + id + "\";";
         connection = dbc.getConnection();
         ps = connection.prepareStatement(sql);
 
         ps.executeUpdate();
     }
+<<<<<<< Updated upstream
 }
+=======
+    
+    public ArrayList<booking> getAllById(String bookId) throws SQLException, IOException {
+        ArrayList<booking> listId = new ArrayList<>();
+        String sql = "SELECT * FROM booking where bookId=?";
+        try {
+            connection = dbc.getConnection();
+            ps = connection.prepareStatement(sql);
+            ps.setString(1, bookId);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+              
+                String name = rs.getString(2);
+                String phone = rs.getString(3);
+                 String email = rs.getString(4);
+                String date = rs.getString(5);
+                String time = rs.getString(6);
+                String medical = rs.getString(7);
+                String payment = rs.getString(8);
+                String sbtime = rs.getString(9);
+
+                booking g = new booking(bookId, name, phone, email, date, time, medical, payment, sbtime);
+                System.out.println("get booking by id success");
+                listId.add(g);
+            }
+        } catch (SQLException e) {
+            System.out.println("get booking by email error: " + e.getMessage());
+        } finally {
+            if (connection != null) {
+                connection.close();
+            }
+        }
+
+        return listId;
+    }
+}
+>>>>>>> Stashed changes

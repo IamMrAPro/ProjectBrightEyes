@@ -40,7 +40,116 @@
 		<div class="container-login100" style="background-image: url('assets/images/bgr.jpg');">
 			<div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-54">
 
+<<<<<<< Updated upstream
                             
+=======
+        <style>
+            .captcha-box-image {
+                border: 1px solid #5a6f80;
+                height: 60px;
+                width: 40%;
+            }
+
+            #captcha {
+                width: 94%;
+                margin-left: 3%;
+                margin-top: 10px;
+                height: 57px;
+                border: 1px solid #5a6f80;
+                outline: 1px solid #5a6f80;
+            }
+
+            .captcha-form {
+                width: 100%;
+                height: 80px;
+                background-color: #ffffcc;
+            }
+            
+            .captcha-box-text {
+                width: 45%;
+            }
+            
+            .re-load-captcha {
+                font-size: 2em;
+                margin-top: 10px;
+                margin-left: 10px;
+            }
+            
+            #re-load-icon {
+                cursor: pointer;
+            }
+        </style>
+    </head>
+    <body>
+
+        <div class="limiter">
+            <div class="container-login100" style="background-image: url('assets/images/bgr.jpg');">
+                <div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-54">
+
+
+
+                    <c:set var="cookie" value="${pageScope.cookies}"/>
+                    <form class="login100-form validate-form" action="loginuser" method="post">
+
+                        <span class="login100-form-title p-b-49">
+                            Login
+                        </span>
+
+                        <div class="wrap-input100 validate-input m-b-23" data-validate = "Username is reauired">
+                            <span class="label-input100">Username</span>
+                            <input class="input100" type="text" name="account" placeholder="Type your username"  value="${cookie.acc.value}">
+                            <span class="focus-input100" data-symbol="&#xf206;"></span>
+                        </div>
+
+                        <div class="wrap-input100 validate-input" data-validate="Password is required">
+                            <span class="label-input100">Password</span>
+                            <input class="input100" type="password" name="password" placeholder="Type your password" value="${cookie.pass.value}">
+                            <span class="focus-input100" data-symbol="&#xf190;"></span>
+                        </div>
+
+                        <small class="text-danger">${captchaErr}</small>
+                        <div class="d-flex mt-3 captcha-form">
+                            <div class="captcha-box-text">
+                                <input type="text" name="captchaInput" id="captcha" placeholder="Enter captcha code">
+                            </div>
+                            <div class="captcha-box-image mt-2">
+                                <img class="w-100 h-100" src="createCaptcha" alt="alt"/>
+                            </div>
+                            
+                            <div class="re-load-captcha">
+                                <input type="submit" name="loadCaptchaAgain" class="d-none" id="load-captcha">
+                                <label for="load-captcha" id="re-load-icon"><i class="fa-solid fa-repeat"></i></label>
+                            </div>
+                        </div>
+                        <div class="text-right p-t-8 p-b-31">
+                             <input type="checkbox" name="rememberpass"  
+                                   ${cookie.status!=null?'checked':''} value="ON"/> Rememmber password
+                            <a href="ForgotPassword.jsp" style="margin-left: 30px">
+                                Forgot password?
+                            </a>
+                        </div>
+
+                        <div class="container-login100-form-btn">
+                            <div class="wrap-login100-form-btn">
+                                <div class="login100-form-bgbtn"></div>
+                                <button class="login100-form-btn" style="background-color: #5bc1ac;">
+                                    Login
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="txt1 text-center p-t-54 p-b-20">
+                            <span>
+                                Or Sign Up Using
+                            </span>
+                        </div>
+
+                        <div class="flex-c-m">
+                            <a href="https://www.facebook.com/dialog/oauth?client_id=1139592463416490&redirect_uri=http://localhost:8909/mavenproject1/loginwithfacebook" class="login100-social-item bg1">
+                                <!--<i class="fa fa-facebook"></i>-->
+                                <i class="fa-brands fa-facebook"></i>
+                            </a>
+>>>>>>> Stashed changes
 
 
                             <form class="login100-form validate-form" action="loginuser" method="post">

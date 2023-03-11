@@ -12,7 +12,20 @@
         <title>JSP Page</title>
 
         <style>
-
+            thead {
+                background-color: #5bc1ac;
+            }
+            thead th {
+                text-align: center;
+            }
+            td {
+                text-align: center;
+            }
+            button a {
+                text-decoration: none;
+                color: inherit;
+                cursor: inherit;
+            }
         </style>
     </head>
     <jsp:include page="layout/head.jsp"/>
@@ -28,14 +41,35 @@
             <div class="row align-items-start">
                 <div class="section-title text-center" style="margin: 20px">
 
-                    <form method="post" action="searchBooking">
+                    <form method="post" action="searchBooking" onsubmit="return validateSearch()">
                         <label for="email">Email:</label>
                         <input type="email" name="email" id="email">
 
                         <label for="phone">Số điện thoại:</label>
-                        <input type="tel" name="phone" id="phone">
+                        <input type="tel" maxlength="10" minlength="10" name="phone" id="phone">
 
                         <button type="submit">Search</button>
+                        <a style="border-style: solid;
+                           border-width: 1px;
+                           border-radius: 5px;
+                           border-color: #ccc;
+                           background-color: #f7f7f7;
+                           padding: 10px 20px;
+                           color: #333;
+                           text-decoration: none;
+                           display: inline-block;" href="recordOffline.jsp">Add New Patient</a>
+                        <a style="border-style: solid;
+                           border-width: 1px;
+                           border-radius: 5px;
+                           border-color: #ccc;
+                           background-color: #f7f7f7;
+                           padding: 10px 20px;
+                           color: #333;
+                           text-decoration: none;
+                           display: inline-block;" href="currentBooking">Currently Booking</a>
+                        <c:if test="${check ne null}" >
+                            <p style="color: red;font-size: 20px">${check}</p>
+                        </c:if>
                     </form>
                 </div>
 
@@ -54,9 +88,8 @@
                                 <th>Email</th>
                                 <th>Day</th>
                                 <th>Time</th>
-                                <th>Medical Information</th>
-                                <th>Payment</th>
-                                <th></th>
+
+                                <th>Add</th>
                             </tr>
                         </thead>
 
@@ -68,11 +101,9 @@
                                     <td>${p.getPhone()}</td>
                                     <td>${p.getEmail()}</td>
                                     <td>${p.getDay()}</td>
-                                    <td>${p.getTime()}</td>
-                                    <td>${p.getMedical()}</td>
-                                    <td>${p.getPayment()}</td>
-                                    <td>${p.getSbtime()}</td>
-                                    <td>Delete</td>
+                                    <td>${p.getTime()}</td>        
+
+                                    <td><a href="GetPatientOnline?id=${p.getBookingId()} "><ion-icon style="font-size:25px" name="add-circle-outline"></ion-icon></a></td>
                                 </tr>
                             </tbody>
                         </c:forEach>
@@ -95,4 +126,16 @@
         <jsp:include page="layout/chatbot.jsp"/>
         <jsp:include page="layout/footer.jsp"/>
     </body>
+    <script>
+        function validateSearch() {
+            var email = document.getElementById("email").value;
+            var phone = document.getElementById("phone").value;
+
+            if (email === "" || phone === "") {
+                alert("Vui lòng nhập đủ hai ô tìm kiếm");
+                return false;
+            }
+            return true;
+        }
+    </script>
 </html>
