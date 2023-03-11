@@ -7,11 +7,20 @@
     <body>
         <jsp:include page="layout/header.jsp"/>
         <jsp:include page="layout/menu.jsp"/>
+<<<<<<< Updated upstream:Swp391Project/Swp391project/target/mavenproject1-1.0-SNAPSHOT/record.jsp
         <form action="record">
 
             <div class="row">
                 <div class=" col-md-3"></div>
                 <div class=" col-md-6">
+=======
+        <form action="">
+                
+            <div class="row">
+                <div class=" col-md-3"></div>
+                <div class=" col-md-6">
+                
+>>>>>>> Stashed changes:Swp391Project/Swp391project/src/main/webapp/record.jsp
                     <h1 style="margin-bottom: 30px;display: flex; justify-content: center">MEDICAL REPORT FORM</h1>
                     <div style="display: flex; justify-content: space-between">
                         <p>Patient's Full Name<input style="width: 250px" name="namePatient" type="text"></p> 
@@ -34,8 +43,14 @@
                         <p>ID Card:<input type="text" name="cccdPatient"> </p>
                     <p>Choose doctor: </p>
                     <select style="height: 28px; width: 25%" name="doctor">
+<<<<<<< Updated upstream:Swp391Project/Swp391project/target/mavenproject1-1.0-SNAPSHOT/record.jsp
                         <option value="1">Vu</option>
                         <option value="2">Tuan</option>
+=======
+                        <c:forEach items="${listrole}" var="l">
+                            <option>${l.getRole()}</option>
+                        </c:forEach>
+>>>>>>> Stashed changes:Swp391Project/Swp391project/src/main/webapp/record.jsp
                     </select>
                     </div>
                     
@@ -43,11 +58,19 @@
                 </div>
                 <div class=" col-md-3"></div>
             </div>
+<<<<<<< Updated upstream:Swp391Project/Swp391project/target/mavenproject1-1.0-SNAPSHOT/record.jsp
 
+=======
+                
+>>>>>>> Stashed changes:Swp391Project/Swp391project/src/main/webapp/record.jsp
         </form>
     </main>
     <jsp:include page="layout/chatbot.jsp"/>
     <jsp:include page="layout/footer.jsp"/>
 </body>
+<<<<<<< Updated upstream:Swp391Project/Swp391project/target/mavenproject1-1.0-SNAPSHOT/record.jsp
 </html>
 
+=======
+</html>
+>>>>>>> Stashed changes:Swp391Project/Swp391project/src/main/webapp/record.jsp

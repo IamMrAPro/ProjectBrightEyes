@@ -35,11 +35,18 @@
         <servlet-name>reportController</servlet-name>
         <servlet-class>com.groud2.web.controller.reportController</servlet-class>
     </servlet>
+<<<<<<< Updated upstream
 >>>>>>> Stashed changes
     <servlet-mapping>
         <servlet-name>glassesController</servlet-name>
         <url-pattern>/glasses</url-pattern>
     </servlet-mapping>
+=======
+    <servlet>
+        <servlet-name>currentBookingController</servlet-name>
+        <servlet-class>com.groud2.web.controller.currentBookingController</servlet-class>
+    </servlet>
+>>>>>>> Stashed changes
     <servlet-mapping>
         <servlet-name>homeController</servlet-name>
         <url-pattern>/home</url-pattern>
@@ -67,6 +74,10 @@
         <servlet-name>reportController</servlet-name>
         <url-pattern>/reportController</url-pattern>
 >>>>>>> Stashed changes
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>currentBookingController</servlet-name>
+        <url-pattern>/currentBooking</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

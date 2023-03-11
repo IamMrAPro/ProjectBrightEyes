@@ -58,7 +58,7 @@
                            color: #333;
                            text-decoration: none;
                            display: inline-block;" href="record.jsp">Add New Patient</a>
-                        <a style="border-style: solid;
+<a style="border-style: solid;
                            border-width: 1px;
                            border-radius: 5px;
                            border-color: #ccc;
@@ -66,7 +66,7 @@
                            padding: 10px 20px;
                            color: #333;
                            text-decoration: none;
-                           display: inline-block;" href="currentBooking">Currently Booking</a>
+                           display: inline-block;" href="searchBooking">Historys Booking</a>
                         <c:if test="${check ne null}" >
                             <p style="color: red;font-size: 20px">${check}</p>
                         </c:if>
@@ -94,7 +94,7 @@
                         </thead>
 
 
-                        <c:forEach items="${list}" var="p">
+                        <c:forEach items="${listCurrent}" var="p">
                             <tbody> 
                                 <tr><td>${p.getBookingId()} </td>
                                     <td>${p.getName()}</td>

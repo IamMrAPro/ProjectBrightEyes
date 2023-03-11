@@ -87,7 +87,51 @@
                             <div class="mx-2"><a href="../booking-screen/bookingHistory.jsp">Booking History</a></div>
                         </label>
                     </div>
+<<<<<<< Updated upstream:Swp391Project/Swp391project/target/mavenproject1-1.0-SNAPSHOT/Booking/booking-layout/booking-navbar.jsp
                     
+=======
+                    <div class="admin-link">
+                        <input type="submit" name="position" value="2" id="staff" class="d-none">
+                        <label for="staff" class="d-flex px-4 align-items-center admin-nav-label">
+                            <i class="fa-solid fa-user-nurse"></i>
+                            <div class="mx-2">Staff</div>
+                        </label>
+                    </div>
+                    <div class="admin-link">
+                        <input type="submit" name="position" value="3" id="customer" class="d-none">
+                        <label for="customer" class="d-flex px-4 align-items-center admin-nav-label">
+                            <i class="fa-solid fa-user-plus"></i>
+                            <div class="mx-2">Customer</div>
+                        </label>
+                    </div>
+                    <div class="admin-link">
+                        <input type="submit" name="position" value="4" id="room" class="d-none">
+                        <label for="room" class="d-flex px-4 align-items-center admin-nav-label">
+                            <i class="fa-solid fa-house-medical"></i>
+                            <div class="mx-2">Room</div>
+                        </label>
+                    </div>
+                    <div class="admin-link">
+                        <input type="submit" name="position" value="5" id="glass" class="d-none">
+                        <label for="glass" class="d-flex px-4 align-items-center admin-nav-label">
+                            <i class="fa-solid fa-glasses"></i>
+                            <div class="mx-2">Glass</div>
+                        </label>
+                    </div>
+                    <div class="admin-link">
+                        <input type="submit" name="position" value="6" id="feedback" class="d-none">
+                        <label for="feedback" class="d-flex px-4 align-items-center admin-nav-label">
+                            <i class="fa-solid fa-face-smile"></i>
+                            <div class="mx-2">Feedback</div>
+                        </label>
+                    </div>
+                    <div class="admin-link">
+                        <a href="searchBooking" class="d-flex px-4 align-items-center admin-nav-label text-decoration-none">
+                            <i class="fa-solid fa-calendar-days" style="color: white;"></i>
+                            <div class="mx-2" style="color: white;">Booking</div>
+                        </a>
+                    </div>
+>>>>>>> Stashed changes:Swp391Project/Swp391project/src/main/webapp/AdminView/admin-layout/admin-navbar.jsp
                 </div>
 
                 <br>
