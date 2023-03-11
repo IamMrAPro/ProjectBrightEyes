@@ -5,7 +5,9 @@
 package com.groud2.web.controller;
 
 import com.groud2.web.DAO.glassesDAO;
+import com.groud2.web.DAO.newsDAO;
 import com.groud2.web.model.glasses;
+import com.groud2.web.model.news;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
@@ -62,11 +64,24 @@ public class homeController extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         glassesDAO g = new glassesDAO();
-
+        newsDAO n =new newsDAO() ;   
         try {
             ArrayList<glasses> list = g.getAllglasses();
             request.setAttribute("listGlasses", list);
-            
+
+
+
+            for (glasses item : list) {
+                System.out.println("day" + item.getGlassName());
+            }
+
+            ArrayList<news> listNews = n.ListNews();
+            request.setAttribute("listNews",listNews);
+
+            for (glasses item : list) {
+                System.out.println("day" + item.getGlassName());
+            }
+
         } catch (SQLException ex) {
             
             Logger.getLogger(glassesController.class.getName()).log(Level.SEVERE, null, ex);

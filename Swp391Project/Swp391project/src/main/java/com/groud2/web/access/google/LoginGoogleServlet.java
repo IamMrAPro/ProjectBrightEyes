@@ -34,11 +34,11 @@ public class LoginGoogleServlet extends HttpServlet {
     } else {
         HttpSession session = request.getSession();
       String accessToken = GoogleUtils.getToken(code);
-      GooglePojo googlePojo = GoogleUtils.getUserInfo(accessToken);
-      session.setAttribute("id", googlePojo.getId());
-      session.setAttribute("name", googlePojo.getName());
-      session.setAttribute("email", googlePojo.getEmail());
-        System.out.println("hello"+googlePojo.getId());
+      GoogleUser user  = GoogleUtils.getUserInfo(accessToken);
+      session.setAttribute("id", user.getId());
+      session.setAttribute("name", user.getName());
+      session.setAttribute("email", user.getEmail());
+        System.out.println("hello"+user.getId());
       response.sendRedirect("home");
     }
   }

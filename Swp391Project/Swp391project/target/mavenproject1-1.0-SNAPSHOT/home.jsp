@@ -1,4 +1,3 @@
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
@@ -8,7 +7,7 @@
     <body>
         <jsp:include page="layout/header.jsp"/>
         <jsp:include page="layout/menu.jsp"/>
-         
+
         <main>
 
             <section class="hero-section hero-section-full-height">
@@ -19,8 +18,8 @@
                             <div id="hero-slide" class="carousel carousel-fade slide" data-bs-ride="carousel">
                                 <div class="carousel-inner">
                                     <div class="carousel-item active">
-                                        <img src="assets/images/slide/volunteer-helping-with-donation-box.jpg" class="carousel-image img-fluid" alt="...">
-
+                                        
+                                        <img src="assets/images/healthcare-telemedicine-banner.jpg" class="carousel-image img-fluid"  alt=""/>
                                         <div class="carousel-caption d-flex flex-column justify-content-end">
                                             <h1>Take care</h1>
 
@@ -33,12 +32,12 @@
 
                                         <div class="carousel-caption d-flex flex-column justify-content-end">
                                             <h1>Staff</h1>
-
+                                            
                                             <p>Lots of experience</p>
                                         </div>
                                     </div>
 
-                                    
+
                                 </div>
 
                                 <button class="carousel-control-prev" type="button" data-bs-target="#hero-slide" data-bs-slide="prev">
@@ -57,7 +56,7 @@
                 </div>
             </section>
 
-<!--
+
             <section class="section-padding">
                 <div class="container">
                     <div class="row">
@@ -108,73 +107,73 @@
 
                     </div>
                 </div>
-            </section>-->
+            </section>
 
-<!--            <section class="section-padding section-bg" id="section_2">
-                <div class="container">
-                    <div class="row">
-
-                        <div class="col-lg-6 col-12 mb-5 mb-lg-0">
-                            <img src="assets/images/group-people-volunteering-foodbank-poor-people.jpg" class="custom-text-box-image img-fluid" alt="">
-                        </div>
-
-                        <div class="col-lg-6 col-12">
-                            <div class="custom-text-box">
-                                <h2 class="mb-2">Our Story</h2>
-
-                                <h5 class="mb-3">Bright eyes,Eye Clinic</h5>
-
-                                <p class="mb-0">Chưa biết viết gì</p>
-                            </div>
-
-                            <div class="row">
-                                <div class="col-lg-6 col-md-6 col-12">
-                                    <div class="custom-text-box mb-lg-0">
-                                        <h5 class="mb-3">Our Mission</h5>
-
-                                        <p>Sed leo nisl, posuere at molestie ac, suscipit auctor quis metus</p>
-
-                                        <ul class="custom-list mt-2">
-                                            <li class="custom-list-item d-flex">
-                                                <i class="bi-check custom-text-box-icon me-2"></i>
-                                                Charity Theme
-                                            </li>
-
-                                            <li class="custom-list-item d-flex">
-                                                <i class="bi-check custom-text-box-icon me-2"></i>
-                                                Semantic HTML
-                                            </li>
-                                        </ul>
+            <!--            <section class="section-padding section-bg" id="section_2">
+                            <div class="container">
+                                <div class="row">
+            
+                                    <div class="col-lg-6 col-12 mb-5 mb-lg-0">
+                                        <img src="assets/images/group-people-volunteering-foodbank-poor-people.jpg" class="custom-text-box-image img-fluid" alt="">
                                     </div>
-                                </div>
-
-                                <div class="col-lg-6 col-md-6 col-12">
-                                    <div class="custom-text-box d-flex flex-wrap d-lg-block mb-lg-0">
-                                        <div class="counter-thumb">
-                                            <div class="d-flex">
-                                                
-                                                <span class="counter-number-text">Founded</span>
-                                            </div>
-
-                                            <span class="counter-text">16/06/2021</span>
+            
+                                    <div class="col-lg-6 col-12">
+                                        <div class="custom-text-box">
+            <h2 class="mb-2">Our Story</h2>
+            
+                                            <h5 class="mb-3">Bright eyes,Eye Clinic</h5>
+            
+                                            <p class="mb-0">Chưa biết viết gì</p>
                                         </div>
-
-                                        <div class="counter-thumb mt-4">
-                                            <div class="d-flex">
-                                                <span class="counter-number" data-from="1" data-to="120" data-speed="1000"></span>
-                                                <span class="counter-number-text">B</span>
+            
+                                        <div class="row">
+                                            <div class="col-lg-6 col-md-6 col-12">
+                                                <div class="custom-text-box mb-lg-0">
+                                                    <h5 class="mb-3">Our Mission</h5>
+            
+                                                    <p>Sed leo nisl, posuere at molestie ac, suscipit auctor quis metus</p>
+            
+                                                    <ul class="custom-list mt-2">
+                                                        <li class="custom-list-item d-flex">
+                                                            <i class="bi-check custom-text-box-icon me-2"></i>
+                                                            Charity Theme
+                                                        </li>
+            
+                                                        <li class="custom-list-item d-flex">
+                                                            <i class="bi-check custom-text-box-icon me-2"></i>
+                                                            Semantic HTML
+                                                        </li>
+                                                    </ul>
+                                                </div>
                                             </div>
-
-                                            <span class="counter-text">Donations</span>
+            
+                                            <div class="col-lg-6 col-md-6 col-12">
+                                                <div class="custom-text-box d-flex flex-wrap d-lg-block mb-lg-0">
+                                                    <div class="counter-thumb">
+                                                        <div class="d-flex">
+                                                            
+                                                            <span class="counter-number-text">Founded</span>
+                                                        </div>
+            
+                                                        <span class="counter-text">16/06/2021</span>
+                                                    </div>
+            
+                                                    <div class="counter-thumb mt-4">
+                                                        <div class="d-flex">
+                                                            <span class="counter-number" data-from="1" data-to="120" data-speed="1000"></span>
+                                                            <span class="counter-number-text">B</span>
+                                                        </div>
+            
+                                                        <span class="counter-text">Donations</span>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
+            
                                 </div>
                             </div>
-                        </div>
-
-                    </div>
-                </div>
-            </section>-->
+                        </section>-->
 
 
             <section class="about-section section-padding">
@@ -222,7 +221,7 @@
                         </div>
 
                         <div class="col-lg-5 col-12">
-                            
+
 
                             <a href="#section_4" class="custom-btn btn smoothscroll">Become a member</a>
                         </div>
@@ -241,37 +240,36 @@
                         </div>
 
                         <c:forEach items="${listGlasses}" var="item" end="2">
-                        <div class="col-lg-4 col-md-6 col-3 mb-4 ">
-                            <div class="custom-block-wrap">
-                                <img src="${item.getImage()}" class="custom-block-image img-fluid" alt="">
+                            <div class="col-lg-4 col-md-6 col-3 mb-4 ">
+                                <div class="custom-block-wrap">
+                                    <img src="${item.getImage()}" class="custom-block-image img-fluid" alt="">
 
-                                <div class="custom-block" >
-                                    <div class="custom-block-body">
-                                        <h5 >${item.getGlassName()}</h5>
+                                    <div class="custom-block" >
+                                        <div class="custom-block-body">
+                                            <h5 >${item.getGlassName()}</h5>
 
-                                        <p>Color :${item.getColor()} </p>
+                                            <p>Color :${item.getColor()} </p>
 
-                                        <p>Gender :${item.getGender()} </p>
-                                        
-                                        <p>Material :${item.getMaterial()} </p>
-                                        
-                                        <p>Style :${item.getStyle()} </p>
-                                        <div class="d-flex align-items-center my-2">
-                                            <p class="ms-auto mb-0">
-                                                <strong>Goal:</strong>
-                                                <b>$${item.getPrice()}</b>
-                                            </p>
+                                            <p>Gender :${item.getGender()} </p>
+                                            <p>Material :${item.getMaterial()} </p>
+
+                                            <p>Style :${item.getStyle()} </p>
+                                            <div class="d-flex align-items-center my-2">
+                                                <p class="ms-auto mb-0">
+                                                    <strong>Goal:</strong>
+                                                    <b>$${item.getPrice()}</b>
+                                                </p>
+                                            </div>
                                         </div>
-                                    </div>
 
-                                    <a href="#" class="custom-btn  btn-lg text-center" > <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-cart" viewBox="0 0 16 16">
-                                        <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
-                                        </svg> Add to card </a>
+                                        <a href="#" class="custom-btn  btn-lg text-center" > <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-cart" viewBox="0 0 16 16">
+                                            <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+                                            </svg> Add to card </a>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                                         
-                    </c:forEach>
+
+                        </c:forEach>
 
                     </div>
                 </div>
@@ -299,7 +297,7 @@
                                             Knowledge
                                         </a>
 
-                                        
+
                                     </div>
                                 </div>
 
@@ -337,60 +335,59 @@
                                 </div>
                             </div>
 
-<!--                            <div class="news-block mt-3">
-                                <div class="news-block-top">
-                                    <a href="#">
-                                        <img src="assets/images/news/medium-shot-people-collecting-foodstuff.jpg" class="news-image img-fluid" alt="">
-                                    </a>
+                                                        <div class="news-block mt-3">
+                                                            <div class="news-block-top">
+                                                                <a href="#">
+                                                                    <img src="assets/images/news/medium-shot-people-collecting-foodstuff.jpg" class="news-image img-fluid" alt="">
+                                                                </a>
+                            
+                                                                <div class="news-category-block">
+                                                                    <a href="#" class="category-block-link">
+                                                                        Food,
+                                                                    </a>
+                            
+                                                                    <a href="#" class="category-block-link">
+                                                                        Donation,
+                                                                    </a>
+                            
+                                                                    <a href="#" class="category-block-link">
+                                                                        Caring
+                                                                    </a>
+                                                                </div>
+                                                            </div>
 
-                                    <div class="news-category-block">
-                                        <a href="#" class="category-block-link">
-                                            Food,
-                                        </a>
-
-                                        <a href="#" class="category-block-link">
-                                            Donation,
-                                        </a>
-
-                                        <a href="#" class="category-block-link">
-                                            Caring
-                                        </a>
-                                    </div>
-                                </div>-->
-
-<!--                                <div class="news-block-info">
-                                    <div class="d-flex mt-2">
-                                        <div class="news-block-date">
-                                            <p>
-                                                <i class="bi-calendar4 custom-icon me-1"></i>
-                                                October 20, 2036
-                                            </p>
-                                        </div>
-
-                                        <div class="news-block-author mx-5">
-                                            <p>
-                                                <i class="bi-person custom-icon me-1"></i>
-                                                By Admin
-                                            </p>
-                                        </div>
-
-                                        <div class="news-block-comment">
-                                            <p>
-                                                <i class="bi-chat-left custom-icon me-1"></i>
-                                                35 Comments
-                                            </p>
-                                        </div>
-                                    </div>
-
-                                    <div class="news-block-title mb-2">
-                                        <h4><a href="#" class="news-block-title-link">Food donation area</a></h4>
-                                    </div>
-
-                                    <div class="news-block-body">
-                                        <p>Sed leo nisl, posuere at molestie ac, suscipit auctor mauris. Etiam quis metus elementum, tempor risus vel, condimentum orci</p>
-                                    </div>
-                                </div>-->
-<!--                            </div>-->
+                                                            <div class="news-block-info">
+                                                                <div class="d-flex mt-2">
+                                                                    <div class="news-block-date">
+                                                                        <p>
+                                                                            <i class="bi-calendar4 custom-icon me-1"></i>
+                                                                            October 20, 2036
+                                                                        </p>
+                                                                    </div>
+                            <div class="news-block-author mx-5">
+                                                                        <p>
+                                                                            <i class="bi-person custom-icon me-1"></i>
+                                                                            By Admin
+                                                                        </p>
+                                                                    </div>
+                            
+                                                                    <div class="news-block-comment">
+                                                                        <p>
+                                                                            <i class="bi-chat-left custom-icon me-1"></i>
+                                                                            35 Comments
+                                                                        </p>
+                                                                    </div>
+                                                                </div>
+                            
+                                                                <div class="news-block-title mb-2">
+                                                                    <h4><a href="#" class="news-block-title-link">Food donation area</a></h4>
+                                                                </div>
+                            
+                                                                <div class="news-block-body">
+                                                                    <p>Sed leo nisl, posuere at molestie ac, suscipit auctor mauris. Etiam quis metus elementum, tempor risus vel, condimentum orci</p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
                         </div>
 
                         <div class="col-lg-4 col-12 mx-auto">
@@ -593,79 +590,81 @@
 
 
             <section class="contact-section section-padding" id="section_6">
-                <div class="container">
-                    <div class="row">
+            <div class="container">
+                <div class="row">
 
-                        <div class="col-lg-4 col-12 ms-auto mb-5 mb-lg-0">
-                            <div class="contact-info-wrap">
-                                <h2>Get in touch</h2>
+                    <div class="col-lg-4 col-12 ms-auto mb-5 mb-lg-0">
+                        <div class="contact-info-wrap">
+                            <h2>Get in touch</h2>
 
-                                <div class="contact-image-wrap d-flex flex-wrap">
-                                   
-                                    <img src="assets/images/map.png" class="img-thumbnail"  alt=""/>
-                                    
-                                </div>
+                            <div class="contact-image-wrap d-flex flex-wrap">
 
-                                <div class="contact-info">
-                                    <h5 class="mb-3">Contact Infomation</h5>
+                                
+                                <img src="assets/images/map.jpg" class="img-thumbnail"  alt=""/>
+                            </div>
 
-                                    <p class="d-flex mb-2">
-                                        <i class="bi-geo-alt me-2"></i>
-                                        Akershusstranda 20, 0150 Oslo, Norway
-                                    </p>
+                            <div class="contact-info">
+                                <h5 class="mb-3">Contact Infomation</h5>
 
-                                    <p class="d-flex mb-2">
-                                        <i class="bi-telephone me-2"></i>
+                                <p class="d-flex mb-2">
+                                    <i class="bi-geo-alt me-2"></i>
+                                    FPT University, Hoa Lac, Ha Noi
+                                </p>
 
-                                        <a href="tel: 120-240-9600">
-                                            120-240-9600
-                                        </a>
-                                    </p>
+                                <p class="d-flex mb-2">
+                                    <i class="bi-telephone me-2"></i>
 
-                                    <p class="d-flex">
-                                        <i class="bi-envelope me-2"></i>
+                                    <a href="tel: 120-240-9600">
+                                        0948539479
+                                    </a>
+                                </p>
 
-                                        <a href="mailto:info@yourgmail.com">
-                                            donate@charity.org
-                                        </a>
-                                    </p>
+                                <p class="d-flex">
+                                    <i class="bi-envelope me-2"></i>
 
-                                    <a href="#" class="custom-btn btn mt-3">Get Direction</a>
-                                </div>
+                                    <a href="mailto:info@yourgmail.com">
+                                        vubahe163495@fpt.edu.vn
+                                    </a>
+                                </p>
+
+                                <a href="https://www.google.com/maps/place/FPT+University/@21.013255,105.5248756,17z/data=!3m1!4b1!4m5!3m4!1s0x31345b465a4e65fb:0xaae6040cfabe8fe!8m2!3d21.01325!4d105.5270643" class="custom-btn btn mt-3">Get Direction</a>
                             </div>
                         </div>
+                    </div>
 
-                        <div class="col-lg-5 col-12 mx-auto">
-                            <form class="custom-form contact-form" action="#" method="post" role="form">
-                                <h2>Send feedback</h2>
+                    <div class="col-lg-5 col-12 mx-auto">
+                        <form class="custom-form contact-form" action="reportController" method="get" role="form">
+                            <h2>Send feedback</h2>
 
-                                <p class="mb-4">Or, you can just send an email:
-                                    <a href="#">anhvubui382@gmail.com</a>
-                                </p>
-                                <div class="row">
-                                    <div class="col-lg-6 col-md-6 col-12">
-                                        <input type="text" name="first-name" id="first-name" class="form-control" placeholder="Bui" required>
-                                    </div>
-
-                                    <div class="col-lg-6 col-md-6 col-12">
-                                        <input type="text" name="last-name" id="last-name" class="form-control" placeholder="Anh Vu" required>
-                                    </div>
+                            <p class="mb-4">Or, you can just send an email:
+                                <a href="#">anhvubui382@gmail.com</a>
+                            </p>
+                            <div class="row">
+                                <div class="col-lg-6 col-md-6 col-12">
+                                    <input type="text" name="first-name" id="first-name" class="form-control" placeholder="Bui" required>
                                 </div>
 
-                                <input type="email" name="email" id="email" pattern="[^ @]*@[^ @]*" class="form-control" placeholder="vubahe163495@fpt.edu.vn" required>
+                                <div class="col-lg-6 col-md-6 col-12">
+                                    <input type="text" name="last-name" id="last-name" class="form-control" placeholder="Anh Vu" required>
+                                </div>
+                            </div>
 
-                                <textarea name="message" rows="5" class="form-control" id="message" placeholder="What do you want to say with us?"></textarea>
+                            <input type="email" name="email" id="email" pattern="[^ @]*@[^ @]*" class="form-control" placeholder="vubahe163495@fpt.edu.vn" required>
 
-                                <button type="submit" class="form-control">Send Feedback</button>
-                            </form>
-                        </div>
+                            <textarea name="message" rows="5" class="form-control" id="message" placeholder="What do you want to say with us?"></textarea>
 
+                            <button type="submit" class="form-control">Send Feedback</button>
+                        </form>
                     </div>
+
                 </div>
-            </section>
-            
-        </main>
-        <jsp:include page="layout/chatbot.jsp"/>
-        <jsp:include page="layout/footer.jsp"/>
-    </body>
+            </div>
+        </section>
+
+
+    </main>
+    <jsp:include page="layout/chatbot.jsp"/>
+    <jsp:include page="layout/footer.jsp"/>
+</body>
 </html>
+

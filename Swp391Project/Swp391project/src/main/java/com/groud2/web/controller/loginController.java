@@ -1,36 +1,30 @@
 package com.groud2.web.controller;
 
-
 import com.groud2.web.DAO.userDAO;
 import com.groud2.web.model.user;
 
 import jakarta.servlet.ServletException;
+import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
-
 import jakarta.servlet.http.HttpSession;
-import java.io.IOException;
-import java.io.PrintWriter;
-import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import jakarta.xml.bind.DatatypeConverter;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 
-
+//>>>>>>> Stashed changes:Swp391Project/Swp391project/src/main/java/loginController.java
 /**
  *
  * @author anhha
  */
 public class loginController extends HttpServlet {
-
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -41,7 +35,6 @@ public class loginController extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
@@ -51,9 +44,13 @@ public class loginController extends HttpServlet {
             out.println("<html>");
             out.println("<head>");
 
-            out.println("<title>Servlet loginController</title>");            
+            out.println("<title>Servlet loginController</title>");
 
             out.println("<title>Servlet loginController</title>");
+
+//=======
+            out.println("<title>Servlet loginController</title>");
+//>>>>>>> Stashed changes:Swp391Project/Swp391project/src/main/java/loginController.java
 
             out.println("</head>");
             out.println("<body>");
@@ -63,35 +60,11 @@ public class loginController extends HttpServlet {
         }
     }
 
-
-
-
-
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
-    /**
-     * Handles the HTTP <code>GET</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
-
-    
-
-    /**
-     * Handles the HTTP <code>POST</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
-
-protected void doGet(HttpServletRequest request, HttpServletResponse response)
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-    request.getRequestDispatcher("Login.jsp").forward(request, response);
-}
+        request.getRequestDispatcher("Login.jsp").forward(request, response);
+    }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -99,32 +72,100 @@ protected void doGet(HttpServletRequest request, HttpServletResponse response)
 
         String account = request.getParameter("account");
         String password = request.getParameter("password");
+        String captchaText = request.getParameter("captchaInput");
+        String captchaAgain = request.getParameter("loadCaptchaAgain");
+        String rememberpass = request.getParameter("rememberpass");
+        //tao 3 cookie 
+        //username,pass,status checkbox
+        Cookie acc = new Cookie("acc", account);
+        Cookie pass = new Cookie("pass", password);
+        Cookie status = new Cookie("status", rememberpass);
+        if (status.getValue() != null) {
+            acc.setMaxAge(60 * 60 * 24 * 7);
+            pass.setMaxAge(60 * 60 * 24 * 7);
+            status.setMaxAge(60 * 60 * 24 * 7);
+        } else {
+            acc.setMaxAge(0);
+            pass.setMaxAge(0);
+            status.setMaxAge(0);
+        }
+        response.addCookie(acc);
+        response.addCookie(pass);
+        response.addCookie(status);
+        try {
+            password = encyptPass(password);
+        } catch (NoSuchAlgorithmException ex) {
+            System.out.println("encode password error: " + ex.getMessage());
+        }
 
+        System.out.println("password = " + password);
+
+        //reload captcha code
+        try {
+            if (!captchaAgain.isEmpty()) {
+            request.setAttribute("account", account);
+            request.setAttribute("password", password);
+            request.setAttribute("captchaErr", "");
+            request.getRequestDispatcher("Login.jsp").forward(request, response);
+        }
+        } catch (Exception e) {
+            System.out.println("Error here 111: " +e.getMessage());
+        }
         //Xu ly           
         userDAO u = new userDAO();
         user loginOK;
         try {
             loginOK = u.checklogin(account, password);
-            if (loginOK != null) {
+            if (loginOK != null && validateCaptcha(captchaText, request, response)) {
                 HttpSession session = request.getSession();
 
+                String fullname=u.getUserName(account);
                 session.setAttribute("id", account);
-                response.sendRedirect("home");
+                session.setAttribute("fullname", fullname);
+                String role = u.getUserRole(account);
+                System.out.println("User role: " + role);
+                System.out.println("Login Account: " + account);
+                session.setAttribute("id", account);
+                session.setAttribute("fullname", fullname);
+                if (role.equals("admin")) {
+                    response.sendRedirect("adminDashboard");
+                }else if(role.equals("doctor"))
+                        response.sendRedirect("listWattingPatient");
+                else {
+                    response.sendRedirect("home");
+                }
+
             } else {
+                request.setAttribute("account", account);
+                request.setAttribute("password", password);
+                request.setAttribute("captchaErr", "Captcha not match, enter again!");
+                request.getRequestDispatcher("Login.jsp").forward(request, response);
                 response.sendRedirect("loginuser");
 
             }
         } catch (SQLException ex) {
             Logger.getLogger(loginController.class.getName()).log(Level.SEVERE, null, ex);
         }
-        //Tra ket qua ve cho View
 
     }
 
     @Override
     public String getServletInfo() {
         return "Short description";
-    }// </editor-fold>
+    }
 
+    String encyptPass(String pass) throws NoSuchAlgorithmException {
+        MessageDigest md = MessageDigest.getInstance("MD5");
+        md.update(pass.getBytes());
+        byte[] digest = md.digest();
+        String myHash = DatatypeConverter
+                .printHexBinary(digest).toLowerCase();
+        return myHash;
+    }
 
+    public boolean validateCaptcha(String captchaText, HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        // Get captcha text from session
+        String captchaSession = (String) request.getSession().getAttribute("captcha");
+        return captchaText.equals(captchaSession);
+    }
 }

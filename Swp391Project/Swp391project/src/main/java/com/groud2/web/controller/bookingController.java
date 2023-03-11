@@ -4,19 +4,28 @@
  */
 package com.groud2.web.controller;
 
-<<<<<<< Updated upstream
-=======
+
+import com.groud2.web.DAO.EmailDAO;
 import com.groud2.web.DAO.bookingDAO;
 import com.groud2.web.DAO.userDAO;
+import jakarta.mail.MessagingException;
 
->>>>>>> Stashed changes
+
+
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.xml.bind.DatatypeConverter;
+
 import java.io.IOException;
 import java.io.PrintWriter;
-
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -24,15 +33,6 @@ import java.io.PrintWriter;
  */
 public class bookingController extends HttpServlet {
 
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
@@ -41,7 +41,7 @@ public class bookingController extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet bookingController</title>");            
+            out.println("<title>Servlet bookingController</title>");
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Servlet bookingController at " + request.getContextPath() + "</h1>");
@@ -62,11 +62,11 @@ public class bookingController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-<<<<<<< Updated upstream
-         request.getRequestDispatcher("booking.jsp").forward(request, response);
-=======
-            
+
+
         bookingDAO b = new bookingDAO();
+
+  
        
         String sbtime;
         String name = request.getParameter("name");
@@ -81,10 +81,29 @@ public class bookingController extends HttpServlet {
         String formattedDateTime = currentDateTime.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
         sbtime=formattedDateTime;
         
+        userDAO u = new userDAO();
+        String account = u.checkEmail(email);
+       
+    
+        try {
+            EmailDAO e = new EmailDAO();
+            e.MailConfirmAppointment(email, name, date, time);
+            System.out.println("send mail Succuess");
+            request.setAttribute("success", "You have successfully booked. Please check your email for details about the consulting");
+        
+
+        } catch (MessagingException ex) {
+            Logger.getLogger(bookingController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        b.insert(name, phone, email, date, time, medical, payment, sbtime);
+        System.out.println("date = "  + date);
+      
+        request.getRequestDispatcher("booking.jsp").forward(request, response);
+   
         b.insert(name, phone, email, date, time, medical, payment, sbtime);
         request.getRequestDispatcher("booking.jsp").forward(request, response);
    
->>>>>>> Stashed changes
+
     }
 
     /**
@@ -98,7 +117,7 @@ public class bookingController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+
     }
 
     /**
@@ -106,9 +125,18 @@ public class bookingController extends HttpServlet {
      *
      * @return a String containing servlet description
      */
+    private final String NAME_PATTERN = "^[a-zA-Z\\sáàảãạăắằẳẵặâấầẩẫậéèẻẽẹêếềểễệíìỉĩịóòỏõọôốồổỗộơớờởỡợúùủũụưứừửữựýỳỷỹỵĐđ]+$";
+    
     @Override
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
-
+      String encyptPass(String pass) throws NoSuchAlgorithmException {
+        MessageDigest md = MessageDigest.getInstance("MD5");
+        md.update(pass.getBytes());
+        byte[] digest = md.digest();
+        String myHash = DatatypeConverter
+                .printHexBinary(digest).toLowerCase();
+        return myHash;
+    }
 }

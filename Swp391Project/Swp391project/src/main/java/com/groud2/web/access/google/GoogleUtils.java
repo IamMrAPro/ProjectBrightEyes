@@ -29,10 +29,10 @@ class GoogleUtils {
       String accessToken = jobj.get("access_token").toString().replaceAll("\"", "");
       return accessToken;
   }
-  public static GooglePojo getUserInfo(final String accessToken) throws ClientProtocolException, IOException {
+  public static GoogleUser getUserInfo(final String accessToken) throws ClientProtocolException, IOException {
     String link = Constants.GOOGLE_LINK_GET_USER_INFO + accessToken;
     String response = Request.Get(link).execute().returnContent().asString();
-    GooglePojo googlePojo = new Gson().fromJson(response, GooglePojo.class);
+    GoogleUser googlePojo = new Gson().fromJson(response, GoogleUser.class);
     System.out.println(googlePojo);
     return googlePojo;
   }

@@ -6,7 +6,28 @@ package com.groud2.web.model;
 
 
 public class user {
-    private String userId,fullname,account,password,phonenumber,address,email,bod;
+    private String userId,fullname,account,password,phonenumber,address,email,gender,bod, userimages;
+    private String role;
+
+    public user(String account) {
+       this.account = account;
+    }
+
+    public String getUserimages() {
+        return userimages;
+    }
+
+    public void setUserimages(String userimages) {
+        this.userimages = userimages;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
 
     public user() {
         
@@ -15,7 +36,10 @@ public class user {
         this.account = account;
         this.password = password;
     }   
-    public user(String userId, String fullname, String account, String password, String phonenumber, String address, String email, String bod) {
+
+    
+    // this generate not include user role
+    public user(String userId, String fullname, String account, String password, String phonenumber, String address, String email, String gender,String bod, String userimages) {
         this.userId = userId;
         this.fullname = fullname;
         this.account = account;
@@ -24,8 +48,26 @@ public class user {
         this.address = address;
         this.email = email;
         this.bod = bod;
+        this.userimages = userimages;
+        this.gender = gender;
     }
 
+    //this generate include user role
+    public user(String userId, String fullname, String account, String password, String phonenumber, String address, String email, String gender, String bod, String userimages, String role) {
+        this.userId = userId;
+        this.fullname = fullname;
+        this.account = account;
+        this.password = password;
+        this.phonenumber = phonenumber;
+        this.address = address;
+        this.email = email;
+        this.gender = gender;
+        this.bod = bod;
+        this.userimages = userimages;
+        this.role = role;
+    }
+    
+    
     public String getUserId() {
         return userId;
     }
@@ -89,6 +131,16 @@ public class user {
     public void setBod(String bod) {
         this.bod = bod;
     }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
+
+    
 
     
     

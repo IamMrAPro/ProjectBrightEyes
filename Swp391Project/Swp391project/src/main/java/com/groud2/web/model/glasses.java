@@ -17,19 +17,27 @@ public class glasses {
     private String style;
     private String image;
     private String price;
+    private int quantity;
     public glasses() {
     }
 
-    public glasses(String glassID, String glassName, String color, String gender, String material, String style,String imgage,String price) {
+    public glasses(String glassID, String glassName, String color, String gender, String material, String style, String image, String price, int quantity) {
         this.glassID = glassID;
         this.glassName = glassName;
         this.color = color;
         this.gender = gender;
         this.material = material;
         this.style = style;
-        this.image=imgage;
-        this.price=price;
+        this.image = image;
+        this.price = price;
+        this.quantity = quantity;
     }
+
+    public glasses(String glassID, int quantity) {
+        this.glassID = glassID;
+        this.quantity = quantity;
+    }
+    
 
     public String getGlassID() {
         return glassID;
@@ -93,6 +101,14 @@ public class glasses {
 
     public void setPrice(String price) {
         this.price = price;
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
     }
     
 }

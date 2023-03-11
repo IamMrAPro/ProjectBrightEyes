@@ -5,8 +5,11 @@
 package com.groud2.web.controller;
 
 import com.groud2.web.DAO.glassesDAO;
+import com.groud2.web.model.OrderGlasses.Cart;
+import com.groud2.web.model.OrderGlasses.Item;
 import com.groud2.web.model.glasses;
 import jakarta.servlet.ServletException;
+import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -14,6 +17,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -51,15 +55,7 @@ public class glassesController extends HttpServlet {
         }
     }
 
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
-    /**
-     * Handles the HTTP <code>GET</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
+    
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -67,13 +63,31 @@ public class glassesController extends HttpServlet {
         
         try {
             ArrayList<glasses> list = g.getAllglasses();
+            Cookie[] arr =request.getCookies();
+            String txt = "";
+            if(arr !=null){
+                for(Cookie c :arr){
+                    if(c.getName().equals("cart")){
+                        txt += c.getValue();
+                    }
+                }
+            }
+            Cart cart = new Cart(txt, list);
+            List<Item> listItem = cart.getItems();
+            int n;
+            if(listItem!=null){
+                n = listItem.size();
+            }else{
+                n=0;
+            }
+            
+            request.setAttribute("size", n);
+            
              request.setAttribute("listGlasses", list);
-             for(glasses item : list){
-                 System.out.println("day"+item.getGlassName());
-             }
+            
              request.getRequestDispatcher("Glasses.jsp").forward(request, response);
         } catch (SQLException ex) {
-            System.out.println("hellloooo");
+           
             Logger.getLogger(glassesController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
