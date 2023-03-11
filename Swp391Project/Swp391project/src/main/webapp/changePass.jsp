@@ -52,6 +52,7 @@
                             <span class="focus-input100" data-symbol="&#xf206;"></span>
                               
                         </div>
+<<<<<<<< HEAD:Swp391Project/Swp391project/src/main/webapp/changePass.jsp
                         <c:if test="${ms2 ne null}" >
                             <p  style="color: red;font-size: 20px">${ms2}</p>
                         </c:if>
@@ -60,6 +61,8 @@
                             <input class="input100" type="password" minlength="8"  name="newPass" placeholder="Enter new password">
                             <span class="focus-input100" data-symbol="&#xf206;"></span>
                         </div>
+========
+>>>>>>>> origin/Vu:Swp391Project/Swp391project/target/mavenproject1-1.0-SNAPSHOT/ForgotPassword.jsp
 
 
 
