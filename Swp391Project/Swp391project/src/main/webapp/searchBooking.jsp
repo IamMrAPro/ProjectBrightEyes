@@ -57,7 +57,7 @@
                            padding: 10px 20px;
                            color: #333;
                            text-decoration: none;
-                           display: inline-block;" href="recordOffline.jsp">Add New Patient</a>
+                           display: inline-block;" href="record.jsp">Add New Patient</a>
                         <a style="border-style: solid;
                            border-width: 1px;
                            border-radius: 5px;

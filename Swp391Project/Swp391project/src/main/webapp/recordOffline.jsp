@@ -17,9 +17,9 @@
                     <h1 style="margin-bottom: 30px;display: flex; justify-content: center">MEDICAL REPORT FORM</h1>
                     <div style="display: flex; justify-content: space-between">
                         <p>Patient's Full Name<input style="width: 250px" name="patientName" type="text" "></p> 
-                        <p>Date of Birth<input type="date" name ="dob" ></p>
+                        <p>Date of Birth<input type="date" name ="bod" ></p>
                     </div>
-                    <p style="margin-top: 20px">Address<input type="text" name="adress" style="width: 100%"></p> 
+                    <p style="margin-top: 20px">Address<input type="text" name="address" style="width: 100%"></p> 
                     <div style="display: flex; justify-content: space-between">
                         <p>Phone Number<input style="width: 250px" name="phone" type="text" "></p> 
                         <p>Email address<input type="text" name ="email" "></p>

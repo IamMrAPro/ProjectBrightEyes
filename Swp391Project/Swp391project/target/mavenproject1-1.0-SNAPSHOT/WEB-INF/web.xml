@@ -194,6 +194,10 @@
         <servlet-name>listWattingPatient</servlet-name>
         <servlet-class>com.groud2.web.controller.DoctorController.listWattingPatient</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>FeedbackController</servlet-name>
+        <servlet-class>com.groud2.web.controller.FeedbackController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>homeController</servlet-name>
         <url-pattern>/home</url-pattern>
@@ -381,6 +385,10 @@
     <servlet-mapping>
         <servlet-name>listWattingPatient</servlet-name>
         <url-pattern>/listWattingPatient</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>FeedbackController</servlet-name>
+        <url-pattern>/FeedbackController</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
