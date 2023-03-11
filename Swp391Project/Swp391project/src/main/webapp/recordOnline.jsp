@@ -18,9 +18,9 @@
                     <h1 style="margin-bottom: 30px;display: flex; justify-content: center">MEDICAL REPORT FORM</h1>
                     <div style="display: flex; justify-content: space-between">
                         <p>Patient's Full Name<input style="width: 250px" name="patientName" type="text" value="${ld.getName()}"></p> 
-                        <p>Date of Birth<input type="date" name ="dob" ></p>
+                        <p>Date of Birth<input type="date" name ="bod" ></p>
                     </div>
-                    <p style="margin-top: 20px">Address<input type="text" name="adress" style="width: 100%"></p> 
+                    <p style="margin-top: 20px">Address<input type="text" name="address" style="width: 100%"></p> 
                     <div style="display: flex; justify-content: space-between">
                         <p>Phone Number<input style="width: 250px" name="phone" type="text" value="${ld.getPhone()}"></p> 
                         <p>Email address<input type="text" name ="email" value="${ld.getEmail()}"></p>
@@ -36,7 +36,7 @@
                     <textarea style="width: 100%" name="symptom" rows="5" cols="30"></textarea>
 
                     <div  style="margin-top: 20px;display: flex;justify-content: space-between">
-                        <p>ID Card:<input type="text" name="idcard"> </p>
+                        <p>ID Card:<input minlength="12" maxlength="12" type="text" name="idcard"> </p>
                     <p>Choose doctor: </p>
                     <select style="height: 28px; width: 25%" name="doctor">
                         <c:forEach items="${listrole}" var="l">

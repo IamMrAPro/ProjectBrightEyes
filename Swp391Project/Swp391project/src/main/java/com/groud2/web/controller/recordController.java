@@ -96,6 +96,7 @@ public class recordController extends HttpServlet {
         String phone = request.getParameter("phone");
         String email = request.getParameter("email");
         String address = request.getParameter("address");
+        System.out.println(address);
         String bod = request.getParameter("bod");
         String gender = request.getParameter("gender");
         System.out.println("Gender: " + gender);

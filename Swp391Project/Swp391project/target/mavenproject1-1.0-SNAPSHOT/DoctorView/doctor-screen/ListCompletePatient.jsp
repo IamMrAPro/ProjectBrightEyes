@@ -1,21 +1,8 @@
-<<<<<<<< HEAD:Swp391Project/Swp391project/src/main/webapp/StaffView/staff-screen/OnlinePatient.jsp
-<%-- 
-    Document   : ListWattingPatient
-    Created on : Mar 6, 2023, 10:47:17 PM
-    Author     : nguye
---%>
-
-========
->>>>>>>> origin/Vu:Swp391Project/Swp391project/target/mavenproject1-1.0-SNAPSHOT/DoctorView/doctor-screen/ListCompletePatient.jsp
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-<<<<<<<< HEAD:Swp391Project/Swp391project/src/main/webapp/StaffView/staff-screen/OnlinePatient.jsp
-    <%@include file="../Staff-layout/staff-head.jsp" %>
-========
     <%@include file="../doctor-layout/doctor-head.jsp" %>
->>>>>>>> origin/Vu:Swp391Project/Swp391project/target/mavenproject1-1.0-SNAPSHOT/DoctorView/doctor-screen/ListCompletePatient.jsp
     <header> <script>
         function redirectToServlet() {
             const selectedOption = document.getElementById("selectOption").value;
@@ -129,22 +116,13 @@
         <form action="manageCustomer" class="vw-100 vh-100 d-flex" method="post">
             <!--            set position for not select case-->           
             <!--            --------------------------------------------------------------------->
-<<<<<<<< HEAD:Swp391Project/Swp391project/src/main/webapp/StaffView/staff-screen/OnlinePatient.jsp
-            <%@include file="../Staff-layout/staff-navbar.jsp" %>
-========
             <%@include file="../doctor-layout/doctor-navbar.jsp" %>
->>>>>>>> origin/Vu:Swp391Project/Swp391project/target/mavenproject1-1.0-SNAPSHOT/DoctorView/doctor-screen/ListCompletePatient.jsp
             <div class="main-view main-view-content">
                 <br><br>
                 <div class="d-flex justify-content-between header-staff-list align-items-center mb-4">
                     <h2 class="text-center w-100">PATIENT MANAGEMENT </h2>
                 </div>
                 <br>
-<<<<<<<< HEAD:Swp391Project/Swp391project/src/main/webapp/StaffView/staff-screen/OnlinePatient.jsp
-
-                
-                
-========
                 <% int count = 0;%>
                 <!-- Modal -->
                 <table class="table table-bordered">
@@ -178,7 +156,6 @@
                         </c:forEach>
                     </tbody>
                 </table>
->>>>>>>> origin/Vu:Swp391Project/Swp391project/target/mavenproject1-1.0-SNAPSHOT/DoctorView/doctor-screen/ListCompletePatient.jsp
             </div>
         </form>
     </body>
