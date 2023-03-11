@@ -175,8 +175,24 @@
         <servlet-class>com.groud2.web.controller.currentBooking</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>TestController</servlet-name>
-        <servlet-class>com.groud2.web.controller.TestController</servlet-class>
+        <servlet-name>listCompletePatient</servlet-name>
+        <servlet-class>com.groud2.web.controller.DoctorController.listCompletePatient</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>medicalRecord</servlet-name>
+        <servlet-class>com.groud2.web.controller.DoctorController.medicalRecord</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ChooseOn_Of</servlet-name>
+        <servlet-class>com.groud2.web.controller.DoctorController.ChooseOn_Of</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ReportError</servlet-name>
+        <servlet-class>com.groud2.web.controller.DoctorController.ReportError</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>listWattingPatient</servlet-name>
+        <servlet-class>com.groud2.web.controller.DoctorController.listWattingPatient</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>homeController</servlet-name>
@@ -347,8 +363,24 @@
         <url-pattern>/currentBooking</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>TestController</servlet-name>
-        <url-pattern>/TestController</url-pattern>
+        <servlet-name>listCompletePatient</servlet-name>
+        <url-pattern>/listCompletePatient</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>medicalRecord</servlet-name>
+        <url-pattern>/medicalRecord</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ChooseOn_Of</servlet-name>
+        <url-pattern>/ChooseOn_Of</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ReportError</servlet-name>
+        <url-pattern>/ReportError</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>listWattingPatient</servlet-name>
+        <url-pattern>/listWattingPatient</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
