@@ -7,9 +7,36 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
+<<<<<<< Updated upstream
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
+=======
+    <%@include file="AdminView/admin-layout/admin-head.jsp" %>
+    <style>
+        thead {
+            background-color: #5bc1ac;
+        }
+        thead th {
+            text-align: center;
+        }
+        td {
+            text-align: center;
+        }
+        button a {
+            text-decoration: none;
+            color: inherit;
+            cursor: inherit;
+        }
+    </style>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    <body onload="getPositionNavBar(6)">
+        <form action="searchBooking" class="vw-100 vh-100 d-flex" method="post">
+            <!--            set position for not select case-->
+            <input name="setPosition" type="text" value="7" class="d-none">
+            <!--            --------------------------------------------------------------------->
+>>>>>>> Stashed changes
 
         <style>
             thead {
@@ -74,7 +101,20 @@
                 </div>
 
 
+<<<<<<< Updated upstream
             </div>
+=======
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Name</th>
+                                    <th>Phone</th>
+                                    <th>Email</th>
+                                    <th>Day</th>
+                                    <th>Time</th>
+                                    <th>Status</th>
+>>>>>>> Stashed changes
 
             <div class="row align-items-center">
                 <div class="col">
@@ -105,8 +145,43 @@
 
                                     <td><a href="GetPatientOnline?id=${p.getBookingId()} "><ion-icon style="font-size:25px" name="add-circle-outline"></ion-icon></a></td>
                                 </tr>
+<<<<<<< Updated upstream
                             </tbody>
                         </c:forEach>
+=======
+                            </thead>
+
+
+                            <c:forEach items="${list}" var="p">
+                                <tbody> 
+                                    <tr><td>${p.getBookingId()} </td>
+                                        <td>${p.getName()}</td>
+                                        <td>${p.getPhone()}</td>
+                                        <td>${p.getEmail()}</td>
+                                        <td>${p.getDay()}</td>
+                                        <td>${p.getTime()}</td>        
+                                        <td> <c:if test="${p.getStatus()==1}" >
+                                                <p style="color: red;font-size: 20px">done</p>
+                                            </c:if>
+                                            <c:if test="${p.getStatus()==0}" >
+                                                <p style="color: green;font-size: 20px">not yet</p>
+                                            </c:if></td>
+
+                                        <td><c:if test="${p.getStatus()!=1}">
+                        <a href="GetPatientOnline?id=${p.getBookingId()}"><ion-icon style="font-size:25px" name="add-circle-outline"></ion-icon></a>
+                    </c:if></td>
+                                    </tr>
+                                </tbody>
+                            </c:forEach>
+
+                        </table>
+
+                    </div>
+
+                </div>
+
+                <div class="row align-items-end">
+>>>>>>> Stashed changes
 
                     </table>
 

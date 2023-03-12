@@ -30,7 +30,7 @@ public class bookingDAO {
 
     public void insert(String name, String phone, String email, String date, String time, String medical, String payment, String sbtime) {
         try {
-            String strSelect = "INSERT INTO swp.`booking`\n"
+            String strSelect = "INSERT INTO swppro.`booking`\n"
                     + "(name,`phone`,`email`,`date`,`time`,`medical`,`payment`,`sbtime`)\n"
                     + "VALUES\n"
                     + "(?,?,?,?,?,?,?,?)";
@@ -53,7 +53,22 @@ public class bookingDAO {
         }
 
     }
+public void insertStatusByID(int id) {
+        try {
+            String strSelect = "UPDATE `swppro`.`booking` SET `status` = '1' WHERE (`bookId` = ?)";
+                    
+            connection = dbc.getConnection();
+            ps = connection.prepareStatement(strSelect);
+            ps.setInt(1, id);
+            
+            ps.execute();
+            System.out.println("insert status booking success");
+        } catch (Exception e) {
+            System.out.println("Insert status booking error:" + e.getMessage());
 
+        }
+
+    }
     public ArrayList<booking> getAllBooking() throws SQLException {
         ArrayList<booking> list = new ArrayList<>();
         String sql = "SELECT * FROM booking";
@@ -71,8 +86,9 @@ public class bookingDAO {
                 String medical = rs.getString(7);
                 String payment = rs.getString(8);
                 String sbtime = rs.getString(9);
+                String status = rs.getString(10);
 
-                booking g = new booking(bookingID, name, phone, email, date, time, medical, payment, sbtime);
+                booking g = new booking(bookingID, name, phone, email, date, time, medical, payment, sbtime,status);
                 list.add(g);
                 System.out.println("get booking success");
             }
@@ -103,8 +119,8 @@ public class bookingDAO {
                 String medical = rs.getString(7);
                 String payment = rs.getString(8);
                 String sbtime = rs.getString(9);
-
-                booking g = new booking(bookingID, name, phone, email, date, time, medical, payment, sbtime);
+                String status = rs.getString(10);
+                booking g = new booking(bookingID, name, phone, email, date, time, medical, payment, sbtime,status);
                 list.add(g);
                 System.out.println("get booking success");
             }
@@ -117,72 +133,6 @@ public class bookingDAO {
         }
         return list;
 
-    }
-
-    public ArrayList<booking> getAllByEmail(String email) throws SQLException, IOException {
-        ArrayList<booking> list = new ArrayList<>();
-        String sql = "SELECT * FROM booking where email=?";
-        try {
-            connection = dbc.getConnection();
-            ps = connection.prepareStatement(sql);
-            ps.setString(1, email);
-            rs = ps.executeQuery();
-            while (rs.next()) {
-                String bookId = rs.getString(1);
-                String name = rs.getString(2);
-                String phone = rs.getString(3);
-                String date = rs.getString(5);
-                String time = rs.getString(6);
-                String medical = rs.getString(7);
-                String payment = rs.getString(8);
-                String sbtime = rs.getString(9);
-
-                booking g = new booking(bookId, name, phone, email, date, time, medical, payment, sbtime);
-                System.out.println("get booking by email success");
-                list.add(g);
-            }
-        } catch (SQLException e) {
-            System.out.println("get booking by email error: " + e.getMessage());
-        } finally {
-            if (connection != null) {
-                connection.close();
-            }
-        }
-
-        return list;
-    }
-
-    public ArrayList<booking> getAllByPhone(String phone) throws SQLException, IOException {
-        ArrayList<booking> list = new ArrayList<>();
-        String sql = "SELECT * FROM booking where phone=?";
-        try {
-            connection = dbc.getConnection();
-            ps = connection.prepareStatement(sql);
-            ps.setString(1, phone);
-            rs = ps.executeQuery();
-            while (rs.next()) {
-                String bookId = rs.getString(1);
-                String name = rs.getString(2);
-                String email = rs.getString(4);
-                String date = rs.getString(5);
-                String time = rs.getString(6);
-                String medical = rs.getString(7);
-                String payment = rs.getString(8);
-                String sbtime = rs.getString(9);
-
-                booking g = new booking(bookId, name, phone, email, date, time, medical, payment, sbtime);
-                System.out.println("get booking by phone success");
-                list.add(g);
-            }
-        } catch (SQLException e) {
-            System.out.println("get booking by phone error: " + e.getMessage());
-        } finally {
-            if (connection != null) {
-                connection.close();
-            }
-        }
-
-        return list;
     }
 
     public ArrayList<booking> getAllByBoth(String email, String phone) throws SQLException {
@@ -217,7 +167,7 @@ public class bookingDAO {
 
         return list;
     }
-
+    
     public boolean checkEmail(String email) throws SQLException, IOException {
 
         String sql = "SELECT email FROM swp.user where email=?  ";

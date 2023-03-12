@@ -69,7 +69,7 @@ public class loginController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
+        System.out.println("da co vai de thu login");
         String account = request.getParameter("account");
         String password = request.getParameter("password");
         String captchaText = request.getParameter("captchaInput");
