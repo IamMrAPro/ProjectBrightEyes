@@ -7,11 +7,11 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-<<<<<<< Updated upstream
+
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
-=======
+
     <%@include file="AdminView/admin-layout/admin-head.jsp" %>
     <style>
         thead {
@@ -36,7 +36,6 @@
             <!--            set position for not select case-->
             <input name="setPosition" type="text" value="7" class="d-none">
             <!--            --------------------------------------------------------------------->
->>>>>>> Stashed changes
 
         <style>
             thead {
@@ -101,9 +100,9 @@
                 </div>
 
 
-<<<<<<< Updated upstream
+
             </div>
-=======
+
                         <table class="table table-bordered">
                             <thead>
                                 <tr>
@@ -114,7 +113,7 @@
                                     <th>Day</th>
                                     <th>Time</th>
                                     <th>Status</th>
->>>>>>> Stashed changes
+
 
             <div class="row align-items-center">
                 <div class="col">
@@ -145,10 +144,10 @@
 
                                     <td><a href="GetPatientOnline?id=${p.getBookingId()} "><ion-icon style="font-size:25px" name="add-circle-outline"></ion-icon></a></td>
                                 </tr>
-<<<<<<< Updated upstream
+
                             </tbody>
                         </c:forEach>
-=======
+
                             </thead>
 
 
@@ -181,7 +180,7 @@
                 </div>
 
                 <div class="row align-items-end">
->>>>>>> Stashed changes
+
 
                     </table>
 

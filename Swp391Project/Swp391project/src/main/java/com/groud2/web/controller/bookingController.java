@@ -134,8 +134,7 @@ public class bookingController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-<<<<<<< Updated upstream
-=======
+
         //Get request from client
         String position = request.getParameter("position");
         String setPos = request.getParameter("setPosition");
@@ -150,7 +149,7 @@ public class bookingController extends HttpServlet {
         } else {
             response.sendRedirect("searchBooking");
         }
->>>>>>> Stashed changes
+
 
     }
 
@@ -163,12 +162,10 @@ public class bookingController extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
-<<<<<<< Updated upstream
-      String encyptPass(String pass) throws NoSuchAlgorithmException {
-=======
+
 
     String encyptPass(String pass) throws NoSuchAlgorithmException {
->>>>>>> Stashed changes
+
         MessageDigest md = MessageDigest.getInstance("MD5");
         md.update(pass.getBytes());
         byte[] digest = md.digest();
@@ -176,8 +173,6 @@ public class bookingController extends HttpServlet {
                 .printHexBinary(digest).toLowerCase();
         return myHash;
     }
-<<<<<<< Updated upstream
-=======
 
   public static boolean isValidName(String name) {
     // Kiểm tra tên không được để trống và không chứa khoảng trắng đầu hoặc cuối chuỗi
@@ -304,5 +299,5 @@ public class bookingController extends HttpServlet {
         }
 
     }
->>>>>>> Stashed changes
+
 }
