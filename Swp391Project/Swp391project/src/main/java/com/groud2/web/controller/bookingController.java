@@ -116,7 +116,22 @@ public class bookingController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
+        //Get request from client
+        String position = request.getParameter("position");
+        String setPos = request.getParameter("setPosition");
+        
+        if (position == null) {
+            position = setPos;
+        }
+        
+        System.out.println("Position = " + position);
+        if (!position.equals("7")) {
+            changePosition(position, request, response);
+        }
+        else {
+            response.sendRedirect("searchBooking");
+        }
+        
     }
 
     /**
@@ -130,6 +145,7 @@ public class bookingController extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
+    
       String encyptPass(String pass) throws NoSuchAlgorithmException {
         MessageDigest md = MessageDigest.getInstance("MD5");
         md.update(pass.getBytes());
@@ -138,4 +154,37 @@ public class bookingController extends HttpServlet {
                 .printHexBinary(digest).toLowerCase();
         return myHash;
     }
+      
+      private void changePosition(String pos, HttpServletRequest req, HttpServletResponse resp) throws IOException {
+        switch (pos) {
+            case "1":
+                resp.sendRedirect("adminDashboard");
+                break;
+            case "2":
+                resp.sendRedirect("manageStaff");
+                break;
+            case "3":
+                resp.sendRedirect("manageCustomer");
+                break;
+            case "4":
+                resp.sendRedirect("manageRoom");
+                break;
+            case "5":
+                resp.sendRedirect("manageGlasses");
+                break;
+            case "6":
+                resp.sendRedirect("feedback");
+                break;
+            case "7":
+                resp.sendRedirect("searchBooking");
+                break;
+            case "8":
+                resp.sendRedirect("adminDashboard");
+                break;
+            default:
+                throw new AssertionError();
+        }
+        
+      }
 }
+
