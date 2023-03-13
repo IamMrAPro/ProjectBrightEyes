@@ -58,15 +58,6 @@
                 background-color: white;
                 color: #5a6f80;
             }
-            
-            .admin-link a{
-                text-decoration: none;
-                color: white;
-            }
-            .admin-link a:active {
-                background-color: #5bc1ac;
-                color: #5a6f80;
-            }
         </style>
         <script>
             function getPositionNavBar(x) {
@@ -89,53 +80,73 @@
                 <div class=" fw-bold admin-nav-title mx-1">MANAGEMENT</div>
                 <div>
                     <div class="admin-link">
-                        <a href="adminDashboard" class="d-flex px-4 align-items-center admin-nav-label">
+                        <input type="submit" name="position" value="1" id="dashboard" class="d-none">
+                        <label for="dashboard" class="d-flex px-4 align-items-center admin-nav-label">
                             <i class="fa-solid fa-layer-group"></i>
                             <div class="mx-2">Dashboard</div>
-                        </a>
+                        </label>
                     </div>
                     <div class="admin-link">
-                        <a href="manageStaff" class="d-flex px-4 align-items-center admin-nav-label">
+                        <input type="submit" name="position" value="2" id="staff" class="d-none">
+                        <label for="staff" class="d-flex px-4 align-items-center admin-nav-label">
                             <i class="fa-solid fa-user-nurse"></i>
                             <div class="mx-2">Staff</div>
-                        </a>
+                        </label>
                     </div>
                     <div class="admin-link">
-                        <a href="manageCustomer" class="d-flex px-4 align-items-center admin-nav-label">
+                        <input type="submit" name="position" value="3" id="customer" class="d-none">
+                        <label for="customer" class="d-flex px-4 align-items-center admin-nav-label">
                             <i class="fa-solid fa-user-plus"></i>
                             <div class="mx-2">Customer</div>
-                        </a>
+                        </label>
                     </div>
                     <div class="admin-link">
-                        <a href="manageRoom" class="d-flex px-4 align-items-center admin-nav-label">
+                        <input type="submit" name="position" value="4" id="room" class="d-none">
+                        <label for="room" class="d-flex px-4 align-items-center admin-nav-label">
                             <i class="fa-solid fa-house-medical"></i>
                             <div class="mx-2">Room</div>
-                        </a>
+                        </label>
                     </div>
                     <div class="admin-link">
-                        <a href="manageGlasses" class="d-flex px-4 align-items-center admin-nav-label">
+                        <input type="submit" name="position" value="5" id="glass" class="d-none">
+                        <label for="glass" class="d-flex px-4 align-items-center admin-nav-label">
                             <i class="fa-solid fa-glasses"></i>
                             <div class="mx-2">Glass</div>
-                        </a>
+                        </label>
                     </div>
                     <div class="admin-link">
-                        <a href="feedback" class="d-flex px-4 align-items-center admin-nav-label">
+                        <input type="submit" name="position" value="6" id="feedback" class="d-none">
+                        <label for="feedback" class="d-flex px-4 align-items-center admin-nav-label">
                             <i class="fa-solid fa-face-smile"></i>
                             <div class="mx-2">Feedback</div>
-                        </a>
+                        </label>
                     </div>
-                    
                     <div class="admin-link">
-                        <a href="searchBooking" class="d-flex px-4 align-items-center admin-nav-label">
-                            <i class="fa-solid fa-calendar-days"></i>
-                            <div class="mx-2">Booking</div>
+                        <a href="searchBooking" class="d-flex px-4 align-items-center admin-nav-label text-decoration-none">
+                            <i class="fa-solid fa-calendar-days" style="color: white;"></i>
+                            <div class="mx-2" style="color: white;">Booking</div>
                         </a>
                     </div>
                 </div>
 
+                <br>
+                <div class="fw-bold admin-nav-title mx-1">CLINIC NEWS</div>
+                <div class="admin-link ">
+                    <input type="submit" name="position" value="7" id="news-new" class="d-none">
+                    <label for="news-new" class="d-flex px-4 align-items-center admin-nav-label">
+                        <i class="fa-solid fa-square-plus"></i>
+                        <div class="mx-2">Create new</div>
+                    </label>
+                </div>
+                <div class="admin-link ">
+                    <input type="submit" name="position" value="8" id="news-list" class="d-none">
+                    <label for="news-list" class="d-flex px-4 align-items-center admin-nav-label">
+                        <i class="fa-solid fa-list"></i>
+                        <div class="mx-2">List news</div>
+                    </label>
+                </div>
             </div>
-            <br>
-            <br>
+            
             <a href="logout" class="btn btn-logout text-decoration-none">Logout</a>
         </div>
 

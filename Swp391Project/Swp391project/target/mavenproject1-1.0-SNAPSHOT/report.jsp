@@ -1,20 +1,18 @@
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
         <title>JSP Page</title>
+
         <title>report</title>
+
 
         <style>
         </style>
-
-
 
     </head>
     <jsp:include page="layout/head.jsp"/>
@@ -81,5 +79,17 @@
         <jsp:include page="layout/footer.jsp"/>
     </body>
 
+
+
+        
+<jsp:include page="layout/chatbot.jsp"/>
+<jsp:include page="layout/footer.jsp"/>
+
+         
+    </head>
+    
+<jsp:include page="layout/chatbot.jsp"/>
+<jsp:include page="layout/footer.jsp"/>
+</body>
 
 </html>

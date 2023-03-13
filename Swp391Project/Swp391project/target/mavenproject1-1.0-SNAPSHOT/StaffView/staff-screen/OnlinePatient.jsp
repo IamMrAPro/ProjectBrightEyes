@@ -1,23 +1,14 @@
-
 <%-- 
     Document   : ListWattingPatient
     Created on : Mar 6, 2023, 10:47:17 PM
     Author     : nguye
 --%>
 
-
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-
     <%@include file="../Staff-layout/staff-head.jsp" %>
-
-
-    <%@include file="../Staff-layout/staff-head.jsp" %>
-
-    <%@include file="../doctor-layout/doctor-head.jsp" %>
-
     <header> <script>
         function redirectToServlet() {
             const selectedOption = document.getElementById("selectOption").value;
@@ -131,54 +122,17 @@
         <form action="manageCustomer" class="vw-100 vh-100 d-flex" method="post">
             <!--            set position for not select case-->           
             <!--            --------------------------------------------------------------------->
-
+            <%@include file="../Staff-layout/staff-navbar.jsp" %>
             <div class="main-view main-view-content">
                 <br><br>
                 <div class="d-flex justify-content-between header-staff-list align-items-center mb-4">
                     <h2 class="text-center w-100">PATIENT MANAGEMENT </h2>
                 </div>
                 <br>
-        
+
+                
+                
             </div>
         </form>
     </body>
 </html>
-                <% int count = 0;%>
-                <!-- Modal -->
-                <table class="table table-bordered">
-                    <thead id="table-head">
-                        <tr>
-                            <th>No.</th>
-                            <th>
-                                <div class="d-flex justify-content-between">
-                                    <div>Name</div>                                   
-                                </div>
-                            </th>
-
-                            <th>Phone</th>
-                            <th>ID Card</th>
-                            <th>Status--Time</th>
-                            <th>Process</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-
-                        <c:forEach items="${listCompletePatient}" var="c">
-                            <tr>
-                                <th><% count++;
-                                    out.print(count);%></th>
-                                <th>${c.getPatientName()}</th>
-                                <th>${c.getPhone()}</th>
-                                <th>${c.getIdcard()}</th>
-                                <th>${c.getStatus()}--${c.getTimeOrder()}</th>
-                                <th><a href="medicalRecord?Idcard=${c.getIdcard()}" style="color: black">Khám</a></th>
-                            </tr>
-                        </c:forEach>
-                    </tbody>
-                </table>
-
-            </div>
-        </form>
-    </body>
-</html>
-

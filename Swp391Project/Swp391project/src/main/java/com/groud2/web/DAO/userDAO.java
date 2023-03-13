@@ -29,7 +29,7 @@ public class userDAO {
 
     public user checklogin(String acc, String pass) throws SQLException, IOException {
 
-        String sql = "SELECT account,password FROM swp.user where account=? and password =?";
+        String sql = "SELECT account,password FROM user where account=? and password =?";
 
         try {
             connection = dbc.getConnection();
@@ -215,7 +215,7 @@ public class userDAO {
     }
 
     public boolean createData(String fullname, String account, String password, String phonenumber, String address, String email, String gender, String birthofdate, String role) throws SQLException {
-        String sql = "INSERT INTO `swp`.`user`\n"
+        String sql = "INSERT INTO `swppro`.`user`\n"
                 + "(`fullname`,`account`,`password`,`phonenumber`,`address`,`email`,`gender`,`bod`,`role`) values (?,?,?,?,?,?,?,?,?)";
         try {
             System.out.println("name" + fullname);

@@ -19,7 +19,29 @@ public class booking {
     private String medical;
     private String payment;
     private String sbtime;
+    private String status;
 
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public booking(String bookingId, String name, String phone, String email, String day, String time, String medical, String payment, String sbtime, String status) {
+        this.bookingId = bookingId;
+        this.name = name;
+        this.phone = phone;
+        this.email = email;
+        this.day = day;
+        this.time = time;
+        this.medical = medical;
+        this.payment = payment;
+        this.sbtime = sbtime;
+        this.status = status;
+    }
+    
     public booking() {
     }
 

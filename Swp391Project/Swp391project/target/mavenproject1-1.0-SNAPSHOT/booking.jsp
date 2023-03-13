@@ -57,31 +57,40 @@
                     <div class="col-lg-7">
                         <div class="card border-0 shadow rounded overflow-hidden">
                             <div class="tab-content p-4" id="pills-tabContent">
-                                <form action="booking" method="get">
+                                <form action="booking" method="get" onsubmit="return validateForm();">
                                     <div class="row">
-                        <c:if test="${success ne null}" >
-                            <p style="color: red;font-size: 20px">${success}</p>
-                        </c:if>
+                                        <c:if test="${success ne null}" >
+                                            <p style="color:#00ccff;font-size: 20px">${success}</p>
+                                        </c:if>
                                         <div class="p-6">
                                             <h6 class="mb-0">Patient information</h6>
                                         </div>
                                         <br><br>
                                         <div class="col-lg-6">
                                             <div class="mb-3">
-                                                <label class="form-label" name="">Name</label>
-                                                <input name="name" id="name" class="form-control" >
+                                                <label class="form-label" id="name" >Name</label>
+                                                <c:if test="${checkName ne null}" >
+                                            <p style="color:red;font-size: 13px">${checkName}</p>
+                                        </c:if>
+                                                <input name="name" id="name" class="form-control" required>
                                             </div>
                                         </div>
                                         <div class="col-lg-6">
                                             <div class="mb-3">
                                                 <label class="form-label" >Phone</label>
+                                                <c:if test="${checkPhone ne null}" >
+                                            <p style="color:red;font-size: 13px">${checkPhone}</p>
+                                        </c:if>
                                                 <input type="text"name="phone" minlength="10" maxlength="10" validate-input class="form-control" ">
                                             </div>
                                         </div>
                                         <div class="col-lg-12">
                                             <div class="mb-3">
                                                 <label class="form-label" >Email</label>
-                                                <input type="text" name="email" data-validate="Email is required" required class="form-control">
+                                                <c:if test="${checkMail ne null}" >
+                                            <p style="color:red;font-size: 13px">${checkMail}</p>
+                                        </c:if>
+                                                <input type="text" name="email" id="email" class="form-control">
                                             </div>
                                         </div>
                                         <br>
@@ -92,6 +101,9 @@
                                         <div class="col-md-6">
                                             <div class="mb-3">
                                                 <label class="form-label" for="dateInput">Select a date:</label>
+                                                 <c:if test="${checkDate ne null}" >
+                                            <p style="color:red;font-size: 13px">${checkDate}</p>
+                                        </c:if>
                                                 <input type="date" id="dateInput" class="flatpickr flatpickr-input form-control" name="dateInput" onchange="checkDateInput()">
 
                                             </div>
@@ -100,9 +112,14 @@
                                         </div>
 
                                         <div class="col-md-6">
+                                            
                                             <div class="mb-3">
                                                 <label class="form-label">Time</label>
+                                                <c:if test="${checkTime ne null}" >
+                                            <p style="color:red;font-size: 13px">${checkTime}</p>
+                                        </c:if>
                                                 <select required="" name="time" class="form-control department-name select2input">
+                                                    <option value="null" checked>Choose time</option>
                                                     <option value="7:00">7:00 am</option>
                                                     <option value="8:00">8:00 am</option>
                                                     <option value="9:00">9:00 am</option>
@@ -166,34 +183,7 @@
         <!--===============================================================================================-->
         <script src="assets/js/main.js"></script>
         <script>
-                                                    $("#checkin-date").flatpickr({
-                                                        defaultDate: "today",
-                                                        minDate: "today",
-                                                        maxDate: new Date().fp_incr(14),
-                                                        dateFormat: "d/m/Y",
-                                                        locale: "vn"
-                                                    });
-                                                    function Select(text) {
-                                                        if (text.value == "") {
-                                                            $(".default").hide();
-                                                            $(".vnpay").hide();
-                                                        } else if (text.value == "default") {
-                                                            $(".default").show();
-                                                            $(".vnpay").hide();
-                                                        } else if (text.value == "vnpay") {
-                                                            $(".vnpay").show();
-                                                            $(".default").hide();
-                                                        } else {
-                                                            $(".default").hide();
-                                                            $(".vnpay").hide();
-                                                        }
-                                                    }
-                                                    const nameInput = document.getElementById("name");
-                                                    const regex = /^[a-zA-Z\s-]+$/;
 
-                                                    if (!regex.test(nameInput.value)) {
-                                                        console.log("Tên không hợp lệ. Vui lòng nhập lại.");
-                                                    }
         </script>
 
     </body>

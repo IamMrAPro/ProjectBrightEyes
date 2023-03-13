@@ -4,8 +4,14 @@
  */
 package com.groud2.web.controller;
 
+import com.groud2.web.DAO.EmailDAO;
 import com.groud2.web.DAO.userDAO;
+import static com.groud2.web.controller.bookingController.isValidDate;
+import static com.groud2.web.controller.bookingController.isValidEmail;
+import static com.groud2.web.controller.bookingController.isValidName;
+import static com.groud2.web.controller.bookingController.isValidPhoneNumber;
 import com.groud2.web.model.user;
+import jakarta.mail.MessagingException;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
@@ -17,6 +23,8 @@ import java.io.PrintWriter;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.sql.SQLException;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -106,22 +114,49 @@ public class updateController extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         userDAO p = new userDAO();
-        
+
         HttpSession session = (HttpSession) request.getSession();
         String account = (String) session.getAttribute("id");
-       
-                
+
         String newName = request.getParameter("newName");
         String newGender = request.getParameter("newGender");
         String newPhone = request.getParameter("newPhone");
         String newAddress = request.getParameter("newAddress");
         String newEmail = request.getParameter("newEmail");
-        String newBod = request.getParameter("newBod");
-        System.out.println("check bod: " + newBod); 
-        System.out.println("check address update: " + newAddress);
 
-        p.updateProfile(account, newName, newGender, newPhone, newAddress, newEmail, newBod);
-        response.sendRedirect("profile");
+        String inputBirthDate = request.getParameter("newBod");
+        LocalDate newBod = LocalDate.parse(inputBirthDate);
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        String newBodString = dtf.format(newBod);
+        boolean isNameValid = isValidName(newName);
+        boolean isPhoneValid = isValidPhoneNumber(newPhone);
+        boolean isEmailValid = isValidEmail(newEmail);
+        boolean isDateValid = isAdult(newBod);
+        if (!isValidName(newName)) {
+            System.out.println("Invalid name");
+            request.setAttribute("checkName", "Your name is invalid");
+        }
+
+        if (!isValidPhoneNumber(newPhone)) {
+            System.out.println("Invalid phone");
+            request.setAttribute("checkPhone", "Your phone is invalid (0xxxxxxxxx)");
+        }
+
+        if (!isValidEmail(newEmail)) {
+            System.out.println("Invalid email");
+            request.setAttribute("checkEmail", "Your email is invalid (xxx@gmail.com)");
+        }
+        if (!isAdult(newBod)) {
+            System.out.println("Invalid date");
+            request.setAttribute("checkDate", "Must be older than 18 years old");
+        }
+        if (isNameValid && isPhoneValid && isEmailValid && isDateValid) {
+            p.updateProfile(account, newName, newGender, newPhone, newAddress, newEmail, newBodString);
+            request.getRequestDispatcher("profile.jsp").forward(request, response);
+        } else {
+            // Nếu có ít nhất một giá trị không hợp lệ, hiển thị lại trang booking với thông báo lỗi
+            request.getRequestDispatcher("changeProfile.jsp").forward(request, response);
+        }
 
     }
 
@@ -133,4 +168,90 @@ public class updateController extends HttpServlet {
                 .printHexBinary(digest).toLowerCase();
         return myHash;
     }
+
+   public static boolean isValidName(String name) {
+    // Kiểm tra tên không được để trống và không chứa khoảng trắng đầu hoặc cuối chuỗi
+    if (name == null || name.trim().length() == 0 || name.startsWith(" ") || name.endsWith(" ")) {
+        return false;
+    }
+
+    // Kiểm tra tên không chứa các ký tự đặc biệt hoặc số
+    if (!name.matches("[\\p{L} ]+")) {
+        return false;
+    }
+
+    // Kiểm tra tên không quá ngắn hoặc quá dài
+    if (name.length() < 2 || name.length() > 50) {
+        return false;
+    }
+
+    // Tên hợp lệ
+    return true;
+}
+
+    public static boolean isAdult(LocalDate birthDate) {
+        LocalDate currentDate = LocalDate.now();
+        LocalDate adultDate = currentDate.minusYears(18);
+
+        return birthDate.isBefore(adultDate);
+    }
+
+    public static boolean isValidPhoneNumber(String phoneNumber) {
+        // Xóa khoảng trắng và các ký tự không phải số
+        String cleanedPhoneNumber = phoneNumber.replaceAll("[^0-9]", "");
+
+        // Kiểm tra độ dài của số điện thoại
+        if (cleanedPhoneNumber.startsWith("+84") && cleanedPhoneNumber.length() != 12) {
+            return false;
+        } else if (cleanedPhoneNumber.startsWith("0") && cleanedPhoneNumber.length() != 10 && cleanedPhoneNumber.length() != 11) {
+            return false;
+        }
+
+        // Kiểm tra đầu số của số điện thoại
+        String prefix = cleanedPhoneNumber.substring(0, 2);
+        if (!prefix.equals("09") && !prefix.equals("03") && !prefix.equals("07") && !prefix.equals("08") && !prefix.equals("84")) {
+            return false;
+        }
+
+        // Kiểm tra xem số điện thoại chỉ chứa các ký tự số
+        if (!cleanedPhoneNumber.matches("[0-9]+")) {
+            return false;
+        }
+
+        // Số điện thoại hợp lệ
+        return true;
+    }
+
+    public static boolean isValidEmail(String email) {
+        // Kiểm tra email không được để trống
+        if (email == null || email.trim().length() == 0) {
+            return false;
+        }
+
+        // Kiểm tra email chứa ký tự @ và .
+        if (!email.matches("[\\w\\.-]+@[\\w\\.-]+")) {
+            return false;
+        }
+
+        // Kiểm tra ký tự @ và . không xuất hiện ở đầu hoặc cuối địa chỉ email
+        if (email.startsWith("@") || email.endsWith("@") || email.startsWith(".") || email.endsWith(".")) {
+            return false;
+        }
+
+        // Kiểm tra ký tự "." không xuất hiện liên tiếp với ký tự "@"
+        if (email.indexOf("@.") != -1 || email.indexOf(".@") != -1) {
+            return false;
+        }
+
+        // Kiểm tra tên miền phải có ít nhất một dấu chấm và phải có ít nhất hai ký tự
+        String[] parts = email.split("\\.");
+        String lastPart = parts[parts.length - 1];
+        if (parts.length < 2 || lastPart.length() < 2) {
+            return false;
+        }
+
+        // Email hợp lệ
+        return true;
+    }
+
 }
