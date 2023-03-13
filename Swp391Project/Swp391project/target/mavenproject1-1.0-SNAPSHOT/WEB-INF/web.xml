@@ -182,6 +182,10 @@
         <servlet-name>getServiceController</servlet-name>
         <servlet-class>com.groud2.web.controller.getServiceController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>loginuser</servlet-name>
+        <servlet-class>com.groud2.web.controller.loginController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>homeController</servlet-name>
         <url-pattern>/home</url-pattern>
@@ -367,7 +371,7 @@
         <url-pattern>/getService</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>loginController</servlet-name>
+        <servlet-name>loginuser</servlet-name>
         <url-pattern>/loginuser</url-pattern>
     </servlet-mapping>
     <session-config>
