@@ -8,27 +8,15 @@
         <servlet-name>bookingController</servlet-name>
         <servlet-class>com.groud2.web.controller.bookingController</servlet-class>
     </servlet>
-    <servlet>
-        <servlet-name>loginController</servlet-name>
-        <servlet-class>com.groud2.web.controller.loginController</servlet-class>
-    </servlet>
     <!-->>>>>>> Stashed changes-->
     <servlet>
         <servlet-name>profileController</servlet-name>
         <servlet-class>com.groud2.web.controller.profileController</servlet-class>
     </servlet>
-    <servlet>
-        <servlet-name>addStaff</servlet-name>
-        <servlet-class>com.groud2.web.controller.AddStaff</servlet-class>
-    </servlet>
     <!-->>>>>>> Stashed changes-->
     <servlet>
         <servlet-name>addtoCart</servlet-name>
         <servlet-class>com.groud2.web.controller.AddtoCartController</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>cart</servlet-name>
-        <servlet-class>com.groud2.web.controller.cartController</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>registerController</servlet-name>
@@ -207,20 +195,12 @@
         <url-pattern>/booking</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>loginController</servlet-name>
-        <url-pattern>/loginuser</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
         <servlet-name>profileController</servlet-name>
         <url-pattern>/profile</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>addtoCart</servlet-name>
         <url-pattern>/addtoCart</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>cart</servlet-name>
-        <url-pattern>/cart</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>registerController</servlet-name>
@@ -389,6 +369,10 @@
     <servlet-mapping>
         <servlet-name>getServiceController</servlet-name>
         <url-pattern>/getService</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>loginController</servlet-name>
+        <url-pattern>/loginuser</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
