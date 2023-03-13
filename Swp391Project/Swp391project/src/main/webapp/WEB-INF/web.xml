@@ -17,10 +17,6 @@
         <servlet-name>profileController</servlet-name>
         <servlet-class>com.groud2.web.controller.profileController</servlet-class>
     </servlet>
-    <servlet>
-        <servlet-name>addStaff</servlet-name>
-        <servlet-class>com.groud2.web.controller.AddStaff</servlet-class>
-    </servlet>
     <!-->>>>>>> Stashed changes-->
     <servlet>
         <servlet-name>addtoCart</servlet-name>
@@ -41,10 +37,6 @@
     <servlet>
         <servlet-name>singleNewsController</servlet-name>
         <servlet-class>com.groud2.web.controller.singleNewsController</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>loginController</servlet-name>
-        <servlet-class>com.groud2.web.controller.loginController</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>reportController</servlet-name>
