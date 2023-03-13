@@ -55,6 +55,7 @@ com\groud2\web\DAO\OrderDAO.class
 com\groud2\web\controller\AdminController\AdminManageGlassesController.class
 com\groud2\web\DAO\bookingDAO.class
 com\groud2\web\access\google\LoginGoogleServlet.class
+com\groud2\web\controller\currentBookingController.class
 com\groud2\web\controller\changeProfile.class
 com\groud2\web\controller\getServiceController.class
 com\groud2\web\controller\PasswordController.class

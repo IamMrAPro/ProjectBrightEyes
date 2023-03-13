@@ -5,23 +5,24 @@
 package com.groud2.web.controller;
 
 import com.groud2.web.DAO.bookingDAO;
-import com.groud2.web.DAO.userDAO;
 import com.groud2.web.model.booking;
-import com.groud2.web.model.user;
-import java.io.IOException;
-import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
-import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 
 /**
  *
- * @author Admin
+ * @author asus
  */
-public class GetPatientOnline extends HttpServlet {
+public class currentBookingController extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -40,10 +41,10 @@ public class GetPatientOnline extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet GetPatientOnline</title>");
+            out.println("<title>Servlet currentBookingController</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet GetPatientOnline at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet currentBookingController at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -61,23 +62,16 @@ public class GetPatientOnline extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        userDAO u = new userDAO();
-        bookingDAO b = new bookingDAO();
-        String id = request.getParameter("id");
-                System.out.println("insert status check");
-    int intId = Integer.parseInt(id);
-        
-        b.insertStatusByID(intId);
-        
+         bookingDAO b = new bookingDAO();
+         ;
         try {
-            ArrayList<user> listrole = u.getUsersByRole();
-            request.setAttribute("listrole", listrole);
-            ArrayList<booking> listid = b.getAllById(id);
-            request.setAttribute("listid", listid);
-        } catch (Exception e) {
+            ArrayList<booking> list = b.getCurrentBooking();
+            request.setAttribute("listCurrent", list);
+        } catch (SQLException ex) {
+            Logger.getLogger(currentBookingController.class.getName()).log(Level.SEVERE, null, ex);
         }
-        request.getRequestDispatcher("recordOnline.jsp").forward(request, response);
-
+         
+        request.getRequestDispatcher("currentBooking.jsp").forward(request, response);
     }
 
     /**

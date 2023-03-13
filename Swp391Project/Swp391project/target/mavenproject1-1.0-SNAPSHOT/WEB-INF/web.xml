@@ -31,10 +31,6 @@
         <servlet-class>com.groud2.web.controller.singleNewsController</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>loginController</servlet-name>
-        <servlet-class>com.groud2.web.controller.loginController</servlet-class>
-    </servlet>
-    <servlet>
         <servlet-name>reportController</servlet-name>
         <servlet-class>com.groud2.web.controller.reportController</servlet-class>
     </servlet>

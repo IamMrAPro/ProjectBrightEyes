@@ -13,7 +13,7 @@ public class DBContext {
             String dbDriver = "com.mysql.cj.jdbc.Driver";
             String dbURL = "jdbc:mysql:// localhost:3306/";
             // Database name to access
-            String dbName = "swp";
+            String dbName = "swpPro";
             String dbUsername = "root";
             String dbPassword = "admin";
 

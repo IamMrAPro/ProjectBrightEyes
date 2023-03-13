@@ -83,7 +83,7 @@ public class AdminManagerStaffController extends HttpServlet {
                 resp.sendRedirect("feedback");
                 break;
             case "7":
-                resp.sendRedirect("adminDashboard");
+                resp.sendRedirect("searchBooking");
                 break;
             case "8":
                 resp.sendRedirect("adminDashboard");
