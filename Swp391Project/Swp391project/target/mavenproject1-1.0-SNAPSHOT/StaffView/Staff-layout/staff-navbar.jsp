@@ -89,13 +89,7 @@
                             <i class="fa-solid fa-user-nurse"></i>
                             <a href="StaffView/staff-screen/OfflinePatient.jsp" style="text-decoration: none;color: white">OffLine</a>
                         </label>
-                    </div>
-                    <div class="admin-link">
-                        <label for="staff" class="d-flex px-4 align-items-center admin-nav-label">
-                            <i class="fa-solid fa-user-nurse"></i>
-                            <a href="" style="text-decoration: none;color: white">Bill</a>
-                        </label>
-                    </div> 
+                    </div>            
                 </div>  
                 <input style="margin-top: 250px" type="submit" name="home" value="Logout" class="btn btn-logout">
             </div>

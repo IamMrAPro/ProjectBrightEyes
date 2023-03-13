@@ -151,12 +151,13 @@ public class updateController extends HttpServlet {
             request.setAttribute("checkDate", "Must be older than 18 years old");
         }
         if (isNameValid && isPhoneValid && isEmailValid && isDateValid) {
-            p.updateProfile(account, newName, newGender, newPhone, newAddress, newEmail, newBodString);
-            request.getRequestDispatcher("profile.jsp").forward(request, response);
+              p.updateProfile(account, newName, newGender, newPhone, newAddress, newEmail, newBodString);
+        response.sendRedirect("profile");
         } else {
             // Nếu có ít nhất một giá trị không hợp lệ, hiển thị lại trang booking với thông báo lỗi
-            request.getRequestDispatcher("changeProfile.jsp").forward(request, response);
+            response.sendRedirect("profile");
         }
+      
 
     }
 
@@ -169,25 +170,25 @@ public class updateController extends HttpServlet {
         return myHash;
     }
 
-   public static boolean isValidName(String name) {
-    // Kiểm tra tên không được để trống và không chứa khoảng trắng đầu hoặc cuối chuỗi
-    if (name == null || name.trim().length() == 0 || name.startsWith(" ") || name.endsWith(" ")) {
-        return false;
-    }
+    public static boolean isValidName(String name) {
+        // Kiểm tra tên không được để trống
+        if (name == null || name.trim().length() == 0) {
+            return false;
+        }
 
-    // Kiểm tra tên không chứa các ký tự đặc biệt hoặc số
-    if (!name.matches("[\\p{L} ]+")) {
-        return false;
-    }
+        // Kiểm tra tên không chứa các ký tự đặc biệt hoặc số
+        if (!name.matches("[a-zA-Z\\p{L}]+")) {
+            return false;
+        }
 
-    // Kiểm tra tên không quá ngắn hoặc quá dài
-    if (name.length() < 2 || name.length() > 50) {
-        return false;
-    }
+        // Kiểm tra tên không quá ngắn hoặc quá dài
+        if (name.length() < 2 || name.length() > 50) {
+            return false;
+        }
 
-    // Tên hợp lệ
-    return true;
-}
+        // Tên hợp lệ
+        return true;
+    }
 
     public static boolean isAdult(LocalDate birthDate) {
         LocalDate currentDate = LocalDate.now();

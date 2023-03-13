@@ -134,7 +134,6 @@ public class bookingController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
         //Get request from client
         String position = request.getParameter("position");
         String setPos = request.getParameter("setPosition");
@@ -150,7 +149,6 @@ public class bookingController extends HttpServlet {
             response.sendRedirect("searchBooking");
         }
 
-
     }
 
     /**
@@ -163,9 +161,7 @@ public class bookingController extends HttpServlet {
         return "Short description";
     }// </editor-fold>
 
-
     String encyptPass(String pass) throws NoSuchAlgorithmException {
-
         MessageDigest md = MessageDigest.getInstance("MD5");
         md.update(pass.getBytes());
         byte[] digest = md.digest();
@@ -299,5 +295,4 @@ public class bookingController extends HttpServlet {
         }
 
     }
-
 }

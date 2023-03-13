@@ -29,7 +29,7 @@ public class userDAO {
 
     public user checklogin(String acc, String pass) throws SQLException, IOException {
 
-        String sql = "SELECT account,password FROM user where account=? and password =?";
+        String sql = "SELECT account,password FROM swp.user where account=? and password =?";
 
         try {
             connection = dbc.getConnection();
