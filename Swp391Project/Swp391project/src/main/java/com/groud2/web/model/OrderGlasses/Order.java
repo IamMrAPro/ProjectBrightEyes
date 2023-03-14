@@ -17,6 +17,8 @@ public class Order {
     private String Glasses;
    
     private Cart cart;
+    private String phone;
+    private String email;
     private String nameCustomer, ShipAddress, ShipCity, unitShip;
     private float shiping;
     private float tax;
@@ -49,7 +51,7 @@ public class Order {
         this.OderDate = OderDate;
         this.Status = Status;
     }
-    public Order(int OrderId, String Glasses, String nameCustomer, String ShipAddress, String unitShip, float shiping, String OderDate, String Status) {
+    public Order(int OrderId, String Glasses, String nameCustomer,String phone,String email, String ShipAddress, String unitShip, float shiping, String OderDate, String Status) {
         this.OrderId = OrderId;
         this.Glasses = Glasses;
         this.nameCustomer = nameCustomer;
@@ -58,6 +60,8 @@ public class Order {
         this.shiping = shiping;
         this.OderDate = OderDate;
         this.Status = Status;
+        this.phone=phone;
+        this.email=email;
     }
 
     public Order(Cart cart, float shiping, float tax) {
@@ -164,6 +168,38 @@ public class Order {
 
     public void setStatus(String Status) {
         this.Status = Status;
+    }
+
+    public String getGlasses() {
+        return Glasses;
+    }
+
+    public void setGlasses(String Glasses) {
+        this.Glasses = Glasses;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getNameCustomer() {
+        return nameCustomer;
+    }
+
+    public void setNameCustomer(String nameCustomer) {
+        this.nameCustomer = nameCustomer;
     }
 
    

@@ -186,6 +186,14 @@
         <servlet-name>loginuser</servlet-name>
         <servlet-class>com.groud2.web.controller.loginController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>OrderMannagerContronler</servlet-name>
+        <servlet-class>com.groud2.web.controller.AdminController.OrderMannagerContronler</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>updateOrder</servlet-name>
+        <servlet-class>com.groud2.web.controller.AdminController.updateOrder</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>homeController</servlet-name>
         <url-pattern>/home</url-pattern>
@@ -373,6 +381,14 @@
     <servlet-mapping>
         <servlet-name>loginuser</servlet-name>
         <url-pattern>/loginuser</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>OrderMannagerContronler</servlet-name>
+        <url-pattern>/OrderMannagerContronler</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>updateOrder</servlet-name>
+        <url-pattern>/updateOrder</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

@@ -29,6 +29,7 @@ com\groud2\web\controller\searchBookingController.class
 com\groud2\web\model\OrderGlasses\Order.class
 com\groud2\web\model\overview.class
 com\groud2\web\DAO\EmailDAO.class
+com\groud2\web\controller\AdminController\updateOrder.class
 com\groud2\web\controller\overviewController.class
 com\groud2\web\model\glasses.class
 com\groud2\web\controller\AdminController\AdminManagerStaffController.class
@@ -56,6 +57,7 @@ com\groud2\web\controller\AdminController\AdminManageGlassesController.class
 com\groud2\web\DAO\bookingDAO.class
 com\groud2\web\access\google\LoginGoogleServlet.class
 com\groud2\web\controller\currentBookingController.class
+com\groud2\web\controller\AdminController\OrderMannagerContronler.class
 com\groud2\web\controller\changeProfile.class
 com\groud2\web\controller\getServiceController.class
 com\groud2\web\controller\PasswordController.class

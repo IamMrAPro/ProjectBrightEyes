@@ -114,11 +114,11 @@ public class CheckoutController extends HttpServlet {
                 cityShip += "Da Nang";
             }
             if (unit.equals("1")) {
-                cityShip += "VNpost";
+                unit += "VNpost";
             } else if (unit.equals("2")) {
-                cityShip += "Giao Hang Tiet Kiem";
+                unit += "Giao Hang Tiet Kiem";
             } else if (cityShip.equals("3")) {
-                cityShip += "Giao hang nhanh";
+                unit += "Giao hang nhanh";
             }
 
             glassesDAO g = new glassesDAO();
@@ -142,7 +142,7 @@ public class CheckoutController extends HttpServlet {
                 LocalDate now = LocalDate.now();
                 Order o = new Order(cart, idCustom, adress, cityShip, unit, 3, 0, null, null, "Wait for confirmation");
                 OrderDAO od = new OrderDAO();
-                od.insertOrder( o.getCart().getListname(), name, (adress + cityShip), UnitShip, 3, String.valueOf(now), "Wait for confirmation");
+                od.insertOrder( o.getCart().getListname(), name,email,phone, (adress + cityShip), UnitShip, 3, String.valueOf(now), "Wait for confirmation");
                 String success = "Order Success";
                 sendMail.MailResetPassword(email,success);
                 request.setAttribute("nofi", success);

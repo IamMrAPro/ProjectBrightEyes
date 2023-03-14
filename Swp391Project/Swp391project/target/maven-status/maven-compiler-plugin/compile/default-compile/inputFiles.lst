@@ -2,6 +2,7 @@ F:\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\controller\AdminC
 F:\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\DAO\context\DBContext.java
 F:\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\controller\changePass.java
 F:\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\controller\AdminController\AdminViewFeedback.java
+F:\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\controller\AdminController\OrderMannagerContronler.java
 F:\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\model\user.java
 F:\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\Payment\ExecutePaymentServlet.java
 F:\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\controller\glassesController.java
@@ -31,6 +32,7 @@ F:\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\controller\AdminC
 F:\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\model\overview.java
 F:\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\controller\bookingController.java
 F:\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\controller\profileController.java
+F:\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\controller\AdminController\updateOrder.java
 F:\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\model\booking.java
 F:\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\model\service.java
 F:\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\controller\loginController.java
