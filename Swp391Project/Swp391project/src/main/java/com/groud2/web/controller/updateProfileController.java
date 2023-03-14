@@ -4,14 +4,7 @@
  */
 package com.groud2.web.controller;
 
-import com.groud2.web.DAO.EmailDAO;
 import com.groud2.web.DAO.userDAO;
-import static com.groud2.web.controller.bookingController.isValidDate;
-import static com.groud2.web.controller.bookingController.isValidEmail;
-import static com.groud2.web.controller.bookingController.isValidName;
-import static com.groud2.web.controller.bookingController.isValidPhoneNumber;
-import com.groud2.web.model.user;
-import jakarta.mail.MessagingException;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
@@ -22,17 +15,15 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
-import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+
 
 /**
  *
  * @author asus
  */
-public class updateController extends HttpServlet {
+public class updateProfileController extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -51,10 +42,10 @@ public class updateController extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet updateController</title>");
+            out.println("<title>Servlet updateProfileController</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet updateController at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet updateProfileController at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -72,34 +63,7 @@ public class updateController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        userDAO p = new userDAO();
-        user check;
-        HttpSession session = (HttpSession) request.getSession();
-        String account = (String) session.getAttribute("id");
-        String password = (String) session.getAttribute("pass");
-        String newPass = request.getParameter("newPass");
-
-        try {
-            password = encyptPass(password);
-        } catch (NoSuchAlgorithmException ex) {
-            System.out.println("encode password error: " + ex.getMessage());
-        }
-
-        try {
-            check = p.checkPass(account, password);
-            if (check != null) {
-                System.out.println("Account update: " + account);
-                session.setAttribute("id", account);
-                p.updatePass(account, newPass);
-
-            } else {
-                response.sendRedirect("loginuser");
-
-            }
-        } catch (SQLException ex) {
-            Logger.getLogger(loginController.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
+        processRequest(request, response);
     }
 
     /**
@@ -114,7 +78,7 @@ public class updateController extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         userDAO p = new userDAO();
-
+        System.out.println("check profile updatee");
         HttpSession session = (HttpSession) request.getSession();
         String account = (String) session.getAttribute("id");
 
@@ -125,10 +89,12 @@ public class updateController extends HttpServlet {
         String newEmail = request.getParameter("newEmail");
 
         String inputBirthDate = request.getParameter("newBod");
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd"); // Định dạng chuỗi
+       
         LocalDate newBod = LocalDate.parse(inputBirthDate);
-        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-        String newBodString = dtf.format(newBod);
-         boolean isNameValid = isValidName(newName);
+        
+        String newBodString = newBod.format(formatter);
+        boolean isNameValid = isValidName(newName);
         boolean isPhoneValid = isValidPhoneNumber(newPhone);
         boolean isEmailValid = isValidEmail(newEmail);
         boolean isDateValid = isAdult(newBod);
@@ -152,13 +118,12 @@ public class updateController extends HttpServlet {
         }
         if (isNameValid && isPhoneValid && isEmailValid && isDateValid) {
             System.out.println("chay update profile");
-            p.updateProfile(account, newName, newGender, newPhone, newAddress, newEmail, newBodString);
+           p.updateProfile2(account, newName, newPhone,newAddress,newEmail,newGender,newBodString);
             response.sendRedirect("profile");
         } else {
             // Nếu có ít nhất một giá trị không hợp lệ, hiển thị lại trang booking với thông báo lỗi
-            request.getRequestDispatcher("profile.jsp").forward(request, response);
+            request.getRequestDispatcher("changeProfile.jsp").forward(request, response);
         }
-
     }
 
     String encyptPass(String pass) throws NoSuchAlgorithmException {

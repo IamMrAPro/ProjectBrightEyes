@@ -134,8 +134,8 @@
                 <select id="selectOption" name="option" onchange="redirectToServlet()">
                     <option value="">Status</option>
                     <option value="option">All Patient</option>
-                    <option value="1">OnLine</option>
-                    <option value="0">OffLine</option>
+                    <option value="1">Online</option>
+                    <option value="0">Offline</option>
                 </select>
 
 

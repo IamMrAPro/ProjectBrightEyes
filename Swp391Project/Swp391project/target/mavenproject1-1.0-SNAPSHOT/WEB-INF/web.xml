@@ -198,6 +198,18 @@
         <servlet-name>getServiceController</servlet-name>
         <servlet-class>com.groud2.web.controller.getServiceController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>successBookingController</servlet-name>
+        <servlet-class>com.groud2.web.controller.successBookingController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>lateBookingController</servlet-name>
+        <servlet-class>com.groud2.web.controller.lateBookingController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>updateProfileController</servlet-name>
+        <servlet-class>com.groud2.web.controller.updateProfileController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>homeController</servlet-name>
         <url-pattern>/home</url-pattern>
@@ -389,6 +401,18 @@
     <servlet-mapping>
         <servlet-name>getServiceController</servlet-name>
         <url-pattern>/getService</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>successBookingController</servlet-name>
+        <url-pattern>/successBooking</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>lateBookingController</servlet-name>
+        <url-pattern>/lateBooking</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>updateProfileController</servlet-name>
+        <url-pattern>/updateProfile</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

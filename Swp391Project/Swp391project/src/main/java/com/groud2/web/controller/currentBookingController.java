@@ -10,7 +10,6 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
@@ -23,7 +22,7 @@ import java.util.logging.Logger;
  *
  * @author asus
  */
-public class userBookingController extends HttpServlet {
+public class currentBookingController extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -42,10 +41,10 @@ public class userBookingController extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet userBookingController</title>");            
+            out.println("<title>Servlet currentBookingController</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet userBookingController at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet currentBookingController at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -63,22 +62,16 @@ public class userBookingController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        HttpSession session = request.getSession();
-        String fullname = (String) session.getAttribute("fullname");
-        String email = (String) session.getAttribute("email");
-        String phone = (String) session.getAttribute("phonenumber");
-        
-        bookingDAO b = new bookingDAO();
-        ArrayList<booking> list;
+         bookingDAO b = new bookingDAO();
+  
         try {
-            list = b.getAllByBoth(email, phone);
-            request.setAttribute("list", list);
-            System.out.println("Get list booking user success");
-            request.getRequestDispatcher("userBooking.jsp").forward(request, response);
+            ArrayList<booking> list = b.getCurrentBooking();
+            request.setAttribute("listCurrent", list);
         } catch (SQLException ex) {
-            Logger.getLogger(userBookingController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(currentBookingController.class.getName()).log(Level.SEVERE, null, ex);
         }
-                
+         
+        request.getRequestDispatcher("currentBooking.jsp").forward(request, response);
     }
 
     /**
@@ -92,7 +85,7 @@ public class userBookingController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-       
+        processRequest(request, response);
     }
 
     /**

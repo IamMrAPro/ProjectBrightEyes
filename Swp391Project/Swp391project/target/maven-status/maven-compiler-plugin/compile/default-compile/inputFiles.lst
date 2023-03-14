@@ -33,6 +33,7 @@ D:\project_SWP\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\servi
 D:\project_SWP\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\controller\DoctorController\listCompletePatient.java
 D:\project_SWP\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\controller\DoctorController\listWattingPatient.java
 D:\project_SWP\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\access\facebook\RestFB.java
+D:\project_SWP\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\controller\lateBookingController.java
 D:\project_SWP\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\controller\registerController.java
 D:\project_SWP\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\controller\PasswordController.java
 D:\project_SWP\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\controller\AdminController\AdminUpdateRoomController.java
@@ -51,6 +52,7 @@ D:\project_SWP\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\contr
 D:\project_SWP\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\controller\AdminController\AdminAddNewUserController.java
 D:\project_SWP\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\controller\newsController.java
 D:\project_SWP\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\controller\AdminController\AdminManageCustomerController.java
+D:\project_SWP\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\controller\updateProfileController.java
 D:\project_SWP\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\access\facebook\LoginFacebookServlet.java
 D:\project_SWP\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\controller\AddtocartController.java
 D:\project_SWP\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\model\glasses.java
@@ -61,11 +63,13 @@ D:\project_SWP\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\model
 D:\project_SWP\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\model\service.java
 D:\project_SWP\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\controller\AdminController\DeleteGlasses.java
 D:\project_SWP\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\controller\changeProfile.java
+D:\project_SWP\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\controller\currentBookingController.java
 D:\project_SWP\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\model\Attendance.java
 D:\project_SWP\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\controller\DoctorController\ChooseOn_Of.java
 D:\project_SWP\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\DAO\newsDAO.java
 D:\project_SWP\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\controller\changePass.java
 D:\project_SWP\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\DAO\roomDAO.java
+D:\project_SWP\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\controller\successBookingController.java
 D:\project_SWP\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\model\profile.java
 D:\project_SWP\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\controller\AdminController\AdminAddNewGlassController.java
 D:\project_SWP\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\controller\recordController.java

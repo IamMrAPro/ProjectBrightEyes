@@ -22,7 +22,10 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -69,7 +72,7 @@ public class bookingController extends HttpServlet {
         String fullname = (String) session.getAttribute("fullname");
         String phoneLg = (String) session.getAttribute("phoneLg");
         String emailLg = (String) session.getAttribute("emailLg");
-        System.out.println("check fullname when booking with login: " + fullname);
+
         String name = request.getParameter("name");
         String phone = request.getParameter("phone");
         String email = request.getParameter("email");
@@ -78,6 +81,14 @@ public class bookingController extends HttpServlet {
         String medical = request.getParameter("description");
         String payment = request.getParameter("payment");
         LocalDateTime currentDateTime = LocalDateTime.now();
+        System.out.println("check name before send to success: " + name);
+        request.setAttribute("name", name);
+        request.setAttribute("phone", phone);
+        request.setAttribute("email", email);
+        request.setAttribute("date", date);
+        request.setAttribute("time", time);
+        request.setAttribute("medical", medical);
+        request.setAttribute("payment", payment);
         boolean isNameValid = isValidName(name);
         boolean isPhoneValid = isValidPhoneNumber(phone);
         boolean isEmailValid = isValidEmail(email);
@@ -86,27 +97,27 @@ public class bookingController extends HttpServlet {
         request.setAttribute("fullname", fullname);
         request.setAttribute("phoneLg", phoneLg);
         request.setAttribute("emailLg", emailLg);
-        System.out.println("check Lg: " +emailLg + phoneLg);
+        System.out.println("check Lg: " + emailLg + phoneLg);
         if (!isValidName(name)) {
-            System.out.println("Invalid name");
+
             request.setAttribute("checkName", "Your name is invalid");
         }
         if (time.equals("null")) {
-            System.out.println("Invalid time");
+            
             request.setAttribute("checkTime", "Please choose time");
         }
         if (!isValidPhoneNumber(phone)) {
-            System.out.println("Invalid phone");
+
             request.setAttribute("checkPhone", "Your phone is invalid (0xxxxxxxxx)");
         }
 
         if (!isValidEmail(email)) {
-            System.out.println("Invalid email");
+
             request.setAttribute("checkEmail", "Your email is invalid (xxx@gmail.com)");
         }
         if (!isValidDate(date)) {
-            System.out.println("Invalid date");
-            request.setAttribute("checkDate", "Your Datedate is invalid");
+
+            request.setAttribute("checkDate", "Your Date is invalid");
         }
 // All input values are valid, proceed with inserting into database
         // Định dạng ngày giờ theo định dạng "yyyy-MM-dd HH:mm:ss"
@@ -117,7 +128,7 @@ public class bookingController extends HttpServlet {
             try {
                 EmailDAO e = new EmailDAO();
                 e.MailConfirmAppointment(email, name, date, time);
-                System.out.println("send mail Succuess");
+
                 request.setAttribute("success", "You have successfully booked. Please check your email for details about the consulting");
 
             } catch (MessagingException ex) {
@@ -125,7 +136,7 @@ public class bookingController extends HttpServlet {
             }
             b.insert(name, phone, email, date, time, medical, payment, sbtime);
             System.out.println("date = " + date);
-            request.getRequestDispatcher("booking.jsp").forward(request, response);
+            request.getRequestDispatcher("successBooking").forward(request, response);
 
         } else {
             // Nếu có ít nhất một giá trị không hợp lệ, hiển thị lại trang booking với thông báo lỗi

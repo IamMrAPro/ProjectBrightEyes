@@ -4,8 +4,6 @@
  */
 package com.groud2.web.controller;
 
-import com.groud2.web.DAO.bookingDAO;
-import com.groud2.web.model.booking;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
@@ -13,17 +11,12 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-
 
 /**
  *
  * @author asus
  */
-public class userBookingController extends HttpServlet {
+public class successBookingController extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -42,10 +35,10 @@ public class userBookingController extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet userBookingController</title>");            
+            out.println("<title>Servlet successBookingController</title>");
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet userBookingController at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet successBookingController at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -64,21 +57,25 @@ public class userBookingController extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         HttpSession session = request.getSession();
-        String fullname = (String) session.getAttribute("fullname");
+
+// Lấy các giá trị đã được lưu trong session
+        String name = (String) session.getAttribute("name");
+        String phone = (String) session.getAttribute("phone");
         String email = (String) session.getAttribute("email");
-        String phone = (String) session.getAttribute("phonenumber");
-        
-        bookingDAO b = new bookingDAO();
-        ArrayList<booking> list;
-        try {
-            list = b.getAllByBoth(email, phone);
-            request.setAttribute("list", list);
-            System.out.println("Get list booking user success");
-            request.getRequestDispatcher("userBooking.jsp").forward(request, response);
-        } catch (SQLException ex) {
-            Logger.getLogger(userBookingController.class.getName()).log(Level.SEVERE, null, ex);
-        }
-                
+        String date = (String) session.getAttribute("date");
+        String time = (String) session.getAttribute("time");
+        String medical = (String) session.getAttribute("medical");
+        String payment = (String) session.getAttribute("payment");
+
+// In các giá trị đã lấy ra console để kiểm tra
+        System.out.println("Name: " + name);
+        System.out.println("Phone: " + phone);
+        System.out.println("Email: " + email);
+        System.out.println("Date: " + date);
+        System.out.println("Time: " + time);
+        System.out.println("Medical: " + medical);
+        System.out.println("Payment: " + payment);
+        request.getRequestDispatcher("successBooking.jsp").forward(request, response);
     }
 
     /**
@@ -92,7 +89,7 @@ public class userBookingController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-       
+        processRequest(request, response);
     }
 
     /**

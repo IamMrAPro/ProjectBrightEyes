@@ -280,29 +280,50 @@ public class userDAO {
         return false;
     }
 
-    public void updateProfile(String account, String newName, String newGender, String newPhone, String newAddress, String newEmail, String newBod) {
-        String strUpdate = "UPDATE user SET fullname=?,phonenumber=?,address=?,email=?,gender=?,bod=?  WHERE account=?";
-        try {
-            connection = dbc.getConnection();
-            ps = connection.prepareStatement(strUpdate);
-            ps.setString(1, newName);
-            ps.setString(2, newPhone);
-            ps.setString(3, newAddress);
-            ps.setString(4, newEmail);
-            if (newGender.equals("Male")) {
-                ps.setString(5, "1");
-            } else {
-                ps.setString(5, "0");
-            }
-            ps.setDate(6, Date.valueOf(newBod));
-            ps.setString(7, account);
-            ps.executeUpdate();
-
-        } catch (Exception e) {
-
-            System.out.println("Update profile error: " + e.getMessage());
+   public void updateProfile(String account, String newName, String newGender, String newPhone, String newAddress, String newEmail, String newBod) {
+    String strUpdate = "UPDATE swppro.user SET fullname = ?, phonenumber = ?, address = ?, email = ?, gender = ?, bod = ? WHERE account = ?";
+    try {
+        connection = dbc.getConnection();
+        ps = connection.prepareStatement(strUpdate);
+        ps.setString(1, newName);
+        ps.setString(2, newPhone);
+        ps.setString(3, newAddress);
+        ps.setString(4, newEmail);
+        if (newGender.equals("Male")) {
+            ps.setString(5, "1");
+        } else {
+            ps.setString(5, "0");
         }
+        ps.setDate(6, Date.valueOf(newBod));
+        ps.setString(7, account);
+        ps.executeUpdate();
+        System.out.println("Update profile success");
+    } catch (Exception e) {
+        System.out.println("Update profile error: " + e.getMessage());
     }
+}
+   public void updateProfile2(String account, String newName,String newPhone, String newAddress, String newEmail, String newGender,String newBod) {
+    String strUpdate = "UPDATE swppro.user SET fullname = ?, phonenumber = ?, address=?,email=?, gender=?,bod=? WHERE account = ?";
+    try {
+        connection = dbc.getConnection();
+        ps = connection.prepareStatement(strUpdate);
+        ps.setString(1, newName);
+        ps.setString(2, newPhone);
+        ps.setString(3, newAddress);
+        ps.setString(4, newEmail);
+        if (newGender.equals("Male")) {
+            ps.setString(5, "0");
+        } else {
+            ps.setString(5, "1");
+        }
+        ps.setString(6, newBod);
+        ps.setString(7, account);
+        ps.executeUpdate();
+        System.out.println("Update profile success");
+    } catch (Exception e) {
+        System.out.println("Update profile error 2: " + e.getMessage());
+    }
+}
 
     public user checkPass(String acc, String pass) throws SQLException, IOException {
 
@@ -687,4 +708,5 @@ public class userDAO {
         }
         return name;
     }
+
 }

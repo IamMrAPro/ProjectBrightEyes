@@ -5,16 +5,13 @@
 package com.groud2.web.controller;
 
 import com.groud2.web.DAO.bookingDAO;
-import com.groud2.web.model.booking;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -23,7 +20,7 @@ import java.util.logging.Logger;
  *
  * @author asus
  */
-public class userBookingController extends HttpServlet {
+public class lateBookingController extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -42,10 +39,10 @@ public class userBookingController extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet userBookingController</title>");            
+            out.println("<title>Servlet lateBookingController</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet userBookingController at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet lateBookingController at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -63,22 +60,18 @@ public class userBookingController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        HttpSession session = request.getSession();
-        String fullname = (String) session.getAttribute("fullname");
-        String email = (String) session.getAttribute("email");
-        String phone = (String) session.getAttribute("phonenumber");
-        
-        bookingDAO b = new bookingDAO();
-        ArrayList<booking> list;
+        bookingDAO b =new bookingDAO();
+        String id = request.getParameter("id");
         try {
-            list = b.getAllByBoth(email, phone);
-            request.setAttribute("list", list);
-            System.out.println("Get list booking user success");
-            request.getRequestDispatcher("userBooking.jsp").forward(request, response);
+            String time = b.getTimeById(id);
+            b.lateBooking(id);
+            System.out.println("check time get by id: "+ time);
         } catch (SQLException ex) {
-            Logger.getLogger(userBookingController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(lateBookingController.class.getName()).log(Level.SEVERE, null, ex);
         }
-                
+        
+        System.out.println("check id late booking: "+ id);
+        response.sendRedirect("currentBooking");
     }
 
     /**
@@ -92,7 +85,7 @@ public class userBookingController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-       
+        processRequest(request, response);
     }
 
     /**

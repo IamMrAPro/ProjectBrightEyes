@@ -83,7 +83,31 @@ public class currentBooking extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        String email = request.getParameter("email");
+        String phone = request.getParameter("phone");
+
+        bookingDAO b = new bookingDAO();
+
+        try {
+
+            if (b.checkExist(email, phone)) {
+                System.out.println("Email ton tai");
+                if (email != null && !email.isEmpty() && phone != null && !phone.isEmpty()) {
+                    ArrayList<booking> list = b.getAllByBoth(email, phone);
+                    System.out.println("get booking by both in current");
+                    request.setAttribute("listCurrent", list);
+                }
+            } else {
+                
+                request.setAttribute("check", "Your information was wrong. Please check again");
+            }
+
+            request.getRequestDispatcher("currentBooking.jsp").forward(request, response);
+
+        } catch (SQLException ex) {
+            System.out.println("hellloooo");
+            Logger.getLogger(searchBookingController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
