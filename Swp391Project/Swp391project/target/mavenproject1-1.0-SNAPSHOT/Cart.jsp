@@ -172,19 +172,19 @@
                                         <div class="row">${i.getGlass().getColor()}</div>
                                     </div>
                                     <div class="col">
-                                        
+
                                         <a href="process?num=-1&id=${i.getGlass().getGlassID()}">-</a><a class="border">${i.getQuantity()}</a>
                                         <a href="process?num=1&id=${i.getGlass().getGlassID()}">+</a>
-                                       
+
                                     </div>
-                                    <div class="col">${i.getGlass().getPrice()} VND </div>
+                                    <div class="col">$${i.getGlass().getPrice()}  </div>
                                     <div class="col">
                                         <form action="process" method="post">
                                             <input type="hidden" name="id" value="${i.getGlass().getGlassID()}"/>
                                             <button  type="submit" ><span class="close">&#10005;</span></button>
                                         </form>
                                     </div>
-                                   
+
                                 </div>
                             </div>
                         </c:forEach>
@@ -192,75 +192,110 @@
                     </div>
                     <div class="col-md-4 summary">
                         <div><h5><b>Summary</b></h5></div>
-                        <form action="checkout" method="post">
-                        <c:if test="${sessionScope.id == null}">
-                            <div class="row">
+                        <div class="checkoutpay">
+                            <form action="checkout" method="post">
+                                <div class="default">
+                                    <div class="row">
 
-                                <div class="col-lg-6 col-md-6 col-12">
-                                    <label><p>Name</p></label>
-                                    <input type="text" name="name" class="form-control" placeholder="Enter full Name" required/>
-                                </div>
+                                        <div class="col-lg-6 col-md-6 col-12">
+                                            <label><p>Name</p></label>
+                                            <input type="text" name="name" class="form-control" placeholder="Enter full Name" />
+                                        </div>
 
-                                <div class="col-lg-6 col-md-6 col-12">
-                                    <label><p>Email</p></label>
-                                    <input type="email" name="emailOrder" id="emailOrder" pattern="[^ @]*@[^ @]*" class="form-control" placeholder="Enter your mail" required/>
-                                </div>
-                                <div class="col-lg-6 col-md-6 col-12">
-                                    <label><p>Phone</p></label>
-                                    <input type="text" name="phone" id="phoneOrder" class="form-control" placeholder="Enter your Phone" required/>
-                                </div>
+                                        <div class="col-lg-6 col-md-6 col-12">
+                                            <label><p>Email</p></label>
+                                            <input type="email" name="emailOrder" id="emailOrder" pattern="[^ @]*@[^ @]*" class="form-control" placeholder="Enter your mail" />
+                                        </div>
+                                        <div class="col-lg-6 col-md-6 col-12">
+                                            <label><p>Phone</p></label>
+                                            <input type="text" name="phone" id="phoneOrder" class="form-control" placeholder="Enter your Phone" />
+                                        </div>
 
-                                <div class="col-lg-6 col-md-6 col-12">
-                                    <label><p>City</p></label>
-                                    <select name="city"class="form-control">
-                                        <option value="1"class="text-muted">Hà Nội</option>
-                                        <option value="2"class="text-muted">Hồ Chí Minh</option>
-                                        <option value="3"class="text-muted">Cần Thơ</option>
+                                        <div class="col-lg-6 col-md-6 col-12">
+                                            <label><p>City</p></label>
+                                            <select name="city"class="form-control">
+                                                <option value="1"class="text-muted">Hà Nội</option>
+                                                <option value="2"class="text-muted">Hồ Chí Minh</option>
+                                                <option value="3"class="text-muted">Cần Thơ</option>
 
-                                        <option value="4" class="text-muted">Lào Cai</option>
-                                        <option value="5" class="text-muted">Hà Tĩnh</option>
-                                        <option value="6" class="text-muted">Đà Nẵng</option>
+                                                <option value="4" class="text-muted">Lào Cai</option>
+                                                <option value="5" class="text-muted">Hà Tĩnh</option>
+                                                <option value="6" class="text-muted">Đà Nẵng</option>
 
+                                            </select>
+                                        </div>
+                                        <div class="col-12">
+                                            <label><p>Adress</p></label>
+                                            <input type="text" name="adress"  class="form-control"/>
+                                        </div>
+                                    </div>
+                                    <p>Choose Unit Ship</p>
+                                    <select name="unitShip" class="form-control department-name select2input">
+                                        <option value="1"class="text-muted">VNpost – EMS</option>
+                                        <option value="2"class="text-muted">Giao hàng tiết kiệm</option>
+                                        <option value="3"class="text-muted">Giao hàng Nhanh</option>
                                     </select>
                                 </div>
-                                <div class="col-12">
-                                    <label><p>Adress</p></label>
-                                    <input type="text" name="adress"  class="form-control"required/>
+                                <br><!-- comment -->
+                                <br><!-- comment -->
+
+                                <p>Shiping : $3</p>
+
+                                <div class="row" style="border-top: 1px solid rgba(0,0,0,.1); padding: 2vh 0;">
+                                    <div class="col">TOTAL PRICE</div>
+                                    <div class="col text-right">${o.getTotalMoney()}</div>
                                 </div>
-                            </div>
+                                <label class="form-label"> Payment method</label>
+                                <select name="payment" oninvalid="Select(this);" oninput="Select(this);" id="mySelect" class="form-control department-name select2input">
 
-                        </c:if>
-                    
-                    
-                        <p>Choose Unit Ship</p>
-                        <select name="unitShip">
-                            <option value="1"class="text-muted">VNpost – EMS</option>
-                            <option value="2"class="text-muted">Giao hàng tiết kiệm</option>
-                            <option value="3"class="text-muted">Giao hàng Nhanh</option>
-                        </select>
-                        <p>Shiping : 30.000 VND</p>
-                        <!--                            <p>GIVE CODE</p>
-                                                    <input id="code" placeholder="Enter your code">-->
-                    
-                    <div class="row" style="border-top: 1px solid rgba(0,0,0,.1); padding: 2vh 0;">
-                        <div class="col">TOTAL PRICE</div>
-                        <div class="col text-right">${o.getTotalMoney()}</div>
+                                    <option value="default">Payment after receiving goods</option>
+                                    <option value="paypal">Payment by Paypal</option>
+                                </select>
+
+                                <input type="submit"class="btn"value="CHECKOUT"/> 
+
+
+                            </form>
+                        </div>
+
                     </div>
-                    
-                        <input type="submit"class="btn"value="CHECKOUT"/> 
-                    </form>
-
                 </div>
+
             </div>
 
-        </div>
+        </main>
+        <br><!-- comment -->
+        <br><!-- comment -->
 
-    </main>
-    <br><!-- comment -->
-    <br><!-- comment -->
+        <jsp:include page="layout/chatbot.jsp"/>
+        <jsp:include page="layout/footer.jsp"/>
+        <script src="assets/js/jquery.min.js"></script>
+        <script src="assets/js/bootstrap.bundle.min.js"></script>
+        <script src="assets/js/flatpickr.min.js"></script>
+        <script src="assets/js/flatpickr.init.js"></script>
+        <script src="assets/js/select2.min.js"></script>
+        <script src="assets/js/select2.init.js"></script>
+        <script src="assets/js/jquery.timepicker.min.js"></script> 
+        <script src="assets/js/timepicker.init.js"></script>
+        <script src="assets/js/feather.min.js"></script>
+        <script src="assets/js/vn.js"></script>
+        <script src="assets/js/app.js"></script>
+        <script src="assets/js/sweetalert.min.js"></script>
+        <script>
+            function Select(text) {
+                if (text.value == "default") {
+                    $(".default").show();
+                    $(".paypal").hide();
+                } else if (text.value == "paypal") {
+                    $(".paypal").show();
+                    $(".default").hide();
+                } else {
+                    $(".default").hide();
+                    $(".paypal").hide();
+                }
+            }
+        </script>
+    </body>
 
-    <jsp:include page="layout/chatbot.jsp"/>
-    <jsp:include page="layout/footer.jsp"/>
-</body>
 </html>
 
