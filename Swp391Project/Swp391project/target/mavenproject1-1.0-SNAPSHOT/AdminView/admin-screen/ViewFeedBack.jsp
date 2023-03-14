@@ -5,6 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
     <%@include file="../admin-layout/admin-head.jsp" %>
@@ -15,7 +16,35 @@
 <!--            --------------------------------------------------------------------->
             <%@include file="../admin-layout/admin-navbar.jsp" %>
             <div class="main-view main-view-content">
-                
+                 <div class="container">
+      <h2>Feedback</h2>
+      
+      <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th> No</th>
+        <th> Name</th>
+        <th>Email</th>
+        <th>Feedback</th>
+        
+      
+        
+      </tr>
+    </thead>
+    <tbody>
+         <c:forEach items="${listFb}" var="item"> 
+      <tr>
+          <td>${item.getNo()}</td>
+          <td>${item.getName()}
+        <td>${item.getEmail()}</td>
+        <td>${item.getFeedbacks()}</td>
+     
+        
+      </tr>
+       </tbody>
+           </c:forEach>
+       </table>
+      </div>
             </div>
         </form>
     </body>

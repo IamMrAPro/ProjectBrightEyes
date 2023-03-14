@@ -1,4 +1,4 @@
-<<<<<<< Updated upstream
+
 D:\project_SWP\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\controller\showCartController.java
 D:\project_SWP\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\DAO\patientDAO.java
 D:\project_SWP\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\model\news.java
@@ -86,7 +86,7 @@ D:\project_SWP\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\contr
 D:\project_SWP\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\DAO\userDAO.java
 D:\project_SWP\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\Payment\PaymentServices.java
 D:\project_SWP\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\controller\recordOnlineController.java
-=======
+
 C:\Users\Admin\Documents\Workspace\SWP\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\controller\searchBookingController.java
 C:\Users\Admin\Documents\Workspace\SWP\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\DAO\bookingDAO.java
 C:\Users\Admin\Documents\Workspace\SWP\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\access\facebook\RestFB.java
@@ -177,5 +177,9 @@ C:\Users\Admin\Documents\Workspace\SWP\g2\Swp391Project\Swp391project\src\main\j
 C:\Users\Admin\Documents\Workspace\SWP\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\model\cart.java
 C:\Users\Admin\Documents\Workspace\SWP\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\service\sendMail.java
 C:\Users\Admin\Documents\Workspace\SWP\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\DAO\OrderDAO.java
+
 C:\Users\Admin\Documents\Workspace\SWP\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\controller\showCartController.java
->>>>>>> Stashed changes
+
+C:\Users\Admin\Documents\Workspace\SWP\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\controller\StaffController\SearchBookingStaff.java
+C:\Users\Admin\Documents\Workspace\SWP\g2\Swp391Project\Swp391project\src\main\java\com\groud2\web\controller\showCartController.java
+

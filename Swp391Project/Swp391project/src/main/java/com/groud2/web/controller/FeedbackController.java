@@ -2,30 +2,26 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
  */
-package com.groud2.web.controller.DoctorController;
+package com.groud2.web.controller;
 
-import com.groud2.web.DAO.patientDAO;
-import com.groud2.web.model.patient;
-import com.groud2.web.model.user;
-import jakarta.servlet.ServletException;
+import com.groud2.web.DAO.feedbackDAO;
+import com.groud2.web.model.feedback;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import jakarta.servlet.ServletException;
+
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.HttpSession;
-import java.sql.SQLException;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
- * @author nguye
+ * @author Admin
  */
-public class listWattingPatient extends HttpServlet {
+public class FeedbackController extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -44,10 +40,10 @@ public class listWattingPatient extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet listWattingPatient</title>");            
+            out.println("<title>Servlet FeedbackController</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet listWattingPatient at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet FeedbackController at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -65,38 +61,23 @@ public class listWattingPatient extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        HttpSession session = request.getSession();
-        String username = (String) session.getAttribute("id");
-        request.setAttribute("username", username);
-        String fullname1 = (String) session.getAttribute("fullname");
-        request.setAttribute("username", username);
-        //Lay date now
-        LocalDate now = LocalDate.now();
-        request.setAttribute("now", now);
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd"); // Định dạng chuỗi
-        String datenow = now.format(formatter);
-        System.out.println(datenow);
-        //xu ly output patient with process watting
-        String process = "0";
-        System.out.println("user name u lieu co ton tai");
-        System.out.println(fullname1);
-        System.out.println("doan xem");
-        System.out.println(process);
-        patientDAO pa = new patientDAO();       
-        ArrayList<patient> listWattingPatient;    
+          feedbackDAO b = new feedbackDAO();
+        feedback p = new feedback();
+     
+        String name = request.getParameter("name");
+        String email = request.getParameter("email");
+        String message = request.getParameter("message");
+        System.out.println("check getPara: " + email);
         try {
-                listWattingPatient = pa.getPatientByDay(fullname1, process, datenow);               
-                request.setAttribute("listWattingPatient", listWattingPatient);
-                request.getRequestDispatcher("DoctorView/doctor-screen/ListWattingPatient.jsp").forward(request, response);          
+          b.insertFb(name, email, message);
         } catch (SQLException ex) {
-            Logger.getLogger(listWattingPatient.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(FeedbackController.class.getName()).log(Level.SEVERE, null, ex);
         }
-//
-//        for(patient item : listWattingPatient){
-//            System.out.println("day"+item.getUser().);
-//        }
-        
-
+              
+        request.setAttribute("name", name);
+        request.setAttribute("email", email);
+        request.setAttribute("message", message);
+         request.getRequestDispatcher("home.jsp").forward(request, response);
     }
 
     /**

@@ -66,25 +66,49 @@ public class ReportError extends HttpServlet {
             throws ServletException, IOException {
         HttpSession session = request.getSession();
         String Idcard = request.getParameter("Idcard");
-        System.out.println(Idcard);        
         LocalDate now = LocalDate.now();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd"); // Định dạng chuỗi
         String medicalDate = now.format(formatter);
         patientDAO pa = new patientDAO();
         patient p = new patient();
-        
+        String userId, time, symptom, doctorName;
         String processOK = "0";
-       
+        ArrayList<patient> Infor;
         System.out.print("Lay du lieu booking: ");
         //update lai database sau khi kham xong      
         try {
-            pa.Successful1(processOK,Idcard,medicalDate);
+            Infor = pa.getInfor(Idcard, medicalDate);
+            for (patient item : Infor) {
+                System.out.println("day" + item.getIdcard());
+                System.out.println("day" + item.getUserid());
+                System.out.println("day" + item.getTimeOrder());
+                System.out.println("day" + item.getDoctorName());
+                System.out.println("day" + item.getSymptom());
+                System.out.println("day" + item.getIdcard());
+                
+                userId = item.getUserid();
+                time = item.getTimeOrder();
+                symptom = item.getSymptom();
+                doctorName=item.getDoctorName();
+                session.setAttribute("userId", userId);
+                session.setAttribute("time", time);
+                session.setAttribute("symptom", symptom);
+                session.setAttribute("doctorName", doctorName);
+
+            }
+            userId=(String) session.getAttribute("userId");
+            time=(String) session.getAttribute("time");
+            symptom=(String) session.getAttribute("symptom");
+            doctorName=(String) session.getAttribute("doctorName");
+            String IdCard=Idcard;
+            pa.Delete(Idcard, medicalDate);
+            pa.insertPatientBy(IdCard, userId, time, medicalDate, symptom, doctorName);
+            
+
             response.sendRedirect("listWattingPatient");
         } catch (SQLException ex) {
             Logger.getLogger(medicalRecord.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
-        
 
     }
 

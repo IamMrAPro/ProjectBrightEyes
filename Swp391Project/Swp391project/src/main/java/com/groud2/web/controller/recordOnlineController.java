@@ -5,6 +5,7 @@
 package com.groud2.web.controller;
 
 import com.groud2.web.DAO.patientDAO;
+import com.groud2.web.DAO.userDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
@@ -74,24 +75,33 @@ public class recordOnlineController extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
          patientDAO pa = new patientDAO();
-        String patientName = request.getParameter("patientName");
+         userDAO u = new userDAO();
+         
         String IdCard = request.getParameter("idcard");
+        String patientName = request.getParameter("patientName");
         String phone = request.getParameter("phone");
         String email = request.getParameter("email");
         String address = request.getParameter("address");
-        String timeOder = request.getParameter("time");
         String bod = request.getParameter("bod");
         String gender = request.getParameter("gender");
+         String account = email;
+          String password = "123456";
+          String role = "customer";
+          String time = request.getParameter("time");
+          System.out.println(time);
         System.out.println("Gender: " + gender);
         LocalDate now = LocalDate.now();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd"); // Định dạng chuỗi
         String medicalDate = now.format(formatter);
         String symptom = request.getParameter("symptom");
         String doctorName = request.getParameter("doctor");
+        String userId = u.getIdbyPhone(phone);
+        System.out.println(userId);
         System.out.println(medicalDate);
+        
         try {
-
-            pa.insertPatient2(IdCard, patientName, phone, email, address, bod, gender, timeOder, medicalDate, symptom, doctorName, symptom);
+            u.createData(patientName, account, password , phone, address, email, gender, bod,role);
+            pa.insertPatient2(IdCard, userId, time, medicalDate, symptom, doctorName, symptom);
             response.sendRedirect("searchBooking.jsp");
             System.out.println("success");
         } catch (SQLException e) {

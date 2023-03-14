@@ -4,12 +4,16 @@
  */
 package com.groud2.web.controller.AdminController;
 
+import com.groud2.web.DAO.feedbackDAO;
+import com.groud2.web.model.feedback;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import java.io.IOException;
+import java.sql.SQLException;
+import java.util.ArrayList;
 
 /**
  *
@@ -20,8 +24,19 @@ public class AdminViewFeedback extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession session = req.getSession();
-         String username = (String)session.getAttribute("id");
-         req.setAttribute("username", username);
+        String username = (String) session.getAttribute("id");
+        req.setAttribute("username", username);
+        feedbackDAO f = new feedbackDAO();
+
+        try {
+            ArrayList<feedback> list = f.getFeedback();
+            req.setAttribute("listFb", list);
+            System.out.println("helu");
+            req.getRequestDispatcher("AdminView/admin-screen/ViewFeedBack.jsp").forward(req, resp);
+        } catch (SQLException ex) {
+            System.out.println("hellloooo");
+//            Logger.getLogger(glassesController.class.getName()).log(Level.SEVERE, null, ex);
+        }
         req.getRequestDispatcher("AdminView/admin-screen/ViewFeedBack.jsp").forward(req, resp);
     }
 
@@ -36,7 +51,20 @@ public class AdminViewFeedback extends HttpServlet {
         //Handle request
         if (!position.equals("6")) {
             changePosition(position, req, resp);
+        } else {
+            feedbackDAO f = new feedbackDAO();
+
+            try {
+                ArrayList<feedback> list = f.getFeedback();
+                req.setAttribute("listFb", list);
+                System.out.println("helu");
+                req.getRequestDispatcher("AdminView/admin-screen/ViewFeedBack.jsp").forward(req, resp);
+            } catch (SQLException ex) {
+                System.out.println("hellloooo");
+//            Logger.getLogger(glassesController.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
+
     }
 
     private void changePosition(String pos, HttpServletRequest req, HttpServletResponse resp) throws IOException {

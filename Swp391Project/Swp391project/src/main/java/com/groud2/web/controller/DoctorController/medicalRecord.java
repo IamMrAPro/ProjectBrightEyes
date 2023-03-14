@@ -6,6 +6,7 @@ package com.groud2.web.controller.DoctorController;
 
 import com.groud2.web.DAO.patientDAO;
 import com.groud2.web.model.patient;
+import com.groud2.web.model.user;
 import jakarta.servlet.ServletException;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -67,7 +68,7 @@ public class medicalRecord extends HttpServlet {
         HttpSession session = request.getSession();
         String username = (String) session.getAttribute("id");
         request.setAttribute("username", username);
-        String fullname = (String) session.getAttribute("fullname");
+        String fullname1 = (String) session.getAttribute("fullname");
         request.setAttribute("username", username);
         //Lay date now
         LocalDate now = LocalDate.now();
@@ -77,15 +78,22 @@ public class medicalRecord extends HttpServlet {
 
         //xu ly output patient with process watting
         String Idcard=request.getParameter("Idcard");
+        session.setAttribute("Idcard",Idcard);
         String process = "0";
         patientDAO pa = new patientDAO();
         System.out.print("Lay du lieu booking: ");
+        
         ArrayList<patient> listInformationPatient;
+       
         try {
-            listInformationPatient = pa.getInformationPatient(fullname, process, datenow,Idcard);
+            listInformationPatient = pa.getInformationPatient(fullname1, process, datenow,Idcard);
+           
+            
+           
             System.out.println("Thanh cong");
 
             request.setAttribute("listInformationPatient", listInformationPatient);
+           
         } catch (SQLException ex) {
             Logger.getLogger(listWattingPatient.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -124,9 +132,14 @@ public class medicalRecord extends HttpServlet {
         patientDAO pa = new patientDAO();
         System.out.print("Lay du lieu booking: ");
         //update lai database sau khi kham xong
-       String Idcard=request.getParameter("Idcard");
+        
+        String conclude=request.getParameter("conclude");
+        String medicine=request.getParameter("medicine");
+        String Idcard= (String) session.getAttribute("Idcard");
+       
         try {
-            pa.Successful(processOK,Idcard,datenow);
+           
+            pa.Medical(processOK,Idcard,datenow,conclude,medicine);
         } catch (SQLException ex) {
             Logger.getLogger(medicalRecord.class.getName()).log(Level.SEVERE, null, ex);
         }
