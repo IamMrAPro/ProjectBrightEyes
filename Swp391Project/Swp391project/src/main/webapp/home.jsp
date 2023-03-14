@@ -9,7 +9,11 @@
         <jsp:include page="layout/menu.jsp"/>
 
         <main>
-
+            <c:if test="${requestScope.nofi!=null}">
+                <div class="text-center" style="background-color: #198754;color:white">
+                    <h3>${requestScope.nofi}</h3>
+                </div>
+            </c:if>
             <section class="hero-section hero-section-full-height">
                 <div class="container-fluid">
                     <div class="row">

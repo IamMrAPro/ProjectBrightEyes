@@ -52,16 +52,16 @@
                         </div>
 
                     </c:forEach>
-                    </form>
+                    
                 </div>
             </div>
             <nav aria-label="Page navigation example " class="page">
                 <ul class="pagination">
                     
                    
-                    <li class="page-item"><a class="page-link" href="glasses?page=1">1</a></li>
-                    <li class="page-item"><a class="page-link" href="glasses?page=2">2</a></li>
-                    <li class="page-item"><a class="page-link" href="glasses?page=3">3</a></li>
+                    <li class="page-item"><a class="page-link" href="glasses?paging=1">1</a></li>
+                    <li class="page-item"><a class="page-link" href="glasses?paging=2">2</a></li>
+                    <li class="page-item"><a class="page-link" href="glasses?paging=3">3</a></li>
                     
                 </ul>
             </nav>

@@ -10,7 +10,9 @@ import com.groud2.web.controller.glassesController;
 import com.groud2.web.model.OrderGlasses.Cart;
 import com.groud2.web.model.OrderGlasses.Order;
 import com.groud2.web.model.glasses;
+import com.groud2.web.service.sendMail;
 import com.paypal.base.rest.PayPalRESTException;
+import jakarta.mail.MessagingException;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -88,6 +90,7 @@ public class CheckoutController extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String payment = request.getParameter("payment");
+        System.out.println("lsdghfrbhgr"+payment);
         if (payment.equalsIgnoreCase("default")) {
             String name = request.getParameter("name");
             String email = request.getParameter("emailOrder");
@@ -118,11 +121,53 @@ public class CheckoutController extends HttpServlet {
                 cityShip += "Giao hang nhanh";
             }
 
-            response.setContentType("text/html;charset=UTF-8");
             glassesDAO g = new glassesDAO();
 
+            ArrayList<glasses> list;
             try {
-                ArrayList<glasses> list = g.getAllglasses();
+                list = g.getAllglasses();
+                HttpSession session = request.getSession();
+                String idCustom = String.valueOf(session.getAttribute("id"));
+                Cookie[] arr = request.getCookies();
+                String txt = "";
+                if (arr != null) {
+                    for (Cookie c : arr) {
+                        if (c.getName().equals("cart")) {
+                            txt += c.getValue();
+
+                        }
+                    }
+                }
+                Cart cart = new Cart(txt, list);
+                LocalDate now = LocalDate.now();
+                Order o = new Order(cart, idCustom, adress, cityShip, unit, 3, 0, null, null, "Wait for confirmation");
+                OrderDAO od = new OrderDAO();
+                od.insertOrder( o.getCart().getListname(), name, (adress + cityShip), UnitShip, 3, String.valueOf(now), "Wait for confirmation");
+                String success = "Order Success";
+                sendMail.MailResetPassword(email,success);
+                request.setAttribute("nofi", success);
+                 if (arr != null) {
+                for (Cookie c : arr) {
+                    if (c.getName().equals("cart")) {
+                        
+                        c.setMaxAge(0);
+                        response.addCookie(c);
+                    }
+                }}
+                
+                request.getRequestDispatcher("home.jsp").forward(request, response);
+            } catch (SQLException ex) {
+                Logger.getLogger(CheckoutController.class.getName()).log(Level.SEVERE, null, ex);
+
+            } catch (MessagingException ex) {
+                Logger.getLogger(CheckoutController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+        } else {
+            glassesDAO g = new glassesDAO();
+            ArrayList<glasses> list;
+            try {
+                list = g.getAllglasses();
                 Cookie[] arr = request.getCookies();
                 String txt = "";
                 if (arr != null) {
@@ -134,24 +179,21 @@ public class CheckoutController extends HttpServlet {
                     }
                 }
                 HttpSession session = request.getSession();
-                String idCustom = String.valueOf(session.getAttribute("id"));
+
                 Cart cart = new Cart(txt, list);
-                LocalDate now = LocalDate.now();
-                Order o = new Order(cart, idCustom, adress, cityShip, unit, 3, 0, null, null, "Wait for confirmation");
-                OrderDAO od = new OrderDAO();
-                od.insertOrder(0, o.getCart().getListname(), idCustom, (adress + cityShip), UnitShip, 3, String.valueOf(now), "Wait for confirmation");
+                Order o = new Order(cart, 3, 0);
                 PaymentServices paymentServices = new PaymentServices();
-                String approvalLink = paymentServices.authorizePayment(o);
-                response.sendRedirect(approvalLink);
-
+                String approvalLink;
+                try {
+                    approvalLink = paymentServices.authorizePayment(o);
+                    response.sendRedirect(approvalLink);
+                } catch (PayPalRESTException ex) {
+                    Logger.getLogger(CheckoutController.class.getName()).log(Level.SEVERE, null, ex);
+                }
             } catch (SQLException ex) {
-
-                Logger.getLogger(glassesController.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (PayPalRESTException ex) {
                 Logger.getLogger(CheckoutController.class.getName()).log(Level.SEVERE, null, ex);
             }
-        }else{
-            
+
         }
 
     }

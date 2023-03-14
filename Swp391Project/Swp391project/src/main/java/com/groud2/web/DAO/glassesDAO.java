@@ -101,44 +101,7 @@ public class glassesDAO {
         return list;
 
     }
-     public ArrayList<glasses> getAllglasses(int start,int total,String genderfind) throws SQLException, IOException {
-        ArrayList<glasses> list = new ArrayList<>();
-        String sql = "SELECT * FROM glasses where gender = "+genderfind+" limit "+(start-1)+","+total ;
-        try {
-            connection = dbc.getConnection();
-            ps = connection.prepareStatement(sql);
-            rs = ps.executeQuery();
-            while (rs.next()) {
-                String gende;
-                String glassID = rs.getString(1);
-                String glassName = rs.getString(2);
-                String color = rs.getString(3);
-                String gender = rs.getString(4);
-                String material = rs.getString(5);
-                String style = rs.getString(6);
-                String image = rs.getString(7);
-                String price = rs.getString(8);
-//                String quantity= rs.getString(9);
-                String quantity = "100";
-                if (gender.equals("1")) {
-                    gende = "Male";
-                } else {
-                    gende = "FeMale";
-                }
-                glasses g = new glasses(glassID, glassName, color, gende, material, style, image, price, Integer.parseInt(quantity));
-
-                list.add(g);
-            }
-        } catch (SQLException e) {
-
-        } finally {
-            if (connection != null) {
-                connection.close();
-            }
-        }
-        return list;
-
-    }
+     
 
     public glasses getGlassesId(String id) throws SQLException, IOException {
         glasses g = new glasses();

@@ -93,8 +93,8 @@ public class AddtocartController extends HttpServlet {
             c.setMaxAge(2 * 24 * 60 * 60);
 
             response.addCookie(c);
-            response.sendRedirect("glasses?page=1");
-
+            response.sendRedirect("glasses?paging=1");
+            
         } catch (SQLException ex) {
 
             Logger.getLogger(glassesController.class.getName()).log(Level.SEVERE, null, ex);

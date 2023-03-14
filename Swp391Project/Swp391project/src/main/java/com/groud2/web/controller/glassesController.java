@@ -60,20 +60,12 @@ public class glassesController extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         glassesDAO g =new glassesDAO() ;
-        int count =0;
-        ArrayList<glasses> listcout;
-        try {
-            listcout = g.getAllglasses();
-              count = listcout.size();
-        } catch (SQLException ex) {
-            Logger.getLogger(glassesController.class.getName()).log(Level.SEVERE, null, ex);
-        }
        
 
-        String spageid=request.getParameter("page");  
+        String spageid=request.getParameter("paging");  
          int pageid=Integer.parseInt(spageid);  
         int total=6;  
-        int pageCount = count/total;
+       
         if(pageid==1){}  
         else{  
             pageid =pageid-1;  
@@ -98,7 +90,7 @@ public class glassesController extends HttpServlet {
             }else{
                 n=0;
             }
-            request.setAttribute("count", pageCount);
+            
             request.setAttribute("size", n);
             
              request.setAttribute("listGlasses", list);

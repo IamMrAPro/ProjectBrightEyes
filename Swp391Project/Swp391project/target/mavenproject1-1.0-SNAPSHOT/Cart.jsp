@@ -153,13 +153,14 @@
         <br><!-- comment -->
         <br><!-- comment -->
         <main>
+            
             <div class="card">
                 <div class="row">
                     <div class="col-md-8 cart">
                         <div class="title">
                             <div class="row">
                                 <div class="col"><h4><b>Shopping Glasses</b></h4></div>
-
+                                
                             </div>
                         </div>
                         <c:set var="o" value="${requestScope.cart}"  />

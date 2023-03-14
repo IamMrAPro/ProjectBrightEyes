@@ -20,19 +20,19 @@ public class OrderDAO {
     ResultSet rs = null;
     DBContext dbc = new DBContext();
     Connection connection = null;
-    public void insertOrder(int id, String glasses ,String customerId, String shipAdress,String unitShip,float shiping,String order,String status){
+    public void insertOrder( String glasses ,String nameCustomer, String shipAdress,String unitShip,float shiping,String order,String status){
          try {
-            String strSelect = "INSERT INTO `swp`.`orderglasses`(`id`,`glasses`,`customerId`,`shipDAddress`,`unitship`,`shiping`,`orderdate`,`statuss`) VALUES (?,?,?,?,?,?,?,?)";
+            String strSelect = "INSERT INTO `orderglasses`(`glasses`,`nameCustomer`,`shipDAddress`,`unitship`,`shiping`,`orderdate`,`statuss`) VALUES (?,?,?,?,?,?,?)";
             connection = dbc.getConnection();
             ps = connection.prepareStatement(strSelect);
-            ps.setInt(1, id);
-            ps.setString(2, glasses);
-            ps.setString(3, customerId);
-            ps.setString(4, shipAdress);
-            ps.setString(5, unitShip);
-            ps.setFloat(6, shiping);
-            ps.setString(7, order);
-            ps.setString(8, status);
+            
+            ps.setString(1, glasses);
+            ps.setString(2, nameCustomer);
+            ps.setString(3, shipAdress);
+            ps.setString(4, unitShip);
+            ps.setFloat(5, shiping);
+            ps.setString(6, order);
+            ps.setString(7, status);
             ps.execute();
             System.out.println("insert  success");
         } catch (Exception e) {
