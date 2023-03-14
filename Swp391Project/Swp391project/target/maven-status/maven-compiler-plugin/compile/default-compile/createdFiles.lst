@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 com\groud2\web\controller\changePass.class
 com\groud2\web\controller\showCartController.class
 com\groud2\web\controller\AdminController\AdminAddNewUserController.class
@@ -85,3 +86,17 @@ com\groud2\web\controller\AddtocartController.class
 com\groud2\web\controller\AdminController\AdminDasboardController.class
 com\groud2\web\controller\bookingController.class
 com\groud2\web\model\profile.class
+=======
+com\groud2\web\controller\searchUserController.class
+com\groud2\web\controller\cartController.class
+com\groud2\web\model\Item.class
+com\groud2\web\access\google\GooglePojo.class
+com\groud2\web\DAO\profileDAO.class
+com\groud2\web\model\cart.class
+com\groud2\web\model\feedback.class
+com\groud2\web\model\Order.class
+com\groud2\web\DAO\feedbackDAO.class
+com\groud2\web\controller\DoctorController\MedicalHistory.class
+com\groud2\web\controller\currentBooking.class
+com\groud2\web\controller\FeedbackController.class
+>>>>>>> Stashed changes
