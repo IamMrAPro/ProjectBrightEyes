@@ -64,10 +64,10 @@ public class userBookingController extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         HttpSession session = request.getSession();
-        
+        String fullname = (String) session.getAttribute("fullname");
         String email = (String) session.getAttribute("email");
         String phone = (String) session.getAttribute("phonenumber");
-   
+        System.out.println("check fullname when login: " + fullname);
         bookingDAO b = new bookingDAO();
         ArrayList<booking> list;
         try {

@@ -655,4 +655,36 @@ public class userDAO {
         }
         return 0;
     }
+    public String getUserPhone(String userId) {
+        String name = "";
+        try {
+            String sql = "Select phonenumber from user where account = ?";
+            connection = dbc.getConnection();
+            ps = connection.prepareStatement(sql);
+            ps.setString(1, userId);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                name = rs.getString(1);
+            }
+        } catch (Exception e) {
+            System.out.println("Get phonenumber name: " + e.getMessage());
+        }
+        return name;
+    }
+    public String getUserEmail(String userId) {
+        String name = "";
+        try {
+            String sql = "Select email from user where account = ?";
+            connection = dbc.getConnection();
+            ps = connection.prepareStatement(sql);
+            ps.setString(1, userId);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                name = rs.getString(1);
+            }
+        } catch (Exception e) {
+            System.out.println("Get email user: " + e.getMessage());
+        }
+        return name;
+    }
 }

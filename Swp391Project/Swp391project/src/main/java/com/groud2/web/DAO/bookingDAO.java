@@ -248,7 +248,7 @@ public void insertStatusByID(int id) {
     }
 
     public void cancelBooking(String id) throws SQLException {
-        String sql = "DELETE FROM swp.`booking`\n"
+        String sql = "DELETE FROM swppro.`booking`\n"
                 + "WHERE bookId = \"" + id + "\";";
         connection = dbc.getConnection();
         ps = connection.prepareStatement(sql);

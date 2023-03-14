@@ -69,7 +69,7 @@ public class loginController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        System.out.println("da co vai de thu login");
+        
         String account = request.getParameter("account");
         String password = request.getParameter("password");
         String captchaText = request.getParameter("captchaInput");
@@ -113,6 +113,7 @@ public class loginController extends HttpServlet {
         }
         //Xu ly           
         userDAO u = new userDAO();
+        user d = new user();
         user loginOK;
         try {
             loginOK = u.checklogin(account, password);
@@ -120,11 +121,16 @@ public class loginController extends HttpServlet {
                 HttpSession session = request.getSession();
 
                 String fullname=u.getUserName(account);
+                String phone = u.getUserPhone(account);
+                String email = u.getUserEmail(account);
+                session.setAttribute("phoneLg", phone);
+                
+                session.setAttribute("emailLg", email);
+                System.out.println("check emai, phone sesssion login: " +email + phone);
                 session.setAttribute("id", account);
                 session.setAttribute("fullname", fullname);
                 String role = u.getUserRole(account);
-                System.out.println("User role: " + role);
-                System.out.println("Login Account: " + account);
+                
                 session.setAttribute("id", account);
                 session.setAttribute("fullname", fullname);
                 if (role.equals("admin")) {

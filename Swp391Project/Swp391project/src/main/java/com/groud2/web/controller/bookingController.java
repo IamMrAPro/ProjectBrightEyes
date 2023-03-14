@@ -13,6 +13,7 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import jakarta.xml.bind.DatatypeConverter;
 
 import java.io.IOException;
@@ -64,6 +65,11 @@ public class bookingController extends HttpServlet {
         bookingDAO b = new bookingDAO();
 
         String sbtime;
+        HttpSession session = request.getSession();
+        String fullname = (String) session.getAttribute("fullname");
+        String phoneLg = (String) session.getAttribute("phoneLg");
+        String emailLg = (String) session.getAttribute("emailLg");
+        System.out.println("check fullname when booking with login: " + fullname);
         String name = request.getParameter("name");
         String phone = request.getParameter("phone");
         String email = request.getParameter("email");
@@ -76,11 +82,16 @@ public class bookingController extends HttpServlet {
         boolean isPhoneValid = isValidPhoneNumber(phone);
         boolean isEmailValid = isValidEmail(email);
         boolean isDateValid = isValidDate(date);
+
+        request.setAttribute("fullname", fullname);
+        request.setAttribute("phoneLg", phoneLg);
+        request.setAttribute("emailLg", emailLg);
+        System.out.println("check Lg: " +emailLg + phoneLg);
         if (!isValidName(name)) {
             System.out.println("Invalid name");
             request.setAttribute("checkName", "Your name is invalid");
         }
-        if(time.equals("null")){
+        if (time.equals("null")) {
             System.out.println("Invalid time");
             request.setAttribute("checkTime", "Please choose time");
         }
@@ -150,7 +161,6 @@ public class bookingController extends HttpServlet {
             response.sendRedirect("searchBooking");
         }
 
-
     }
 
     /**
@@ -163,7 +173,6 @@ public class bookingController extends HttpServlet {
         return "Short description";
     }// </editor-fold>
 
-
     String encyptPass(String pass) throws NoSuchAlgorithmException {
 
         MessageDigest md = MessageDigest.getInstance("MD5");
@@ -174,25 +183,25 @@ public class bookingController extends HttpServlet {
         return myHash;
     }
 
-  public static boolean isValidName(String name) {
-    // Kiểm tra tên không được để trống và không chứa khoảng trắng đầu hoặc cuối chuỗi
-    if (name == null || name.trim().length() == 0 || name.startsWith(" ") || name.endsWith(" ")) {
-        return false;
-    }
+    public static boolean isValidName(String name) {
+        // Kiểm tra tên không được để trống và không chứa khoảng trắng đầu hoặc cuối chuỗi
+        if (name == null || name.trim().length() == 0 || name.startsWith(" ") || name.endsWith(" ")) {
+            return false;
+        }
 
-    // Kiểm tra tên không chứa các ký tự đặc biệt hoặc số
-    if (!name.matches("[\\p{L} ]+")) {
-        return false;
-    }
+        // Kiểm tra tên không chứa các ký tự đặc biệt hoặc số
+        if (!name.matches("[\\p{L} ]+")) {
+            return false;
+        }
 
-    // Kiểm tra tên không quá ngắn hoặc quá dài
-    if (name.length() < 2 || name.length() > 50) {
-        return false;
-    }
+        // Kiểm tra tên không quá ngắn hoặc quá dài
+        if (name.length() < 2 || name.length() > 50) {
+            return false;
+        }
 
-    // Tên hợp lệ
-    return true;
-}
+        // Tên hợp lệ
+        return true;
+    }
 
     public static boolean isValidDate(String inputDate) {
         boolean isValid = true;

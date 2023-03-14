@@ -20,7 +20,7 @@
         <jsp:include page="layout/header.jsp"/>
         <jsp:include page="layout/menu.jsp"/>
 
-        <form method="post" action="userBooking">
+        <form action="userBooking">
         <div class="container">
 
 
@@ -34,7 +34,9 @@
 
 
             </div>
-
+            <c:if test="${cancelSuccess ne null}" >
+                                            <p style="color:#00ccff;font-size: 20px">${cancelSuccess}</p>
+                                        </c:if>
             <div class="row align-items-center">
                 <div class="col">
 
