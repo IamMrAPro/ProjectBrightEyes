@@ -9,22 +9,20 @@ import com.groud2.web.model.patient;
 import jakarta.servlet.ServletException;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.SQLException;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
- * @author nguye
+ * @author Admin
  */
-public class ReportError extends HttpServlet {
+public class MedicalHistory extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -43,10 +41,10 @@ public class ReportError extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet ReportError</title>");
+            out.println("<title>Servlet MedicalHistory</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet ReportError at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet MedicalHistory at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -64,53 +62,18 @@ public class ReportError extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        HttpSession session = request.getSession();
-        String Idcard = request.getParameter("Idcard");
-
-        LocalDate now = LocalDate.now();
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd"); // Định dạng chuỗi
-        String medicalDate = now.format(formatter);
-        patientDAO pa = new patientDAO();
-        patient p = new patient();
-        String userId, time, symptom, doctorName;
-        String processOK = "0";
-        ArrayList<patient> Infor;
-        System.out.print("Lay du lieu booking: ");
-        //update lai database sau khi kham xong      
+       String IdCard=request.getParameter("Idcard");
+        patientDAO pa = new patientDAO();       
+        ArrayList<patient> listPatientHistory;    
         try {
-            Infor = pa.getInfor(Idcard, medicalDate);
-            for (patient item : Infor) {
-                System.out.println("day" + item.getIdcard());
-                System.out.println("day" + item.getUserid());
-                System.out.println("day" + item.getTimeOrder());
-                System.out.println("day" + item.getDoctorName());
-                System.out.println("day" + item.getSymptom());
-                System.out.println("day" + item.getIdcard());
+                listPatientHistory = pa.getPatientHistory(IdCard);               
+                request.setAttribute("listPatientHistory", listPatientHistory);
                 
-                userId = item.getUserid();
-                time = item.getTimeOrder();
-                symptom = item.getSymptom();
-                doctorName=item.getDoctorName();
-                session.setAttribute("userId", userId);
-                session.setAttribute("time", time);
-                session.setAttribute("symptom", symptom);
-                session.setAttribute("doctorName", doctorName);
-
-            }
-            userId=(String) session.getAttribute("userId");
-            time=(String) session.getAttribute("time");
-            symptom=(String) session.getAttribute("symptom");
-            doctorName=(String) session.getAttribute("doctorName");
-            String IdCard=Idcard;
-            pa.Delete(Idcard, medicalDate);
-            pa.insertPatientBy(IdCard, userId, time, medicalDate, symptom, doctorName);
-            
-
-            response.sendRedirect("listWattingPatient");
+                
+                request.getRequestDispatcher("DoctorView/doctor-screen/MedicalHistory.jsp").forward(request, response);          
         } catch (SQLException ex) {
-            Logger.getLogger(medicalRecord.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(listWattingPatient.class.getName()).log(Level.SEVERE, null, ex);
         }
-
     }
 
     /**

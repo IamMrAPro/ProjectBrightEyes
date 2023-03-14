@@ -89,15 +89,25 @@ public class recordController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
+//           userDAO ud = new userDAO();
+//        String customerAcc = patientName.replaceAll(" ", "").toLowerCase();
+//        String password = "e10adc3949ba59abbe56e057f20f883e";
+//        ud.createData(doctorName, customerAcc, password, phone, address, email, gender, bod, "customer");
         patientDAO pa = new patientDAO();
+        userDAO u = new userDAO();
+
         String IdCard = request.getParameter("idcard");
         String patientName = request.getParameter("patientName");
         String phone = request.getParameter("phone");
         String email = request.getParameter("email");
         String address = request.getParameter("address");
         String bod = request.getParameter("bod");
+        
         String gender = request.getParameter("gender");
+        String account = email;
+        String password = "123456";
+        String role = "customer";
+
         System.out.println("Gender: " + gender);
         LocalDate now = LocalDate.now();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd"); // Định dạng chuỗi
@@ -105,15 +115,34 @@ public class recordController extends HttpServlet {
         String symptom = request.getParameter("symptom");
         String doctorName = request.getParameter("doctor");
         System.out.println(medicalDate);
-        try {
+        boolean checkCreateData;
 
-            pa.insertPatient(IdCard, patientName, phone, email, address, bod, gender, medicalDate, symptom, doctorName);
-            response.sendRedirect("searchBooking.jsp");
-            System.out.println("success");
-        } catch (SQLException e) {
-            e.printStackTrace();
+        try {
+             boolean emailOK = u.checkEmailRegister(email);           
+            if (emailOK==true) {
+                request.setAttribute("ms1", "Account creation failed , Please try again!!!");
+               
+            } else {
+               u.createData(patientName, account, password, phone, address, email, gender, bod, role);
+                request.getRequestDispatcher("record").forward(request, response);
+                //response.sendRedirect("loginuser");
+            } 
+            String userId= u.getIdbyAccount(account);
+            System.out.println(userId);
+            u.createData(patientName, account, password, phone, address, email, gender, bod, role);
+            
+            if (checkCreateData = true) {
+                pa.insertPatient(IdCard, medicalDate, symptom, doctorName,userId);
+               // pa.insertPatient(IdCard, medicalDate, symptom, doctorName);
+                response.sendRedirect("searchBooking.jsp");
+                System.out.println("success");
+            } else {
+                response.sendRedirect("record");
+            }
+        } catch (Exception e) {
             System.out.println("fail");
         }
+
     }
 
     /**
@@ -126,6 +155,4 @@ public class recordController extends HttpServlet {
         return "Short description";
     }// </editor-fold>
 
-    
-    
 }

@@ -4,13 +4,22 @@
  */
 package com.groud2.web.model;
 
-
 public class user {
-    private String userId,fullname,account,password,phonenumber,address,email,gender,bod, userimages;
-    private String role;
+
+    public String userId;
+    public String fullname;
+    public String account;
+    public String password;
+    public String phonenumber;
+    public String address;
+    public String email;
+    public String gender;
+    public String bod;
+    public String userimages;
+    public String role;
 
     public user(String account) {
-       this.account = account;
+        this.account = account;
     }
 
     public String getUserimages() {
@@ -30,16 +39,16 @@ public class user {
     }
 
     public user() {
-        
+
     }
-        public user(String account,String password ) {
+
+    public user(String account, String password) {
         this.account = account;
         this.password = password;
-    }   
+    }
 
-    
     // this generate not include user role
-    public user(String userId, String fullname, String account, String password, String phonenumber, String address, String email, String gender,String bod, String userimages) {
+    public user(String userId, String fullname, String account, String password, String phonenumber, String address, String email, String gender, String bod, String userimages) {
         this.userId = userId;
         this.fullname = fullname;
         this.account = account;
@@ -66,8 +75,7 @@ public class user {
         this.userimages = userimages;
         this.role = role;
     }
-    
-    
+
     public String getUserId() {
         return userId;
     }
@@ -140,9 +148,4 @@ public class user {
         this.role = role;
     }
 
-    
-
-    
-    
 }
-

@@ -29,7 +29,7 @@ public class userDAO {
 
     public user checklogin(String acc, String pass) throws SQLException, IOException {
 
-        String sql = "SELECT account,password FROM swp.user where account=? and password =?";
+        String sql = "SELECT account,password FROM user where account=? and password =?";
 
         try {
             connection = dbc.getConnection();
@@ -215,7 +215,7 @@ public class userDAO {
     }
 
     public boolean createData(String fullname, String account, String password, String phonenumber, String address, String email, String gender, String birthofdate, String role) throws SQLException {
-        String sql = "INSERT INTO `swp`.`user`\n"
+        String sql = "INSERT INTO user"
                 + "(`fullname`,`account`,`password`,`phonenumber`,`address`,`email`,`gender`,`bod`,`role`) values (?,?,?,?,?,?,?,?,?)";
         try {
             System.out.println("name" + fullname);
@@ -563,7 +563,7 @@ public class userDAO {
     }
 
     public boolean checkEmailRegister(String email) throws SQLException {
-        String sql = "SELECT account FROM swp.user where email=?  ";
+        String sql = "SELECT account FROM user where email=?  ";
         try {
             System.out.println("account " + email);
             connection = dbc.getConnection();
@@ -654,5 +654,83 @@ public class userDAO {
             System.out.println("Get total attendance error: " + e.getMessage());
         }
         return 0;
+    }
+    
+    public ArrayList<user> getAllByPhone(String phone) throws SQLException, IOException {
+        ArrayList<user> list = new ArrayList<>();
+        String sql = "SELECT * FROM user where PhoneNumber=?";
+        try {
+            connection = dbc.getConnection();
+            ps = connection.prepareStatement(sql);
+            ps.setString(1, phone);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                String userID = rs.getString(1);
+                String fullname = rs.getString(2);
+                String acc = rs.getString(3);
+                String pass = rs.getString(4);
+                String phonenumber = rs.getString(5);
+                String address = rs.getString(6);
+                String email = rs.getString(7);
+                String bod = rs.getString(9);
+                String userimages = rs.getString(10);
+                String gender = rs.getString(8);
+                String role = rs.getString(11);
+                if (gender.equals("1")) {
+                    gender = "Male";
+                } else {
+                    gender = "FeMale";
+                }
+                user g = new user(userID, fullname, acc, pass, phonenumber, address, email, gender, bod, userimages, role);
+                list.add(g);
+            }
+        } catch (SQLException e) {
+            System.out.println("get profile error: " + e.getMessage());
+        } finally {
+            if (connection != null) {
+                connection.close();
+            }
+        }
+
+        return list;
+    }
+     public String getIdbyPhone(String phone ) {
+        String userId = "";
+        try {
+            String sql = "Select userId from user where phonenumber = ?";
+            connection = dbc.getConnection();
+            ps = connection.prepareStatement(sql);
+            ps.setString(1, phone);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                userId = rs.getString(1);
+
+            }
+        } catch (Exception e) {
+            System.out.println("Get userId: " + e.getMessage());
+
+        }
+        return userId;
+    }
+
+    public String getIdbyAccount(String account) {
+    String userId = "";
+        try {
+            String sql = "Select userId from user where account = ?";
+            connection = dbc.getConnection();
+            ps = connection.prepareStatement(sql);
+            ps.setString(1, account);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                userId = rs.getString(1);
+
+            }
+        } catch (Exception e) {
+            System.out.println("Get userId: " + e.getMessage());
+
+        }
+        return userId;    
+    
+    
     }
 }

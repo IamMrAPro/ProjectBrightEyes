@@ -8,7 +8,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-    <%@include file="../Staff-layout/staff-head.jsp" %>
+    <%@include file="../doctor-layout/doctor-head.jsp" %>
     <header> <script>
         function redirectToServlet() {
             const selectedOption = document.getElementById("selectOption").value;
@@ -122,53 +122,54 @@
         <form action="manageCustomer" class="vw-100 vh-100 d-flex" method="post">
             <!--            set position for not select case-->           
             <!--            --------------------------------------------------------------------->
-            <%@include file="../Staff-layout/staff-navbar.jsp" %>
+            <%@include file="../doctor-layout/doctor-navbar.jsp" %>
             <div class="main-view main-view-content">
                 <br><br>
                 <div class="d-flex justify-content-between header-staff-list align-items-center mb-4">
-                    <h2 class="text-center w-100">PATIENT OFF MANAGEMENT </h2>
+                    <h2 class="text-center w-100">HISTORY MEDICAL </h2>
                 </div>
                 <br>
-
-                <div class="row">
-                    <div class=" col-md-3"></div>
-                    <div class=" col-md-6">
-
-                        <h1 style="margin-bottom: 30px;display: flex; justify-content: center">MEDICAL REPORT FORM</h1>
-                        <div style="display: flex; justify-content: space-between">
-                            <p>Patient's Full Name<input style="width: 250px" name="patientName" type="text" "></p> 
-                            <p>Date of Birth<input type="date" name ="dob" ></p>
-                        </div>
-                        <p style="margin-top: 20px">Address<input type="text" name="adress" style="width: 100%"></p> 
-                        <div style="display: flex; justify-content: space-between">
-                            <p>Phone Number<input style="width: 250px" name="phone" type="text" "></p> 
-                            <p>Email address<input type="text" name ="email" "></p>
-                            <p>Gender:<br></p> 
-                            <select style="height: 28px; width: 100px" name="gender">
-                                <option value="male">Male</option>
-                                <option value="female">Female</option>
-                            </select>
-                        </div>
-
-                        <p>Symton</p>
-                        <textarea style="width: 100%" name="symptom" rows="5" cols="30"></textarea>
-
-                        <div  style="margin-top: 20px;display: flex;justify-content: space-between">
-                            <p>ID Card:<input type="text" name="idcard"> </p>
-                            <p>Choose doctor: </p>
-                            <select style="height: 28px; width: 25%" name="doctor">
-
-                            </select>
-                        </div>
-
-                        <div style="margin: 20px;display: flex;justify-content: center"><input style="justify-content: center" type="submit" value="Add Report"></div>
-                    </div>
-                    <div class=" col-md-3"></div>
-                </div>
+                <% int count = 0;%>
+                <!-- Modal -->
+                <table class="table table-bordered">
+                    <thead id="table-head">
+                        <tr>
+                            <th>No</th>
+                            <th>
+                                <div class="d-flex justify-content-between">
+                                    <div>Name</div>                                   
+                                </div>
+                            </th>
 
 
+                            <th>ID Card</th>
+                            <th>Symptom</th>
+                            <th>Conclude</th>
+                            <th>Medicine</th>
+                            <th>Doctor</th>
+                            <th>Time</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        
+                          <c:forEach items="${listPatientHistory}" var="c">
+                                <tr>
+                                    <th><% count++;
+                                    out.print(count);%></th>
+                                    <th>${c.getUser().getFullname()}</th> 
+                                    <th>${c.getIdcard()}</th>
+                                    <th>${c.getSymptom()}</th>
+                                    <th>${c.getConclude()}</th>
+                                    <th>${c.getMedicine()}</th>
+                                    <th>${c.getDoctorName()}</th>
+                                    <th>${c.getMedicalDate()}</th>
+                                    
+                                </tr>
+                           
+                        </c:forEach>
 
-
+                    </tbody>
+                </table>
             </div>
         </form>
     </body>

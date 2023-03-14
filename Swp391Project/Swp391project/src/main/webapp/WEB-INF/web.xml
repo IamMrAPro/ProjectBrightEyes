@@ -198,6 +198,18 @@
         <servlet-name>FeedbackController</servlet-name>
         <servlet-class>com.groud2.web.controller.FeedbackController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>searchUserController</servlet-name>
+        <servlet-class>com.groud2.web.controller.searchUserController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>MedicalHistory</servlet-name>
+        <servlet-class>com.groud2.web.controller.DoctorController.MedicalHistory</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>SearchBookingStaff</servlet-name>
+        <servlet-class>com.groud2.web.controller.StaffController.SearchBookingStaff</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>homeController</servlet-name>
         <url-pattern>/home</url-pattern>
@@ -389,6 +401,18 @@
     <servlet-mapping>
         <servlet-name>FeedbackController</servlet-name>
         <url-pattern>/FeedbackController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>searchUserController</servlet-name>
+        <url-pattern>/searchUser</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>MedicalHistory</servlet-name>
+        <url-pattern>/MedicalHistory</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SearchBookingStaff</servlet-name>
+        <url-pattern>/SearchBookingStaff</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

@@ -244,7 +244,7 @@ public class bookingDAO {
 
     public boolean checkPhone(String phone) throws SQLException, IOException {
 
-        String sql = "SELECT phone FROM swp.user where phone=?  ";
+        String sql = "SELECT phonenumber FROM swp.user where phonenumber=?  ";
         try {
             System.out.println("check phone booking: " + phone);
             connection = dbc.getConnection();
