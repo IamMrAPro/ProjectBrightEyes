@@ -81,7 +81,7 @@
 
 
                     </div>
-
+<% int count = 0;%>
                     <div class="row align-items-center">
                         <div class="col">
 
@@ -103,7 +103,8 @@
 
                                 <c:forEach items="${listCurrent}" var="p">
                                     <tbody> 
-                                        <tr><td>${p.getBookingId()} </td>
+                                        <tr><td><% count++;
+                                    out.print(count);%> </td>
                                             <td>${p.getName()}</td>
                                             <td>${p.getPhone()}</td>
                                             <td>${p.getEmail()}</td>

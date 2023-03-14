@@ -178,7 +178,7 @@ public class bookingDAO {
 
     public boolean checkEmail(String email) throws SQLException, IOException {
 
-        String sql = "SELECT email FROM swp.user where email=?  ";
+        String sql = "SELECT email FROM user where email=?  ";
         try {
             System.out.println("check email booking: " + email);
             connection = dbc.getConnection();
@@ -202,7 +202,7 @@ public class bookingDAO {
 
     public boolean checkPhone(String phone) throws SQLException, IOException {
 
-        String sql = "SELECT phone FROM swp.user where phone=?  ";
+        String sql = "SELECT phone FROM user where phone=?  ";
         try {
             System.out.println("check phone booking: " + phone);
             connection = dbc.getConnection();
@@ -336,5 +336,38 @@ public class bookingDAO {
             System.out.println("Error selecting time by id: " + e.getMessage());
             return null;
         }
+    }
+    public ArrayList<booking> getAllCurrentByBoth(String email, String phone) throws SQLException {
+        ArrayList<booking> list = new ArrayList<>();
+        String sql = "SELECT * FROM booking where phone=? AND email=? AND date = current_date() ORDER BY time;";
+        try {
+            connection = dbc.getConnection();
+            ps = connection.prepareStatement(sql);
+            ps.setString(1, phone);
+            ps.setString(2, email);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                String bookId = rs.getString(1);
+                String name = rs.getString(2);
+                String date = rs.getString(5);
+                String time = rs.getString(6);
+                String medical = rs.getString(7);
+                String payment = rs.getString(8);
+                String sbtime = rs.getString(9);
+                String status = rs.getString(10);
+
+                booking g = new booking(bookId, name, phone, email, date, time, medical, payment, sbtime, status);
+                System.out.println("get booking by phone, email success");
+                list.add(g);
+            }
+        } catch (SQLException e) {
+            System.out.println("get booking by phone,email error: " + e.getMessage());
+        } finally {
+            if (connection != null) {
+                connection.close();
+            }
+        }
+
+        return list;
     }
 }

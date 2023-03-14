@@ -64,7 +64,7 @@
                         <p style="color: red;font-size: 20px">${check}</p>
                     </c:if>
                 </div>
-<% int count = 0;%>
+                <% int count = 0;%>
                 <div class="row align-items-center">
                     <div class="col">
 
@@ -86,8 +86,8 @@
 
                             <c:forEach items="${list}" var="p">
                                 <tbody> 
-                                    <tr><td><% count++;
-                                    out.print(count);%> </td>
+                                            <tr><td><% count++;
+                                        out.print(count);%> </td>
                                         <td>${p.getName()}</td>
                                         <td>${p.getPhone()}</td>
                                         <td>${p.getEmail()}</td>
@@ -101,8 +101,8 @@
                                             </c:if></td>
 
                                         <td><c:if test="${p.getStatus()!=1}">
-                        <a href="GetPatientOnline?id=${p.getBookingId()}"><ion-icon style="font-size:25px" name="add-circle-outline"></ion-icon></a>
-                    </c:if></td>
+                                                <a href="GetPatientOnline?id=${p.getBookingId()}"><ion-icon style="font-size:25px" name="add-circle-outline"></ion-icon></a>
+                                            </c:if></td>
                                     </tr>
                                 </tbody>
                             </c:forEach>

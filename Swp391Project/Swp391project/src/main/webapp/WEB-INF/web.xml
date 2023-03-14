@@ -171,10 +171,6 @@
         <servlet-class>com.groud2.web.controller.recordOnlineController</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>currentBooking</servlet-name>
-        <servlet-class>com.groud2.web.controller.currentBooking</servlet-class>
-    </servlet>
-    <servlet>
         <servlet-name>listCompletePatient</servlet-name>
         <servlet-class>com.groud2.web.controller.DoctorController.listCompletePatient</servlet-class>
     </servlet>
@@ -209,6 +205,14 @@
     <servlet>
         <servlet-name>updateProfileController</servlet-name>
         <servlet-class>com.groud2.web.controller.updateProfileController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>currentBookingController</servlet-name>
+        <servlet-class>com.groud2.web.controller.currentBookingController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>currentSearchBookingControlle</servlet-name>
+        <servlet-class>com.groud2.web.controller.currentSearchBookingController</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>homeController</servlet-name>
@@ -375,10 +379,6 @@
         <url-pattern>/glasses</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>currentBooking</servlet-name>
-        <url-pattern>/currentBooking</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
         <servlet-name>listCompletePatient</servlet-name>
         <url-pattern>/listCompletePatient</url-pattern>
     </servlet-mapping>
@@ -413,6 +413,14 @@
     <servlet-mapping>
         <servlet-name>updateProfileController</servlet-name>
         <url-pattern>/updateProfile</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>currentBookingController</servlet-name>
+        <url-pattern>/currentBooking</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>currentSearchBookingControlle</servlet-name>
+        <url-pattern>/currentSearch</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

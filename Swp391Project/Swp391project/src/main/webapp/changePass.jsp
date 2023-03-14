@@ -73,7 +73,7 @@
 
                             </div>
                         </div>
-
+                        <p style="margin-top: 20px;font-size: 15px">If you want back to home page, please enter <a href="home.jsp" style="font-size: 18px; color: blue"> Home</a></p> 
 
 
                     </form>

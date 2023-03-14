@@ -8,6 +8,7 @@ com\groud2\web\Payment\ReviewPaymentServlet.class
 com\groud2\web\controller\AdminController\AdminViewUserProfileController.class
 com\groud2\web\DAO\serviceDAO.class
 com\groud2\web\controller\homeController.class
+com\groud2\web\controller\currentSearchBookingController.class
 com\groud2\web\controller\logoutController.class
 com\groud2\web\controller\loginController.class
 com\groud2\web\model\OrderGlasses\Cart.class
@@ -83,5 +84,4 @@ com\groud2\web\controller\AdminController\AdminViewFeedback.class
 com\groud2\web\controller\AddtocartController.class
 com\groud2\web\controller\AdminController\AdminDasboardController.class
 com\groud2\web\controller\bookingController.class
-com\groud2\web\controller\currentBooking.class
 com\groud2\web\model\profile.class

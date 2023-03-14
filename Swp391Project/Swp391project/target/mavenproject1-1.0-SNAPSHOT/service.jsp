@@ -17,8 +17,8 @@
                 </div>
 
 
-                <div>
-                    <div class="col-md-6" style="background-color:rgb(238, 238, 238);padding: 15px 40px;border-radius: 10px;margin-top: 15px;margin-bottom: 10px ">
+                
+                    <div class="col-md-5" style="background-color:rgb(238, 238, 238);padding: 15px 40px;border-radius: 10px;margin-top: 15px;margin-bottom: 10px ">
 
                         <h1>Medical Examination Service</h1>
                         <form action="getService"> 
@@ -37,17 +37,35 @@
 
                                 
                             </c:forEach>
+                       
+                    </div>
+                
+
+
+
+
+
+                <div class="col-md-5" style="background-color:rgb(238, 238, 238);padding: 15px 40px;border-radius: 10px;margin-top: 15px;margin-bottom: 10px ">
+
+                        <h1>Eye surgery</h1>
+                        
+                            <c:forEach items="${listService2}" var="p">
+
+                               
+                                    <div style="border-radius: 10px ; background-color: white; padding: 10px 20px; margin-bottom: 20px"> 
+                                        <div style="display: inline-flex; align-items: center">
+
+                                            <ion-icon style="font-size: 25px; margin-top: 5px" name="eye-outline"></ion-icon>
+                                            <h3 style="margin-left: 10px">${p.getService()}</h3>
+                                        </div>
+                                        <p>${p.getDescription()}</p>
+                                        <p style="color:rgb(74, 192, 164);margin-left: 10px ">${p.getPrice()} VND/lần</p>
+                                    </div>
+
+                                
+                            </c:forEach>
                         </form>
                     </div>
-                </div>
-
-
-
-
-
-                <div class="col-md-4">
-                    
-                </div>
                 <div class="col-md-1">
 
                 </div>

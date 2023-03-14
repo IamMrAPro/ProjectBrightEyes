@@ -2,30 +2,32 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
  */
-
 package com.groud2.web.controller;
 
 import com.groud2.web.DAO.bookingDAO;
 import com.groud2.web.model.booking;
-import java.io.IOException;
-import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+
 /**
  *
- * @author anhha
+ * @author asus
  */
-public class currentBooking extends HttpServlet {
-   
-    /** 
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
+public class currentSearchBookingController extends HttpServlet {
+
+    /**
+     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
+     * methods.
+     *
      * @param request servlet request
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
@@ -39,10 +41,10 @@ public class currentBooking extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet currentBookingController</title>");            
+            out.println("<title>Servlet currentSearchBookingControlle</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet currentBookingController at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet currentSearchBookingControlle at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -60,16 +62,31 @@ public class currentBooking extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-         bookingDAO b = new bookingDAO();
-         
+        String email = request.getParameter("email");
+        String phone = request.getParameter("phone");
+
+        bookingDAO b = new bookingDAO();
+
         try {
-            ArrayList<booking> list = b.getCurrentBooking();
-            request.setAttribute("listCurrent", list);
+
+            if (b.checkExist(email, phone)) {
+                System.out.println("Email ton tai");
+                if (email != null && !email.isEmpty() && phone != null && !phone.isEmpty()) {
+                    ArrayList<booking> list = b.getAllCurrentByBoth(email, phone);
+                    System.out.println("get booking by both");
+                    request.setAttribute("list", list);
+                }
+            } else {
+                
+                request.setAttribute("check", "Your information was wrong. Please check again");
+            }
+           
+//            request.getRequestDispatcher("currentBooking.jsp").forward(request, response);
+
         } catch (SQLException ex) {
-            Logger.getLogger(currentBooking.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("hellloooo");
+            Logger.getLogger(searchBookingController.class.getName()).log(Level.SEVERE, null, ex);
         }
-         
-        request.getRequestDispatcher("currentBooking.jsp").forward(request, response);
     }
 
     /**
@@ -83,31 +100,7 @@ public class currentBooking extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String email = request.getParameter("email");
-        String phone = request.getParameter("phone");
-
-        bookingDAO b = new bookingDAO();
-
-        try {
-
-            if (b.checkExist(email, phone)) {
-                System.out.println("Email ton tai");
-                if (email != null && !email.isEmpty() && phone != null && !phone.isEmpty()) {
-                    ArrayList<booking> list = b.getAllByBoth(email, phone);
-                    System.out.println("get booking by both in current");
-                    request.setAttribute("listCurrent", list);
-                }
-            } else {
-                
-                request.setAttribute("check", "Your information was wrong. Please check again");
-            }
-
-            request.getRequestDispatcher("currentBooking.jsp").forward(request, response);
-
-        } catch (SQLException ex) {
-            System.out.println("hellloooo");
-            Logger.getLogger(searchBookingController.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        processRequest(request, response);
     }
 
     /**
