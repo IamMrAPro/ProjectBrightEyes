@@ -19,7 +19,20 @@
                         <br>
                         <h2>Glasses</h2>
                     </div>
+                     <div style="text-align: start">
 
+                            <li class="nav-item dropdown" style="list-style-type: none; align-items: start">
+                                <a class="nav-link dropdown-toggle" href="#" id="dropdownMenuButton2" data-toggle="dropdown"
+                                   aria-haspopup="true" aria-expanded="false">Category <span class="sr-only">(current)</span></a>
+                                   <div class="dropdown-menu" aria-labelledby="dropdownMenuLink_1" ">
+                                       <a class="dropdown-item" href="glasses?paging=1"  onchange>All Glasses</a>
+                                    <a class="dropdown-item" href="categoryGlasses?paging=1&categoryname=0" onchange >Male</a>
+                                    <a class="dropdown-item" href="categoryGlasses?paging=1&categoryname=1" onchange>FeMale </a>
+                                    
+                                    
+                                </div>
+                            </li>   
+                        </div> 
                     <c:forEach items="${listGlasses}" var="item">
                         <div class="col-lg-4 col-md-6 col-3 mb-4 ">
                             <div class="custom-block-wrap">

@@ -6,6 +6,7 @@ com\groud2\web\controller\profileController.class
 com\groud2\web\DAO\newsDAO.class
 com\groud2\web\Payment\ReviewPaymentServlet.class
 com\groud2\web\controller\AdminController\AdminViewUserProfileController.class
+com\groud2\web\controller\categoryGlasses.class
 com\groud2\web\DAO\serviceDAO.class
 com\groud2\web\controller\homeController.class
 com\groud2\web\controller\logoutController.class
