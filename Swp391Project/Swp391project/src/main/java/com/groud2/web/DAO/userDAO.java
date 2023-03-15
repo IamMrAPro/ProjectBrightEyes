@@ -215,7 +215,7 @@ public class userDAO {
     }
 
     public boolean createData(String fullname, String account, String password, String phonenumber, String address, String email, String gender, String birthofdate, String role) throws SQLException {
-        String sql = "INSERT INTO `user`\n"
+        String sql = "INSERT INTO `swppro`.`user`\n"
                 + "(`fullname`,`account`,`password`,`phonenumber`,`address`,`email`,`gender`,`bod`,`role`) values (?,?,?,?,?,?,?,?,?)";
         try {
             System.out.println("name" + fullname);

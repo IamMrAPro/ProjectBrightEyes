@@ -24,6 +24,8 @@
             cursor: inherit;
         }
     </style>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
     <body onload="getPositionNavBar(6)">
         <form action="searchBooking" class="vw-100 vh-100 d-flex" method="post">
             <!--            set position for not select case-->
@@ -75,6 +77,7 @@
                                     <th>Email</th>
                                     <th>Day</th>
                                     <th>Time</th>
+                                    <th>Status</th>
 
                                     <th>Add</th>
                                 </tr>
@@ -89,8 +92,16 @@
                                         <td>${p.getEmail()}</td>
                                         <td>${p.getDay()}</td>
                                         <td>${p.getTime()}</td>        
+                                        <td> <c:if test="${p.getStatus()==1}" >
+                                                <p style="color: red;font-size: 20px">done</p>
+                                            </c:if>
+                                            <c:if test="${p.getStatus()==0}" >
+                                                <p style="color: green;font-size: 20px">not yet</p>
+                                            </c:if></td>
 
-                                        <td><a href="GetPatientOnline?id=${p.getBookingId()} "><ion-icon style="font-size:25px" name="add-circle-outline"></ion-icon></a></td>
+                                        <td><c:if test="${p.getStatus()!=1}">
+                        <a href="GetPatientOnline?id=${p.getBookingId()}"><ion-icon style="font-size:25px" name="add-circle-outline"></ion-icon></a>
+                    </c:if></td>
                                     </tr>
                                 </tbody>
                             </c:forEach>

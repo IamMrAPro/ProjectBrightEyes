@@ -6,21 +6,38 @@
     <body>
         <jsp:include page="layout/header.jsp"/>
         <jsp:include page="layout/menu.jsp"/>
-
+        <style>
+            .page{
+                margin: 0 50%;
+            }
+        </style>
         <main>
-            <div class="container">
+            <div class="container ">
                 <div class="row">
 
                     <div class="col-lg-12 text-center mb-4">
                         <br>
                         <h2>Glasses</h2>
                     </div>
-                    
+                     <div style="text-align: start">
+
+                            <li class="nav-item dropdown" style="list-style-type: none; align-items: start">
+                                <a class="nav-link dropdown-toggle" href="#" id="dropdownMenuButton2" data-toggle="dropdown"
+                                   aria-haspopup="true" aria-expanded="false">Category <span class="sr-only">(current)</span></a>
+                                   <div class="dropdown-menu" aria-labelledby="dropdownMenuLink_1" ">
+                                       <a class="dropdown-item" href="glasses?paging=1"  onchange>All Glasses</a>
+                                    <a class="dropdown-item" href="categoryGlasses?paging=1&categoryname=0" onchange >Male</a>
+                                    <a class="dropdown-item" href="categoryGlasses?paging=1&categoryname=1" onchange>FeMale </a>
+                                    
+                                    
+                                </div>
+                            </li>   
+                        </div> 
                     <c:forEach items="${listGlasses}" var="item">
                         <div class="col-lg-4 col-md-6 col-3 mb-4 ">
                             <div class="custom-block-wrap">
                                 <img src="${item.getImage()}" class="custom-block-image img-fluid" alt="">
-                                
+
                                 <div class="custom-block" >
                                     <div class="custom-block-body">
                                         <h5 >${item.getGlassName()}</h5>
@@ -28,14 +45,14 @@
                                         <p>Color :${item.getColor()} </p>
 
                                         <p>Gender :${item.getGender()} </p>
-                                        
+
                                         <p>Material :${item.getMaterial()} </p>
-                                        
+
                                         <p>Style :${item.getStyle()} </p>
                                         <div class="d-flex align-items-center my-2">
                                             <p class="ms-auto mb-0">
                                                 <strong>Goal:</strong>
-                                                <b>${item.getPrice()}VND</b>
+                                                <b>$${item.getPrice()}</b>
                                             </p>
                                         </div>
                                     </div>
@@ -46,11 +63,22 @@
                                 </div>
                             </div>
                         </div>
-                                         
+
                     </c:forEach>
-                    </form>
+                    
                 </div>
             </div>
+            <nav aria-label="Page navigation example " class="page">
+                <ul class="pagination">
+                    
+                   
+                    <li class="page-item"><a class="page-link" href="glasses?paging=1">1</a></li>
+                    <li class="page-item"><a class="page-link" href="glasses?paging=2">2</a></li>
+                    <li class="page-item"><a class="page-link" href="glasses?paging=3">3</a></li>
+                    
+                </ul>
+            </nav>
+            
         </main>
         <br><!-- comment -->
         <br><!-- comment -->

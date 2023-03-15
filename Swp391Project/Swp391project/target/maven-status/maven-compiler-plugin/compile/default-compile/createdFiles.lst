@@ -6,6 +6,7 @@ com\groud2\web\controller\profileController.class
 com\groud2\web\DAO\newsDAO.class
 com\groud2\web\Payment\ReviewPaymentServlet.class
 com\groud2\web\controller\AdminController\AdminViewUserProfileController.class
+com\groud2\web\controller\categoryGlasses.class
 com\groud2\web\DAO\serviceDAO.class
 com\groud2\web\controller\homeController.class
 com\groud2\web\controller\logoutController.class
@@ -29,6 +30,7 @@ com\groud2\web\controller\searchBookingController.class
 com\groud2\web\model\OrderGlasses\Order.class
 com\groud2\web\model\overview.class
 com\groud2\web\DAO\EmailDAO.class
+com\groud2\web\controller\AdminController\updateOrder.class
 com\groud2\web\controller\overviewController.class
 com\groud2\web\model\glasses.class
 com\groud2\web\controller\AdminController\AdminManagerStaffController.class
@@ -36,8 +38,10 @@ com\groud2\web\access\google\GoogleUser.class
 com\groud2\web\controller\AdminController\AdminAddNewGlassController.class
 com\groud2\web\controller\AdminController\AdminManageCustomerController.class
 com\groud2\web\DAO\context\DBContext.class
+com\groud2\web\controller\testEyes.class
 com\groud2\web\controller\userBookingController.class
 com\groud2\web\DAO\roomDAO.class
+com\groud2\web\controller\AdminController\Bill.class
 com\groud2\web\controller\AdminController\TakeStaffAttendanceController.class
 com\groud2\web\controller\CaptchaController\CreateCaptchaServlet.class
 com\groud2\web\access\google\GoogleUtils.class
@@ -55,6 +59,8 @@ com\groud2\web\DAO\OrderDAO.class
 com\groud2\web\controller\AdminController\AdminManageGlassesController.class
 com\groud2\web\DAO\bookingDAO.class
 com\groud2\web\access\google\LoginGoogleServlet.class
+com\groud2\web\controller\currentBookingController.class
+com\groud2\web\controller\AdminController\OrderMannagerContronler.class
 com\groud2\web\controller\changeProfile.class
 com\groud2\web\controller\getServiceController.class
 com\groud2\web\controller\PasswordController.class

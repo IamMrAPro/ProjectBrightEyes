@@ -4,12 +4,9 @@
  */
 package com.groud2.web.controller;
 
-import com.groud2.web.DAO.glassesDAO;
-import com.groud2.web.model.OrderGlasses.Cart;
-import com.groud2.web.model.OrderGlasses.Item;
-import com.groud2.web.model.glasses;
+import com.groud2.web.DAO.bookingDAO;
+import com.groud2.web.model.booking;
 import jakarta.servlet.ServletException;
-import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -17,17 +14,15 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 
-
 /**
  *
- * @author anhha
+ * @author asus
  */
-public class glassesController extends HttpServlet {
+public class currentBookingController extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -46,62 +41,37 @@ public class glassesController extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet glassesController</title>");            
+            out.println("<title>Servlet currentBookingController</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet glassesController at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet currentBookingController at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
     }
 
-    
+    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
+    /**
+     * Handles the HTTP <code>GET</code> method.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        glassesDAO g =new glassesDAO() ;
-       
-       
-
-        String spageid=request.getParameter("paging");  
-         int pageid=Integer.parseInt(spageid);  
-        int total=6;  
-       
-        if(pageid==1){}  
-        else{  
-            pageid =pageid-1;  
-            pageid =pageid*total+1;  
-        }  
+         bookingDAO b = new bookingDAO();
+         ;
         try {
-            ArrayList<glasses> list =g.getAllglasses(pageid,total);
-            
-            Cookie[] arr =request.getCookies();
-            String txt = "";
-            if(arr !=null){
-                for(Cookie c :arr){
-                    if(c.getName().equals("cart")){
-                        txt += c.getValue();
-                    }
-                }
-            }
-            Cart cart = new Cart(txt, list);
-            List<Item> listItem = cart.getItems();
-            int n;
-            if(listItem!=null){
-                n = listItem.size();
-            }else{
-                n=0;
-            }
-            
-            request.setAttribute("size", n);
-            
-             request.setAttribute("listGlasses", list);
-            
-             request.getRequestDispatcher("Glasses.jsp").forward(request, response);
+            ArrayList<booking> list = b.getCurrentBooking();
+            request.setAttribute("listCurrent", list);
         } catch (SQLException ex) {
-           
-            Logger.getLogger(glassesController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(currentBookingController.class.getName()).log(Level.SEVERE, null, ex);
         }
+         
+        request.getRequestDispatcher("currentBooking.jsp").forward(request, response);
     }
 
     /**
@@ -125,9 +95,7 @@ public class glassesController extends HttpServlet {
      */
     @Override
     public String getServletInfo() {
-        
-        return null;
-        
+        return "Short description";
     }// </editor-fold>
 
 }

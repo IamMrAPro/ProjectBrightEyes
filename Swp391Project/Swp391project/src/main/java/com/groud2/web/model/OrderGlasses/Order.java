@@ -17,7 +17,9 @@ public class Order {
     private String Glasses;
    
     private Cart cart;
-    private String CustomerId, ShipAddress, ShipCity, unitShip;
+    private String phone;
+    private String email;
+    private String nameCustomer, ShipAddress, ShipCity, unitShip;
     private float shiping;
     private float tax;
     private String OderDate, ShippedDate;
@@ -26,10 +28,10 @@ public class Order {
     public Order() {
     }
 
-    public Order( Cart cart, String CustomerId, String ShipAddress, String ShipCity, String unitShip, float shiping, float tax, String OderDate, String ShippedDate, String Status) {
+    public Order( Cart cart, String nameCustomer, String ShipAddress, String ShipCity, String unitShip, float shiping, float tax, String OderDate, String ShippedDate, String Status) {
         
         this.cart = cart;
-        this.CustomerId = CustomerId;
+        this.nameCustomer = nameCustomer;
         this.ShipAddress = ShipAddress;
         this.ShipCity = ShipCity;
         this.unitShip = unitShip;
@@ -39,17 +41,36 @@ public class Order {
         this.ShippedDate = ShippedDate;
         this.Status = Status;
     }
-
-    public Order(int OrderId, String Glasses, String CustomerId, String ShipAddress, String unitShip, float shiping, String OderDate, String Status) {
-        this.OrderId = OrderId;
+ public Order( String Glasses, String nameCustomer, String ShipAddress, String unitShip, float shiping, String OderDate, String Status) {
+        
         this.Glasses = Glasses;
-        this.CustomerId = CustomerId;
+        this.nameCustomer = nameCustomer;
         this.ShipAddress = ShipAddress;
         this.unitShip = unitShip;
         this.shiping = shiping;
         this.OderDate = OderDate;
         this.Status = Status;
     }
+    public Order(int OrderId, String Glasses, String nameCustomer,String phone,String email, String ShipAddress, String unitShip, float shiping, String OderDate, String Status) {
+        this.OrderId = OrderId;
+        this.Glasses = Glasses;
+        this.nameCustomer = nameCustomer;
+        this.ShipAddress = ShipAddress;
+        this.unitShip = unitShip;
+        this.shiping = shiping;
+        this.OderDate = OderDate;
+        this.Status = Status;
+        this.phone=phone;
+        this.email=email;
+    }
+
+    public Order(Cart cart, float shiping, float tax) {
+        this.cart = cart;
+        this.shiping = shiping;
+        this.tax = tax;
+    }
+
+    
     
     public String getShiping() {
         return  String.format("%.2f",shiping);
@@ -92,11 +113,11 @@ public class Order {
     }
 
     public String getCustomerId() {
-        return CustomerId;
+        return nameCustomer;
     }
 
     public void setCustomerId(String CustomerId) {
-        this.CustomerId = CustomerId;
+        this.nameCustomer = CustomerId;
     }
 
     public String getShipAddress() {
@@ -147,6 +168,38 @@ public class Order {
 
     public void setStatus(String Status) {
         this.Status = Status;
+    }
+
+    public String getGlasses() {
+        return Glasses;
+    }
+
+    public void setGlasses(String Glasses) {
+        this.Glasses = Glasses;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getNameCustomer() {
+        return nameCustomer;
+    }
+
+    public void setNameCustomer(String nameCustomer) {
+        this.nameCustomer = nameCustomer;
     }
 
    

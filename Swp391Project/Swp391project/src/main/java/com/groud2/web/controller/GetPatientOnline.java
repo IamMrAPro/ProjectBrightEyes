@@ -64,6 +64,11 @@ public class GetPatientOnline extends HttpServlet {
         userDAO u = new userDAO();
         bookingDAO b = new bookingDAO();
         String id = request.getParameter("id");
+                System.out.println("insert status check");
+    int intId = Integer.parseInt(id);
+        
+        b.insertStatusByID(intId);
+        
         try {
             ArrayList<user> listrole = u.getUsersByRole();
             request.setAttribute("listrole", listrole);

@@ -24,7 +24,7 @@
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link click-scroll" href="glasses">Glasses</a>
+                        <a class="nav-link click-scroll" href="glasses?paging=1">Glasses</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link click-scroll" href="news">News</a>

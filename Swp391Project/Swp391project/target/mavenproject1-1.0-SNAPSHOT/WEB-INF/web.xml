@@ -8,27 +8,15 @@
         <servlet-name>bookingController</servlet-name>
         <servlet-class>com.groud2.web.controller.bookingController</servlet-class>
     </servlet>
-    <servlet>
-        <servlet-name>loginController</servlet-name>
-        <servlet-class>com.groud2.web.controller.loginController</servlet-class>
-    </servlet>
     <!-->>>>>>> Stashed changes-->
     <servlet>
         <servlet-name>profileController</servlet-name>
         <servlet-class>com.groud2.web.controller.profileController</servlet-class>
     </servlet>
-    <servlet>
-        <servlet-name>addStaff</servlet-name>
-        <servlet-class>com.groud2.web.controller.AddStaff</servlet-class>
-    </servlet>
     <!-->>>>>>> Stashed changes-->
     <servlet>
         <servlet-name>addtoCart</servlet-name>
         <servlet-class>com.groud2.web.controller.AddtoCartController</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>cart</servlet-name>
-        <servlet-class>com.groud2.web.controller.cartController</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>registerController</servlet-name>
@@ -41,10 +29,6 @@
     <servlet>
         <servlet-name>singleNewsController</servlet-name>
         <servlet-class>com.groud2.web.controller.singleNewsController</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>loginController</servlet-name>
-        <servlet-class>com.groud2.web.controller.loginController</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>reportController</servlet-name>
@@ -198,6 +182,30 @@
         <servlet-name>getServiceController</servlet-name>
         <servlet-class>com.groud2.web.controller.getServiceController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>loginuser</servlet-name>
+        <servlet-class>com.groud2.web.controller.loginController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>OrderMannagerContronler</servlet-name>
+        <servlet-class>com.groud2.web.controller.AdminController.OrderMannagerContronler</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>updateOrder</servlet-name>
+        <servlet-class>com.groud2.web.controller.AdminController.updateOrder</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>categoryGlasses</servlet-name>
+        <servlet-class>com.groud2.web.controller.categoryGlasses</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Bill</servlet-name>
+        <servlet-class>com.groud2.web.controller.AdminController.Bill</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>testEyes</servlet-name>
+        <servlet-class>com.groud2.web.controller.testEyes</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>homeController</servlet-name>
         <url-pattern>/home</url-pattern>
@@ -207,20 +215,12 @@
         <url-pattern>/booking</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>loginController</servlet-name>
-        <url-pattern>/loginuser</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
         <servlet-name>profileController</servlet-name>
         <url-pattern>/profile</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>addtoCart</servlet-name>
         <url-pattern>/addtoCart</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>cart</servlet-name>
-        <url-pattern>/cart</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>registerController</servlet-name>
@@ -389,6 +389,30 @@
     <servlet-mapping>
         <servlet-name>getServiceController</servlet-name>
         <url-pattern>/getService</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>loginuser</servlet-name>
+        <url-pattern>/loginuser</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>OrderMannagerContronler</servlet-name>
+        <url-pattern>/OrderMannagerContronler</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>updateOrder</servlet-name>
+        <url-pattern>/updateOrder</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>categoryGlasses</servlet-name>
+        <url-pattern>/categoryGlasses</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Bill</servlet-name>
+        <url-pattern>/Bill</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>testEyes</servlet-name>
+        <url-pattern>/testEyes</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

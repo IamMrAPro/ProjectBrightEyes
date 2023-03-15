@@ -26,7 +26,7 @@ public class sendMail {
 
 	
 
-	public static void MailResetPassword(String mail) throws AddressException, jakarta.mail.MessagingException {
+	public static void MailResetPassword(String mail,String text) throws AddressException, jakarta.mail.MessagingException {
 		Properties mailServerProperties;
 		Session getMailSession;
 		MimeMessage mailMessage;
@@ -44,8 +44,8 @@ public class sendMail {
 		// mail khach
 		mailMessage.addRecipient(Message.RecipientType.TO, new InternetAddress(mail)); 
 
-		mailMessage.setSubject("Demo send gmail from Java");
-		String emailBody = "<p style='color: red'>Demo send HTML from Java<p>";
+		mailMessage.setSubject("Thank you");
+		String emailBody = text;
 		mailMessage.setContent(emailBody, "text/html");
 		// Step3: Send mail
 		Transport transport = getMailSession.getTransport("smtp");

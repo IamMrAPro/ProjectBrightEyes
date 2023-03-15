@@ -2,22 +2,19 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
  */
-package com.groud2.web.controller;
 
-import com.groud2.web.DAO.glassesDAO;
-import com.groud2.web.model.OrderGlasses.Cart;
-import com.groud2.web.model.OrderGlasses.Item;
-import com.groud2.web.model.glasses;
+package com.groud2.web.controller.AdminController;
+
+import com.groud2.web.DAO.OrderDAO;
+import com.groud2.web.model.OrderGlasses.Order;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
-import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -25,38 +22,35 @@ import java.util.logging.Logger;
  *
  * @author anhha
  */
-public class AddtocartController extends HttpServlet {
-
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
+public class updateOrder extends HttpServlet {
+   
+    /** 
+     * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
      * @param request servlet request
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+    throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        try ( PrintWriter out = response.getWriter()) {
+        try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet AddtocartController</title>");
+            out.println("<title>Servlet updateOrder</title>");  
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet AddtocartController at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet updateOrder at " + request.getContextPath () + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
-    }
+    } 
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
-    /**
+    /** 
      * Handles the HTTP <code>GET</code> method.
-     *
      * @param request servlet request
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
@@ -64,46 +58,24 @@ public class AddtocartController extends HttpServlet {
      */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        glassesDAO g = new glassesDAO();
-
+    throws ServletException, IOException {
+        String id = request.getParameter("id");
+        OrderDAO order = new OrderDAO();
+        order.updateStatus(id);
+        
+        ArrayList<Order> list;
         try {
-            ArrayList<glasses> list = g.getAllglasses();
-            Cookie[] arr = request.getCookies();
-            String txt = "";
-           
-            if (arr != null) {
-                for (Cookie c : arr) {
-                    if (c.getName().equals("cart")) {
-                        txt += c.getValue();
-                        c.setMaxAge(0);
-                        response.addCookie(c);
-                    }
-                }
-            }
-            String num = request.getParameter("num");
-            String id = request.getParameter("glassesId");
-            if (txt.isEmpty()) {
-                txt = id + "-" + num;
-            } else {
-                txt = txt + "/" + id + "-" + num;
-            }
-
-            Cookie c = new Cookie("cart", txt);
-            c.setMaxAge(2 * 24 * 60 * 60);
-
-            response.addCookie(c);
-            response.sendRedirect("glasses?paging=1");
-            
+            list = order.getAllOrder();
+            request.setAttribute("listOrder", list);
+            request.getRequestDispatcher("AdminView/admin-screen/listOrder.jsp").forward(request, response);
         } catch (SQLException ex) {
-
-            Logger.getLogger(glassesController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(OrderMannagerContronler.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }
+        }
+     
 
-    /**
+    /** 
      * Handles the HTTP <code>POST</code> method.
-     *
      * @param request servlet request
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
@@ -111,13 +83,12 @@ public class AddtocartController extends HttpServlet {
      */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        
+    throws ServletException, IOException {
+        processRequest(request, response);
     }
 
-    /**
+    /** 
      * Returns a short description of the servlet.
-     *
      * @return a String containing servlet description
      */
     @Override
