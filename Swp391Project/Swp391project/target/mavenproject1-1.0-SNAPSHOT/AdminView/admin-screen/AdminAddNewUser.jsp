@@ -88,8 +88,8 @@
                             <span class="focus-input100" data-symbol="&#xf215;"></span>
                         </div>
                         <div class="wrap-input100 validate-input m-b-13" >
-                            <input type="radio" name="gender" value="Male" style="margin-left: 50px" checked> Male
-                            <input type="radio" name="gender" value="FeMale" style="margin-left: 150px"> FeMale 
+                            <input type="radio" name="gender" value="Male" style="margin-left: 50px" checked=""> Male
+                            <input type="radio" name="gender" value="Female" style="margin-left: 150px"> FeMale 
                         </div>
                         <div class="wrap-input100 validate-input m-b-13" data-validate="Phone user is required">
                             <span class="label-input100">Birth of Date</span>

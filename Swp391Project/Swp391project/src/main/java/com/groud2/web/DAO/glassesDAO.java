@@ -66,7 +66,7 @@ public class glassesDAO {
 
     public glasses getGlassesId(String id) throws SQLException, IOException {
         glasses g = new glasses();
-        String sql = "SELECT * FROM swp.glasses where glassID = ?";
+        String sql = "SELECT * FROM glasses where glassesID = ?";
         try {
             connection = dbc.getConnection();
             ps = connection.prepareStatement(sql);
@@ -102,18 +102,18 @@ public class glassesDAO {
 
     public boolean addNewGlass(glasses gl) {
         try {
-            String mysql = "insert into glasses(glassID, glassName, color, gender, material, style, image, price)"
-                    + " values(?, ?, ?, ?, ?, ?, ?, ?)";
+            String mysql = "insert into glasses(glassesName, color, gender, material, style, image, price)"
+                    + " values(?, ?, ?, ?, ?, ?, ?)";
             connection = dbc.getConnection();
             ps = connection.prepareStatement(mysql);
-            ps.setString(1, gl.getGlassID());
-            ps.setString(2, gl.getGlassName());
-            ps.setString(3, gl.getColor());
-            ps.setString(4, gl.getGender());
-            ps.setString(5, gl.getMaterial());
-            ps.setString(6, gl.getStyle());
-            ps.setString(7, gl.getImage());
-            ps.setString(8, gl.getPrice());
+//            ps.setString(1, gl.getGlassID());
+            ps.setString(1, gl.getGlassName());
+            ps.setString(2, gl.getColor());
+            ps.setString(3, gl.getGender());
+            ps.setString(4, gl.getMaterial());
+            ps.setString(5, gl.getStyle());
+            ps.setString(6, gl.getImage());
+            ps.setString(7, gl.getPrice());
             ps.execute();
         } catch (Exception e) {
             System.out.println("Add new glass into db error: " + e.getMessage());
@@ -166,32 +166,33 @@ public class glassesDAO {
         ps.executeUpdate();
     }
 
-    public String getLastID() {
+    public int getLastID() {
         try {
-            String SQL = "Select glassID from glasses";
+            String SQL = "Select glassesID from glasses";
             connection = dbc.getConnection();
             ps = connection.prepareStatement(SQL);
             rs = ps.executeQuery();
             while (rs.next()) {
-                return rs.getString(1);
+                System.out.println("time read");
+                return rs.getInt(1);
             }
         } catch (Exception e) {
             System.out.println("Get last id error: " + e.getMessage());
         }
-        return null;
+        return 0;
     }
 
     public boolean updateGlasses(glasses gl) {
         try {
             String mysql = "update glasses"
-                    + " set glassName= ?,"
+                    + " set glassesName= ?,"
                     + " color= ?,"
                     + " gender= ?,"
                     + " material= ?,"
                     + " style= ?,"
                     + " image= ?,"
                     + " price= ?"
-                    + " where glassID = ?";
+                    + " where glassesID = ?";
             connection = dbc.getConnection();
             ps = connection.prepareStatement(mysql);
             ps.setString(8, gl.getGlassID());
@@ -209,4 +210,5 @@ public class glassesDAO {
         }
         return true;
     }
+    
 }

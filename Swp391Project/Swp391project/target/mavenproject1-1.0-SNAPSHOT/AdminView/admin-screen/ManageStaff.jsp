@@ -83,7 +83,7 @@
             /*            border: 1px solid red;*/
             /*width: 550px;*/
             height: 255px;
-            margin-right: 40px;
+            margin-right: 100px;
             margin-bottom: 30px;
             border-radius: 5px;
             background-color: #f0f8ff;
@@ -165,7 +165,7 @@
 
         /*---------------Search-------------------------*/
         #search {
-            margin-left: 41%;
+            margin-left: 59%;
             width: 300px;
             position: relative;
         }
@@ -201,18 +201,18 @@
                 <div class="mb-5 mx-3">
                     <div class="row mb-5">
                         <div class="m-auto d-flex" id="staff-head-title">
-                            <p class="staff-head-title">MANAGE</p>
-                            <select class="mx-2 staff-head-title">
+                            <p class="staff-head-title">MANAGE STAFF</p>
+<!--                            <select class="mx-2 staff-head-title">
                                 <option class="fw-bold" value="" selected="">STAFF</option>
                                 <option class="fw-bold" value="">FORMER STAFF</option>
                                 <option class="fw-bold" value="">ALL</option>
-                            </select>
+                            </select>-->
                         </div>
                     </div>
                     <div class="row align-items-center">
                         <div class="d-flex">
                             <a href="addUser?backPage=manageStaff&userRole=doctor" class="btn btn-success">ADD NEW</a>
-                            <a href="takeAttendance" class="btn btn-success mx-3">TAKE ATTENDANCE</a>
+                            <!--<a href="takeAttendance" class="btn btn-success mx-3">TAKE ATTENDANCE</a>-->
                         </div>
                         <div id="search" class="d-flex">
                             <input type="text" name="search" id="search-text" placeholder="Search by name">

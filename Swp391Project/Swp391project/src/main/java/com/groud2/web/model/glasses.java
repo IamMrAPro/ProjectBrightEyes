@@ -33,6 +33,18 @@ public class glasses {
         this.quantity = quantity;
     }
 
+    public glasses(String glassName, String color, String gender, String material, String style, String image, String price, int quantity) {
+        this.glassName = glassName;
+        this.color = color;
+        this.gender = gender;
+        this.material = material;
+        this.style = style;
+        this.image = image;
+        this.price = price;
+        this.quantity = quantity;
+    }
+
+    
     public glasses(String glassID, int quantity) {
         this.glassID = glassID;
         this.quantity = quantity;

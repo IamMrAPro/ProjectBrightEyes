@@ -13,13 +13,17 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import jakarta.xml.bind.DatatypeConverter;
 import java.io.IOException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  *
@@ -39,18 +43,24 @@ public class AdminAddNewUserController extends HttpServlet{
         String dob = req.getParameter("dob");
         String role = req.getParameter("role");
         
+        
         String password = "";
         try {
-            password = encyptPass("123");
-        } catch (NoSuchAlgorithmException ex) {
+            password = encyptPass("123456");
+        } catch (NoSuchAlgorithmException ex) { 
             Logger.getLogger(AdminAddNewUserController.class.getName()).log(Level.SEVERE, null, ex);
         }
         
-        String id = String.valueOf(GetLastUserID());
         userDAO u = new userDAO();
-        u.addUser(id, name, gender, role, email, phone, address, account, password);
-        
-        resp.sendRedirect("manageCustomer");
+        try {
+            u.createData(name, account, password, phone, address, email, gender, dob, role);
+        } catch (SQLException ex) {
+            Logger.getLogger(AdminAddNewUserController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        HttpSession session = req.getSession();
+        String backPage = (String) session.getAttribute("backPage");
+        if(backPage != null) session.removeAttribute(backPage);
+        resp.sendRedirect(backPage);
     }
 
     @Override
@@ -59,6 +69,9 @@ public class AdminAddNewUserController extends HttpServlet{
         String backPage = req.getParameter("backPage");
         String userRole = req.getParameter("userRole");
         System.out.println("back page = " + backPage);
+        
+        HttpSession session = req.getSession();
+        session.setAttribute("backPage", backPage);
         req.setAttribute("userRole", userRole);
         req.setAttribute("id", id);
         req.getRequestDispatcher("AdminView/admin-screen/AdminAddNewUser.jsp").forward(req, resp);
@@ -83,5 +96,17 @@ public class AdminAddNewUserController extends HttpServlet{
         String myHash = DatatypeConverter
                 .printHexBinary(digest).toLowerCase();
         return myHash;
+    }
+    public static boolean isValidFullName(String fullName) {
+        // Regular expression pattern for a full name with at least two words
+        Pattern pattern = Pattern.compile("^[a-zA-Z]+ [a-zA-Z]+(?: [a-zA-Z]+)*$");
+        Matcher matcher = pattern.matcher(fullName);
+        return matcher.matches();
+    }
+    public static boolean isValidEmail(String email) {
+        // Regular expression pattern for a valid email address
+        Pattern pattern = Pattern.compile("^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$");
+        Matcher matcher = pattern.matcher(email);
+        return matcher.matches();
     }
 }

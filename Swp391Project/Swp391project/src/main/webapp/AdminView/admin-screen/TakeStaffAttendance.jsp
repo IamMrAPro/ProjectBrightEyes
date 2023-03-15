@@ -15,35 +15,47 @@
     <%@include file="../admin-layout/admin-head.jsp" %>
     <body class="vw-100">
         <form action="takeAttendance" method="post" class="row justify-content-center mt-5">
-            <c:forEach items="${staff}" var="s">
-                <input type="text" name="staffAccount" class="d-none" value="${staffAccount}">
-                <input type="text" name="staffId" class="d-none" value="${s.getUserId()}">
-                <div class="card card-body col-sm-4">
-                    <h2 class="text-center">TAKE ATTENDANCE</h2>
-                    <small class="w-100 text-center">FOR</small>
-                    <h4 class="text-center">${s.getFullname()}</h4>
-                    <div class="text-center" style="color: red;">${message}</div>
-                    <div class="mb-3">
-                        <label class="">Date:</label>
-                        <input type="text" name="date" id="date" class="form-control" value="${today}" maxlength="10" minlength="10">
-                    </div>
-                    <div class="mb-5">
-                        <label class="">Time:</label>
-                        <input type="text" name="time" id="time" class="form-control" value="${nowTime}" minlength="5" maxlength="8">
-                    </div>
-
-                    <input type="submit" name="submitAttendance" class="btn btn-success" value="SUBMIT">
+            <div class="card card-body col-sm-4">
+                <h2 class="text-center">TAKE ATTENDANCE</h2>
+                <small class="w-100 text-center">FOR</small>
+                <h4 class="text-center">${staffName}</h4>
+                <div class="text-center" style="color: red;">${message}</div>
+                <div class="mb-3">
+                    <label class="">Date:</label>
+                    <input type="date" name="date" value="${today}" class="form-control" required="">
                 </div>
-            </c:forEach>
+                <div class="mb-5">
+                    <label class="">Time:</label>
+                    <input type="time" name="time" id="time" class="form-control" value="${nowTime}" required="">
+                </div>
+
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    SUBMIT
+                </button>
+
+                <!-- Modal -->
+                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                Modal body text goes here.
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-primary">Save changes</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
             <div class="col-sm-4">
                 <div class="d-flex">
-                    <select class="form-control" name="dateOfList">
-                        <option value="${today}" selected="">${today}</option>
-                        <c:forEach items="${listAtt}" var="at">
-                            <option value="${at.getDate()}" selected="">${at.getDate()}</option>
-                        </c:forEach>
-                    </select>
+                    <input type="date" name="searchDateValue" value="${today}" class="form-control">
                     <input type="submit" name="searchDate" value="Search" class="btn btn-success">
                 </div>
                 <table class="table table-bordered">
@@ -58,19 +70,19 @@
                     <c:forEach items="${listAtt}" var="at">
                         <tbody>
                             <tr>
-                                <td><% count++; out.print(count); %></td>
+                                <td><% count++;
+                                    out.print(count);%></td>
                                 <td>${at.getTime()}</td>
                                 <td>
                                     <input type="text" name="update" value="${at.getId()}" id="${at.getId()}" class="d-none">
                                     <label for="${at.getId()}" class="btn btn-success">
-                                        <i class="fa-solid fa-pen-nib"></i>
+                                        Edit
                                     </label>
                                 </td>
                             </tr>
                         </tbody>
                     </c:forEach>
                 </table>
-
             </div>
         </form>
     </body>

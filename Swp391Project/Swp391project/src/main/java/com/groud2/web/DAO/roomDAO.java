@@ -23,14 +23,15 @@ public class roomDAO {
     DBContext dbc = new DBContext();
     Connection connection = null;
 
-    public boolean addNewRoom(String roomID, String roomName, String roomFunction) {
-        String mysql = "insert into room(roomId, roomName, roomFunction) values(?, ?, ?);";
+    public boolean addNewRoom(String roomID, String roomName, String roomFunction, String userID) {
+        String mysql = "insert into room(roomId, roomName, roomFunction, userid) values(?, ?, ?, ?);";
         try {
             connection = dbc.getConnection();
             ps = connection.prepareStatement(mysql);
             ps.setString(1, roomID);
             ps.setString(2, roomName);
             ps.setString(3, roomFunction);
+            ps.setString(4, userID);
 
             ps.execute();
         } catch (Exception e) {
@@ -49,10 +50,11 @@ public class roomDAO {
             rs = ps.executeQuery();
             while (rs.next()) {
                 String id = rs.getString(1);
-                String name = rs.getString(2);
-                String function = rs.getString(3);
+                String userID = rs.getString(2);
+                String name = rs.getString(3);
+                String function = rs.getString(4);
 
-                room r = new room(id, name, function);
+                room r = new room(id,userID, name, function);
                 if (name.toLowerCase().contains(search.toLowerCase())) {
                     listRoom.add(r);
                 }
@@ -75,10 +77,11 @@ public class roomDAO {
             rs = ps.executeQuery();
             while (rs.next()) {
                 String id = rs.getString(1);
-                String name = rs.getString(2);
-                String function = rs.getString(3);
+                String userID = rs.getString(2);
+                String name = rs.getString(3);
+                String function = rs.getString(4);
 
-                room r = new room(id, name, function);
+                room r = new room(id,userID, name, function);
                 listRoom.add(r);
             }
         } catch (Exception e) {
@@ -89,15 +92,15 @@ public class roomDAO {
         return listRoom;
     }
     
-    public boolean updateRoom(String roomID, String roomName, String roomFunction) {
-        String mysql = "update room set roomName = ?, roomFunction = ? where roomId = ?";
+    public boolean updateRoom(String roomID, String userID, String roomName, String roomFunction) {
+        String mysql = "update room set roomName = ?, roomFunction = ?, userID = ? where roomId = ?";
         try {
             connection = dbc.getConnection();
             ps = connection.prepareStatement(mysql);
             ps.setString(1, roomName);
             ps.setString(2, roomFunction);
-            ps.setString(3, roomID);
-
+            ps.setString(3, userID);
+            ps.setString(4, roomID);
             ps.execute();
         } catch (Exception e) {
             System.out.println("Update room to db error: " + e.getMessage());

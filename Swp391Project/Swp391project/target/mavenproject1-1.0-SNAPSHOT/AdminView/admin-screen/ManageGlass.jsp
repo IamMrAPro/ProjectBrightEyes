@@ -52,7 +52,7 @@
                     </div>
                 </div>
                 <div class="row justify-content-start">
-                    <a href="addGlass" class="btn btn-success col-sm-1">Create</a>
+                    <a href="addGlass?type=add" class="btn btn-success col-sm-1">Create</a>
                 </div>
                 <% int count = 0;%>
                 <table class="table table-bordered mt-4">
@@ -81,7 +81,7 @@
                                 <td>100</td>
                                 <td>
                                     <div class="d-flex justify-content-around h-100">
-                                        <a href="addGlass?updateGlassID=${g.getGlassID()}"><i class="fa-solid fa-pen"></i></a>
+                                        <a href="addGlass?updateGlassID=${g.getGlassID()}&type=update"><i class="fa-solid fa-pen"></i></a>
                                         <a href=""><i class="fa-solid fa-cart-shopping"></i></a>
                                         <a href="DeleteGlasses?idGlasses=${g.getGlassID()}"><i class="fa-solid fa-close"></i></a>
                                     </div>
@@ -90,6 +90,34 @@
                         </c:forEach>
                     </tbody>
                 </table>
+                <div class="d-flex justify-content-center">
+                    <c:choose>
+                        <c:when test="${totalPages == 1}">
+                            <div class="pagination" style="height: 40px;">
+                                <input type="submit" name="pageNum" value="Previous" class="page-item page-link">
+                                <input type="submit" name="pageNum" value="1" class="page-item page-link">
+                                <input type="submit" name="pageNum" value="Next" class="page-item page-link">
+                            </div>
+                        </c:when>
+                        <c:when test="${totalPages == 2}">
+                            <div class="pagination" style="height: 40px;">
+                                <input type="submit" name="pageNum" value="Previous" class="page-item page-link">
+                                <input type="submit" name="pageNum" value="1" class="page-item page-link">
+                                <input type="submit" name="pageNum" value="2" class="page-item page-link">
+                                <input type="submit" name="pageNum" value="Next" class="page-item page-link">
+                            </div>
+                        </c:when>
+                        <c:otherwise>
+                            <div class="pagination" style="height: 40px;">
+                                <input type="submit" name="pageNum" value="Previous" class="page-item page-link">
+                                <input type="submit" name="pageNum" value="1" class="page-item page-link">
+                                <input type="submit" name="pageNum" value="2" class="page-item page-link">
+                                <input type="submit" name="pageNum" value="3" class="page-item page-link">
+                                <input type="submit" name="pageNum" value="Next" class="page-item page-link">
+                            </div>
+                        </c:otherwise>
+                    </c:choose>
+                </div>
             </div>
         </form>
     </body>

@@ -6,6 +6,7 @@ package com.groud2.web.controller.AdminController;
 
 import com.groud2.web.DAO.glassesDAO;
 import com.groud2.web.model.glasses;
+import com.groud2.web.model.user;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
@@ -26,73 +27,69 @@ public class AdminManageGlassesController extends HttpServlet {
         ArrayList<glasses> listGlasses = g.getListGlass("");
         String mess = req.getParameter("message");
         HttpSession session = req.getSession();
-         String username = (String)session.getAttribute("id");
-         
-         if(mess != null){
-             if(mess.equals("addOK")){
-                 req.setAttribute("message", "Add new glass successfully!");
-             }
-             else if(mess.equals("updateOK")){
-                 req.setAttribute("message", "Update glass successfully!");
-             }
-             req.setAttribute("display", "display");
-         }
-         req.setAttribute("username", username);
+        String username = (String) session.getAttribute("id");
+
+        if (mess != null) {
+            if (mess.equals("addOK")) {
+                req.setAttribute("message", "Add new glass successfully!");
+            } else if (mess.equals("updateOK")) {
+                req.setAttribute("message", "Update glass successfully!");
+            }
+            req.setAttribute("display", "display");
+        }
+        req.setAttribute("username", username);
         req.setAttribute("listGlasses", listGlasses);
         req.getRequestDispatcher("AdminView/admin-screen/ManageGlass.jsp").forward(req, resp);
     }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        HttpSession session = req.getSession();
         //Get request from client
-        String position = req.getParameter("position");
-        String setPos = req.getParameter("setPosition");
         String search = req.getParameter("searchGlass");
-        if (position == null) {
-            position = setPos;
-        }
-        //Handle request
-        if (!position.equals("5")) {
-            changePosition(position, req, resp);
-        }
-        else {
-            if(search != null){
-                glassesDAO gd = new glassesDAO();
-                ArrayList<glasses> listGlasses = gd.getListGlass(search);
-                req.setAttribute("listGlasses", listGlasses);
-        req.getRequestDispatcher("AdminView/admin-screen/ManageGlass.jsp").forward(req, resp);
+        String pageNumber = req.getParameter("pageNum");
+        
+        glassesDAO gd = new glassesDAO();
+        ArrayList<glasses> listGlasses = gd.getListGlass("");
+        if (search != null) {
+                listGlasses = gd.getListGlass(search);
+            }
+            //Pagination
+        int lastPageNum = (int) session.getAttribute("pageNum");
+        int recordsPerPage = 6;
+        int totalPage = ((listGlasses.size()) / recordsPerPage) + 1;
+        if(pageNumber.equals("Previous")){
+            if(lastPageNum > 1){
+                lastPageNum--;
             }
         }
+        else if(pageNumber.equals("Next")){
+            if(lastPageNum < totalPage){
+                lastPageNum++;
+            }
+        }
+        else {
+            int currentPage = Integer.parseInt(pageNumber);
+            lastPageNum = currentPage;
+        }
+        int pageNum = lastPageNum;
+        int start = (pageNum - 1) * recordsPerPage;
+        int end = 0;
+        if((start + recordsPerPage) <= listGlasses.size()){
+            end = start+recordsPerPage;
+        }
+        else {
+            end = listGlasses.size();
+        }
+        ArrayList<glasses> dataList = new ArrayList<>();
+        for (int i = start; i < end; i++) {
+            dataList.add(listGlasses.get(i));
+        }
+        
+        session.setAttribute("pageNum", pageNum);
+        req.setAttribute("pageNum", pageNum);
+        req.setAttribute("totalPages", totalPage);
+        req.getRequestDispatcher("AdminView/admin-screen/ManageGlass.jsp").forward(req, resp);
     }
 
-    private void changePosition(String pos, HttpServletRequest req, HttpServletResponse resp) throws IOException {
-        switch (pos) {
-            case "1":
-                resp.sendRedirect("adminDashboard");
-                break;
-            case "2":
-                resp.sendRedirect("manageStaff");
-                break;
-            case "3":
-                resp.sendRedirect("manageCustomer");
-                break;
-            case "4":
-                resp.sendRedirect("manageRoom");
-                break;
-            case "5":
-                resp.sendRedirect("manageGlasses");
-                break;
-            case "6":
-                resp.sendRedirect("feedback");
-                break;
-            case "7":
-                resp.sendRedirect("searchBooking");
-                break;
-            case "8":
-                resp.sendRedirect("adminDashboard");
-                break;
-            default:
-                throw new AssertionError();
-        }
-    }
 }

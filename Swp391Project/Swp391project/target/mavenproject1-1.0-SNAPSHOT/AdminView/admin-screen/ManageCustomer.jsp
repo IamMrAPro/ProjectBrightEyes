@@ -108,7 +108,7 @@
         .select:hover::after {
             color: #f39c12;
         }
-        
+
         .pagination {
             height: 80px;
         }
@@ -182,26 +182,34 @@
                         </c:forEach>
                     </tbody>
                 </table>
-                
-                <div class="pagination">
-                    <c:if test="${currentPage > 1}">
-                        <a href="?page=${currentPage-1}">&laquo; Previous</a>
-                    </c:if>
-                        
-                    <c:forEach var="page" begin="1" end="${numPages}">
-                        <c:choose>
-                            <c:when test="${page == currentPage}">
-                                <a href="manageCustomer?page=${page}" class="active">${page}</a>
-                            </c:when>
-                            <c:otherwise>
-                                <a href="manageCustomer?page=${page}">${page}</a>
-                            </c:otherwise>
-                        </c:choose>
-                    </c:forEach>
 
-                    <c:if test="${currentPage < numPages}">
-                        <a href="manageCustomer?page=${currentPage+1}">Next &raquo;</a>
-                    </c:if>
+                <div class="d-flex justify-content-center">
+                    <c:choose>
+                        <c:when test="${totalPages == 1}">
+                            <div class="pagination" style="height: 40px;">
+                                <input type="submit" name="pageNum" value="Previous" class="page-item page-link">
+                                <input type="submit" name="pageNum" value="1" class="page-item page-link">
+                                <input type="submit" name="pageNum" value="Next" class="page-item page-link">
+                            </div>
+                        </c:when>
+                        <c:when test="${totalPages == 2}">
+                            <div class="pagination" style="height: 40px;">
+                                <input type="submit" name="pageNum" value="Previous" class="page-item page-link">
+                                <input type="submit" name="pageNum" value="1" class="page-item page-link">
+                                <input type="submit" name="pageNum" value="2" class="page-item page-link">
+                                <input type="submit" name="pageNum" value="Next" class="page-item page-link">
+                            </div>
+                        </c:when>
+                        <c:otherwise>
+                            <div class="pagination" style="height: 40px;">
+                                <input type="submit" name="pageNum" value="Previous" class="page-item page-link">
+                                <input type="submit" name="pageNum" value="1" class="page-item page-link">
+                                <input type="submit" name="pageNum" value="2" class="page-item page-link">
+                                <input type="submit" name="pageNum" value="3" class="page-item page-link">
+                                <input type="submit" name="pageNum" value="Next" class="page-item page-link">
+                            </div>
+                        </c:otherwise>
+                    </c:choose>
                 </div>
             </div>
         </form>

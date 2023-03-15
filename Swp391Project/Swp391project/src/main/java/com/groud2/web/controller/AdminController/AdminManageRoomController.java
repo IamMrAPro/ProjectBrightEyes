@@ -5,7 +5,9 @@
 package com.groud2.web.controller.AdminController;
 
 import com.groud2.web.DAO.roomDAO;
+import com.groud2.web.DAO.userDAO;
 import com.groud2.web.model.room;
+import com.groud2.web.model.user;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
@@ -23,7 +25,9 @@ public class AdminManageRoomController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         roomDAO r = new roomDAO();
+        userDAO ud = new userDAO();
         ArrayList<room> listRoom = r.getListRoom("");
+        ArrayList<user> listStaff = ud.getListUser("", "");
         String mess = req.getParameter("message");
 
         HttpSession session = req.getSession();
@@ -50,7 +54,8 @@ public class AdminManageRoomController extends HttpServlet {
             req.setAttribute("display", "display");
             req.setAttribute("message", mess);
         }
-
+        
+        req.setAttribute("listStaff", listStaff);
         req.setAttribute("username", username);
         req.setAttribute("listRoom", listRoom);
         req.getRequestDispatcher("AdminView/admin-screen/ManageRoom.jsp").forward(req, resp);
@@ -66,15 +71,18 @@ public class AdminManageRoomController extends HttpServlet {
         }
 
         //Handle request
+        roomDAO rd = new roomDAO();
         if (position.equals("4")) {
-            String roomID = req.getParameter("newRoomID");
+            int roomID = rd.getListRoomID();
+            roomID++;
             String roomName = req.getParameter("newRoomName");
             String roomFunction = req.getParameter("newRoomFunction");
+            String userID = req.getParameter("userID");
 
             String add = req.getParameter("addRoom");
             if (add != null) {
-                roomDAO rd = new roomDAO();
-                if (rd.addNewRoom(roomID, roomName, roomFunction)) {
+                
+                if (rd.addNewRoom(String.valueOf(roomID), roomName, roomFunction, userID)) {
                     resp.sendRedirect("manageRoom?message=OK");
                 } else {
                     resp.sendRedirect("manageRoom?message=Error");

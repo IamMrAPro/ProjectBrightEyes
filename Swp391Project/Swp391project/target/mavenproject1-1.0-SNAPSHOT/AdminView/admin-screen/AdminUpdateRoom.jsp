@@ -42,15 +42,20 @@
                     <div class="card card-body col-4 mt-5">
                         <div>
                             <label for="room-name">Room Name:</label>
-                            <input type="text" name="roomName" value="${r.getRoomName()}" id="room-name" placeholder="room-name" class="form-control">
+                            <input type="text" name="roomName" value="${r.getRoomName()}" id="room-name" placeholder="room-name" class="form-control" required="">
                         </div>
                         <div>
-                            <label for="room-id">Room ID:</label>
-                            <input type="text" name="roomID" value="${r.getRoomID()}" id="room-id" placeholder="room-name" class="form-control">
+                            <label for="room-id">Doctor:</label>
+                            <select name="userID" class="form-control">
+                                ${username}
+                                <c:forEach items="${listStaff}" var="s">
+                                    <option value="${s.getUserId()}" <c:if test="${s.getFullname() == username}">selected</c:if>>${s.getFullname()}</option>
+                                </c:forEach>
+                            </select>
                         </div>
                         <div>
                             <label for="room-function">Room Function:</label>
-                            <input type="text" name="roomFunction" value="${r.getRoomFunction()}" id="room-name" placeholder="room-name" class="form-control">
+                            <input type="text" name="roomFunction" value="${r.getRoomFunction()}" id="room-name" placeholder="room-name" class="form-control" required="">
                         </div>
                     </div>
                 </c:forEach>

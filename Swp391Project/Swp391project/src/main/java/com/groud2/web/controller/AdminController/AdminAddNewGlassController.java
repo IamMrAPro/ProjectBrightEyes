@@ -10,6 +10,7 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.logging.Level;
@@ -23,7 +24,8 @@ public class AdminAddNewGlassController extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String id = req.getParameter("glassID");
+        HttpSession session = req.getSession();
+//        String id = req.getParameter("glassID");
         String name = req.getParameter("glassName");
         String color = req.getParameter("glassColor");
         String gender = req.getParameter("gender");
@@ -37,11 +39,18 @@ public class AdminAddNewGlassController extends HttpServlet {
         String create = req.getParameter("saveAsNew");
         String update = req.getParameter("saveAsUpdate");
         glassesDAO gd = new glassesDAO();
+        System.out.println("glass ID string = " + gd.getLastID());
+        int id = gd.getLastID();
+//        if(gd.getLastID() != null){
+//            id = Integer.parseInt(gd.getLastID());
+//        }
+        id++;
+        System.out.println("glass ID = " + id);
         if (create != null) {
-            if (gd.addNewGlass(new glasses(id, name, color, gender, material, style, image, price, qt))) {
+            if (gd.addNewGlass(new glasses(name, color, gender, material, style, image, price, qt))) {
                 resp.sendRedirect("manageGlasses?message=addOK");
             } else {
-                req.setAttribute("glassID", id);
+//                req.setAttribute("glassID", id);
                 req.setAttribute("glassName", name);
                 req.setAttribute("glassColor", color);
                 req.setAttribute("gender", gender);
@@ -56,12 +65,13 @@ public class AdminAddNewGlassController extends HttpServlet {
         }
         
         if(update != null){
-            glasses g = new glasses(id, name, color, gender, material, style, image, price, qt);
+            String glassID = (String)session.getAttribute("glassesID");
+            glasses g = new glasses(glassID, name, color, gender, material, style, image, price, qt);
             if(gd.updateGlasses(g)){
                 resp.sendRedirect("manageGlasses?message=updateOK");
             }
             else {
-                req.setAttribute("glassID", id);
+//                req.setAttribute("glassID", id);
                 req.setAttribute("glassName", name);
                 req.setAttribute("glassColor", color);
                 req.setAttribute("gender", gender);
@@ -78,7 +88,12 @@ public class AdminAddNewGlassController extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        HttpSession session = req.getSession();
+        
+        String pageType = req.getParameter("type");
+        System.out.println("Page type = " + pageType);
         String getUpdateGlassID = req.getParameter("updateGlassID");
+        session.setAttribute("glassesID", getUpdateGlassID);
         System.out.println("glass ID = " + getUpdateGlassID);
         if (getUpdateGlassID != null) {
             glassesDAO gd = new glassesDAO();
@@ -86,7 +101,7 @@ public class AdminAddNewGlassController extends HttpServlet {
             try {
                 g = gd.getGlassesId(getUpdateGlassID);
             } catch (SQLException ex) {
-                Logger.getLogger(AdminAddNewGlassController.class.getName()).log(Level.SEVERE, null, ex);
+                System.out.println("get glass by id error: " + ex.getMessage());
             }
             System.out.println("glass name = " + g.getGlassName());
             req.setAttribute("glassID", g.getGlassID());
@@ -98,6 +113,7 @@ public class AdminAddNewGlassController extends HttpServlet {
                 req.setAttribute("glassImage", g.getImage());
                 req.setAttribute("glassPrice", g.getPrice());
                 req.setAttribute("glassQuantity", g.getQuantity());
+                req.setAttribute("pageType", pageType);
         }
         req.getRequestDispatcher("AdminView/admin-screen/AddNewGlass.jsp").forward(req, resp);
     }

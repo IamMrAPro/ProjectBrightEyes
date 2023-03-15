@@ -92,7 +92,11 @@
                                     </div>
                                     <div class="modal-body">
                                         <div class="form-floating">
-                                            <input type="text" name="newRoomID" class="form-control" id="new-room-id" placeholder="Room ID">
+                                            <select name="userID" class="form-control">
+                                                <c:forEach items="${listStaff}" var="s">
+                                                    <option value="${s.getUserId()}">${s.getFullname()}</option>
+                                                </c:forEach>
+                                            </select>
                                         </div>
                                         <div class="form-floating mt-3">
                                             <input type="text" name="newRoomName" class="form-control" id="new-room-name" placeholder="Room Name">

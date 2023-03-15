@@ -26,58 +26,79 @@ public class AdminManageCustomerController extends HttpServlet {
         ArrayList<user> listCustomer = u.getListCustomer("");
 
         HttpSession session = req.getSession();
-         String username = (String)session.getAttribute("id");
-         req.setAttribute("username", username);
-        req.setAttribute("listCustomer", listCustomer);
+        String username = (String) session.getAttribute("id");
+        //Pagination
+        int pageNum = 1;
+        int recordsPerPage = 6;
+        int start = (pageNum - 1) * recordsPerPage;
+        int totalPage = ((listCustomer.size()) / recordsPerPage) + 1;
+
+        ArrayList<user> dataList = new ArrayList<>();
+        for (int i = start; i < start + recordsPerPage; i++) {
+            dataList.add(listCustomer.get(i));
+        }
+//        List<MyData> dataList = getData(start, recordsPerPage);
+
+        session.setAttribute("pageNum", pageNum);
+        req.setAttribute("pageNum", pageNum);
+        req.setAttribute("totalPages", totalPage);
+        //---------------------------------------------------------------------------------
+        req.setAttribute("username", username);
+        req.setAttribute("listCustomer", dataList);
         req.getRequestDispatcher("AdminView/admin-screen/ManageCustomer.jsp").forward(req, resp);
     }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        //Get request from client
-        String position = req.getParameter("position");
-        String setPos = req.getParameter("setPosition");
-        if (position == null) {
-            position = setPos;
+        userDAO u = new userDAO();
+        ArrayList<user> listCustomer = u.getListCustomer("");
+        String pageNumber = req.getParameter("pageNum");
+        String search = req.getParameter("search");
+        if (search != null) {
+            listCustomer = u.getListCustomer(search);
         }
-        //Handle request
-        if (!position.equals("3")) {
-            changePosition(position, req, resp);
-        }
-    }
+//        String previous
 
-    private void changePosition(String pos, HttpServletRequest req, HttpServletResponse resp) throws IOException {
-        try {
-            switch (pos) {
-                case "1":
-                    resp.sendRedirect("adminDashboard");
-                    break;
-                case "2":
-                    resp.sendRedirect("manageStaff");
-                    break;
-                case "3":
-                    resp.sendRedirect("manageCustomer");
-                    break;
-                case "4":
-                    resp.sendRedirect("manageRoom");
-                    break;
-                case "5":
-                    resp.sendRedirect("manageGlasses");
-                    break;
-                case "6":
-                    resp.sendRedirect("feedback");
-                    break;
-                case "7":
-                    resp.sendRedirect("searchBooking");
-                    break;
-                case "8":
-                    resp.sendRedirect("adminDashboard");
-                    break;
-                default:
-                    throw new AssertionError();
+        HttpSession session = req.getSession();
+        String username = (String) session.getAttribute("id");
+
+        //Pagination
+        int lastPageNum = (int) session.getAttribute("pageNum");
+        int recordsPerPage = 6;
+        int totalPage = ((listCustomer.size()) / recordsPerPage) + 1;
+        if (pageNumber != null) {
+            if (pageNumber.equals("Previous")) {
+                if (lastPageNum > 1) {
+                    lastPageNum--;
+                }
+            } else if (pageNumber.equals("Next")) {
+                if (lastPageNum < totalPage) {
+                    lastPageNum++;
+                }
+            } else {
+                int currentPage = Integer.parseInt(pageNumber);
+                lastPageNum = currentPage;
             }
-        } catch (Exception e) {
-            System.out.println("Change position page error: " + e.getMessage());
         }
+        int pageNum = lastPageNum;
+        int start = (pageNum - 1) * recordsPerPage;
+        int end = 0;
+        if ((start + recordsPerPage) <= listCustomer.size()) {
+            end = start + recordsPerPage;
+        } else {
+            end = listCustomer.size();
+        }
+        ArrayList<user> dataList = new ArrayList<>();
+        for (int i = start; i < end; i++) {
+            dataList.add(listCustomer.get(i));
+        }
+
+        session.setAttribute("pageNum", pageNum);
+        req.setAttribute("pageNum", pageNum);
+        req.setAttribute("totalPages", totalPage);
+        //---------------------------------------------------------------------------------
+        req.setAttribute("username", username);
+        req.setAttribute("listCustomer", dataList);
+        req.getRequestDispatcher("AdminView/admin-screen/ManageCustomer.jsp").forward(req, resp);
     }
 }

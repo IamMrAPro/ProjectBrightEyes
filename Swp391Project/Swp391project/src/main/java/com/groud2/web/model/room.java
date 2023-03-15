@@ -9,15 +9,16 @@ package com.groud2.web.model;
  * @author Ao
  */
 public class room {
-    String roomID, roomName, roomFunction;
+    String roomID, userID, roomName, roomFunction;
 
     public room() {
     }
 
-    public room(String roomID, String roomName, String roomFunction) {
+    public room(String roomID, String userID, String roomName, String roomFunction) {
         this.roomID = roomID;
         this.roomName = roomName;
         this.roomFunction = roomFunction;
+        this.userID = userID;
     }
 
     public String getRoomID() {
@@ -42,6 +43,14 @@ public class room {
 
     public void setRoomFunction(String roomFunction) {
         this.roomFunction = roomFunction;
+    }
+
+    public String getUserID() {
+        return userID;
+    }
+
+    public void setUserID(String userID) {
+        this.userID = userID;
     }
     
     

@@ -215,7 +215,7 @@ public class userDAO {
     }
 
     public boolean createData(String fullname, String account, String password, String phonenumber, String address, String email, String gender, String birthofdate, String role) throws SQLException {
-        String sql = "INSERT INTO `swp`.`user`\n"
+        String sql = "INSERT INTO `user`\n"
                 + "(`fullname`,`account`,`password`,`phonenumber`,`address`,`email`,`gender`,`bod`,`role`) values (?,?,?,?,?,?,?,?,?)";
         try {
             System.out.println("name" + fullname);
@@ -296,6 +296,31 @@ public class userDAO {
             }
             ps.setDate(6, Date.valueOf(newBod));
             ps.setString(7, account);
+            ps.executeUpdate();
+
+        } catch (Exception e) {
+
+            System.out.println("Update profile error: " + e.getMessage());
+        }
+    }
+    
+    public void updateProfileByAdmin(String account, String newName, String newGender, String newPhone, String newAddress, String newEmail, String newBod, String newRole) {
+        String strUpdate = "UPDATE user SET fullname=?,phonenumber=?,address=?,email=?,gender=?,bod=?, role=?  WHERE account=?";
+        try {
+            connection = dbc.getConnection();
+            ps = connection.prepareStatement(strUpdate);
+            ps.setString(1, newName);
+            ps.setString(2, newPhone);
+            ps.setString(3, newAddress);
+            ps.setString(4, newEmail);
+            if (newGender.equals("Male")) {
+                ps.setString(5, "1");
+            } else {
+                ps.setString(5, "0");
+            }
+            ps.setDate(6, Date.valueOf(newBod));
+            ps.setString(7, newRole);
+            ps.setString(8, account);
             ps.executeUpdate();
 
         } catch (Exception e) {
@@ -427,6 +452,23 @@ public class userDAO {
         return name;
     }
 
+    public String getUserNameByID(String userId) {
+        String name = "";
+        try {
+            String sql = "Select fullname from user where userID = ?";
+            connection = dbc.getConnection();
+            ps = connection.prepareStatement(sql);
+            ps.setString(1, userId);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                name = rs.getString(1);
+            }
+        } catch (Exception e) {
+            System.out.println("Get user name: " + e.getMessage());
+        }
+        return name;
+    }
+    
     public void addUser(String id, String name, String mail) {
         try {
             String sql = "insert into user(userId, fullname,email) "

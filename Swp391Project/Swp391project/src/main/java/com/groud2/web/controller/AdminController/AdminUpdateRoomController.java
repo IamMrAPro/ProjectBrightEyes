@@ -5,11 +5,14 @@
 package com.groud2.web.controller.AdminController;
 
 import com.groud2.web.DAO.roomDAO;
+import com.groud2.web.DAO.userDAO;
 import com.groud2.web.model.room;
+import com.groud2.web.model.user;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -17,33 +20,34 @@ import java.util.ArrayList;
  *
  * @author Ao
  */
-public class AdminUpdateRoomController extends HttpServlet{
+public class AdminUpdateRoomController extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String roomID = req.getParameter("roomID");
+        roomDAO rd = new roomDAO();
+//        String roomID = req.getParameter("roomID");
+        HttpSession session = req.getSession();
+        String roomID = (String)session.getAttribute("roomID");
+        String userID = req.getParameter("userID");
         String roomName = req.getParameter("roomName");
         String roomFunction = req.getParameter("roomFunction");
-        
+
         String update = req.getParameter("update");
         String delete = req.getParameter("delete");
-        
-        roomDAO rd = new roomDAO();
-        if(update != null){
-            
-            if(rd.updateRoom(roomID, roomName, roomFunction)){
+
+        if (update != null) {
+
+            if (rd.updateRoom(roomID, userID, roomName, roomFunction)) {
                 resp.sendRedirect("manageRoom?message=updateOK");
-            }
-            else {
+            } else {
                 resp.sendRedirect("manageRoom?message=updateFailed");
             }
         }
-        
-        if(delete != null){
-            if(rd.deleteRoom(roomID)){
+
+        if (delete != null) {
+            if (rd.deleteRoom(roomID)) {
                 resp.sendRedirect("manageRoom?message=deleteOK");
-            }
-            else {
+            } else {
                 resp.sendRedirect("manageRoom?message=deleteFailed");
             }
         }
@@ -52,14 +56,17 @@ public class AdminUpdateRoomController extends HttpServlet{
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String roomID = req.getParameter("roomID");
-        
-        System.out.println("RoomID = " + roomID);
+        HttpSession session = req.getSession();
+        session.setAttribute("roomID", roomID);
         roomDAO rd = new roomDAO();
+        userDAO ud = new userDAO();
         ArrayList<room> getRoom = rd.getRoomByID(roomID);
-        System.out.println("room Name: " + getRoom.get(0).getRoomName());
+        String name = ud.getUserNameByID(getRoom.get(0).getUserID());
+        ArrayList<user> listStaff = ud.getListUser("", "");
+        req.setAttribute("listStaff", listStaff);
+        req.setAttribute("username", name);
         req.setAttribute("listRoom", getRoom);
         req.getRequestDispatcher("AdminView/admin-screen/AdminUpdateRoom.jsp").forward(req, resp);
     }
-    
-    
+
 }
