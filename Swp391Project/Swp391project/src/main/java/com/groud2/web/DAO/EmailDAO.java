@@ -86,21 +86,42 @@ public class EmailDAO {
         mailMessage.addRecipient(Message.RecipientType.TO, new InternetAddress(email));
 
         mailMessage.setSubject("Appointment Confirmation");
-        String emailBody = "\n"
-                + "        <div>\n"
+
+        String emailBody = "<div>\n"
+                + "            <h1>Confirmation of successful appointment booking</h1>\n"
                 + "            <div style=\"font-size: 20px\">Dear " + name + ",</div>\n"
                 + "\n"
-                + "            <div style=\"font-size: 15px\">** This is an automated message -- please do not reply as you will not receive a response. **\n"
-                + "               <br><br> This email is to confirm your scheduled appointment with us on " + date + " at " + time + ".\n"
+                + "            <div style=\"font-size: 15px\">** This is an automated message -- please do not reply as you will not receive a response. **<br><br>\n"
+                + "                This email is to confirm your scheduled appointment with us on " + date + " at " + time + ".<br><br>\n"
+                + "                If you need to cancel or reschedule, please contact us as soon as possible.<br><br>\n"
+                + "                Thank you for choosing our services.<br><br>\n"
+                + "                <br>Bright eye clinic.\n"
+                + "            </div>\n"
+                + "            <div class=\"col-lg-4 col-md-6 col-12 mx-auto\">\n"
+                + "                <h5 class=\"site-footer-title mb-3\">Contact Infomation</h5>\n"
                 + "\n"
-                + "              <br> <br> If you need to cancel or reschedule, please contact us as soon as possible.\n"
+                + "                <p class=\"text-white d-flex mb-2\">\n"
+                + "                    <i class=\"bi-telephone me-2\"></i>\n"
                 + "\n"
+                + "                    <a href=\"tel: 120-240-9600\" class=\"site-footer-link\">\n"
+                + "                        0948539479\n"
+                + "                    </a>\n"
+                + "                </p>\n"
                 + "\n"
+                + "                <p class=\"text-white d-flex\">\n"
+                + "                    <i class=\"bi-envelope me-2\"></i>\n"
                 + "\n"
-                + "              <br>  Thank you for choosing our services.\n"
+                + "                    <a href=\"mailto:info@yourgmail.com\" class=\"site-footer-link\">\n"
+                + "                        anhvubui382@gmail.com\n"
+                + "                    </a>\n"
+                + "                </p>\n"
                 + "\n"
-                + "              <br><br> <br>   Bright eye clinic.</div>\n"
+                + "                <p class=\"text-white d-flex mt-3\">\n"
+                + "                    <i class=\"bi-geo-alt me-2\"></i>\n"
+                + "                    FPT University, Hoa Lac, Ha Noi\n"
+                + "                </p>\n"
                 + "\n"
+                + "            </div>\n"
                 + "        </div>";
         mailMessage.setContent(emailBody, "text/html");
         // Step3: Send mail
@@ -109,7 +130,8 @@ public class EmailDAO {
         transport.sendMessage(mailMessage, mailMessage.getAllRecipients());
         transport.close();
     }
-public static void MailCancelAppointment(String email, String name, String date, String time) throws AddressException, jakarta.mail.MessagingException {
+
+    public static void MailCancelAppointment(String email, String name, String date, String time) throws AddressException, jakarta.mail.MessagingException {
         Properties mailServerProperties;
         Session getMailSession;
         MimeMessage mailMessage;
@@ -143,7 +165,31 @@ public static void MailCancelAppointment(String email, String name, String date,
                 + "\n"
                 + "              <br><br> <br>   Bright eye clinic.</div>\n"
                 + "\n"
-                + "        </div>";
+                + " <div class=\"col-lg-4 col-md-6 col-12 mx-auto\">\n"
+                + "                <h5 class=\"site-footer-title mb-3\">Contact Infomation</h5>\n"
+                + "\n"
+                + "                <p class=\"text-white d-flex mb-2\">\n"
+                + "                    <i class=\"bi-telephone me-2\"></i>\n"
+                + "\n"
+                + "                    <a href=\"tel: 120-240-9600\" class=\"site-footer-link\">\n"
+                + "                        0948539479\n"
+                + "                    </a>\n"
+                + "                </p>\n"
+                + "\n"
+                + "                <p class=\"text-white d-flex\">\n"
+                + "                    <i class=\"bi-envelope me-2\"></i>\n"
+                + "\n"
+                + "                    <a href=\"mailto:info@yourgmail.com\" class=\"site-footer-link\">\n"
+                + "                        anhvubui382@gmail.com\n"
+                + "                    </a>\n"
+                + "                </p>\n"
+                + "\n"
+                + "                <p class=\"text-white d-flex mt-3\">\n"
+                + "                    <i class=\"bi-geo-alt me-2\"></i>\n"
+                + "                    FPT University, Hoa Lac, Ha Noi\n"
+                + "                </p>\n"
+                + "\n"
+                + "            </div>       </div>";
         mailMessage.setContent(emailBody, "text/html");
         // Step3: Send mail
         Transport transport = getMailSession.getTransport("smtp");

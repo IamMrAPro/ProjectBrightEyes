@@ -155,10 +155,6 @@
         <servlet-class>com.groud2.web.controller.recordOnlineController</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>currentBooking</servlet-name>
-        <servlet-class>com.groud2.web.controller.currentBooking</servlet-class>
-    </servlet>
-    <servlet>
         <servlet-name>listCompletePatient</servlet-name>
         <servlet-class>com.groud2.web.controller.DoctorController.listCompletePatient</servlet-class>
     </servlet>
@@ -205,6 +201,40 @@
     <servlet>
         <servlet-name>testEyes</servlet-name>
         <servlet-class>com.groud2.web.controller.testEyes</servlet-class>
+        <servlet-name>successBookingController</servlet-name>
+        <servlet-class>com.groud2.web.controller.successBookingController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>lateBookingController</servlet-name>
+        <servlet-class>com.groud2.web.controller.lateBookingController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>updateProfileController</servlet-name>
+        <servlet-class>com.groud2.web.controller.updateProfileController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>currentBookingController</servlet-name>
+        <servlet-class>com.groud2.web.controller.currentBookingController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>currentSearchBookingControlle</servlet-name>
+        <servlet-class>com.groud2.web.controller.currentSearchBookingController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>FeedbackController</servlet-name>
+        <servlet-class>com.groud2.web.controller.FeedbackController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>searchUserController</servlet-name>
+        <servlet-class>com.groud2.web.controller.searchUserController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>MedicalHistory</servlet-name>
+        <servlet-class>com.groud2.web.controller.DoctorController.MedicalHistory</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>SearchBookingStaff</servlet-name>
+        <servlet-class>com.groud2.web.controller.StaffController.SearchBookingStaff</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>homeController</servlet-name>
@@ -363,10 +393,6 @@
         <url-pattern>/glasses</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>currentBooking</servlet-name>
-        <url-pattern>/currentBooking</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
         <servlet-name>listCompletePatient</servlet-name>
         <url-pattern>/listCompletePatient</url-pattern>
     </servlet-mapping>
@@ -413,6 +439,40 @@
     <servlet-mapping>
         <servlet-name>testEyes</servlet-name>
         <url-pattern>/testEyes</url-pattern>
+        <servlet-name>successBookingController</servlet-name>
+        <url-pattern>/successBooking</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>lateBookingController</servlet-name>
+        <url-pattern>/lateBooking</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>updateProfileController</servlet-name>
+        <url-pattern>/updateProfile</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>currentBookingController</servlet-name>
+        <url-pattern>/currentBooking</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>currentSearchBookingControlle</servlet-name>
+        <url-pattern>/currentSearch</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>FeedbackController</servlet-name>
+        <url-pattern>/FeedbackController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>searchUserController</servlet-name>
+        <url-pattern>/searchUser</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>MedicalHistory</servlet-name>
+        <url-pattern>/MedicalHistory</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SearchBookingStaff</servlet-name>
+        <url-pattern>/SearchBookingStaff</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

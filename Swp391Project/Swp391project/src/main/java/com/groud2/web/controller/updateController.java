@@ -6,10 +6,7 @@ package com.groud2.web.controller;
 
 import com.groud2.web.DAO.EmailDAO;
 import com.groud2.web.DAO.userDAO;
-import static com.groud2.web.controller.bookingController.isValidDate;
-import static com.groud2.web.controller.bookingController.isValidEmail;
-import static com.groud2.web.controller.bookingController.isValidName;
-import static com.groud2.web.controller.bookingController.isValidPhoneNumber;
+
 import com.groud2.web.model.user;
 import jakarta.mail.MessagingException;
 import jakarta.servlet.ServletException;
@@ -128,7 +125,7 @@ public class updateController extends HttpServlet {
         LocalDate newBod = LocalDate.parse(inputBirthDate);
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         String newBodString = dtf.format(newBod);
-        boolean isNameValid = isValidName(newName);
+         boolean isNameValid = isValidName(newName);
         boolean isPhoneValid = isValidPhoneNumber(newPhone);
         boolean isEmailValid = isValidEmail(newEmail);
         boolean isDateValid = isAdult(newBod);
@@ -151,11 +148,12 @@ public class updateController extends HttpServlet {
             request.setAttribute("checkDate", "Must be older than 18 years old");
         }
         if (isNameValid && isPhoneValid && isEmailValid && isDateValid) {
-              p.updateProfile(account, newName, newGender, newPhone, newAddress, newEmail, newBodString);
-        response.sendRedirect("profile");
+            System.out.println("chay update profile");
+            p.updateProfile(account, newName, newGender, newPhone, newAddress, newEmail, newBodString);
+            response.sendRedirect("profile");
         } else {
             // Nếu có ít nhất một giá trị không hợp lệ, hiển thị lại trang booking với thông báo lỗi
-            response.sendRedirect("profile");
+            request.getRequestDispatcher("profile.jsp").forward(request, response);
         }
       
 

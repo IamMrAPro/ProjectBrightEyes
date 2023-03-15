@@ -15,6 +15,7 @@ import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import java.util.ArrayList;
 
 /**
@@ -64,11 +65,14 @@ public class GetPatientOnline extends HttpServlet {
         userDAO u = new userDAO();
         bookingDAO b = new bookingDAO();
         String id = request.getParameter("id");
-                System.out.println("insert status check");
-    int intId = Integer.parseInt(id);
-        
+        HttpSession session = request.getSession();
+        session.setAttribute("userIdBooking", id);
+
+        System.out.println("insert status check");
+        int intId = Integer.parseInt(id);
+
         b.insertStatusByID(intId);
-        
+
         try {
             ArrayList<user> listrole = u.getUsersByRole();
             request.setAttribute("listrole", listrole);

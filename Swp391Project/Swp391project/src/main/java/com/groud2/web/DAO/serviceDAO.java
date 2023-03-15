@@ -50,4 +50,31 @@ public ArrayList<service> getService() throws SQLException {
         return list;
 
     }
+public ArrayList<service> getService2() throws SQLException {
+        ArrayList<service> list = new ArrayList<>();
+        String sql = "SELECT * FROM service2";
+        try {
+            connection = dbc.getConnection();
+            ps = connection.prepareStatement(sql);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                String serviceID = rs.getString(1);
+                String service = rs.getString(2);
+                String description = rs.getString(3);
+                String price = rs.getString(4);
+                
+                service g = new service(serviceID, service, description, price);
+                list.add(g);
+                System.out.println("get service success");
+            }
+        } catch (SQLException e) {
+            System.out.println("get service error: " + e.getMessage());
+        } finally {
+            if (connection != null) {
+                connection.close();
+            }
+        }
+        return list;
+
+    }
 }

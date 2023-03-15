@@ -12,81 +12,7 @@
     <%@include file="../doctor-layout/doctor-head.jsp" %>
 
     <head>
-        <script>
-            function showAlert(name, phone, idcard, status) {
-                // Create a div element to hold the alert message
-                var alertDiv = document.createElement("div");
-                alertDiv.style.position = "fixed";
-                alertDiv.style.top = "50%";
-                alertDiv.style.left = "50%";
-                alertDiv.style.transform = "translate(-50%, -50%)";
-                alertDiv.style.backgroundColor = "white";
-                alertDiv.style.width = "700px";
-
-
-                alertDiv.style.borderRadius = "5px";
-                alertDiv.style.boxShadow = "0px 0px 10px rgba(0, 0, 0, 0.5)";
-                alertDiv.style.zIndex = "9999";
-                alertDiv.style.display = "flex";
-                alertDiv.style.flexDirection = "column";
-                alertDiv.style.alignItems = "center";
-
-                // Create the alert message
-                var alertMessage = document.createElement("p");
-                alertMessage.textContent = "Thông tin bệnh nhân:";
-                alertMessage.style.marginTop = "0px";
-                alertMessage.style.marginBottom = "20px";
-
-                // Create the name element
-                var nameElement = document.createElement("p");
-                nameElement.textContent = "Tên: " + name;
-                nameElement.style.marginTop = "0px";
-                nameElement.style.marginBottom = "10px";
-
-                // Create the phone element
-                var phoneElement = document.createElement("p");
-                phoneElement.textContent = "Số điện thoại: " + phone;
-                phoneElement.style.marginTop = "0px";
-                phoneElement.style.marginBottom = "10px";
-
-                // Create the id card element
-                var idCardElement = document.createElement("p");
-                idCardElement.textContent = "CMND: " + idcard;
-                idCardElement.style.marginTop = "0px";
-                idCardElement.style.marginBottom = "10px";
-
-                // Create the status element
-                var statusElement = document.createElement("p");
-                statusElement.textContent = "Tình trạng: " + status;
-                statusElement.style.marginTop = "0px";
-                statusElement.style.marginBottom = "10px";
-
-                // Create the close button
-                var closeButton = document.createElement("button");
-                closeButton.textContent = "Đóng";
-                closeButton.style.marginTop = "20px";
-                closeButton.style.padding = "10px 20px";
-                closeButton.style.backgroundColor = "#007bff";
-                closeButton.style.border = "none";
-                closeButton.style.borderRadius = "5px";
-                closeButton.style.color = "white";
-                closeButton.style.cursor = "pointer";
-                closeButton.addEventListener("click", function () {
-                    alertDiv.parentNode.removeChild(alertDiv);
-                });
-
-                // Add all elements to the alert div
-                alertDiv.appendChild(alertMessage);
-                alertDiv.appendChild(nameElement);
-                alertDiv.appendChild(phoneElement);
-                alertDiv.appendChild(idCardElement);
-                alertDiv.appendChild(statusElement);
-                alertDiv.appendChild(closeButton);
-
-                // Add the alert div to the page
-                document.body.appendChild(alertDiv);
-            }
-        </script>
+        
     </head>
     <style>
         .sort-icon {
@@ -219,50 +145,53 @@
                 <br>
                 <% int count = 0;%>
                 <!-- Modal -->
+
                 <c:forEach items="${listInformationPatient}" var="c">
 
-                <form action="medicalRecord" method="POST">
-                    <div class="row">
-                      
+                    <form action="medicalRecord" method="POST">
+                        <div class="row">
+
                             <div class=" col-md-3"></div>
 
                             <div class=" col-md-6">
                                 <h1 style="margin-bottom: 30px;display: flex; justify-content: center">MEDICAL REPORT FORM</h1>
                                 <div style="display: flex; justify-content: space-between">
-                                    <p>Patient's Full Name<input style="width: 250px" name="namePatient" type="text" value="${c.getPatientName()} " readonly></p> 
-                                    <p>Date of Birth<input type="text" name ="dobPatient" value="${c.getBod()} "readonly ></p>
+                                    <p>Patient's Full Name<input style="width: 250px" name="namePatient" type="text" value="${c.getUser().getFullname()} " readonly></p> 
+                                    <p>Date of Birth<input type="text" name ="dobPatient" value="${c.getUser().getBod()} "readonly ></p>
                                 </div>
                                 <div style="display: flex; justify-content: space-between">
-                                    <p>Phone Number<input style="width: 250px" name="phonePatient" type="text" value="${c.getPhone()} "readonly></p> 
+                                    <p>Phone Number<input style="width: 250px" name="phonePatient" type="text" value="${c.getUser().getPhonenumber()} "readonly></p> 
 
-                                    <p>Gender:<input type="text" name ="emailPatient" value="${c.getGender()} "readonly></p>
+                                    <p>Gender:<input type="text" name ="emailPatient" value="${c.getUser().getGender()} "readonly></p>
                                 </div>
-                                <p style="margin-top: 20px">Address<input type="text" name="addressPatient" style="width: 100%" value="${c.getAddress()} "readonly></p>                                
-                                <p style="margin-top: 20px">Email<input type="text" name="addressPatient" style="width: 100%" value="${c.getEmail()} "readonly></p>
+                                <p style="margin-top: 20px">Address<input type="text" name="addressPatient" style="width: 100%" value="${c.getUser().getAddress()} "readonly></p>                                
+                                <p style="margin-top: 20px">Email<input type="text" name="addressPatient" style="width: 100%" value="${c.getUser().getEmail()} "readonly></p>
                                 <div style="display: flex; justify-content: space-between">
-                                    <p>ID Card:<input type="text" name="Idcard" value="${c.getIdcard()} "readonly> </p>
 
-                                    <a href="#" onclick="showAlert('${c.getPatientName()}', '${c.getPhone()}', '${c.getIdcard()}', '${c.getStatus()}')" class="dialog">View Medical History</a>
-                                </div>                                   
-                                <p>Symtom </p>
-                                <textarea style="width: 100%" name="symptom" rows="5" cols="30"></textarea>
+
+                                </div> 
+
+
+                                <p>Symptom<br><input type="text" name ="syptom" value="${c.getSymptom()}  " style="height: 100px;width: 100%"  readonly></p>
+
                                 <p>Conclude </p>
                                 <textarea style="width: 100%" name="conclude" rows="5" cols="30"></textarea>
                                 <p>Medicine </p>
                                 <textarea style="width: 100%" name="medicine" rows="5" cols="30"></textarea>
 
-
+                                   
                                 <div style="margin: 20px;display: flex;justify-content: center">
-                                    <input style="justify-content: center" type="submit" value="Submit"></div>
+                                   
+                                    <input style="justify-content: center" type="submit" value="Submit" onclick="return confirm('Are you sure you want to submit this form?')" ></div>
+                                    
                             </div>
-                        
-                        <div class=" col-md-3"></div>
-                    </div>
-                               
-                       
-        </c:forEach>
+                            <div class=" col-md-3"></div>
+                        </div>
+                    </c:forEach>        
 
-    </div>
- </form>      
-</body>
+
+
+            </div>
+        </form>      
+    </body>
 </html>

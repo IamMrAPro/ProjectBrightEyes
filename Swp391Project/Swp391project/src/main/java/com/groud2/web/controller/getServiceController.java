@@ -4,12 +4,18 @@
  */
 package com.groud2.web.controller;
 
+import com.groud2.web.DAO.serviceDAO;
+import com.groud2.web.model.service;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 
 /**
@@ -56,7 +62,19 @@ public class getServiceController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+        serviceDAO  s = new serviceDAO();
+         ArrayList<service> list;
+         ArrayList<service> list2;
+        try {
+            list = s.getService();
+            list2 = s.getService2();
+            request.setAttribute("listService", list);
+            request.setAttribute("listService2", list2);
+            request.getRequestDispatcher("service.jsp").forward(request, response);
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(getServiceController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     

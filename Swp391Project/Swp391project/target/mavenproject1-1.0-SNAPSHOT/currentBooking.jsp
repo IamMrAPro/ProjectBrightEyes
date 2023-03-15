@@ -15,16 +15,27 @@
     }
     td {
         text-align: center;
+        margin-top: 10px;
     }
     button a {
         text-decoration: none;
         color: inherit;
         cursor: inherit;
     }
+    .td-body{
+        margin-top: 10px;
+    }
+    td {
+
+    }
 </style>
+<link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+
 <html>
 
     <%@include file="AdminView/admin-layout/admin-head.jsp" %>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
     <body onload="getPositionNavBar(6)">
         <div class="vw-100 vh-100 d-flex">
             <%@include file="AdminView/admin-layout/admin-navbar.jsp" %>
@@ -36,7 +47,7 @@
                     <div class="row align-items-start">
                         <div class="section-title text-center" style="margin: 20px">
 
-                            <form method="post" action="searchBooking" onsubmit="return validateSearch()">
+                            <form method="post" action="currentBooking" onsubmit="return validateSearch()">
                                 <label for="email">Email:</label>
                                 <input type="email" name="email" id="email">
 
@@ -61,7 +72,7 @@
                                    padding: 10px 20px;
                                    color: #333;
                                    text-decoration: none;
-                                   display: inline-block;" href="searchBooking">Historys Booking</a>
+                                   display: inline-block;" href="searchBooking">History Booking</a>
                                 <c:if test="${check ne null}" >
                                     <p style="color: red;font-size: 20px">${check}</p>
                                 </c:if>
@@ -70,7 +81,7 @@
 
 
                     </div>
-
+                    <% int count = 0;%>
                     <div class="row align-items-center">
                         <div class="col">
 
@@ -85,31 +96,35 @@
                                         <th>Time</th>
                                         <th>Status</th>
                                         <th>Add</th>
+                                        <th>Late</th>
                                     </tr>
                                 </thead>
 
 
                                 <c:forEach items="${listCurrent}" var="p">
                                     <tbody> 
-                                        <tr><td>${p.getBookingId()} </td>
+                                                <tr><td><% count++;
+                                            out.print(count);%> </td>
                                             <td>${p.getName()}</td>
                                             <td>${p.getPhone()}</td>
                                             <td>${p.getEmail()}</td>
                                             <td>${p.getDay()}</td>
-                                            <td>${p.getTime()}</td>        
-                                            <td> <c:if test="${p.getStatus()==1}" >
+                                            <td class="td-body">${p.getTime()}</td>        
+                                            <td class="td-body"> <c:if test="${p.getStatus()==1}" >
                                                     <p style="color: red;font-size: 20px">done</p>
                                                 </c:if>
                                                 <c:if test="${p.getStatus()==0}" >
                                                     <p style="color: green;font-size: 20px">not yet</p>
                                                 </c:if></td>
 
-                                            <td><c:if test="${p.getStatus()!=1}">
-                                                <a href="GetPatientOnline?id=${p.getBookingId()}"><ion-icon style="font-size:25px" name="add-circle-outline"></ion-icon></a>
-                    </c:if></td>
-                                    </tr>
-                                            </tr>
-                                        </tbody>
+                                            <td class="td-body"><c:if test="${p.getStatus()!=1}">
+                                                    <a href="GetPatientOnline?id=${p.getBookingId()}"><ion-icon style="font-size:30px; margin-top: 10px" name="add-circle-outline"></ion-icon></a>
+                                                </c:if></td>
+                                            <td><c:if test="${p.getStatus()!=1}"><a href="lateBooking?id=${p.getBookingId()}"><ion-icon style="font-size:30px; margin-top: 10px" name="close-circle-outline"></ion-icon></a>
+                                                </c:if></td>
+                                        </tr>
+
+                                    </tbody>
                                 </c:forEach>
 
                             </table>

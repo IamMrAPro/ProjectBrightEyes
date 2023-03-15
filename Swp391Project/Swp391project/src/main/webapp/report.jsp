@@ -1,4 +1,13 @@
 
+
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
+
+<%-- 
+    Document   : detail
+    Created on : Jan 29, 2023, 9:40:02 PM
+    Author     : asus
+--%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 
@@ -16,11 +25,14 @@
 
 
 
-    </head>
+   </head>
     <jsp:include page="layout/head.jsp"/>
     <body>
         <jsp:include page="layout/header.jsp"/>
         <jsp:include page="layout/menu.jsp"/>
+
+
+
 
           <div class="container rounded bg-white mt-5 mb-5">
             <div class="row">

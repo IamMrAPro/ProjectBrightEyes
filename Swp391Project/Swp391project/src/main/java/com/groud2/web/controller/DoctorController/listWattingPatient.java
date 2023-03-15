@@ -6,6 +6,7 @@ package com.groud2.web.controller.DoctorController;
 
 import com.groud2.web.DAO.patientDAO;
 import com.groud2.web.model.patient;
+import com.groud2.web.model.user;
 import jakarta.servlet.ServletException;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -64,10 +65,10 @@ public class listWattingPatient extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-       HttpSession session = request.getSession();
+        HttpSession session = request.getSession();
         String username = (String) session.getAttribute("id");
         request.setAttribute("username", username);
-        String fullname = (String) session.getAttribute("fullname");
+        String fullname1 = (String) session.getAttribute("fullname");
         request.setAttribute("username", username);
         //Lay date now
         LocalDate now = LocalDate.now();
@@ -78,27 +79,23 @@ public class listWattingPatient extends HttpServlet {
         //xu ly output patient with process watting
         String process = "0";
         System.out.println("user name u lieu co ton tai");
-        System.out.println(fullname);
+        System.out.println(fullname1);
         System.out.println("doan xem");
         System.out.println(process);
         patientDAO pa = new patientDAO();       
-        ArrayList<patient> listWattingPatient;
+        ArrayList<patient> listWattingPatient;    
         try {
-                listWattingPatient = pa.getPatientByDay(fullname, process, datenow);
-                System.out.println("Thanh cong roi day");
-            for (patient item : listWattingPatient) {
-                System.out.println("day" + item.getIdcard());
-            }
+                listWattingPatient = pa.getPatientByDay(fullname1, process, datenow);               
                 request.setAttribute("listWattingPatient", listWattingPatient);
-            
+                request.getRequestDispatcher("DoctorView/doctor-screen/ListWattingPatient.jsp").forward(request, response);          
         } catch (SQLException ex) {
             Logger.getLogger(listWattingPatient.class.getName()).log(Level.SEVERE, null, ex);
         }
-
-//        for(patient item : list){
-//            System.out.println("day"+item.getBookingId());
+//
+//        for(patient item : listWattingPatient){
+//            System.out.println("day"+item.getUser().);
 //        }
-        request.getRequestDispatcher("DoctorView/doctor-screen/ListWattingPatient.jsp").forward(request, response);
+        
 
     }
 

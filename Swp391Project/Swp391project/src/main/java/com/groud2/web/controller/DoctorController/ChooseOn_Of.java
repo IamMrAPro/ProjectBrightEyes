@@ -67,7 +67,7 @@ public class ChooseOn_Of extends HttpServlet {
         HttpSession session = request.getSession();
         String username = (String) session.getAttribute("id");
         request.setAttribute("username", username);
-        String fullname = (String) session.getAttribute("fullname");
+        String fullname1 = (String) session.getAttribute("fullname");
         request.setAttribute("username", username);
         //Lay date now
         LocalDate now = LocalDate.now();
@@ -88,11 +88,11 @@ public class ChooseOn_Of extends HttpServlet {
 
         try {
             if (!status.equals("option")) {
-                listWattingPatient = pa.getPatientByDayOrder(fullname, process, datenow,status);
+                listWattingPatient = pa.getPatientByDayOrder(fullname1, process, datenow,status);
                 System.out.println("Thanh cong");
                 request.setAttribute("listWattingPatient", listWattingPatient);          
             } else {
-                listWattingPatient = pa.getPatientByDay(fullname, process, datenow);
+                listWattingPatient = pa.getPatientByDay(fullname1, process, datenow);
                 System.out.println("Thanh cong");
                 request.setAttribute("listWattingPatient", listWattingPatient);
             }

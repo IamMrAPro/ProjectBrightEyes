@@ -52,7 +52,6 @@
                             <span class="focus-input100" data-symbol="&#xf206;"></span>
                               
                         </div>
-
                         <c:if test="${ms2 ne null}" >
                             <p  style="color: red;font-size: 20px">${ms2}</p>
                         </c:if>
@@ -61,7 +60,6 @@
                             <input class="input100" type="password" minlength="8"  name="newPass" placeholder="Enter new password">
                             <span class="focus-input100" data-symbol="&#xf206;"></span>
                         </div>
-
 
 
 
@@ -75,7 +73,7 @@
 
                             </div>
                         </div>
-
+                        <p style="margin-top: 20px;font-size: 15px">If you want back to home page, please enter <a href="home.jsp" style="font-size: 18px; color: blue"> Home</a></p> 
 
 
                     </form>

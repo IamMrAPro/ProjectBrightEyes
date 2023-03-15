@@ -637,19 +637,20 @@
                     </div>
 
                     <div class="col-lg-5 col-12 mx-auto">
-                        <form class="custom-form contact-form" action="reportController" method="get" role="form">
+                        
                             <h2>Send feedback</h2>
 
                             <p class="mb-4">Or, you can just send an email:
                                 <a href="#">anhvubui382@gmail.com</a>
                             </p>
+                            <form class="custom-form contact-form" action="FeedbackController" role="form">
                             <div class="row">
                                 <div class="col-lg-6 col-md-6 col-12">
-                                    <input type="text" name="first-name" id="first-name" class="form-control" placeholder="Bui" required>
+                                    <input type="text" name="name" id="name" class="form-control" placeholder="Bui" required>
                                 </div>
 
                                 <div class="col-lg-6 col-md-6 col-12">
-                                    <input type="text" name="last-name" id="last-name" class="form-control" placeholder="Anh Vu" required>
+                                    <input type="text" name="name" id="name" class="form-control" placeholder="Anh Vu" required>
                                 </div>
                             </div>
 

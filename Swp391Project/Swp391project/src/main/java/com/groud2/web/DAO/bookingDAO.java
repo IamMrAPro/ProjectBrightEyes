@@ -14,6 +14,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
@@ -41,7 +42,10 @@ public class bookingDAO {
             ps.setString(2, phone);
             ps.setString(3, email);
             ps.setDate(4, Date.valueOf(date));
-            ps.setString(5, time);
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("H:mm");
+            LocalTime localTime = LocalTime.parse(time, formatter);
+            ps.setObject(5, java.sql.Time.valueOf(localTime));
+            
             ps.setString(6, medical);
             ps.setString(7, payment);
             ps.setString(8, sbtime);
@@ -53,14 +57,15 @@ public class bookingDAO {
         }
 
     }
-public void insertStatusByID(int id) {
+
+    public void insertStatusByID(int id) {
         try {
             String strSelect = "UPDATE `swppro`.`booking` SET `status` = '1' WHERE (`bookId` = ?)";
-                    
+
             connection = dbc.getConnection();
             ps = connection.prepareStatement(strSelect);
             ps.setInt(1, id);
-            
+
             ps.execute();
             System.out.println("insert status booking success");
         } catch (Exception e) {
@@ -88,7 +93,7 @@ public void insertStatusByID(int id) {
                 String sbtime = rs.getString(9);
                 String status = rs.getString(10);
 
-                booking g = new booking(bookingID, name, phone, email, date, time, medical, payment, sbtime,status);
+                booking g = new booking(bookingID, name, phone, email, date, time, medical, payment, sbtime, status);
                 list.add(g);
                 System.out.println("get booking success");
             }
@@ -102,9 +107,10 @@ public void insertStatusByID(int id) {
         return list;
 
     }
-   public ArrayList<booking> getCurrentBooking() throws SQLException {
+
+    public ArrayList<booking> getCurrentBooking() throws SQLException {
         ArrayList<booking> list = new ArrayList<>();
-        String sql = "SELECT * FROM booking WHERE date = current_date();";
+        String sql = "SELECT * FROM booking WHERE date = current_date() ORDER BY time;";
         try {
             connection = dbc.getConnection();
             ps = connection.prepareStatement(sql);
@@ -120,7 +126,7 @@ public void insertStatusByID(int id) {
                 String payment = rs.getString(8);
                 String sbtime = rs.getString(9);
                 String status = rs.getString(10);
-                booking g = new booking(bookingID, name, phone, email, date, time, medical, payment, sbtime,status);
+                booking g = new booking(bookingID, name, phone, email, date, time, medical, payment, sbtime, status);
                 list.add(g);
                 System.out.println("get booking success");
             }
@@ -152,8 +158,9 @@ public void insertStatusByID(int id) {
                 String medical = rs.getString(7);
                 String payment = rs.getString(8);
                 String sbtime = rs.getString(9);
+                String status = rs.getString(10);
 
-                booking g = new booking(bookId, name, phone, email, date, time, medical, payment, sbtime);
+                booking g = new booking(bookId, name, phone, email, date, time, medical, payment, sbtime, status);
                 System.out.println("get booking by phone, email success");
                 list.add(g);
             }
@@ -167,10 +174,9 @@ public void insertStatusByID(int id) {
 
         return list;
     }
-    
     public boolean checkEmail(String email) throws SQLException, IOException {
 
-        String sql = "SELECT email FROM swp.user where email=?  ";
+        String sql = "SELECT email FROM user where email=?  ";
         try {
             System.out.println("check email booking: " + email);
             connection = dbc.getConnection();
@@ -194,7 +200,7 @@ public void insertStatusByID(int id) {
 
     public boolean checkPhone(String phone) throws SQLException, IOException {
 
-        String sql = "SELECT phone FROM swp.user where phone=?  ";
+        String sql = "SELECT phonenumber FROM user where phonenumber=?  ";
         try {
             System.out.println("check phone booking: " + phone);
             connection = dbc.getConnection();
@@ -222,7 +228,7 @@ public void insertStatusByID(int id) {
         ResultSet rs = null;
         boolean exist = false;
         try {
-            String sql = "SELECT COUNT(*) AS count FROM booking WHERE email = ? OR phone = ?";
+            String sql = "SELECT COUNT(*) AS count FROM booking WHERE email = ? AND phone = ?";
             stmt = conn.prepareStatement(sql);
             stmt.setString(1, email);
             stmt.setString(2, phone);
@@ -248,14 +254,13 @@ public void insertStatusByID(int id) {
     }
 
     public void cancelBooking(String id) throws SQLException {
-        String sql = "DELETE FROM swp.`booking`\n"
+        String sql = "DELETE FROM swppro.`booking`\n"
                 + "WHERE bookId = \"" + id + "\";";
         connection = dbc.getConnection();
         ps = connection.prepareStatement(sql);
 
         ps.executeUpdate();
     }
-    
     public ArrayList<booking> getAllById(String bookId) throws SQLException, IOException {
         ArrayList<booking> listId = new ArrayList<>();
         String sql = "SELECT * FROM booking where bookId=?";
@@ -265,10 +270,10 @@ public void insertStatusByID(int id) {
             ps.setString(1, bookId);
             rs = ps.executeQuery();
             while (rs.next()) {
-              
+
                 String name = rs.getString(2);
                 String phone = rs.getString(3);
-                 String email = rs.getString(4);
+                String email = rs.getString(4);
                 String date = rs.getString(5);
                 String time = rs.getString(6);
                 String medical = rs.getString(7);
@@ -288,5 +293,78 @@ public void insertStatusByID(int id) {
         }
 
         return listId;
+    }
+
+    public void lateBooking(String id) throws SQLException, IOException {
+        try {
+            String strSelect = "UPDATE booking SET time = '17:00' WHERE bookId = ?;";
+
+            connection = dbc.getConnection();
+            ps = connection.prepareStatement(strSelect);
+            ps.setString(1, id);
+
+            ps.execute();
+            System.out.println("change late booking success");
+        } catch (Exception e) {
+            System.out.println("change late booking error:" + e.getMessage());
+
+        }
+
+    }
+
+    public String getTimeById(String id) throws SQLException, IOException {
+        try {
+            String strSelect = "SELECT time FROM booking WHERE bookId = ?";
+
+            connection = dbc.getConnection();
+            ps = connection.prepareStatement(strSelect);
+            ps.setString(1, id);
+
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                String time = rs.getString("time");
+                System.out.println("Time for bookId " + id + ": " + time);
+                return time;
+            } else {
+                System.out.println("No time found for bookId " + id);
+                return null;
+            }
+        } catch (Exception e) {
+            System.out.println("Error selecting time by id: " + e.getMessage());
+            return null;
+        }
+    }
+    public ArrayList<booking> getAllCurrentByBoth(String email, String phone) throws SQLException {
+        ArrayList<booking> list = new ArrayList<>();
+        String sql = "SELECT * FROM booking where phone=? AND email=? AND date = current_date() ORDER BY time;";
+        try {
+            connection = dbc.getConnection();
+            ps = connection.prepareStatement(sql);
+            ps.setString(1, phone);
+            ps.setString(2, email);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                String bookId = rs.getString(1);
+                String name = rs.getString(2);
+                String date = rs.getString(5);
+                String time = rs.getString(6);
+                String medical = rs.getString(7);
+                String payment = rs.getString(8);
+                String sbtime = rs.getString(9);
+                String status = rs.getString(10);
+
+                booking g = new booking(bookId, name, phone, email, date, time, medical, payment, sbtime, status);
+                System.out.println("get booking by phone, email success");
+                list.add(g);
+            }
+        } catch (SQLException e) {
+            System.out.println("get booking by phone,email error: " + e.getMessage());
+        } finally {
+            if (connection != null) {
+                connection.close();
+            }
+        }
+
+        return list;
     }
 }

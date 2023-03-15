@@ -68,29 +68,29 @@
                                         <br><br>
                                         <div class="col-lg-6">
                                             <div class="mb-3">
-                                                <label class="form-label" id="name" >Name</label>
+                                                <label class="form-label" id="name">Name</label>
                                                 <c:if test="${checkName ne null}" >
-                                            <p style="color:red;font-size: 13px">${checkName}</p>
-                                        </c:if>
-                                                <input name="name" id="name" class="form-control" required>
+                                                    <p style="color:red;font-size: 13px">${checkName}</p>
+                                                </c:if>
+                                                <input name="name" id="name" value="${fullname}" class="form-control" required >
                                             </div>
                                         </div>
                                         <div class="col-lg-6">
                                             <div class="mb-3">
                                                 <label class="form-label" >Phone</label>
                                                 <c:if test="${checkPhone ne null}" >
-                                            <p style="color:red;font-size: 13px">${checkPhone}</p>
-                                        </c:if>
-                                                <input type="text"name="phone" minlength="10" maxlength="10" validate-input class="form-control" ">
+                                                    <p style="color:red;font-size: 13px">${checkPhone}</p>
+                                                </c:if>
+                                                <input type="text"name="phone" value="${phoneLg}" minlength="10" maxlength="10" validate-input class="form-control" required>
                                             </div>
                                         </div>
                                         <div class="col-lg-12">
                                             <div class="mb-3">
                                                 <label class="form-label" >Email</label>
-                                                <c:if test="${checkMail ne null}" >
-                                            <p style="color:red;font-size: 13px">${checkMail}</p>
-                                        </c:if>
-                                                <input type="text" name="email" id="email" class="form-control">
+                                                <c:if test="${checkEmail ne null}" >
+                                                    <p style="color:red;font-size: 13px">${checkEmail}</p>
+                                                </c:if>
+                                                <input type="text" name="email" id="email" value="${emailLg}" class="form-control">
                                             </div>
                                         </div>
                                         <br>
@@ -101,9 +101,9 @@
                                         <div class="col-md-6">
                                             <div class="mb-3">
                                                 <label class="form-label" for="dateInput">Select a date:</label>
-                                                 <c:if test="${checkDate ne null}" >
-                                            <p style="color:red;font-size: 13px">${checkDate}</p>
-                                        </c:if>
+                                                <c:if test="${checkDate ne null}" >
+                                                    <p style="color:red;font-size: 13px">${checkDate}</p>
+                                                </c:if>
                                                 <input type="date" id="dateInput" class="flatpickr flatpickr-input form-control" name="dateInput" onchange="checkDateInput()">
 
                                             </div>
@@ -112,22 +112,22 @@
                                         </div>
 
                                         <div class="col-md-6">
-                                            
+
                                             <div class="mb-3">
                                                 <label class="form-label">Time</label>
                                                 <c:if test="${checkTime ne null}" >
-                                            <p style="color:red;font-size: 13px">${checkTime}</p>
-                                        </c:if>
+                                                    <p style="color:red;font-size: 13px">${checkTime}</p>
+                                                </c:if>
                                                 <select required="" name="time" class="form-control department-name select2input">
                                                     <option value="null" checked>Choose time</option>
-                                                    <option value="7:00">7:00 am</option>
-                                                    <option value="8:00">8:00 am</option>
+                                                    <option value="7:30">7:30 am</option>
+                                                   
                                                     <option value="9:00">9:00 am</option>
-                                                    <option value="10:00">10:00 am</option>
+                                                    
                                                     <option value="11:00">11:00 am</option>
                                                     <option value="14:00">14:00 pm</option>
-                                                    <option value="15:00">15:00 pm</option>
-                                                    <option value="16:00">16:00 pm</option>
+                                                    <option value="15:30">15:30 pm</option>
+                                                    
                                                     <option value="17:00">17:00 pm</option>
                                                 </select>
                                             </div>
@@ -183,7 +183,6 @@
         <!--===============================================================================================-->
         <script src="assets/js/main.js"></script>
         <script>
-
         </script>
 
     </body>
