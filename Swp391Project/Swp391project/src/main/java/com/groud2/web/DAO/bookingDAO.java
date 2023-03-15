@@ -202,7 +202,7 @@ public class bookingDAO {
 
     public boolean checkPhone(String phone) throws SQLException, IOException {
 
-        String sql = "SELECT phone FROM user where phone=?  ";
+        String sql = "SELECT phonenumber FROM user where phonenumber=?  ";
         try {
             System.out.println("check phone booking: " + phone);
             connection = dbc.getConnection();
@@ -263,7 +263,6 @@ public class bookingDAO {
 
         ps.executeUpdate();
     }
-
     public ArrayList<booking> getAllById(String bookId) throws SQLException, IOException {
         ArrayList<booking> listId = new ArrayList<>();
         String sql = "SELECT * FROM booking where bookId=?";

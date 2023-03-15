@@ -20,6 +20,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Date;
 
 /**
  *
@@ -66,11 +67,21 @@ public class recordController extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         userDAO u = new userDAO();
+        String check = request.getParameter("check");
+        String message = null;
+        if (check != null) {
+            if (check.equals("invalidBirthday")) {
+                message = "Your birth date is invalid";
+            }
+        }
 
         try {
             ArrayList<user> listrole = u.getUsersByRole();
             request.setAttribute("listrole", listrole);
             System.out.println("heo");
+            if (message != null) {
+                request.setAttribute("check", message);
+            }
             request.getRequestDispatcher("recordOffline.jsp").forward(request, response);
         } catch (SQLException ex) {
             System.out.println("hellloooo");
@@ -89,31 +100,58 @@ public class recordController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
+//           userDAO ud = new userDAO();
+//        String customerAcc = patientName.replaceAll(" ", "").toLowerCase();
+//        String password = "e10adc3949ba59abbe56e057f20f883e";
+//        ud.createData(doctorName, customerAcc, password, phone, address, email, gender, bod, "customer");
         patientDAO pa = new patientDAO();
+        userDAO u = new userDAO();
+
         String IdCard = request.getParameter("idcard");
         String patientName = request.getParameter("patientName");
         String phone = request.getParameter("phone");
         String email = request.getParameter("email");
         String address = request.getParameter("address");
         String bod = request.getParameter("bod");
+
         String gender = request.getParameter("gender");
+        String account = email;
+        String password = "123456";
+        String role = "customer";
+
         System.out.println("Gender: " + gender);
         LocalDate now = LocalDate.now();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd"); // Định dạng chuỗi
         String medicalDate = now.format(formatter);
         String symptom = request.getParameter("symptom");
         String doctorName = request.getParameter("doctor");
+        LocalDate validate = now.minusYears(2);
+        LocalDate bodlocal = LocalDate.parse(bod);
         System.out.println(medicalDate);
-        try {
+        String time = "";
+        if (bodlocal.isAfter(validate)) {
+            request.setAttribute("check", "Your birth date is invalid");
+            response.sendRedirect("record?check=invalidBirthday");
+        } else {
 
-            pa.insertPatient(IdCard, patientName, phone, email, address, bod, gender, medicalDate, symptom, doctorName);
-            response.sendRedirect("searchBooking.jsp");
-            System.out.println("success");
-        } catch (SQLException e) {
-            e.printStackTrace();
-            System.out.println("fail");
+            try {
+
+                u.createData(patientName, account, password, phone, address, email, gender, bod, role);
+
+            } catch (Exception e) {
+                System.out.println("fail");
+            }
+
+            try {
+                int userId = u.getIdbyAccount(account);
+                System.out.println("ha" + account + userId);
+                pa.insertPatient(IdCard, userId, medicalDate, symptom, doctorName);
+
+                response.sendRedirect("searchBooking");
+            } catch (Exception e) {
+            }
         }
+
     }
 
     /**
@@ -126,6 +164,4 @@ public class recordController extends HttpServlet {
         return "Short description";
     }// </editor-fold>
 
-    
-    
 }

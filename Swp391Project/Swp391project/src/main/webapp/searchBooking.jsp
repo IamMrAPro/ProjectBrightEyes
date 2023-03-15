@@ -36,12 +36,12 @@
             <div class="main-view main-view-content">
                 <div class="section-title text-center" style="margin: 20px">
                     <label for="email">Email:</label>
-                    <input type="email" name="email" id="email" required>
+                    <input type="email" name="email" id="email">
 
                     <label for="phone">Số điện thoại:</label>
-                    <input type="tel" maxlength="10" minlength="10" name="phone" id="phone" required>
+                    <input type="tel" maxlength="10" minlength="10" name="phone" id="phone">
 
-                    <button type="submit" onclick="">Search</button>
+                    <button type="submit" onclick="validateSearch()">Search</button>
                     <a style="border-style: solid;
                        border-width: 1px;
                        border-radius: 5px;
@@ -123,6 +123,15 @@
     </form>
 </body>
 <script>
-   
+    function validateSearch() {
+        var email = document.getElementById("email").value;
+        var phone = document.getElementById("phone").value;
+
+        if (email === "" || phone === "") {
+            alert("Vui lòng nhập đủ hai ô tìm kiếm");
+            return false;
+        }
+        return true;
+    }
 </script>
 </html>

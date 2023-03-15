@@ -126,18 +126,9 @@
             <div class="main-view main-view-content">
                 <br><br>
                 <div class="d-flex justify-content-between header-staff-list align-items-center mb-4">
-                    <h2 class="text-center w-100">PATIENT MANAGEMENT </h2>
+                    <h2 class="text-center w-100">HISTORY MEDICAL </h2>
                 </div>
                 <br>
-
-
-                <select id="selectOption" name="option" onchange="redirectToServlet()">
-                    <option value="">Status</option>
-                    <option value="option">All Patient</option>
-                    <option value="1">OnLine</option>
-                    <option value="0">OffLine</option>
-                </select>
-
                 <% int count = 0;%>
                 <!-- Modal -->
                 <table class="table table-bordered">
@@ -152,25 +143,30 @@
 
 
                             <th>ID Card</th>
-                            <th>Status--Time</th>
-                            <th>Medical History</th>
-
+                            <th>Symptom</th>
+                            <th>Conclude</th>
+                            <th>Medicine</th>
+                            <th>Doctor</th>
+                            <th>Time</th>
                         </tr>
                     </thead>
                     <tbody>
-                       
-                            <c:forEach items="${listCompletePatient}" var="c">
-                                <tr> 
+                        
+                          <c:forEach items="${listPatientHistory}" var="c">
+                                <tr>
                                     <th><% count++;
                                     out.print(count);%></th>
-                                    <th>${c.getUser().getFullname()}</th>
-
+                                    <th>${c.getUser().getFullname()}</th> 
                                     <th>${c.getIdcard()}</th>
-                                    <th>${c.getStatus()}--${c.getTimeOrder()}</th>
-                                    <th><a href="MedicalHistory?Idcard=${c.getIdcard()}" style="color: black">View</a></th>
+                                    <th>${c.getSymptom()}</th>
+                                    <th>${c.getConclude()}</th>
+                                    <th>${c.getMedicine()}</th>
+                                    <th>${c.getDoctorName()}</th>
+                                    <th>${c.getMedicalDate()}</th>
+                                    
                                 </tr>
-                            </c:forEach>
-                       
+                           
+                        </c:forEach>
 
                     </tbody>
                 </table>

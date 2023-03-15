@@ -74,7 +74,6 @@ public class cancelBookingController extends HttpServlet {
         bookingDAO b = new bookingDAO();
         try {
             b.cancelBooking(id);
-            request.setAttribute("cancelSuccess", "Cancel booking successfully. ");
         } catch (SQLException ex) {
             Logger.getLogger(cancelBookingController.class.getName()).log(Level.SEVERE, null, ex);
         }

@@ -8,56 +8,49 @@ package com.groud2.web.model;
  *
  * @author nguye
  */
-public class patient {
-    String patientId,Idcard,patientName,phone,email,address,gender,bod,timeOrder,medicalDate,medicalTime,symptom,conclude,medicine,doctorName,status,process;
+public class patient extends user{
+    String patientId,Idcard,userid,timeOrder,medicalDate,medicalTime,symptom,conclude,medicine,doctorName,status,process;
+    user user ;
+    public patient( user user, String patientId, String Idcard, String userid, String timeOrder, String medicalDate, String medicalTime, String symptom, String conclude, String medicine, String doctorName, String status, String process) {
+        this.user=user;
+        this.patientId = patientId;
+        this.Idcard = Idcard;
+        this.userid = userid;
+        this.timeOrder = timeOrder;
+        this.medicalDate = medicalDate;
+        this.medicalTime = medicalTime;
+        this.symptom = symptom;
+        this.conclude = conclude;
+        this.medicine = medicine;
+        this.doctorName = doctorName;
+        this.status = status;
+        this.process = process;
+    }
+public patient(  String patientId, String Idcard, String userid, String timeOrder, String medicalDate, String medicalTime, String symptom, String conclude, String medicine, String doctorName, String status, String process) {
+       
+        this.patientId = patientId;
+        this.Idcard = Idcard;
+        this.userid = userid;
+        this.timeOrder = timeOrder;
+        this.medicalDate = medicalDate;
+        this.medicalTime = medicalTime;
+        this.symptom = symptom;
+        this.conclude = conclude;
+        this.medicine = medicine;
+        this.doctorName = doctorName;
+        this.status = status;
+        this.process = process;
+    }
+
+    public user getUser() {
+        return user;
+    }
+
+    public void setUser(user user) {
+        this.user = user;
+    }
 
     public patient() {
-    }
-
-    public patient(String patientId, String Idcard, String patientName, String phone, String email, String address, String timeOrder, String medicalDate, String medicalTime, String symptom, String conclude, String medicine, String doctorName, String status, String process) {
-        this.patientId = patientId;
-        this.Idcard = Idcard;
-        this.patientName = patientName;
-        this.phone = phone;
-        this.email = email;
-        this.address = address;
-        this.timeOrder = timeOrder;
-        this.medicalDate = medicalDate;
-        this.medicalTime = medicalTime;
-        this.symptom = symptom;
-        this.conclude = conclude;
-        this.medicine = medicine;
-        this.doctorName = doctorName;
-        this.status = status;
-        this.process = process;
-    }
-
-    public patient(String patientId, String Idcard, String patientName, String phone, String email, String address, String gender, String bod, String timeOrder, String medicalDate, String medicalTime, String symptom, String conclude, String medicine, String doctorName, String status, String process) {
-        this.patientId = patientId;
-        this.Idcard = Idcard;
-        this.patientName = patientName;
-        this.phone = phone;
-        this.email = email;
-        this.address = address;
-        this.gender = gender;
-        this.bod = bod;
-        this.timeOrder = timeOrder;
-        this.medicalDate = medicalDate;
-        this.medicalTime = medicalTime;
-        this.symptom = symptom;
-        this.conclude = conclude;
-        this.medicine = medicine;
-        this.doctorName = doctorName;
-        this.status = status;
-        this.process = process;
-    }
-
-    public String getBod() {
-        return bod;
-    }
-
-    public void setBod(String bod) {
-        this.bod = bod;
     }
     
     public String getPatientId() {
@@ -76,36 +69,12 @@ public class patient {
         this.Idcard = Idcard;
     }
 
-    public String getPatientName() {
-        return patientName;
+    public String getUserid() {
+        return userid;
     }
 
-    public void setPatientName(String patientName) {
-        this.patientName = patientName;
-    }
-
-    public String getPhone() {
-        return phone;
-    }
-
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
+    public void setUserid(String userid) {
+        this.userid = userid;
     }
 
     public String getTimeOrder() {
@@ -180,13 +149,7 @@ public class patient {
         this.process = process;
     }
 
-    public String getGender() {
-        return gender;
-    }
-
-    public void setGender(String gender) {
-        this.gender = gender;
-    }
+  
     
 
 }

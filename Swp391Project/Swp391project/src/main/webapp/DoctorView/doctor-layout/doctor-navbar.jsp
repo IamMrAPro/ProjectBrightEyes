@@ -64,7 +64,7 @@
     <body>
         <div class="admin-nav vh-100">
             <br><br><br>
-            <a href="profile" class="text-center text-decoration-none admin-info">
+            <a href="#" class="text-center text-decoration-none admin-info">
                 <div class="fs-2"><i class="fa-solid fa-user"></i></div>
                 <div style="font-size: 30px">${fullname}</div>
 

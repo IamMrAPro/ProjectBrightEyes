@@ -102,7 +102,6 @@ public class searchBookingController extends HttpServlet {
                 
                 request.setAttribute("check", "Your information was wrong. Please check again");
             }
-          
             request.getRequestDispatcher("searchBooking.jsp").forward(request, response);
 
         } catch (SQLException ex) {

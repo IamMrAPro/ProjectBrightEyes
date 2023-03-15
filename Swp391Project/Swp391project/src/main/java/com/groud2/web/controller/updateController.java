@@ -6,10 +6,7 @@ package com.groud2.web.controller;
 
 import com.groud2.web.DAO.EmailDAO;
 import com.groud2.web.DAO.userDAO;
-import static com.groud2.web.controller.bookingController.isValidDate;
-import static com.groud2.web.controller.bookingController.isValidEmail;
-import static com.groud2.web.controller.bookingController.isValidName;
-import static com.groud2.web.controller.bookingController.isValidPhoneNumber;
+
 import com.groud2.web.model.user;
 import jakarta.mail.MessagingException;
 import jakarta.servlet.ServletException;

@@ -6,6 +6,7 @@ package com.groud2.web.controller.DoctorController;
 
 import com.groud2.web.DAO.patientDAO;
 import com.groud2.web.model.patient;
+import com.groud2.web.model.user;
 import jakarta.servlet.ServletException;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -67,7 +68,7 @@ public class listCompletePatient extends HttpServlet {
         HttpSession session = request.getSession();
         String username = (String) session.getAttribute("id");
         request.setAttribute("username", username);
-        String fullname = (String) session.getAttribute("fullname");
+        String fullname1 = (String) session.getAttribute("fullname");
         request.setAttribute("username", username);
         //Lay date now
         LocalDate now = LocalDate.now();
@@ -80,9 +81,21 @@ public class listCompletePatient extends HttpServlet {
         patientDAO pa = new patientDAO();
         System.out.print("Lay du lieu booking: ");
         ArrayList<patient> listCompletePatient;
+   
         try {
-            listCompletePatient = pa.getPatientByDay(fullname, process,datenow);
-            request.setAttribute("listCompletePatient", listCompletePatient);
+            listCompletePatient = pa.getPatientByDay(fullname1, process,datenow);
+            
+                System.out.println("Thanh cong roi day");
+//            for (patient item : listCompletePatient) {
+//               System.out.println("day1" + item.getIdcard());
+//               System.out.println("day1" + item.getStatus());
+//               System.out.println("day1" + item.getFullname());
+//            
+//            }
+
+                request.setAttribute("listCompletePatient", listCompletePatient);
+               
+           
             request.getRequestDispatcher("DoctorView/doctor-screen/ListCompletePatient.jsp").forward(request, response);
         } catch (SQLException ex) {
             Logger.getLogger(listCompletePatient.class.getName()).log(Level.SEVERE, null, ex);

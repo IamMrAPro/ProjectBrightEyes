@@ -215,7 +215,7 @@ public class userDAO {
     }
 
     public boolean createData(String fullname, String account, String password, String phonenumber, String address, String email, String gender, String birthofdate, String role) throws SQLException {
-        String sql = "INSERT INTO `swppro`.`user`\n"
+        String sql = "INSERT INTO user"
                 + "(`fullname`,`account`,`password`,`phonenumber`,`address`,`email`,`gender`,`bod`,`role`) values (?,?,?,?,?,?,?,?,?)";
         try {
             System.out.println("name" + fullname);
@@ -584,7 +584,7 @@ public class userDAO {
     }
 
     public boolean checkEmailRegister(String email) throws SQLException {
-        String sql = "SELECT account FROM swp.user where email=?  ";
+        String sql = "SELECT account FROM user where email=?  ";
         try {
             System.out.println("account " + email);
             connection = dbc.getConnection();
@@ -709,4 +709,111 @@ public class userDAO {
         return name;
     }
 
+    
+    public ArrayList<user> getAllByPhone(String phone) throws SQLException, IOException {
+        ArrayList<user> list = new ArrayList<>();
+        String sql = "SELECT * FROM user where PhoneNumber=?";
+        try {
+            connection = dbc.getConnection();
+            ps = connection.prepareStatement(sql);
+            ps.setString(1, phone);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                String userID = rs.getString(1);
+                String fullname = rs.getString(2);
+                String acc = rs.getString(3);
+                String pass = rs.getString(4);
+                String phonenumber = rs.getString(5);
+                String address = rs.getString(6);
+                String email = rs.getString(7);
+                String bod = rs.getString(9);
+                String userimages = rs.getString(10);
+                String gender = rs.getString(8);
+                String role = rs.getString(11);
+                if (gender.equals("1")) {
+                    gender = "Male";
+                } else {
+                    gender = "FeMale";
+                }
+                user g = new user(userID, fullname, acc, pass, phonenumber, address, email, gender, bod, userimages, role);
+                list.add(g);
+            }
+        } catch (SQLException e) {
+            System.out.println("get profile error: " + e.getMessage());
+        } finally {
+            if (connection != null) {
+                connection.close();
+            }
+        }
+
+        return list;
+    }
+    public int getIdbyPhone(String phone) {
+    int userId = 0;
+    try {
+        String sql = "SELECT userId FROM user WHERE phonenumber = ?";
+        connection = dbc.getConnection();
+        ps = connection.prepareStatement(sql);
+        ps.setString(1, phone);
+        rs = ps.executeQuery();
+        while (rs.next()) {
+            userId = rs.getInt(1);
+        }
+    } catch (Exception e) {
+        System.out.println("Get userId: " + e.getMessage());
+    }
+    return userId;
+}
+
+    public int getIdbyAccount(String account) {
+       int userId=0;
+        try {
+            String sql = "Select userId from user where account = ?";
+            connection = dbc.getConnection();
+            ps = connection.prepareStatement(sql);
+            ps.setString(1, account);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+            userId = rs.getInt(1);
+
+            }
+        } catch (Exception e) {
+            System.out.println("Get userId: " + e.getMessage());
+
+        }
+        return userId;    
+    
+    
+    }
+    
+    public boolean checkExistUser(String email, String phone) throws SQLException {
+        Connection conn = dbc.getConnection();
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+        boolean exist = false;
+        try {
+            String sql = "SELECT COUNT(*) AS count FROM user WHERE email = ? OR phonenumber = ?";
+            stmt = conn.prepareStatement(sql);
+            stmt.setString(1, email);
+            stmt.setString(2, phone);
+            rs = stmt.executeQuery();
+            if (rs.next()) {
+                int count = rs.getInt("count");
+                if (count > 0) {
+                    exist = true;
+                }
+            }
+        } finally {
+            if (rs != null) {
+                rs.close();
+            }
+            if (stmt != null) {
+                stmt.close();
+            }
+            if (conn != null) {
+                conn.close();
+            }
+        }
+        return exist;
+    }
 }
