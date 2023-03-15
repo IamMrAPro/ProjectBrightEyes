@@ -84,7 +84,7 @@ public class listCompletePatient extends HttpServlet {
    
         try {
             listCompletePatient = pa.getPatientByDay(fullname1, process,datenow);
-            ;
+            
                 System.out.println("Thanh cong roi day");
 //            for (patient item : listCompletePatient) {
 //               System.out.println("day1" + item.getIdcard());

@@ -131,9 +131,7 @@ public class loginController extends HttpServlet {
                 session.setAttribute("fullname", fullname);
                 String role = u.getUserRole(account);
                 
-                session.setAttribute("id", account);
-                session.setAttribute("fullname", fullname);
-                String role = u.getUserRole(account);
+               
                 System.out.println("User role: " + role);
                 System.out.println("Login Account: " + account);
                 session.setAttribute("id", account);

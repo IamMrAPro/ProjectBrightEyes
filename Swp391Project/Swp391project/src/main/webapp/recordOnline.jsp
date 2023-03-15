@@ -27,7 +27,10 @@
                             <div class=" validate-input m-b-13" data-validate="Address is required">                         
                                 Patient's Name <input class="input100" type="text" name="patientName" value="${ld.getName()}" placeholder="Type Patient's name">                            
                             </div> 
-                           <div class=" validate-input m-b-13" data-validate="Date of birth is required">                         
+                           <div class=" validate-input m-b-13" data-validate="Date of birth is required"> 
+                               <c:if test="${check ne null}" >
+                                            <p style="color:#00ccff;font-size: 20px">${check}</p>
+                                        </c:if>
                                Date of birth <input  class="input100" type="date" name="bod" placeholder="">                            
                             </div> 
 
@@ -68,7 +71,7 @@
                             Choose doctor:
                             <select style="height: 35px; width: 100%;" name="doctor">
                                 <c:forEach items="${listrole}" var="l">
-                                    <option>${l.getFullname()}</option>
+                                    <option value="${l.getFullname()}" >${l.getFullname()}</option>
                                 </c:forEach>
                             </select>
                              </div>

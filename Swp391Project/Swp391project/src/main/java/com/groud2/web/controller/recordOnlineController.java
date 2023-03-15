@@ -4,8 +4,11 @@
  */
 package com.groud2.web.controller;
 
+import com.groud2.web.DAO.bookingDAO;
 import com.groud2.web.DAO.patientDAO;
 import com.groud2.web.DAO.userDAO;
+import com.groud2.web.model.booking;
+import com.groud2.web.model.user;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
@@ -15,6 +18,10 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -39,7 +46,7 @@ public class recordOnlineController extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet recordOnlineController</title>");            
+            out.println("<title>Servlet recordOnlineController</title>");
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Servlet recordOnlineController at " + request.getContextPath() + "</h1>");
@@ -60,7 +67,7 @@ public class recordOnlineController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+
     }
 
     /**
@@ -74,9 +81,10 @@ public class recordOnlineController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-         patientDAO pa = new patientDAO();
-         userDAO u = new userDAO();
-         
+        patientDAO pa = new patientDAO();
+        userDAO u = new userDAO();
+
+        String message = null;
         String IdCard = request.getParameter("idcard");
         String patientName = request.getParameter("patientName");
         String phone = request.getParameter("phone");
@@ -84,33 +92,83 @@ public class recordOnlineController extends HttpServlet {
         String address = request.getParameter("address");
         String bod = request.getParameter("bod");
         String gender = request.getParameter("gender");
-         String account = email;
-          String password = "123456";
-          String role = "customer";
-          String time = request.getParameter("time");
-          System.out.println(time);
+        String role = "customer";
+        String account = email;
+        String password = "123456";
+
+        String time = request.getParameter("time");
+        System.out.println(time);
         System.out.println("Gender: " + gender);
         LocalDate now = LocalDate.now();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd"); // Định dạng chuỗi
         String medicalDate = now.format(formatter);
         String symptom = request.getParameter("symptom");
         String doctorName = request.getParameter("doctor");
-        String userId = u.getIdbyPhone(phone);
-        System.out.println(userId);
-        System.out.println(medicalDate);
-        
-        try {
-            u.createData(patientName, account, password , phone, address, email, gender, bod,role);
-            pa.insertPatient2(IdCard, userId, time, medicalDate, symptom, doctorName, symptom);
-            response.sendRedirect("searchBooking.jsp");
-            System.out.println("success");
-        } catch (SQLException e) {
-            e.printStackTrace();
-            System.out.println("fail");
+        LocalDate validate = now.minusYears(2);
+        LocalDate bodlocal = LocalDate.parse(bod);
+        if (bodlocal.isAfter(validate)) {
+            request.setAttribute("check", "Your birth date is invalid");
+            message = "Your birth date is invalid";
+            ArrayList<user> listrole = new ArrayList<>();
+            try {
+                listrole = u.getUsersByRole();
+            } catch (SQLException ex) {
+                Logger.getLogger(recordOnlineController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            request.setAttribute("idcard", IdCard);
+            request.setAttribute("patientName", patientName);
+            request.setAttribute("phone", phone);
+            request.setAttribute("email", email);
+            request.setAttribute("address", address);
+            request.setAttribute("bod", bod);
+            request.setAttribute("gender", gender);
+            request.setAttribute("symptom", symptom);
+            request.setAttribute("time", time);
+            request.setAttribute("doctor", doctorName);
+            request.setAttribute("listrole", listrole);
+            System.out.println("heo");
+            if (message != null) {
+                request.setAttribute("check", message);
+            }
+            bookingDAO b = new bookingDAO();
+            HttpSession session = request.getSession();
+            String id = (String) session.getAttribute("userIdBooking");
+            System.out.println("id session = " + id);
+            ArrayList<booking> listid = new ArrayList<>();
+            try {
+                listid = b.getAllById(id);
+            } catch (SQLException ex) {
+                Logger.getLogger(recordOnlineController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            request.setAttribute("listid", listid);
+            System.out.println("list id size = " + listid.size());
+            if(id != null){
+                session.removeAttribute("userIdBooking");
+            }
+            request.getRequestDispatcher("recordOnline.jsp").forward(request, response);
+//            response.sendRedirect("recordOnline?check=invalidBirthday");
+        } else {
+
+            System.out.println(medicalDate);
+//        String processOK="1";
+            try {
+//            if (u.checkExistUser(email, phone)) {
+//                 u.createData(patientName, account, password, phone, address, email, gender, bod, role);
+//            } else {
+//            }
+                u.createData(patientName, account, password, phone, address, email, gender, bod, role);
+                int userId = u.getIdbyPhone(phone);
+                System.out.println(userId);
+                pa.insertPatient2(IdCard, userId, time, medicalDate, symptom, doctorName, symptom);
+//            pa.Successful2(IdCard, userId);
+                response.sendRedirect("searchBooking");
+
+            } catch (SQLException e) {
+                e.printStackTrace();
+                System.out.println("fail");
+            }
         }
     }
-
-    
 
     /**
      * Returns a short description of the servlet.

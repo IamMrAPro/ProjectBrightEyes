@@ -748,27 +748,25 @@ public class userDAO {
 
         return list;
     }
-     public String getIdbyPhone(String phone ) {
-        String userId = "";
-        try {
-            String sql = "Select userId from user where phonenumber = ?";
-            connection = dbc.getConnection();
-            ps = connection.prepareStatement(sql);
-            ps.setString(1, phone);
-            rs = ps.executeQuery();
-            while (rs.next()) {
-                userId = rs.getString(1);
-
-            }
-        } catch (Exception e) {
-            System.out.println("Get userId: " + e.getMessage());
-
+    public int getIdbyPhone(String phone) {
+    int userId = 0;
+    try {
+        String sql = "SELECT userId FROM user WHERE phonenumber = ?";
+        connection = dbc.getConnection();
+        ps = connection.prepareStatement(sql);
+        ps.setString(1, phone);
+        rs = ps.executeQuery();
+        while (rs.next()) {
+            userId = rs.getInt(1);
         }
-        return userId;
+    } catch (Exception e) {
+        System.out.println("Get userId: " + e.getMessage());
     }
+    return userId;
+}
 
-    public String getIdbyAccount(String account) {
-    String userId = "";
+    public int getIdbyAccount(String account) {
+       int userId=0;
         try {
             String sql = "Select userId from user where account = ?";
             connection = dbc.getConnection();
@@ -776,7 +774,7 @@ public class userDAO {
             ps.setString(1, account);
             rs = ps.executeQuery();
             while (rs.next()) {
-                userId = rs.getString(1);
+            userId = rs.getInt(1);
 
             }
         } catch (Exception e) {
@@ -786,5 +784,36 @@ public class userDAO {
         return userId;    
     
     
+    }
+    
+    public boolean checkExistUser(String email, String phone) throws SQLException {
+        Connection conn = dbc.getConnection();
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+        boolean exist = false;
+        try {
+            String sql = "SELECT COUNT(*) AS count FROM user WHERE email = ? OR phonenumber = ?";
+            stmt = conn.prepareStatement(sql);
+            stmt.setString(1, email);
+            stmt.setString(2, phone);
+            rs = stmt.executeQuery();
+            if (rs.next()) {
+                int count = rs.getInt("count");
+                if (count > 0) {
+                    exist = true;
+                }
+            }
+        } finally {
+            if (rs != null) {
+                rs.close();
+            }
+            if (stmt != null) {
+                stmt.close();
+            }
+            if (conn != null) {
+                conn.close();
+            }
+        }
+        return exist;
     }
 }

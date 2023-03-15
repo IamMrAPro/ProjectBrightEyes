@@ -217,6 +217,8 @@
     <servlet>
         <servlet-name>currentSearchBookingControlle</servlet-name>
         <servlet-class>com.groud2.web.controller.currentSearchBookingController</servlet-class>
+    </servlet>
+    <servlet>
         <servlet-name>FeedbackController</servlet-name>
         <servlet-class>com.groud2.web.controller.FeedbackController</servlet-class>
     </servlet>
@@ -397,10 +399,6 @@
         <url-pattern>/glasses</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>currentBooking</servlet-name>
-        <url-pattern>/currentBooking</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
         <servlet-name>listCompletePatient</servlet-name>
         <url-pattern>/listCompletePatient</url-pattern>
     </servlet-mapping>
@@ -443,6 +441,8 @@
     <servlet-mapping>
         <servlet-name>currentSearchBookingControlle</servlet-name>
         <url-pattern>/currentSearch</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
         <servlet-name>FeedbackController</servlet-name>
         <url-pattern>/FeedbackController</url-pattern>
     </servlet-mapping>

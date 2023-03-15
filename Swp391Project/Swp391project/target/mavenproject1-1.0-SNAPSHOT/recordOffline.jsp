@@ -27,9 +27,13 @@
                             <div class=" validate-input m-b-13" data-validate="Address is required">                         
                                 Patient's Name <input class="input100" type="text" name="patientName" placeholder="Type Patient's name">                            
                             </div> 
-                           <div class=" validate-input m-b-13" data-validate="Date of birth is required">                         
+                           <div class=" validate-input m-b-13" data-validate="Date of birth is required">  
+                               <c:if test="${check ne null}" >
+                                            <p style="color:#00ccff;font-size: 20px">${check}</p>
+                                        </c:if>
                                Date of birth <input  class="input100" type="date" name="bod" placeholder="">                            
-                            </div> 
+                            </div>
+                            
 
                         </div>
 
@@ -85,7 +89,7 @@
                                                 <input style="justify-content: center" type="submit" value="Add Report"></div>-->
                     </div>
                     <div class=" col-md-3"></div>
-                </div>
+                </div></div>
 
             </form>
         </div>

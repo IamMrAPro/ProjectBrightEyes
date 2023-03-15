@@ -20,6 +20,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Date;
 
 /**
  *
@@ -66,11 +67,21 @@ public class recordController extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         userDAO u = new userDAO();
+        String check = request.getParameter("check");
+        String message = null;
+        if (check != null) {
+            if (check.equals("invalidBirthday")) {
+                message = "Your birth date is invalid";
+            }
+        }
 
         try {
             ArrayList<user> listrole = u.getUsersByRole();
             request.setAttribute("listrole", listrole);
             System.out.println("heo");
+            if (message != null) {
+                request.setAttribute("check", message);
+            }
             request.getRequestDispatcher("recordOffline.jsp").forward(request, response);
         } catch (SQLException ex) {
             System.out.println("hellloooo");
@@ -102,7 +113,7 @@ public class recordController extends HttpServlet {
         String email = request.getParameter("email");
         String address = request.getParameter("address");
         String bod = request.getParameter("bod");
-        
+
         String gender = request.getParameter("gender");
         String account = email;
         String password = "123456";
@@ -114,33 +125,31 @@ public class recordController extends HttpServlet {
         String medicalDate = now.format(formatter);
         String symptom = request.getParameter("symptom");
         String doctorName = request.getParameter("doctor");
+        LocalDate validate = now.minusYears(2);
+        LocalDate bodlocal = LocalDate.parse(bod);
         System.out.println(medicalDate);
-        boolean checkCreateData;
+        String time = "";
+        if (bodlocal.isAfter(validate)) {
+            request.setAttribute("check", "Your birth date is invalid");
+            response.sendRedirect("record?check=invalidBirthday");
+        } else {
 
-        try {
-             boolean emailOK = u.checkEmailRegister(email);           
-            if (emailOK==true) {
-                request.setAttribute("ms1", "Account creation failed , Please try again!!!");
-               
-            } else {
-               u.createData(patientName, account, password, phone, address, email, gender, bod, role);
-                request.getRequestDispatcher("record").forward(request, response);
-                //response.sendRedirect("loginuser");
-            } 
-            String userId= u.getIdbyAccount(account);
-            System.out.println(userId);
-            u.createData(patientName, account, password, phone, address, email, gender, bod, role);
-            
-            if (checkCreateData = true) {
-                pa.insertPatient(IdCard, medicalDate, symptom, doctorName,userId);
-               // pa.insertPatient(IdCard, medicalDate, symptom, doctorName);
-                response.sendRedirect("searchBooking.jsp");
-                System.out.println("success");
-            } else {
-                response.sendRedirect("record");
+            try {
+
+                u.createData(patientName, account, password, phone, address, email, gender, bod, role);
+
+            } catch (Exception e) {
+                System.out.println("fail");
             }
-        } catch (Exception e) {
-            System.out.println("fail");
+
+            try {
+                int userId = u.getIdbyAccount(account);
+                System.out.println("ha" + account + userId);
+                pa.insertPatient(IdCard, userId, medicalDate, symptom, doctorName);
+
+                response.sendRedirect("searchBooking");
+            } catch (Exception e) {
+            }
         }
 
     }

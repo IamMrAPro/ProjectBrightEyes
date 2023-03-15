@@ -29,20 +29,20 @@ public class patientDAO {
     DBContext dbc = new DBContext();
     Connection connection = null;
 
-    public void insertPatient(String IdCard, String medicalDate, String symptom, String doctorName) throws SQLException {
+    public void insertPatient(String IdCard,int userId, String medicalDate, String symptom, String doctorName) throws SQLException {
 //        userDAO ud = new userDAO();
 //        String customerAcc = " ";
 //        String password = " ";
 //        ud.createData(doctorName, customerAcc, password, phone, address, email, gender, bod, "customer");
-        String sql = "INSERT INTO patient (IdCard,medicalDate,symptom,doctorName)VALUES (?,?,?,?) ";
+        String sql = "INSERT INTO patient (IdCard,userId,medicalDate,symptom,doctorName)VALUES (?,?,?,?,?) ";
         try {
             connection = dbc.getConnection();
             ps = connection.prepareStatement(sql);
             ps.setString(1, IdCard);
-
-            ps.setString(2, medicalDate);
-            ps.setString(3, symptom);
-            ps.setString(4, doctorName);
+            ps.setInt(2, userId);
+            ps.setString(3, medicalDate);
+            ps.setString(4, symptom);
+            ps.setString(5, doctorName);
             ps.executeUpdate();
             System.out.println("Thêm vào database  thành công");
         } catch (SQLException e) {
@@ -54,13 +54,13 @@ public class patientDAO {
         }
     }
 
-    public void insertPatient2(String IdCard, String userId, String timeOder, String medicalDate, String symptom, String doctorName, String status) throws SQLException {
+    public void insertPatient2(String IdCard, int userId, String timeOder, String medicalDate, String symptom, String doctorName, String status) throws SQLException {
         String sql = "INSERT INTO patient (IdCard,userId,timeOrder,medicalDate,symptom,doctorName,status)VALUES (?,?,?,?,?,?,1) ";
         try {
             connection = dbc.getConnection();
             ps = connection.prepareStatement(sql);
             ps.setString(1, IdCard);
-            ps.setString(2, userId);
+            ps.setInt(2, userId);
             ps.setString(3, timeOder);
             ps.setString(4, medicalDate);
             ps.setString(5, symptom);
@@ -277,6 +277,23 @@ public class patientDAO {
             ps.setString(1, processOK);
             ps.setString(2, Idcard);
             ps.setString(3, datenow);
+            ps.execute();
+        } catch (SQLException e) {
+            System.out.println("get Patient error: " + e.getMessage());
+        } finally {
+            if (connection != null) {
+                connection.close();
+            }
+        }
+
+    } public void Successful2(String Idcard, String datenow) throws SQLException {
+        String sql = " UPDATE patient SET status= 1 WHERE `IdCard` = ? and `medicalDate` = ? ";
+        try {
+            connection = dbc.getConnection();
+            ps = connection.prepareStatement(sql);
+          
+            ps.setString(1, Idcard);
+            ps.setString(2, datenow);
             ps.execute();
         } catch (SQLException e) {
             System.out.println("get Patient error: " + e.getMessage());
@@ -610,27 +627,27 @@ public class patientDAO {
     
     }
 
-    public void insertPatient(String IdCard, String medicalDate, String symptom, String doctorName, String userId) throws SQLException {
-        String sql = "INSERT INTO patient (IdCard,medicalDate,symptom,doctorName,userId)VALUES (?,?,?,?,?) ";
-        try {
-            connection = dbc.getConnection();
-            ps = connection.prepareStatement(sql);
-            ps.setString(1, IdCard);
-
-            ps.setString(2, medicalDate);
-            ps.setString(3, symptom);
-            ps.setString(4, doctorName);
-            ps.setString(5, userId);
-            ps.executeUpdate();
-            System.out.println("Thêm vào database  thành công");
-        } catch (SQLException e) {
-            System.out.println("Lỗi: " + e.getMessage());
-        } finally {
-            if (connection != null) {
-                connection.close();
-            }
-        }
-    }
+//    public void insertPatient(String IdCard, String medicalDate, String symptom, String doctorName, String userId) throws SQLException {
+//        String sql = "INSERT INTO patient (IdCard,medicalDate,symptom,doctorName,userId)VALUES (?,?,?,?,?) ";
+//        try {
+//            connection = dbc.getConnection();
+//            ps = connection.prepareStatement(sql);
+//            ps.setString(1, IdCard);
+//
+//            ps.setString(2, medicalDate);
+//            ps.setString(3, symptom);
+//            ps.setString(4, doctorName);
+//            ps.setString(5, userId);
+//            ps.executeUpdate();
+//            System.out.println("Thêm vào database  thành công");
+//        } catch (SQLException e) {
+//            System.out.println("Lỗi: " + e.getMessage());
+//        } finally {
+//            if (connection != null) {
+//                connection.close();
+//            }
+//        }
+//    }
 
     public ArrayList<patient> getPatientHistory(String IdCard) throws SQLException {
     ArrayList<patient> listPatientHistory = new ArrayList<>();
