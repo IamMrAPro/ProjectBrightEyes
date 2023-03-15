@@ -10,7 +10,16 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    
+   
 
+    
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
         <style>
             body {
                 background: rgb(99, 39, 120);
@@ -40,7 +49,6 @@
                 background: #682773;
                 box-shadow: none
             }
-
             .back:hover {
                 color: #682773;
                 cursor: pointer
@@ -128,7 +136,29 @@
                                     </div>
 
                                     <div class="d-grid gap-2 col-4 mx-auto" style="margin-top: 10px;color: black">
-                                        <input type="submit" value="Update Profile">
+                                        <button type="button" class="btn btn-primary profile-button" style="margin-left: 45px;" data-toggle="modal" data-target="#exampleModal">
+                                                Update
+                                            </button>
+                                            <!-- Modal -->
+                                            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                <div class="modal-dialog" role="document">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title text-danger" id="exampleModalLabel">Confirm Update Profile</h5>
+                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                <span aria-hidden="true">&times;</span>
+                                                            </button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <div>Do you want to change your profile?</div>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                            <button type="submit" class="btn btn-primary">Save changes</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
                                     </div>
 
 

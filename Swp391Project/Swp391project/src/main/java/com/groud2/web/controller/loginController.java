@@ -69,7 +69,7 @@ public class loginController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+
         String account = request.getParameter("account");
         String password = request.getParameter("password");
         String captchaText = request.getParameter("captchaInput");
@@ -101,53 +101,60 @@ public class loginController extends HttpServlet {
         System.out.println("password = " + password);
 
         //reload captcha code
-        try {
-            if (!captchaAgain.isEmpty()) {
-            request.setAttribute("account", account);
-            request.setAttribute("password", password);
-            request.setAttribute("captchaErr", "");
-            request.getRequestDispatcher("Login.jsp").forward(request, response);
-        }
-        } catch (Exception e) {
-            System.out.println("Error here 111: " +e.getMessage());
-        }
+//        try {
+//            if (!captchaAgain.isEmpty()) {
+//            request.setAttribute("account", account);
+//            request.setAttribute("password", password);
+//            request.setAttribute("captchaErr", "");
+//            request.getRequestDispatcher("Login.jsp").forward(request, response);
+//        }
+//        } catch (Exception e) {
+//            System.out.println("Error here 111: " +e.getMessage());
+//        }
         //Xu ly           
         userDAO u = new userDAO();
         user d = new user();
         user loginOK;
+
         try {
             loginOK = u.checklogin(account, password);
-            if (loginOK != null && validateCaptcha(captchaText, request, response)) {
-                HttpSession session = request.getSession();
 
-                String fullname=u.getUserName(account);
-                String phone = u.getUserPhone(account);
-                String email = u.getUserEmail(account);
-                session.setAttribute("phoneLg", phone);
-                
-                session.setAttribute("emailLg", email);
-                System.out.println("check emai, phone sesssion login: " +email + phone);
-                session.setAttribute("id", account);
-                session.setAttribute("fullname", fullname);
-                String role = u.getUserRole(account);
-                
-                session.setAttribute("id", account);
-                session.setAttribute("fullname", fullname);
-                if (role.equals("admin")) {
-                    response.sendRedirect("adminDashboard");
-                }else if(role.equals("doctor"))
+            if (loginOK != null) { // Check login credentials first
+                if (validateCaptcha(captchaText, request, response)) { // If captcha is valid, set session attributes and redirect
+                    HttpSession session = request.getSession();
+                    String fullname = u.getUserName(account);
+                    String phone = u.getUserPhone(account);
+                    String email = u.getUserEmail(account);
+                    session.setAttribute("phoneLg", phone);
+                    session.setAttribute("emailLg", email);
+                    System.out.println("check emai, phone sesssion login: " + email + phone);
+                    session.setAttribute("id", account);
+                    session.setAttribute("fullname", fullname);
+                    String role = u.getUserRole(account);
+
+                    session.setAttribute("id", account);
+                    session.setAttribute("fullname", fullname);
+
+                    if (role.equals("admin")) {
+                        response.sendRedirect("adminDashboard");
+                    } else if (role.equals("doctor")) {
                         response.sendRedirect("listWattingPatient");
-                else {
-                    response.sendRedirect("home");
+                    } else {
+                        response.sendRedirect("home");
+                    }
+                } else { // If captcha is invalid, display error message
+                    request.setAttribute("account", account);
+                    request.setAttribute("password", password);
+                    request.setAttribute("captchaErr", "Captcha not match, enter again!");
+                    request.getRequestDispatcher("Login.jsp").forward(request, response);
+                    response.sendRedirect("loginuser");
                 }
-
-            } else {
+            } else { // If login credentials are invalid, display error message
                 request.setAttribute("account", account);
                 request.setAttribute("password", password);
-                request.setAttribute("captchaErr", "Captcha not match, enter again!");
+                request.setAttribute("captchaErr", "Invalid login credentials, please try again!");
                 request.getRequestDispatcher("Login.jsp").forward(request, response);
                 response.sendRedirect("loginuser");
-
             }
         } catch (SQLException ex) {
             Logger.getLogger(loginController.class.getName()).log(Level.SEVERE, null, ex);

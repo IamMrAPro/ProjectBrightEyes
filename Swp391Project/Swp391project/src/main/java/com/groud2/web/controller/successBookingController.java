@@ -66,7 +66,7 @@ public class successBookingController extends HttpServlet {
         String time = (String) session.getAttribute("time");
         String medical = (String) session.getAttribute("medical");
         String payment = (String) session.getAttribute("payment");
-
+        
 // In các giá trị đã lấy ra console để kiểm tra
         System.out.println("Name: " + name);
         System.out.println("Phone: " + phone);

@@ -26,8 +26,8 @@
         margin-top: 10px;
     }
     td {
-  
-}
+
+    }
 </style>
 <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
 
@@ -81,7 +81,7 @@
 
 
                     </div>
-<% int count = 0;%>
+                    <% int count = 0;%>
                     <div class="row align-items-center">
                         <div class="col">
 
@@ -103,8 +103,8 @@
 
                                 <c:forEach items="${listCurrent}" var="p">
                                     <tbody> 
-                                        <tr><td><% count++;
-                                    out.print(count);%> </td>
+                                                <tr><td><% count++;
+                                            out.print(count);%> </td>
                                             <td>${p.getName()}</td>
                                             <td>${p.getPhone()}</td>
                                             <td>${p.getEmail()}</td>
@@ -120,10 +120,10 @@
                                             <td class="td-body"><c:if test="${p.getStatus()!=1}">
                                                     <a href="GetPatientOnline?id=${p.getBookingId()}"><ion-icon style="font-size:30px; margin-top: 10px" name="add-circle-outline"></ion-icon></a>
                                                 </c:if></td>
-                                            <td><a href="lateBooking?id=${p.getBookingId()}"><ion-icon style="font-size:30px; margin-top: 10px" name="close-circle-outline"></ion-icon></a>
-                                                </td>
+                                            <td><c:if test="${p.getStatus()!=1}"><a href="lateBooking?id=${p.getBookingId()}"><ion-icon style="font-size:30px; margin-top: 10px" name="close-circle-outline"></ion-icon></a>
+                                                </c:if></td>
                                         </tr>
-                                        
+
                                     </tbody>
                                 </c:forEach>
 

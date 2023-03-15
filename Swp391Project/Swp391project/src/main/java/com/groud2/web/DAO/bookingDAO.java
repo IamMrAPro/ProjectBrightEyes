@@ -230,7 +230,7 @@ public class bookingDAO {
         ResultSet rs = null;
         boolean exist = false;
         try {
-            String sql = "SELECT COUNT(*) AS count FROM booking WHERE email = ? OR phone = ?";
+            String sql = "SELECT COUNT(*) AS count FROM booking WHERE email = ? AND phone = ?";
             stmt = conn.prepareStatement(sql);
             stmt.setString(1, email);
             stmt.setString(2, phone);
