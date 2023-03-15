@@ -82,7 +82,7 @@
                                 <td>
                                     <div class="d-flex justify-content-around h-100">
                                         <a href="addGlass?updateGlassID=${g.getGlassID()}&type=update"><i class="fa-solid fa-pen"></i></a>
-                                        <a href=""><i class="fa-solid fa-cart-shopping"></i></a>
+                                        <!--<a href=""><i class="fa-solid fa-cart-shopping"></i></a>-->
                                         <a href="DeleteGlasses?idGlasses=${g.getGlassID()}"><i class="fa-solid fa-close"></i></a>
                                     </div>
                                 </td>

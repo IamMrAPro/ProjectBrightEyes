@@ -37,8 +37,29 @@ public class AdminManageGlassesController extends HttpServlet {
             }
             req.setAttribute("display", "display");
         }
+        int pageNum = 1;
+        int recordsPerPage = 6;
+        int start = (pageNum - 1) * recordsPerPage;
+        int totalPage = ((listGlasses.size()) / recordsPerPage) + 1;
+
+        ArrayList<glasses> dataList = new ArrayList<>();
+        int end;
+        if((start + recordsPerPage) <= listGlasses.size()){
+            end = start+recordsPerPage;
+        }
+        else {
+            end = listGlasses.size();
+        }
+        for (int i = start; i < end; i++) {
+            dataList.add(listGlasses.get(i));
+        }
+//        List<MyData> dataList = getData(start, recordsPerPage);
+
+        session.setAttribute("pageNum", pageNum);
+        req.setAttribute("pageNum", pageNum);
+        req.setAttribute("totalPages", totalPage);
         req.setAttribute("username", username);
-        req.setAttribute("listGlasses", listGlasses);
+        req.setAttribute("listGlasses", dataList);
         req.getRequestDispatcher("AdminView/admin-screen/ManageGlass.jsp").forward(req, resp);
     }
 
@@ -58,19 +79,19 @@ public class AdminManageGlassesController extends HttpServlet {
         int lastPageNum = (int) session.getAttribute("pageNum");
         int recordsPerPage = 6;
         int totalPage = ((listGlasses.size()) / recordsPerPage) + 1;
-        if(pageNumber.equals("Previous")){
-            if(lastPageNum > 1){
-                lastPageNum--;
+        if (pageNumber != null) {
+            if (pageNumber.equals("Previous")) {
+                if (lastPageNum > 1 && totalPage > 1) {
+                    lastPageNum--;
+                }
+            } else if (pageNumber.equals("Next")) {
+                if (lastPageNum < totalPage) {
+                    lastPageNum++;
+                }
+            } else {
+                int currentPage = Integer.parseInt(pageNumber);
+                lastPageNum = currentPage;
             }
-        }
-        else if(pageNumber.equals("Next")){
-            if(lastPageNum < totalPage){
-                lastPageNum++;
-            }
-        }
-        else {
-            int currentPage = Integer.parseInt(pageNumber);
-            lastPageNum = currentPage;
         }
         int pageNum = lastPageNum;
         int start = (pageNum - 1) * recordsPerPage;
@@ -89,6 +110,7 @@ public class AdminManageGlassesController extends HttpServlet {
         session.setAttribute("pageNum", pageNum);
         req.setAttribute("pageNum", pageNum);
         req.setAttribute("totalPages", totalPage);
+        req.setAttribute("listGlasses", dataList);
         req.getRequestDispatcher("AdminView/admin-screen/ManageGlass.jsp").forward(req, resp);
     }
 

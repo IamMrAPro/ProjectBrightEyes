@@ -146,13 +146,14 @@ public class CheckoutController extends HttpServlet {
                         }
                     }
                     Cart cart = new Cart(txt, list);
+                    
                     if (txt.isEmpty()) {
                         request.setAttribute("error", "Cart is empty! ");
                         request.getRequestDispatcher("Cart.jsp").forward(request, response);
                     }
                     Order o = new Order(cart, idCustom, adress, cityShip, unit, 3, 0, null, null, "Wait for confirmation");
                     OrderDAO od = new OrderDAO();
-                    od.insertOrder(o.getCart().getListname(), name, email, phone, (adress + cityShip), UnitShip, 3, String.valueOf(now), "Wait for confirmation");
+                    od.insertOrder(o.getCart().getListname(), name, email, phone, (adress + cityShip), UnitShip, 3, String.valueOf(now),cart.getTotalMoney()+3, "Wait for confirmation");
                     String success = "Order Success";
                     sendMail.MailResetPassword(email, success);
                     request.setAttribute("nofi", success);

@@ -24,9 +24,9 @@ public class OrderDAO {
     DBContext dbc = new DBContext();
     Connection connection = null;
 
-    public void insertOrder(String glasses, String nameCustomer, String email, String phone, String shipAdress, String unitShip, float shiping, String order, String status) {
+    public void insertOrder(String glasses, String nameCustomer, String email, String phone, String shipAdress, String unitShip, float shiping, String order,double toltalmonney, String status) {
         try {
-            String strSelect = "INSERT INTO `orderglasses`(`glasses`,`nameCustomer`,`email`,`phone`,`shipDAddress`,`unitship`,`shiping`,`orderdate`,`statuss`) VALUES (?,?,?,?,?,?,?,?,?)";
+            String strSelect = "INSERT INTO `orderglasses`(`glasses`,`nameCustomer`,`email`,`phone`,`shipDAddress`,`unitship`,`shiping`,`orderdate`,`toltalmonney`,`statuss`) VALUES (?,?,?,?,?,?,?,?,?,?)";
             connection = dbc.getConnection();
             ps = connection.prepareStatement(strSelect);
 
@@ -38,7 +38,8 @@ public class OrderDAO {
             ps.setString(6, unitShip);
             ps.setFloat(7, shiping);
             ps.setString(8, order);
-            ps.setString(9, status);
+            ps.setDouble(9, toltalmonney);
+            ps.setString(10, status);
             ps.execute();
             System.out.println("insert  success");
         } catch (Exception e) {
@@ -64,7 +65,8 @@ public class OrderDAO {
                 String unitship = rs.getString(7);
                 String shiping = rs.getString(8);
                 String date = rs.getString(9);
-                String status = rs.getString(10);
+                double  totalMoney = rs.getDouble(10);
+                String status = rs.getString(11);
                 String unit = "";
 //                String quantity= rs.getString(9);
               if (unitship.equals("1")) {
@@ -75,7 +77,7 @@ public class OrderDAO {
                 unit += "Giao hang nhanh";
             }
                
-                Order g = new Order(Integer.parseInt(glassID), glassName, name, phone, email, Address, unit, Float.parseFloat(shiping), date, status);
+                Order g = new Order(Integer.parseInt(glassID), glassName, name, phone, email, Address, unit, Float.parseFloat(shiping), date,totalMoney, status);
                 list.add(g);
             }
         } catch (SQLException e) {

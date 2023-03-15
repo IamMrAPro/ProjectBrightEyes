@@ -3,7 +3,7 @@
     Created on : Feb 10, 2023, 7:50:47 PM
     Author     : Ao
 --%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -16,7 +16,7 @@
         #rate-customer {
             width: 100%;
             height: 400px;
-            border: 1px solid red;
+            /*border: 1px solid red;*/
         }
 
         #revenue {
@@ -31,7 +31,7 @@
             height: 930px;
             /*border: 1px solid red;*/
         }
-        
+
         #revenue-rate-box {
             width: 100%;
             height: 450px;
@@ -39,7 +39,7 @@
         }
         #rate-of-revenue {
             width: 100%;
-            
+
         }
     </style>
     <body onload="getPositionNavBar(0)">
@@ -49,12 +49,17 @@
             <!--            --------------------------------------------------------------------->
             <%@include file="../admin-layout/admin-navbar.jsp" %>
             <div class="main-view main-view-content justify-content-between d-flex">
+                
                 <div id="dashboard-left">
-                    <div class="d-flex justify-content-between">
+                    <div class="justify-content-between card">
+                        <div class="d-flex justify-content-between">
+                            <div class=""><b>Date report:</b> </div>
+                            <input type="date" name="date" class="form-control w-75" value="${date}">
+                        </div>
                         <div id="rate-customer">
                             <canvas id="rate-customer-chart"></canvas>
                         </div>
-                        
+
                     </div>
                     <div id="revenue" class="mt-5">
                         <h3 class="text-center mb-3">REVENUE REPORT</h3>
@@ -75,14 +80,16 @@
 
         <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
         <script>
+        var dataLabels = [<c:forEach items="${labelsCustomerBooking}" var="item" varStatus="loop">"${item}"<c:if test="${!loop.last}">, </c:if></c:forEach>]; 
+        var dataCustomerBooking = [<c:forEach items="${dataCustomerBooking}" var="item" varStatus="loop">${item}<c:if test="${!loop.last}">, </c:if></c:forEach>]; 
         const rateCustomerChart = document.getElementById("rate-customer-chart");
         new Chart(rateCustomerChart, {
             type: 'line',
             data: {
-                labels: ["8h", "9h", "10h", "11h", "13h", "14h", "15h", "16h"],
+                labels: dataLabels,
                 datasets: [{
                         label: 'Rate of customer in hours',
-                        data: [65, 59, 80, 81, 56, 55, 40, 2],
+                        data: dataCustomerBooking,
                         fill: false,
                         borderColor: 'rgb(75, 192, 192)',
                         tension: 0.1
