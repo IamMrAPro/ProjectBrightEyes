@@ -67,6 +67,12 @@ public class GetPatientOnline extends HttpServlet {
         String id = request.getParameter("id");
         HttpSession session = request.getSession();
         session.setAttribute("userIdBooking", id);
+
+        System.out.println("insert status check");
+        int intId = Integer.parseInt(id);
+
+        b.insertStatusByID(intId);
+
         try {
             ArrayList<user> listrole = u.getUsersByRole();
             request.setAttribute("listrole", listrole);

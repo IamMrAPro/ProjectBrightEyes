@@ -119,26 +119,25 @@ public class loginController extends HttpServlet {
         try {
             loginOK = u.checklogin(account, password);
 
-                String fullname=u.getUserName(account);
-                String phone = u.getUserPhone(account);
-                String email = u.getUserEmail(account);
-                session.setAttribute("phoneLg", phone);
-                
-                session.setAttribute("emailLg", email);
-                System.out.println("check emai, phone sesssion login: " +email + phone);
-                session.setAttribute("id", account);
-                session.setAttribute("fullname", fullname);
-                String role = u.getUserRole(account);
-                
-               
-                System.out.println("User role: " + role);
-                System.out.println("Login Account: " + account);
-                session.setAttribute("id", account);
-                session.setAttribute("fullname", fullname);
-                if (role.equals("admin")) {
-                    response.sendRedirect("adminDashboard");
-                 
-                }else if(role.equals("doctor"))
+            if (loginOK != null) { // Check login credentials first
+                if (validateCaptcha(captchaText, request, response)) { // If captcha is valid, set session attributes and redirect
+                    HttpSession session = request.getSession();
+                    String fullname = u.getUserName(account);
+                    String phone = u.getUserPhone(account);
+                    String email = u.getUserEmail(account);
+                    session.setAttribute("phoneLg", phone);
+                    session.setAttribute("emailLg", email);
+                    System.out.println("check emai, phone sesssion login: " + email + phone);
+                    session.setAttribute("id", account);
+                    session.setAttribute("fullname", fullname);
+                    String role = u.getUserRole(account);
+
+                    session.setAttribute("id", account);
+                    session.setAttribute("fullname", fullname);
+
+                    if (role.equals("admin")) {
+                        response.sendRedirect("adminDashboard");
+                    } else if (role.equals("doctor")) {
                         response.sendRedirect("listWattingPatient");
                     } else {
                         response.sendRedirect("home");

@@ -318,7 +318,7 @@ public class patientDAO {
             ps.setString(4, status);
             rs = ps.executeQuery();
             while (rs.next()) {
-                String patientName = rs.getString(1);
+                 fullname = rs.getString(1);
                 String phone = rs.getString(2);
                 String email = rs.getString(3);
                 String address = rs.getString(4);
@@ -345,7 +345,7 @@ public class patientDAO {
                 }
 
                 user user = new user(Idcard, fullname, phone, Idcard, phone, address, email, timeOrder, sql, medicine);
-                patient pa = new patient(user, patientName, Idcard, Idcard, timeOrder, medicalDate, medicalTime, symptom, conclude, medicine, doctorName, status, process);
+                patient pa = new patient(user, datenow, Idcard, Idcard, timeOrder, medicalDate, medicalTime, symptom, conclude, medicine, doctorName, status, process);
                 listwattingPatient.add(pa);
             }
         } catch (SQLException e) {

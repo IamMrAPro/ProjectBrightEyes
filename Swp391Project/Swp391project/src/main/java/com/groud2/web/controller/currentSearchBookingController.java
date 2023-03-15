@@ -80,7 +80,7 @@ public class currentSearchBookingController extends HttpServlet {
                 
                 request.setAttribute("check", "Your information was wrong. Please check again");
             }
-           
+            response.sendRedirect("currentBooking");
 //            request.getRequestDispatcher("currentBooking.jsp").forward(request, response);
 
         } catch (SQLException ex) {

@@ -171,10 +171,6 @@
         <servlet-class>com.groud2.web.controller.recordOnlineController</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>currentBooking</servlet-name>
-        <servlet-class>com.groud2.web.controller.currentBooking</servlet-class>
-    </servlet>
-    <servlet>
         <servlet-name>listCompletePatient</servlet-name>
         <servlet-class>com.groud2.web.controller.DoctorController.listCompletePatient</servlet-class>
     </servlet>

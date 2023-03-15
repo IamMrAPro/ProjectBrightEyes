@@ -42,8 +42,8 @@
 
 
                 </div>
-                <c:if test="${cancelSuccess ne null}" >
-                    <p style="color:#00ccff;font-size: 20px">${cancelSuccess}</p>
+                <c:if test="${cancel ne null}" >
+                    <p style="color:#00ccff;font-size: 20px">${cancel}</p>
                 </c:if>
                 <div class="row align-items-center">
                     <div class="col">

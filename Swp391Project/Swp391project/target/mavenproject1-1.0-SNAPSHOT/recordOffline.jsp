@@ -66,7 +66,7 @@
 
                         <div  style="margin-top: 20px;display: flex;justify-content: space-between">
                             <div class=" validate-input m-b-13" data-validate="ID Card is required">                         
-                               ID Card <input class="input100" type="text" name="idcard" placeholder="ID Card" minlength="12" maxlength="12">                            
+                               ID Card <input class="input100" type="text" name="idcard" placeholder="ID Card" minlength="12" maxlength="12" >                            
                             </div>
                             <div>
                             Choose doctor:
