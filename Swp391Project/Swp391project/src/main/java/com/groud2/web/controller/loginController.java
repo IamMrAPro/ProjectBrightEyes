@@ -137,7 +137,7 @@ public class loginController extends HttpServlet {
 
                     if (role.equals("admin")) {
                         response.sendRedirect("adminDashboard");
-                    } else if (role.equals("doctor")) {
+                    } else if (role.equalsIgnoreCase("doctor")) {
                         response.sendRedirect("listWattingPatient");
                     } else {
                         response.sendRedirect("home");

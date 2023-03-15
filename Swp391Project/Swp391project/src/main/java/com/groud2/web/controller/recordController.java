@@ -17,6 +17,7 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -106,7 +107,7 @@ public class recordController extends HttpServlet {
 //        ud.createData(doctorName, customerAcc, password, phone, address, email, gender, bod, "customer");
         patientDAO pa = new patientDAO();
         userDAO u = new userDAO();
-
+        HttpSession session = request.getSession();
         String IdCard = request.getParameter("idcard");
         String patientName = request.getParameter("patientName");
         String phone = request.getParameter("phone");
@@ -117,7 +118,7 @@ public class recordController extends HttpServlet {
 
         String gender = request.getParameter("gender");
         String account = email;
-        String password = "123456";
+        String password = "202cb962ac59075b964b07152d234b70";
         String role = "customer";
 
         System.out.println("Gender: " + gender);
@@ -147,8 +148,10 @@ public class recordController extends HttpServlet {
                 int userId = u.getIdbyAccount(account);
                 System.out.println("ha" + account + userId);
                 pa.insertPatient(IdCard, userId, medicalDate, symptom, doctorName);
-
-                response.sendRedirect("searchBooking");
+                String id1=String.valueOf(userId);
+                session.setAttribute("id1",id1 );
+                response.sendRedirect("Bill");
+                //request.getRequestDispatcher("Bill").forward(request, response);
             } catch (Exception e) {
             }
         }

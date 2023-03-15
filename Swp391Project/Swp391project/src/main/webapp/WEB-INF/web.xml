@@ -8,12 +8,10 @@
         <servlet-name>bookingController</servlet-name>
         <servlet-class>com.groud2.web.controller.bookingController</servlet-class>
     </servlet>
-    <!-->>>>>>> Stashed changes-->
     <servlet>
         <servlet-name>profileController</servlet-name>
         <servlet-class>com.groud2.web.controller.profileController</servlet-class>
     </servlet>
-    <!-->>>>>>> Stashed changes-->
     <servlet>
         <servlet-name>addtoCart</servlet-name>
         <servlet-class>com.groud2.web.controller.AddtoCartController</servlet-class>
@@ -201,6 +199,8 @@
     <servlet>
         <servlet-name>testEyes</servlet-name>
         <servlet-class>com.groud2.web.controller.testEyes</servlet-class>
+    </servlet>
+    <servlet>
         <servlet-name>successBookingController</servlet-name>
         <servlet-class>com.groud2.web.controller.successBookingController</servlet-class>
     </servlet>
@@ -280,10 +280,6 @@
         <servlet-name>showCartController</servlet-name>
         <url-pattern>/show</url-pattern>
     </servlet-mapping>
-    <!--    <servlet-mapping>
-        <servlet-name>glasses</servlet-name>
-        <url-pattern>/glasses</url-pattern>
-    </servlet-mapping>-->
     <servlet-mapping>
         <servlet-name>AddtocartController</servlet-name>
         <url-pattern>/addtocart</url-pattern>
@@ -439,6 +435,8 @@
     <servlet-mapping>
         <servlet-name>testEyes</servlet-name>
         <url-pattern>/testEyes</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
         <servlet-name>successBookingController</servlet-name>
         <url-pattern>/successBooking</url-pattern>
     </servlet-mapping>
@@ -475,16 +473,6 @@
         <url-pattern>/SearchBookingStaff</url-pattern>
     </servlet-mapping>
     <session-config>
-        <session-timeout>
-            30
-        </session-timeout>
+        <session-timeout>30</session-timeout>
     </session-config>
-    <!--    <error-page>
-        <error-code>404</error-code>
-        <location>/404.jsp</location>
-    </error-page>
-    <error-page>
-        <error-code>500</error-code>
-        <location>/500.jsp</location>
-    </error-page>-->
 </web-app>

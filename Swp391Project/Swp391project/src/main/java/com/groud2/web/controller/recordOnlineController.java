@@ -83,7 +83,7 @@ public class recordOnlineController extends HttpServlet {
             throws ServletException, IOException {
         patientDAO pa = new patientDAO();
         userDAO u = new userDAO();
-
+         HttpSession session = request.getSession();
         String message = null;
         String IdCard = request.getParameter("idcard");
         String patientName = request.getParameter("patientName");
@@ -94,7 +94,7 @@ public class recordOnlineController extends HttpServlet {
         String gender = request.getParameter("gender");
         String role = "customer";
         String account = email;
-        String password = "123456";
+        String password = "202cb962ac59075b964b07152d234b70";
 
         String time = request.getParameter("time");
         System.out.println(time);
@@ -106,6 +106,10 @@ public class recordOnlineController extends HttpServlet {
         String doctorName = request.getParameter("doctor");
         LocalDate validate = now.minusYears(2);
         LocalDate bodlocal = LocalDate.parse(bod);
+        
+        String id1=String.valueOf(u.getIdbyPhone(phone));
+        session.setAttribute("id1", id1);
+        System.out.println("% gio ccom chua ngu"+id1);
         if (bodlocal.isAfter(validate)) {
             request.setAttribute("check", "Your birth date is invalid");
             message = "Your birth date is invalid";
@@ -131,8 +135,9 @@ public class recordOnlineController extends HttpServlet {
                 request.setAttribute("check", message);
             }
             bookingDAO b = new bookingDAO();
-            HttpSession session = request.getSession();
+           
             String id = (String) session.getAttribute("userIdBooking");
+            
             System.out.println("id session = " + id);
             ArrayList<booking> listid = new ArrayList<>();
             try {
@@ -142,6 +147,8 @@ public class recordOnlineController extends HttpServlet {
             }
             request.setAttribute("listid", listid);
             System.out.println("list id size = " + listid.size());
+             
+            
             if(id != null){
                 session.removeAttribute("userIdBooking");
             }
@@ -161,7 +168,11 @@ public class recordOnlineController extends HttpServlet {
                 System.out.println(userId);
                 pa.insertPatient2(IdCard, userId, time, medicalDate, symptom, doctorName, symptom);
 //            pa.Successful2(IdCard, userId);
-                response.sendRedirect("searchBooking");
+
+             
+    
+                response.sendRedirect("Bill");
+                 
 
             } catch (SQLException e) {
                 e.printStackTrace();

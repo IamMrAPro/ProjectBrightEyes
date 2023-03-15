@@ -29,7 +29,7 @@ public class userDAO {
 
     public user checklogin(String acc, String pass) throws SQLException, IOException {
 
-        String sql = "SELECT account,password FROM swp.user where account=? and password =?";
+        String sql = "SELECT account,password FROM user where account=? and password =?";
 
         try {
             connection = dbc.getConnection();
@@ -54,7 +54,7 @@ public class userDAO {
 
     public boolean checkAccount(String account) throws SQLException, IOException {
 
-        String sql = "SELECT account FROM swp.user where account=?  ";
+        String sql = "SELECT account FROM user where account=?  ";
         try {
             System.out.println("account " + account);
             connection = dbc.getConnection();
@@ -378,43 +378,7 @@ public class userDAO {
 
     }
 
-    
-    
-    
 
-    
-    
-
-//    public ArrayList<Attendance> getAttendanceHistory() throws SQLException{
-//        String sql = "SELECT * FROM attendance";
-//        ArrayList<Attendance> list = new ArrayList<>();
-//        try {
-//            connection = dbc.getConnection();
-//            ps = connection.prepareStatement(sql);
-//            rs = ps.executeQuery();
-//            while(rs.next()){
-//                String id = rs.getString(1);
-//                String date = rs.getString(2);
-//                String userId = rs.getString(3);
-//                String name = rs.getString(4);
-//                String checkin1 = rs.getString(5);
-//                String checkout1 = rs.getString(6);
-//                String checkin2 = rs.getString(7);
-//                String checkout2 = rs.getString(8);
-//                String checkin3 = rs.getString(9);
-//                String checkout3 = rs.getString(10);
-//                String checkin4 = rs.getString(11);
-//                String checkout4 = rs.getString(12);
-//                
-//                Attendance at = new Attendance(id, date, userId, name, checkin1, checkout1, checkin2, checkout2, checkin3, checkout3, checkin4, checkout4);
-//                list.add(at);
-//            }
-//            
-//        } catch (Exception e) {
-//            System.out.println("Get history of attendance error: " + e.getMessage());
-//        }
-//        return list;
-//    }
     
       public ArrayList<user> getUsersByRole() throws SQLException, IOException {
             ArrayList<user> listrole = new ArrayList<>();
@@ -857,5 +821,48 @@ public class userDAO {
             }
         }
         return exist;
+    }
+    
+    
+    
+    
+    
+    public user getUserbyID123(String userID) throws SQLException {
+        user g = new user();
+
+        String sql = "SELECT * FROM user where userID=?";
+        try {
+            connection = dbc.getConnection();
+            ps = connection.prepareStatement(sql);
+            ps.setString(1, userID);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                 userID = rs.getString(1);
+                String fullname = rs.getString(2);
+                String acc = rs.getString(3);
+                String pass = rs.getString(4);
+                String phonenumber = rs.getString(5);
+                String address = rs.getString(6);
+                String email = rs.getString(7);
+                String bod = rs.getString(9);
+                String userimages = rs.getString(10);
+                String gender = rs.getString(8);
+
+                if (gender.equals("1")) {
+                    gender = "Male";
+                } else {
+                    gender = "FeMale";
+                }
+                g = new user(userID, fullname, acc, pass, phonenumber, address, email, gender, bod, "admin");
+
+            }
+        } catch (SQLException e) {
+            System.out.println("get profile error: " + e.getMessage());
+        } finally {
+            if (connection != null) {
+                connection.close();
+            }
+        }
+        return g;
     }
 }

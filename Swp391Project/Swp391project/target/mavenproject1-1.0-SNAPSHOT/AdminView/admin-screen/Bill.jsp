@@ -222,22 +222,20 @@
 
                                 <div class="row">
                                     <div class="col-lg-6 col-md-6 col-12">
-                                        To : <input type="text" name="name" value="${requestScope.name}" class="form-control"  >
+                                        To : <input type="text" name="name" value="${fullname}" class="form-control"  >
                                     </div>
 
                                     <div class="col-lg-6 col-md-6 col-12">
-                                        Phone :<input type="text" name="phone" value="${requestScope.phone}" class="form-control" >
+                                        Phone :<input type="text" name="phone" value="${phone}" class="form-control" >
                                     </div>
 
                                 </div>
                                 <div class="row">
                                     <div class="col-lg-6 col-md-6 col-12">
-                                        Address : <input type="text" name="address" value="${requestScope.address}"  class="form-control"  >
+                                        Address : <input type="text" name="address" value="${address}"  class="form-control"  >
                                     </div>
 
-                                    <div class="col-lg-6 col-md-6 col-12">
-                                        Id cart :<input type="text" name="idcart" value="${requestScope.idcart}"  class="form-control" >
-                                    </div>
+                                    
 
                                 </div>
 
@@ -256,7 +254,7 @@
                                             <tr>
                                                 <th scope="row">5</th>
                                                 
-                                                <td><textarea name="text" class="text" value="${requestScope.text}"></textarea></td>
+                                                <td><textarea name="service" class="text" value="${requestScope.text}"></textarea></td>
                                                 
                                                 <td>$ <span class="total" ><input type="text" name="price" value="${requestScope.price} "></span></td>
                                             </tr>
@@ -272,7 +270,7 @@
                                     </div>
                                     <div class="col-xl-4 ">
                                         <button type="submit" class="btn btn-primary text-capitalize"
-                                                style="background-color:#60bdf3 ;">Submit</button>
+                                                style="background-color:#60bdf3 ;" onclick="return confirm('Would you like to continue step?')">Submit</button>
                                     </div>
                                 </div>
 

@@ -91,7 +91,8 @@
                         </label>
                     </div>            
                 </div>  
-                <input style="margin-top: 250px" type="submit" name="home" value="Logout" class="btn btn-logout">
+<!--                <a style="margin-top: 250px" type="submit" name="home" value="Logout" class="btn btn-logout">-->
+                    <a href="logout" style="margin-top: 250px"  name="home" value="Logout" class="btn btn-logout">Logout</a>
             </div>
 
 

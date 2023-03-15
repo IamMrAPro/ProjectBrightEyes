@@ -47,7 +47,7 @@
             <ul class="navbar-nav ms-auto">
 
                 <li class="nav-item ">
-                    <a style="font-size: 30px" class="nav-link click-scroll " href="show"><ion-icon name="cart-outline"></ion-icon><span class="position-absolute translate-middle p-2"><p>${requestScope.size}</p></span></a>
+                    <a style="font-size: 30px" class="nav-link click-scroll " href="show"><ion-icon name="cart-outline"></ion-icon><span class="position-absolute translate-middle p-2"><p>${sessionScope.size}</p></span></a>
                     
                 </li>
 

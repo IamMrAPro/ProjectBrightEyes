@@ -4,13 +4,20 @@
  */
 package com.groud2.web.controller.AdminController;
 
+import com.groud2.web.DAO.PaymentDAO;
+import com.groud2.web.DAO.userDAO;
+import com.groud2.web.model.user;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
+import java.sql.SQLException;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -56,6 +63,22 @@ public class Bill extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        
+        userDAO u=new userDAO();
+        user uq=new user();
+        HttpSession session = request.getSession();
+        String userId =(String)session.getAttribute("id1");
+        System.out.println(userId);
+        try {
+            uq = u.getUserbyID123(userId);
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(Bill.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        System.out.println(uq.getFullname());
+        request.setAttribute("fullname", uq.getFullname());
+        request.setAttribute("phone", uq.getPhonenumber());
+        request.setAttribute("address", uq.getAddress());
         request.getRequestDispatcher("AdminView/admin-screen/Bill.jsp").forward(request, response);
     }
 
@@ -70,19 +93,23 @@ public class Bill extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        PaymentDAO p=new PaymentDAO();
+        System.out.println("taoj bill");
+         HttpSession session = request.getSession();
         String name = request.getParameter("name");
         String phone = request.getParameter("phone");
-        String address = request.getParameter("address");
-        String idcart = request.getParameter("idcart");
-        String text = request.getParameter("text");
+        String address = request.getParameter("address");      
+        String service = request.getParameter("service");
         String price = request.getParameter("price");
-        request.setAttribute("name", name);
-        request.setAttribute("phone", phone);
-        request.setAttribute("address", address);
-        request.setAttribute("idcart", idcart);
-        request.setAttribute("text", text);
-        request.setAttribute("price", price);
-        request.getRequestDispatcher("AdminView/admin-screen/Bill.jsp").forward(request, response);
+       String userId =(String)session.getAttribute("id1"); 
+        try {
+            p.createBill(userId,name,phone,address,service,price);
+        } catch (SQLException ex) {
+            Logger.getLogger(Bill.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        response.sendRedirect("searchBooking");
+        
+       
     }
 
     /**

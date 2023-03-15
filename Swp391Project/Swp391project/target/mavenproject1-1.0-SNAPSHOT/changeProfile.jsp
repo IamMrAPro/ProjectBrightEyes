@@ -89,51 +89,22 @@
 
                             <div class="row mt-2" style="border: 5px solid #5bc1ac; padding: 20px 20px; border-radius: 5px">
 
-                                <div class="col-md-12"><label class="labels">Full Name</label>
-                                    <c:if test="${checkName ne null}" >
-                                            <p style="color:red;font-size: 13px">${checkName}</p>
-                                        </c:if>
-                                    <input type="text" name="newName" class="form-control" value="${fullname}">
-                                </div>
-                                <div class="col-md-6"><label class="labels">Account</label>
-                                    
-                                    <input type="text" class="form-control" value="${account}" readonly>
-                                </div>
+                                <div class="col-md-12"><label class="labels">Full Name</label><input type="text" name="newName" class="form-control" value="${fullname}"></div>
+                                <div class="col-md-6"><label class="labels">Account</label><input type="text" class="form-control" value="${account}" readonly></div>
 
-                                <div class="col-md-6"><label class="labels">Gender</label>
-                                   
-                                    <input type="text" name="newGender" class="form-control" value="${gender}">
-                                </div>
-                                <div class="col-md-12"><label class="labels">Choose new gender</label>
-                                    <input type="radio" name="newGender" value="Male" style="margin-left: 50px"> Male
+                                <div class="col-md-6"><label class="labels">Gender</label><input type="text" name="newGender" class="form-control" value="${gender}"  ></div>
+                                <div class="col-md-12"><label class="labels">Choose new gender</label><input type="radio" name="newGender" value="Male" style="margin-left: 50px"> Male
                                     <input type="radio" name="newGender" value="FeMale" style="margin-left: 150px"> FeMale 
 
                                 </div>
                                 <div class="row mt-3">
-                                    <div class="col-md-12"><label class="labels">Mobile Number</label>
-                                        <c:if test="${checkPhone ne null}" >
-                                            <p style="color:red;font-size: 13px">${checkPhone}</p>
-                                        </c:if>
-                                        <input validate-input type="text" name="newPhone" class="form-control" value="${phonenumber}">
-                                    </div>
+                                    <div class="col-md-12"><label class="labels">Mobile Number</label><input validate-input type="text" name="newPhone" class="form-control" value="${phonenumber}"></div>
                                     
-                                    <div class="col-md-12"><label class="labels">Address</label>
-                                        <input type="text" name="newAddress" class="form-control" value="${address}">
-                                    </div>
+                                    <div class="col-md-12"><label class="labels">Address</label><input type="text" name="newAddress" class="form-control" value="${address}"></div>
 
-                                    <div class="col-md-12"><label class="labels">Email</label>
-                                        <c:if test="${checkEmail ne null}" >
-                                            <p style="color:red;font-size: 13px">${checkEmail}</p>
-                                        </c:if>
-                                        <input type="text" name="newEmail" validate-input class="form-control" value="${email}" >
-                                    </div>
+                                    <div class="col-md-12"><label class="labels">Email</label><input type="text" name="newEmail" validate-input class="form-control" value="${email}" ></div>
 
-                                    <div class="col-md-12"><label class="labels">Birth Of Date</label>
-                                        <c:if test="${checkDate ne null}" >
-                                            <p style="color:red;font-size: 13px">${checkDate}</p>
-                                        </c:if>
-                                        <input type="date" name="newBod" class="form-control" value="${bod}">
-                                    </div>
+                                    <div class="col-md-12"><label class="labels">Birth Of Date</label><input type="date" name="newBod" class="form-control" value="${bod}"></div>
 
                                     <div class="d-grid gap-2 col-4 mx-auto" style="margin-top: 10px;color: black">
                                         <button type="button" class="btn btn-primary profile-button" style="margin-left: 45px;" data-toggle="modal" data-target="#exampleModal">
