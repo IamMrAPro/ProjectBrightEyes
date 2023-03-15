@@ -612,15 +612,15 @@ public class userDAO {
 
     }
 
-    public boolean takeAttendance(String id, String staffId, String date, String time) {
-        String sql = "Insert into attendance(attendanceID, staffID, date, time) values(? ,? ,?, ?)";
+    public boolean takeAttendance(String staffId, String date, String time) {
+        String sql = "Insert into attendance(staffID, date, time) values(? ,?, ?)";
             try {
                 connection = dbc.getConnection();
                 ps = connection.prepareStatement(sql);
-                ps.setString(1, id);
-                ps.setString(2, staffId);
-                ps.setString(3, date);
-                ps.setString(4, time);
+//                ps.setString(1, id);
+                ps.setString(1, staffId);
+                ps.setString(2, date);
+                ps.setString(3, time);
                 ps.execute();
                 return true;
             } catch (SQLException e) {

@@ -67,7 +67,7 @@ public class TakeStaffAttendanceController extends HttpServlet {
                 req.getRequestDispatcher("AdminView/admin-screen/TakeStaffAttendance.jsp").forward(req, resp);
             } else {
                 int id = ud.getLastID();
-                if (ud.takeAttendance(String.valueOf(id), u.getUserId(), date, time)) {
+                if (ud.takeAttendance(u.getUserId(), date, time)) {
                     resp.sendRedirect("manageStaff");
                 } else {
                     req.setAttribute("message", "Oh no! There are some errors occur during your attendance action!\nPlease check clearly information!");
@@ -123,7 +123,24 @@ public class TakeStaffAttendanceController extends HttpServlet {
             }
 
             ArrayList<Attendance> Att = ud.listAttendance(today, u.getUserId());
+            System.out.println("list att size = " + Att.size());
+            if (Att.size() == 0) {
+                req.setAttribute("block", "false");
+            } else {
+                String lastAttendanceTime = Att.get(Att.size() - 1).getTime();
+                LocalTime nowTimeX = LocalTime.now();
+                LocalTime lastTimeLocal = LocalTime.parse(lastAttendanceTime);
+                LocalTime minusTime = nowTimeX.minusMinutes(5);
 
+                System.out.println("lastAttendanceTime = " + lastAttendanceTime);
+                if (minusTime.compareTo(lastTimeLocal) <= 0) {
+                    req.setAttribute("block", "true");
+                    System.out.println("set true");
+                } else {
+                    req.setAttribute("block", "false");
+                    System.out.println("set false");
+                }
+            }
             session.setAttribute("staffAccount", staffAccount);
 
             req.setAttribute("today", today);

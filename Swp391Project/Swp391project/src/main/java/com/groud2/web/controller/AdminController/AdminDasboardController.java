@@ -4,13 +4,22 @@
  */
 package com.groud2.web.controller.AdminController;
 
+import com.groud2.web.DAO.bookingDAO;
+import com.groud2.web.model.booking;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import java.io.IOException;
+import java.sql.SQLException;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -21,8 +30,39 @@ public class AdminDasboardController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
          HttpSession session = req.getSession();
+         bookingDAO bd = new bookingDAO();
          String username = (String)session.getAttribute("id");
-         
+         LocalDate todayLocalDate = LocalDate.now();
+         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+         String today = formatter.format(todayLocalDate);
+         ArrayList<booking> listBookingByDate = new ArrayList<>();
+        try {
+            listBookingByDate = bd.getListBookingByDate(today);
+        } catch (SQLException ex) {
+            Logger.getLogger(AdminDasboardController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        ArrayList<String> listTimeBooking = new ArrayList<>();
+        for (booking b : listBookingByDate) {
+            listTimeBooking.add(b.getTime());
+        }
+        
+        HashSet<String> distinctTime = new HashSet<String>(listTimeBooking);
+        listTimeBooking = new ArrayList<>(distinctTime);
+        Collections.sort(listTimeBooking);
+        ArrayList<Integer> countCustomer = new ArrayList<>();
+        for (int i = 0; i < listTimeBooking.size(); i++) {
+            int count = 0;
+            for (int j = 0; j < listBookingByDate.size(); j++) {
+                if(listTimeBooking.get(i).equals(listBookingByDate.get(j).getTime())) count++;
+            }
+            countCustomer.add(count);
+        }
+        System.out.println("total different time = " + listTimeBooking);
+         System.out.println("list booking by date size = " + listBookingByDate.size());
+         req.setAttribute("labelsCustomerBooking", listTimeBooking);
+         req.setAttribute("dataCustomerBooking", countCustomer);
+         req.setAttribute("date", today);
          req.setAttribute("totalRevenue", "100.000.000VND");
          req.setAttribute("totalDaysOfCurrentMonth", getDaysOfCurrentMonth());
          req.setAttribute("username", username);
@@ -46,6 +86,8 @@ public class AdminDasboardController extends HttpServlet {
             String username = (String)session.getAttribute("id");
             
             req.setAttribute("totalDaysOfCurrentMonth", getDaysOfCurrentMonth());
+            
+            
             
             req.setAttribute("username", username);
             req.getRequestDispatcher("AdminView/admin-screen/AdminDashboard.jsp").forward(req, resp);

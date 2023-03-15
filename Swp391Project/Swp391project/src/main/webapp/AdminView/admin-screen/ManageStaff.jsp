@@ -86,7 +86,7 @@
             margin-right: 100px;
             margin-bottom: 30px;
             border-radius: 5px;
-            background-color: #f0f8ff;
+            background-color: #5bc1ac;
         }
 
         .staff-info-card:hover{

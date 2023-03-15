@@ -114,7 +114,7 @@
         }
     </style>
     <body onload="getPositionNavBar(7)">
-        <form action="manageCustomer" class="vw-100 vh-100 d-flex" method="post">
+        
             <!--            set position for not select case-->
             <input name="setPosition" type="text" value="3" class="d-none">
             <!--            --------------------------------------------------------------------->
@@ -139,7 +139,7 @@
                         <tr>
                             <th>No.</th>
                             
-                            <th>ID</th>
+                           
                             <th>Product</th>
                             <th>Name</th>
                             <th>Email</th>
@@ -147,6 +147,7 @@
                             <th>Address</th>
                             <th>Unit Ship</th>
                             <th>Date</th>
+                            <th>Total Money</th>
                             <th>Status</th>
                         </tr>
                     </thead>
@@ -155,7 +156,7 @@
                             <tr>
                                 <th><% count++;
                                     out.print(count);%></th>
-                                <th>${c.getOrderId()}</th>
+                                
                                 <th>${c.getGlasses()}</th>
                                 <th>${c.getNameCustomer()}</th>
                                 <th>${c.getPhone()}</th>
@@ -163,6 +164,7 @@
                                 <th>${c.getShipAddress()}</th>
                                 <th>${c.getUnitShip()}</th>
                                 <th>${c.getOderDate()}</th>
+                                <th>${c.getTotalMoney()}</th>
                                 <th>${c.getStatus()}</th>
                                 <th>
                                     <div class="d-flex align-items-center">

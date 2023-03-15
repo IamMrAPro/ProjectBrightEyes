@@ -34,6 +34,12 @@ public class AdminManageCustomerController extends HttpServlet {
         int totalPage = ((listCustomer.size()) / recordsPerPage) + 1;
 
         ArrayList<user> dataList = new ArrayList<>();
+        int end = 0;
+        if ((start + recordsPerPage) <= listCustomer.size()) {
+            end = start + recordsPerPage;
+        } else {
+            end = listCustomer.size();
+        }
         for (int i = start; i < start + recordsPerPage; i++) {
             dataList.add(listCustomer.get(i));
         }
@@ -68,7 +74,7 @@ public class AdminManageCustomerController extends HttpServlet {
         int totalPage = ((listCustomer.size()) / recordsPerPage) + 1;
         if (pageNumber != null) {
             if (pageNumber.equals("Previous")) {
-                if (lastPageNum > 1) {
+                if (lastPageNum > 1 && totalPage > 1) {
                     lastPageNum--;
                 }
             } else if (pageNumber.equals("Next")) {

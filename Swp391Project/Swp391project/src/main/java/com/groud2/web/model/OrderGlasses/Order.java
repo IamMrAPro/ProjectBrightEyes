@@ -23,6 +23,7 @@ public class Order {
     private float shiping;
     private float tax;
     private String OderDate, ShippedDate;
+    private double  totalMoney;
     private String Status;
 
     public Order() {
@@ -53,6 +54,19 @@ public class Order {
     }
     public Order(int OrderId, String Glasses, String nameCustomer,String phone,String email, String ShipAddress, String unitShip, float shiping, String OderDate, String Status) {
         this.OrderId = OrderId;
+        this.Glasses = Glasses;
+        this.nameCustomer = nameCustomer;
+        this.ShipAddress = ShipAddress;
+        this.unitShip = unitShip;
+        this.shiping = shiping;
+        this.OderDate = OderDate;
+        this.Status = Status;
+        this.phone=phone;
+        this.email=email;
+    }
+    public Order(int OrderId, String Glasses, String nameCustomer,String phone,String email, String ShipAddress, String unitShip, float shiping, String OderDate,double  totalMoney, String Status) {
+        this.OrderId = OrderId;
+        this.totalMoney=totalMoney;
         this.Glasses = Glasses;
         this.nameCustomer = nameCustomer;
         this.ShipAddress = ShipAddress;
@@ -200,6 +214,14 @@ public class Order {
 
     public void setNameCustomer(String nameCustomer) {
         this.nameCustomer = nameCustomer;
+    }
+
+    public double getTotalMoney() {
+        return totalMoney;
+    }
+
+    public void setTotalMoney(double totalMoney) {
+        this.totalMoney = totalMoney;
     }
 
    
