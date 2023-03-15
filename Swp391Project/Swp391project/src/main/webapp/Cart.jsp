@@ -197,7 +197,12 @@
                             <form action="checkout" method="post">
                                 <div class="default">
                                     <div class="row">
-
+                                       
+                                            
+                                            <p style="color: red">${requestScope.error}</p> 
+                                        
+                                   
+                                        
                                         <div class="col-lg-6 col-md-6 col-12">
                                             <label><p>Name</p></label>
                                             <input type="text" name="name" class="form-control" placeholder="Enter full Name" />

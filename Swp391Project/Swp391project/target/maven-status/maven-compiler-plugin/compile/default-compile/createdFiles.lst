@@ -38,8 +38,10 @@ com\groud2\web\access\google\GoogleUser.class
 com\groud2\web\controller\AdminController\AdminAddNewGlassController.class
 com\groud2\web\controller\AdminController\AdminManageCustomerController.class
 com\groud2\web\DAO\context\DBContext.class
+com\groud2\web\controller\testEyes.class
 com\groud2\web\controller\userBookingController.class
 com\groud2\web\DAO\roomDAO.class
+com\groud2\web\controller\AdminController\Bill.class
 com\groud2\web\controller\AdminController\TakeStaffAttendanceController.class
 com\groud2\web\controller\CaptchaController\CreateCaptchaServlet.class
 com\groud2\web\access\google\GoogleUtils.class

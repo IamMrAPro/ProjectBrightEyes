@@ -6,6 +6,7 @@ package com.groud2.web.Payment;
 
 import com.groud2.web.DAO.OrderDAO;
 import com.groud2.web.DAO.glassesDAO;
+import static com.groud2.web.controller.bookingController.*;
 import com.groud2.web.controller.glassesController;
 import com.groud2.web.model.OrderGlasses.Cart;
 import com.groud2.web.model.OrderGlasses.Order;
@@ -90,7 +91,7 @@ public class CheckoutController extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String payment = request.getParameter("payment");
-        System.out.println("lsdghfrbhgr"+payment);
+        System.out.println("lsdghfrbhgr" + payment);
         if (payment.equalsIgnoreCase("default")) {
             String name = request.getParameter("name");
             String email = request.getParameter("emailOrder");
@@ -98,6 +99,7 @@ public class CheckoutController extends HttpServlet {
             String adress = request.getParameter("adress");
             String city = request.getParameter("city");
             String UnitShip = request.getParameter("unitShip");
+            LocalDate now = LocalDate.now();
             String cityShip = "";
             String unit = "";
             if (cityShip.equals("1")) {
@@ -121,48 +123,48 @@ public class CheckoutController extends HttpServlet {
                 unit += "Giao hang nhanh";
             }
 
-            glassesDAO g = new glassesDAO();
+            if (!checkValidate(name, email, phone, adress)) {
+                request.setAttribute("error", "Error value, please enter again! ");
+                request.getRequestDispatcher("Cart.jsp").forward(request, response);
+            } else {
+                glassesDAO g = new glassesDAO();
 
-            ArrayList<glasses> list;
-            try {
-                list = g.getAllglasses();
-                HttpSession session = request.getSession();
-                String idCustom = String.valueOf(session.getAttribute("id"));
-                Cookie[] arr = request.getCookies();
-                String txt = "";
-                if (arr != null) {
-                    for (Cookie c : arr) {
-                        if (c.getName().equals("cart")) {
-                            txt += c.getValue();
+                ArrayList<glasses> list;
 
+                try {
+                    list = g.getAllglasses();
+                    HttpSession session = request.getSession();
+                    String idCustom = String.valueOf(session.getAttribute("id"));
+                    Cookie[] arr = request.getCookies();
+                    String txt = "";
+                    if (arr != null) {
+                        for (Cookie c : arr) {
+                            if (c.getName().equals("cart")) {
+                                txt += c.getValue();
+
+                            }
                         }
                     }
-                }
-                Cart cart = new Cart(txt, list);
-                LocalDate now = LocalDate.now();
-                Order o = new Order(cart, idCustom, adress, cityShip, unit, 3, 0, null, null, "Wait for confirmation");
-                OrderDAO od = new OrderDAO();
-                od.insertOrder( o.getCart().getListname(), name,email,phone, (adress + cityShip), UnitShip, 3, String.valueOf(now), "Wait for confirmation");
-                String success = "Order Success";
-                sendMail.MailResetPassword(email,success);
-                request.setAttribute("nofi", success);
-                 if (arr != null) {
-                for (Cookie c : arr) {
-                    if (c.getName().equals("cart")) {
-                        
-                        c.setMaxAge(0);
-                        response.addCookie(c);
+                    Cart cart = new Cart(txt, list);
+                    if (txt.isEmpty()) {
+                        request.setAttribute("error", "Cart is empty! ");
+                        request.getRequestDispatcher("Cart.jsp").forward(request, response);
                     }
-                }}
-                
-                request.getRequestDispatcher("home.jsp").forward(request, response);
-            } catch (SQLException ex) {
-                Logger.getLogger(CheckoutController.class.getName()).log(Level.SEVERE, null, ex);
+                    Order o = new Order(cart, idCustom, adress, cityShip, unit, 3, 0, null, null, "Wait for confirmation");
+                    OrderDAO od = new OrderDAO();
+                    od.insertOrder(o.getCart().getListname(), name, email, phone, (adress + cityShip), UnitShip, 3, String.valueOf(now), "Wait for confirmation");
+                    String success = "Order Success";
+                    sendMail.MailResetPassword(email, success);
+                    request.setAttribute("nofi", success);
 
-            } catch (MessagingException ex) {
-                Logger.getLogger(CheckoutController.class.getName()).log(Level.SEVERE, null, ex);
+                    request.getRequestDispatcher("home.jsp").forward(request, response);
+                } catch (SQLException ex) {
+                    Logger.getLogger(CheckoutController.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (MessagingException ex) {
+                    Logger.getLogger(CheckoutController.class.getName()).log(Level.SEVERE, null, ex);
+                }
+
             }
-
         } else {
             glassesDAO g = new glassesDAO();
             ArrayList<glasses> list;
@@ -207,5 +209,13 @@ public class CheckoutController extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
+
+    private boolean checkValidate(String name, String email, String phone, String adress) {
+        boolean isValid = true;
+        if (!isValidName(name) || !isValidEmail(email) || !isValidPhoneNumber(phone)) {
+            isValid = false;
+        }
+        return isValid;
+    }
 
 }

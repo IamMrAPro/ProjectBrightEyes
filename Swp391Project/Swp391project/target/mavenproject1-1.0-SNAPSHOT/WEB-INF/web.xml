@@ -198,6 +198,14 @@
         <servlet-name>categoryGlasses</servlet-name>
         <servlet-class>com.groud2.web.controller.categoryGlasses</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>Bill</servlet-name>
+        <servlet-class>com.groud2.web.controller.AdminController.Bill</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>testEyes</servlet-name>
+        <servlet-class>com.groud2.web.controller.testEyes</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>homeController</servlet-name>
         <url-pattern>/home</url-pattern>
@@ -397,6 +405,14 @@
     <servlet-mapping>
         <servlet-name>categoryGlasses</servlet-name>
         <url-pattern>/categoryGlasses</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Bill</servlet-name>
+        <url-pattern>/Bill</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>testEyes</servlet-name>
+        <url-pattern>/testEyes</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

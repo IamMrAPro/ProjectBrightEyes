@@ -137,6 +137,12 @@
                             <div class="mx-2">List Order</div>
                         </a>
                     </div>
+                    <div class="admin-link">
+                        <a href="Bill" class="d-flex px-4 align-items-center admin-nav-label">
+                            <i class="fa-solid fa-calendar-days"></i>
+                            <div class="mx-2">Extract Bill</div>
+                        </a>
+                    </div>
                 </div>
 
             </div>
