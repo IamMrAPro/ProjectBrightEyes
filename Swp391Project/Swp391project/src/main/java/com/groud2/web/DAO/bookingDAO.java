@@ -346,20 +346,6 @@ public class bookingDAO {
             while (rs.next()) {
                 String bookId = rs.getString(1);
                 String name = rs.getString(2);
-    
-    public ArrayList<booking> getListBookingByDate(String datePara) throws SQLException{
-        ArrayList<booking> list = new ArrayList<>();
-        String sql = "SELECT * FROM booking WHERE date = ?;";
-        try {
-            connection = dbc.getConnection();
-            ps = connection.prepareStatement(sql);
-            ps.setString(1, datePara);
-            rs = ps.executeQuery();
-            while (rs.next()) {
-                String bookingID = rs.getString(1);
-                String name = rs.getString(2);
-                String phone = rs.getString(3);
-                String email = rs.getString(4);
                 String date = rs.getString(5);
                 String time = rs.getString(6);
                 String medical = rs.getString(7);
@@ -381,4 +367,38 @@ public class bookingDAO {
 
         return list;
     }
+    public ArrayList<booking> getListBookingByDate(String datePara) throws SQLException{
+        ArrayList<booking> list = new ArrayList<>();
+        String sql = "SELECT * FROM booking WHERE date = ?;";
+        try {
+            connection = dbc.getConnection();
+            ps = connection.prepareStatement(sql);
+            ps.setString(1, datePara);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                String bookingID = rs.getString(1);
+                String name = rs.getString(2);
+                String phone = rs.getString(3);
+                String email = rs.getString(4);
+                String date = rs.getString(5);
+                String time = rs.getString(6);
+                String medical = rs.getString(7);
+                String payment = rs.getString(8);
+                String sbtime = rs.getString(9);
+                String status = rs.getString(10);
+                booking g = new booking(bookingID, name, phone, email, date, time, medical, payment, sbtime,status);
+                list.add(g);
+                System.out.println("get booking success");
+            }
+        } catch (SQLException e) {
+            System.out.println("get booking error: " + e.getMessage());
+        } finally {
+            if (connection != null) {
+                connection.close();
+            }
+        }
+        return list;
+    }
 }
+
+    

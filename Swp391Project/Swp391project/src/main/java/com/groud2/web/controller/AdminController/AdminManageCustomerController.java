@@ -40,7 +40,7 @@ public class AdminManageCustomerController extends HttpServlet {
         } else {
             end = listCustomer.size();
         }
-        for (int i = start; i < start + recordsPerPage; i++) {
+        for (int i = start; i < end; i++) {
             dataList.add(listCustomer.get(i));
         }
 //        List<MyData> dataList = getData(start, recordsPerPage);

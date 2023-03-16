@@ -116,9 +116,14 @@ public class userDAO {
                 String email = rs.getString(7);
                 String gender = rs.getString(8);
                 String dob = rs.getString(9);
-                if (gender.equals("0")) {
-                    gender = "Female";
-                } else {
+                if (gender != null) {
+                    if (gender.equals("0")) {
+                        gender = "Female";
+                    } else {
+                        gender = "Male";
+                    }
+                }
+                else {
                     gender = "Male";
                 }
                 String image = rs.getString(10);
@@ -280,28 +285,29 @@ public class userDAO {
         return false;
     }
 
-   public void updateProfile(String account, String newName, String newGender, String newPhone, String newAddress, String newEmail, String newBod) {
-    String strUpdate = "UPDATE swppro.user SET fullname = ?, phonenumber = ?, address = ?, email = ?, gender = ?, bod = ? WHERE account = ?";
-    try {
-        connection = dbc.getConnection();
-        ps = connection.prepareStatement(strUpdate);
-        ps.setString(1, newName);
-        ps.setString(2, newPhone);
-        ps.setString(3, newAddress);
-        ps.setString(4, newEmail);
-        if (newGender.equals("Male")) {
-            ps.setString(5, "1");
-        } else {
-            ps.setString(5, "0");
+    public void updateProfile(String account, String newName, String newGender, String newPhone, String newAddress, String newEmail, String newBod) {
+        String strUpdate = "UPDATE swppro.user SET fullname = ?, phonenumber = ?, address = ?, email = ?, gender = ?, bod = ? WHERE account = ?";
+        try {
+            connection = dbc.getConnection();
+            ps = connection.prepareStatement(strUpdate);
+            ps.setString(1, newName);
+            ps.setString(2, newPhone);
+            ps.setString(3, newAddress);
+            ps.setString(4, newEmail);
+            if (newGender.equals("Male")) {
+                ps.setString(5, "1");
+            } else {
+                ps.setString(5, "0");
+            }
+            ps.setDate(6, Date.valueOf(newBod));
+            ps.setString(7, account);
+            ps.executeUpdate();
+            System.out.println("Update profile success");
+        } catch (Exception e) {
+            System.out.println("Update profile error: " + e.getMessage());
         }
-        ps.setDate(6, Date.valueOf(newBod));
-        ps.setString(7, account);
-        ps.executeUpdate();
-        System.out.println("Update profile success");
-    } catch (Exception e) {
-        System.out.println("Update profile error: " + e.getMessage());
     }
-}
+
     public void updateProfileByAdmin(String account, String newName, String newGender, String newPhone, String newAddress, String newEmail, String newBod, String newRole) {
         String strUpdate = "UPDATE user SET fullname=?,phonenumber=?,address=?,email=?,gender=?,bod=?, role=?  WHERE account=?";
         try {
@@ -325,30 +331,31 @@ public class userDAO {
 
             System.out.println("Update profile error: " + e.getMessage());
         }
-    
-}
-   public void updateProfile2(String account, String newName,String newPhone, String newAddress, String newEmail, String newGender,String newBod) {
-    String strUpdate = "UPDATE swppro.user SET fullname = ?, phonenumber = ?, address=?,email=?, gender=?,bod=? WHERE account = ?";
-    try {
-        connection = dbc.getConnection();
-        ps = connection.prepareStatement(strUpdate);
-        ps.setString(1, newName);
-        ps.setString(2, newPhone);
-        ps.setString(3, newAddress);
-        ps.setString(4, newEmail);
-        if (newGender.equals("Male")) {
-            ps.setString(5, "0");
-        } else {
-            ps.setString(5, "1");
-        }
-        ps.setString(6, newBod);
-        ps.setString(7, account);
-        ps.executeUpdate();
-        System.out.println("Update profile success");
-    } catch (Exception e) {
-        System.out.println("Update profile error 2: " + e.getMessage());
+
     }
-}
+
+    public void updateProfile2(String account, String newName, String newPhone, String newAddress, String newEmail, String newGender, String newBod) {
+        String strUpdate = "UPDATE swppro.user SET fullname = ?, phonenumber = ?, address=?,email=?, gender=?,bod=? WHERE account = ?";
+        try {
+            connection = dbc.getConnection();
+            ps = connection.prepareStatement(strUpdate);
+            ps.setString(1, newName);
+            ps.setString(2, newPhone);
+            ps.setString(3, newAddress);
+            ps.setString(4, newEmail);
+            if (newGender.equals("Male")) {
+                ps.setString(5, "0");
+            } else {
+                ps.setString(5, "1");
+            }
+            ps.setString(6, newBod);
+            ps.setString(7, account);
+            ps.executeUpdate();
+            System.out.println("Update profile success");
+        } catch (Exception e) {
+            System.out.println("Update profile error 2: " + e.getMessage());
+        }
+    }
 
     public user checkPass(String acc, String pass) throws SQLException, IOException {
 
@@ -378,14 +385,12 @@ public class userDAO {
 
     }
 
+    public ArrayList<user> getUsersByRole() throws SQLException, IOException {
+        ArrayList<user> listrole = new ArrayList<>();
+        String sql = "SELECT * FROM user WHERE role = 'doctor'";
 
-    
-      public ArrayList<user> getUsersByRole() throws SQLException, IOException {
-            ArrayList<user> listrole = new ArrayList<>();
-            String sql = "SELECT * FROM user WHERE role = 'doctor'";
-    
-    try {
-        connection = dbc.getConnection();
+        try {
+            connection = dbc.getConnection();
             ps = connection.prepareStatement(sql);
             rs = ps.executeQuery();
             while (rs.next()) {
@@ -400,25 +405,22 @@ public class userDAO {
                 String userimages = rs.getString(10);
                 String gender = rs.getString(8);
                 String role = rs.getString(11);
-                if(gender.equals("1")){
+                if (gender.equals("1")) {
                     gender = "Male";
-                }else{
+                } else {
                     gender = "FeMale";
                 }
                 user ur = new user(userID, fullname, acc, pass, phonenumber, address, email, gender, bod, userimages, role);
-                
+
                 listrole.add(ur);
                 System.out.println("see");
             }
-        
-    } catch (SQLException e) {
-        e.printStackTrace();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return listrole;
     }
-    return listrole;
-}
-    
-
-
 
     public String getUserName(String userId) {
         String name = "";
@@ -453,7 +455,7 @@ public class userDAO {
         }
         return name;
     }
-    
+
     public void addUser(String id, String name, String mail) {
         try {
             String sql = "insert into user(userId, fullname,email) "
@@ -614,23 +616,23 @@ public class userDAO {
 
     public boolean takeAttendance(String staffId, String date, String time) {
         String sql = "Insert into attendance(staffID, date, time) values(? ,?, ?)";
-            try {
-                connection = dbc.getConnection();
-                ps = connection.prepareStatement(sql);
+        try {
+            connection = dbc.getConnection();
+            ps = connection.prepareStatement(sql);
 //                ps.setString(1, id);
-                ps.setString(1, staffId);
-                ps.setString(2, date);
-                ps.setString(3, time);
-                ps.execute();
-                return true;
-            } catch (SQLException e) {
-                System.out.println("Add attendance error: " + e.getMessage());
-            }
+            ps.setString(1, staffId);
+            ps.setString(2, date);
+            ps.setString(3, time);
+            ps.execute();
+            return true;
+        } catch (SQLException e) {
+            System.out.println("Add attendance error: " + e.getMessage());
+        }
         return false;
     }
-    
+
     // get list history of attendance by date, staffId
-    public ArrayList<Attendance> listAttendance(String date, String staffId){
+    public ArrayList<Attendance> listAttendance(String date, String staffId) {
         ArrayList<Attendance> list = new ArrayList<Attendance>();
         String sql = "SELECT * FROM attendance where staffId = ? and date = ?";
         try {
@@ -649,39 +651,42 @@ public class userDAO {
             }
         } catch (SQLException e) {
             System.out.println("Get attendance history error: " + e.getMessage());
-        } 
+        }
         return list;
     }
-    
-    public Attendance getAttendanceByID(String attID){
+
+    public Attendance getAttendanceByID(String attID) {
         String sql = "Select * from attendance where attendanceID = ?";
         try {
             connection = dbc.getConnection();
             ps = connection.prepareStatement(sql);
             ps.setString(1, attID);
             rs = ps.executeQuery();
-            while(rs.next()){
-                return new Attendance(rs.getString(1),rs.getString(2), rs.getString(3), rs.getString(4));
+            while (rs.next()) {
+                return new Attendance(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4));
             }
         } catch (Exception e) {
             System.out.println("Get total attendance error: " + e.getMessage());
         }
         return null;
     }
-    
+
     // count total attendance
-    public int getLastID(){
+    public int getLastID() {
         String sql = "Select Count(attendanceID) from attendance";
         try {
             connection = dbc.getConnection();
             ps = connection.prepareStatement(sql);
             rs = ps.executeQuery();
-            while(rs.next()) return rs.getInt(1);
+            while (rs.next()) {
+                return rs.getInt(1);
+            }
         } catch (Exception e) {
             System.out.println("Get total attendance error: " + e.getMessage());
         }
         return 0;
     }
+
     public String getUserPhone(String userId) {
         String name = "";
         try {
@@ -698,6 +703,7 @@ public class userDAO {
         }
         return name;
     }
+
     public String getUserEmail(String userId) {
         String name = "";
         try {
@@ -715,7 +721,6 @@ public class userDAO {
         return name;
     }
 
-    
     public ArrayList<user> getAllByPhone(String phone) throws SQLException, IOException {
         ArrayList<user> list = new ArrayList<>();
         String sql = "SELECT * FROM user where PhoneNumber=?";
@@ -754,25 +759,26 @@ public class userDAO {
 
         return list;
     }
+
     public int getIdbyPhone(String phone) {
-    int userId = 0;
-    try {
-        String sql = "SELECT userId FROM user WHERE phonenumber = ?";
-        connection = dbc.getConnection();
-        ps = connection.prepareStatement(sql);
-        ps.setString(1, phone);
-        rs = ps.executeQuery();
-        while (rs.next()) {
-            userId = rs.getInt(1);
+        int userId = 0;
+        try {
+            String sql = "SELECT userId FROM user WHERE phonenumber = ?";
+            connection = dbc.getConnection();
+            ps = connection.prepareStatement(sql);
+            ps.setString(1, phone);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                userId = rs.getInt(1);
+            }
+        } catch (Exception e) {
+            System.out.println("Get userId: " + e.getMessage());
         }
-    } catch (Exception e) {
-        System.out.println("Get userId: " + e.getMessage());
+        return userId;
     }
-    return userId;
-}
 
     public int getIdbyAccount(String account) {
-       int userId=0;
+        int userId = 0;
         try {
             String sql = "Select userId from user where account = ?";
             connection = dbc.getConnection();
@@ -780,18 +786,17 @@ public class userDAO {
             ps.setString(1, account);
             rs = ps.executeQuery();
             while (rs.next()) {
-            userId = rs.getInt(1);
+                userId = rs.getInt(1);
 
             }
         } catch (Exception e) {
             System.out.println("Get userId: " + e.getMessage());
 
         }
-        return userId;    
-    
-    
+        return userId;
+
     }
-    
+
     public boolean checkExistUser(String email, String phone) throws SQLException {
         Connection conn = dbc.getConnection();
         PreparedStatement stmt = null;
@@ -822,11 +827,7 @@ public class userDAO {
         }
         return exist;
     }
-    
-    
-    
-    
-    
+
     public user getUserbyID123(String userID) throws SQLException {
         user g = new user();
 
@@ -837,7 +838,7 @@ public class userDAO {
             ps.setString(1, userID);
             rs = ps.executeQuery();
             while (rs.next()) {
-                 userID = rs.getString(1);
+                userID = rs.getString(1);
                 String fullname = rs.getString(2);
                 String acc = rs.getString(3);
                 String pass = rs.getString(4);
